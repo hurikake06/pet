@@ -1,3 +1,50 @@
 // Place all the styles related to the cg/cgApp controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  color: #576a8c;
+}
+body hr{
+  border-top: 1px solid #576a8c;
+}
+.container{
+  background-color: #576a8c;
+  color: white;
+  padding: 20px;
+}
+.container hr{
+  border-top: 1px solid white;
+}
+.space{
+  height: 400px;
+}
+div#footer-fixed
+{
+    position: fixed;            /* フッターの固定 */
+    bottom: 0px;                /* 位置(下0px) */
+    /*left: 0px;*/                  /* 位置(左0px) */
+    width: 80%;                /* 横幅100%　*/
+    height: 250px;              /* 縦幅140px */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.error_message{
+ background-color: #ffc7c7;
+ color: black;
+ width: 80%;
+ margin: 20px;
+ padding: 20px;
+ font-size: 16px;
+}
+#loginLink{
+  text-align: center;
+}
+#loginLink a{
+  margin: 20px auto;
+  padding: 20px;
+}
+#loginLink .btn{
+  font-size: 36px;
+}
