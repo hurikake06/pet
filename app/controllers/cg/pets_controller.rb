@@ -1,4 +1,4 @@
-class Cg::PetsController < ApplicationController
+class Cg::PetsController < CgLayoutsController
   def new
   end
 

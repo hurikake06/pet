@@ -1,4 +1,4 @@
-class Cg::UsersController < ApplicationController
+class Cg::UsersController < CgLayoutsController
   def new
   end
 
