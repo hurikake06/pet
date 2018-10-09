@@ -1,0 +1,2 @@
+class CgLayoutsController < ApplicationController
+end

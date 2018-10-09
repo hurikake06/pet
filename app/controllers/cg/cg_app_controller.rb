@@ -1,4 +1,4 @@
-class Cg::CgAppController < ApplicationController
+class Cg::CgAppController < CgLayoutsController
   def index
   end
 end
