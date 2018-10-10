@@ -1,0 +1,38 @@
+ // --- CSS ---
+#footer {
+width:100%;
+clear:both;
+}
+
+#footer a {
+color:#fff;
+text-decoration:none;
+}
+
+#footer p {
+margin:0;
+padding:3px 5px;
+color:#fff;
+background:#000;
+font-size:65%;
+text-align:right;
+line-height:1.32em;
+font-family:verdana;
+}
+
+#footer div {
+padding:10px;
+background:#eeeeff;
+color:#333366;
+font-size:70%;
+border-bottom:1px solid #ccc;
+}
+
+#footer div a {
+color:#3366cc;
+text-decoration:none;
+}
+
+#footer div a:hover {
+color:#333366;
+}
