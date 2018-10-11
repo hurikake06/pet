@@ -1,38 +1,30 @@
- // --- CSS ---
-#footer {
-width:100%;
-clear:both;
+footer {
+  clear: both;
+  background-color: #444;
+  bottom: 0px;
+  padding: 15px 5px 0 5px;;
+  color: #fff;
+  font-size: 12px;
+  margin-top: 20px;
 }
-
-#footer a {
-color:#fff;
-text-decoration:none;
+footer .navbar-nav li a {
+  text-align: center;
+  color: #fff;
+  padding-left: 0.5em;
+  text-decoration: underline;
 }
-
-#footer p {
-margin:0;
-padding:3px 5px;
-color:#fff;
-background:#000;
-font-size:65%;
-text-align:right;
-line-height:1.32em;
-font-family:verdana;
+footer .navbar-nav li a:hover {
+  color: #dcdcdc;
 }
-
-#footer div {
-padding:10px;
-background:#eeeeff;
-color:#333366;
-font-size:70%;
-border-bottom:1px solid #ccc;
+.copyright{
+  text-align: left;
+  font-size: 90%
 }
-
-#footer div a {
-color:#3366cc;
-text-decoration:none;
-}
-
-#footer div a:hover {
-color:#333366;
+.error_message{
+  background-color: #ffc7c7;
+  color: black;
+  width: 80%;
+  margin: 20px;
+  padding: 20px;
+  font-size: 16px;
 }

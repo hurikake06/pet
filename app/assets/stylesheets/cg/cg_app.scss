@@ -19,25 +19,6 @@ body hr{
 .space{
   height: 400px;
 }
-div#footer-fixed
-{
-    position: fixed;            /* フッターの固定 */
-    bottom: 0px;                /* 位置(下0px) */
-    /*left: 0px;*/                  /* 位置(左0px) */
-    width: 80%;                /* 横幅100%　*/
-    height: 250px;              /* 縦幅140px */
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.2);
-}
-.error_message{
- background-color: #ffc7c7;
- color: black;
- width: 80%;
- margin: 20px;
- padding: 20px;
- font-size: 16px;
-}
 #loginLink{
   text-align: center;
 }
@@ -47,4 +28,7 @@ div#footer-fixed
 }
 #loginLink .btn{
   font-size: 36px;
+}
+#cgTitle {
+  margin: 20px;
 }
