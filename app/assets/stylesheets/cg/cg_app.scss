@@ -2,31 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body{
+body {
   color: #576a8c;
 }
-body hr{
+body hr {
   border-top: 1px solid #576a8c;
 }
-.container{
+.container {
   background-color: #576a8c;
   color: white;
   padding: 20px;
 }
-.container hr{
+.container hr {
   border-top: 1px solid white;
 }
-.space{
+.space {
   height: 400px;
 }
-#loginLink{
+#loginLink {
   text-align: center;
 }
-#loginLink a{
+#loginLink a {
   margin: 20px auto;
   padding: 20px;
 }
-#loginLink .btn{
+#loginLink .btn {
   font-size: 36px;
 }
 #cgTitle {

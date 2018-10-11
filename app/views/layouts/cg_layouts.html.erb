@@ -11,7 +11,9 @@
 
   <body>
     <%= render "cg/layouts/header" %>
-    <%= yield %>
+    <div id = "pageContent">
+      <%= yield %>
+    </div>
     <%= render "cg/layouts/footer"%>
   </body>
 </html>
