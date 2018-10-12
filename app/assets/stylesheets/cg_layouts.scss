@@ -1,0 +1,33 @@
+footer {
+  clear: both;
+  background-color: #444;
+  bottom: 0px;
+  padding: 15px 5px 0 5px;;
+  color: #fff;
+  font-size: 12px;
+}
+footer .navbar-nav li a {
+  text-align: center;
+  color: #fff;
+  padding-left: 0.5em;
+  text-decoration: underline;
+}
+footer .navbar-nav li a:hover {
+  color: #dcdcdc;
+}
+.copyright {
+  text-align: left;
+  font-size: 90%
+}
+.error_message {
+  background-color: #ffc7c7;
+  color: black;
+  width: 80%;
+  margin: 20px;
+  padding: 20px;
+  font-size: 16px;
+}
+#pageContent {
+  margin: 20px 0;
+  min-height: 550px;
+}

@@ -1,6 +1,8 @@
-<h1>CuteGift</h1>
-<h1>PetsTweetへようこそ</h1>
-<h2>top画面</h2>
+<div id='cgTitle'>
+  <h1>CuteGift</h1>
+  <h1>PetsTweetへようこそ</h1>
+  <h2>top画面</h2>
+</div>
 <Hr>
 <div class="container" id="loginLink">
   <a href="/users/login">
@@ -9,15 +11,9 @@
 </div>
 <hr>
 <div class="container">
-<ul>
-  <li id='aaa'>
-    aaa
-  </li>
-  <li id='bbb'>
-    bbb
-  </li>
-  <li id='ccc'>
-    ccc
-  </li>
-</ul>
+  <ul>
+    <% 100.times do |i| %>
+    <li>testContent<%= i %></li>
+    <% end %>
+  </ul>
 </div>
