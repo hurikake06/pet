@@ -15,8 +15,11 @@ Rails.application.routes.draw do
       get 'mypage' => '/cg/users#mypage'
       get 'new' => '/cg/users#new'
       get 'login' => '/cg/users#login'
+<<<<<<< HEAD
       post 'login' => '/cg/users#login_check'
       get ':username' => '/cg/users#show'
+=======
+>>>>>>> ログインフォーム追加
     end
   end
   
