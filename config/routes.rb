@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       root to: '/cg/users#mypage'
       get 'mypage' => '/cg/users#mypage'
       get 'new' => '/cg/users#new'
-      get 'edit' => '/cg/users#login'
+      get 'login' => '/cg/users#login'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
