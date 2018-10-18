@@ -26,10 +26,9 @@ class Cg::UsersController < CgLayoutsController
   def mypage
     if session[:login_state] == 'OK'
       @user = Cg::User.find_by(id: session[:user_id])
-      @user.name = @user.name.to_s + '(self)'
-      @pet_list = Cg::Type.joins(:pets)
-                          .select('pets.*,types.name as types_name')
-                          .where(pets: { users_id: session[:user_id] })
+      @pet_list = Cg::Pet.joins(:cg_type)
+                         .select('cg_pets.*,cg_types.name as types_name')
+                         .where(cg_pets: { users_id: session[:user_id] })
     else
       redirect_to '/CuteGift/user/login'
     end
@@ -43,9 +42,9 @@ class Cg::UsersController < CgLayoutsController
       redirect_to '/CuteGift/user/mypage'
     else
       @user = user
-      @pet_list = Cg::Type.joins(:pets)
-                          .select('pets.*,types.name as types_name')
-                          .where(pets: { users_id: user.id })
+      @pet_list = Cg::Pet.joins(:cg_type)
+                         .select('cg_pets.*,cg_types.name as types_name')
+                         .where(cg_pets: { users_id: user.id })
     end
   end
 end
