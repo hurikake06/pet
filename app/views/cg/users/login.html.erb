@@ -1,2 +1,11 @@
-<h1>Cg::Users#login</h1>
-<p>Find me in app/views/cg/users/login.html.erb</p>
+<h1>ログイン</h1>
+<p>CuteGiftへようこそ</p>
+<Hr>
+  <div class="container">
+    <h2>ユーザ名とパスワードを入力してください</h2>
+    <%= render partial: 'login_form', locals: { error_code: @error_code} %>
+  </div>
+<Hr>
+<div class='container' style = 'background-color:white'>
+  <h3><a href='/users/new'>新規登録</a></h3>
+</div>
