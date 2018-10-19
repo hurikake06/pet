@@ -15,19 +15,11 @@ Rails.application.routes.draw do
       get 'mypage' => '/cg/users#mypage'
       get 'new' => '/cg/users#new'
       get 'login' => '/cg/users#login'
-<<<<<<< HEAD
-<<<<<<< HEAD
       post 'login' => '/cg/users#login_check'
       get ':username' => '/cg/users#show'
-=======
->>>>>>> ログインフォーム追加
-=======
-      post 'login' => '/cg/users#login_check'
-      get ':username' => '/cg/users#show'
->>>>>>> ログイン機能追加
     end
   end
-  
+
   get 'logout' => 'sessions#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

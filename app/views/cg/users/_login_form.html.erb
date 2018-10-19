@@ -1,19 +1,7 @@
 <% if error_code.present? %>
-<<<<<<< HEAD
-<<<<<<< HEAD
   <p class='error_message container'><%= error_code %></p>
 <% end %>
 <%= form_for Cg::User.new ,url:'/CuteGift/user/login' do |f| %>
-=======
-  <p class='error_message container'><%= error_code %>:<%= user_name %></p>
-<% end %>
-<%= form_for Cg::User.new ,url:'/users/login' do |f| %>
->>>>>>> ログインフォーム追加
-=======
-  <p class='error_message container'><%= error_code %></p>
-<% end %>
-<%= form_for Cg::User.new ,url:'/CuteGift/user/login' do |f| %>
->>>>>>> ログイン機能追加
   <div class="form-group">
     <%= f.label :username %>
     <%= f.text_field :username,class:'form-control'%>
