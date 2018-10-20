@@ -26,7 +26,6 @@ class Cg::UsersController < CgLayoutsController
   def mypage
     if session[:login_state] == 'OK'
       @user = Cg::User.find_by(id: session[:user_id])
-      @pet_list = Cg::Pet.join_type.get_users_pets session[:user_id]
     else
       redirect_to '/CuteGift/user/login'
     end
@@ -40,7 +39,6 @@ class Cg::UsersController < CgLayoutsController
       redirect_to '/CuteGift/user/mypage'
     else
       @user = user
-      @pet_list = Cg::Pet.join_type.get_users_pets user.id
     end
   end
 end

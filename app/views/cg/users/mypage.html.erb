@@ -9,10 +9,10 @@
     <li>About   : <%= @user[:about] %></li>
 </ul>
 <h3>pet_list</h3>
-<% if @pet_list.present? %>
+<% if @user.users_pets.present? %>
   <ul>
-    <% @pet_list.each do |pet| %>
-      <li><%= pet.name %>:<%= pet.types_name %></li>
+    <% @user.users_pets.each do |pet| %>
+      <li><%= pet.name %>:<%= pet.type.name %></li>
     <% end %>
   </ul>
 <% else %>
