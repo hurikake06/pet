@@ -1,7 +1,7 @@
-<h1>Users#mypage</h1>
-<p>Find me in app/views/users/mypage.html.erb</p>
+<h1>~show~</h1>
+<h2><% @user.name %></h2>
 <Hr>
-<% if @user %>
+<% if @user.present? %>
   <h1><%= @user[:name] %></h1>
   <h2><%= @user[:id] %></h2>
   <p><%= @user[:username] %></p>
@@ -9,6 +9,16 @@
       <li>E-mail : <%= @user[:email] %></li>
       <li>About   : <%= @user[:about] %></li>
   </ul>
+  <h3>pet_list</h3>
+  <% if @user.users_pets.present? %>
+    <ul>
+      <% @user.users_pets.each do |pet| %>
+        <li><%= pet.name %>:<%= pet.type.name %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>ペットが登録されていません</p>
+  <% end %>
 <% else %>
   <p>urlが間違っています</p>
 <% end %>
