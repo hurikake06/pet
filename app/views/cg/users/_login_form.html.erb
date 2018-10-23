@@ -1,7 +1,7 @@
 <% if error_code.present? %>
   <p class='error_message container'><%= error_code %></p>
 <% end %>
-<%= form_for Cg::User.new ,url:'/CuteGift/user/login' do |f| %>
+<%= form_for Cg::User.new ,url:'/CuteGift/login' do |f| %>
   <div class="form-group">
     <%= f.label :username %>
     <%= f.text_field :username,class:'form-control'%>
