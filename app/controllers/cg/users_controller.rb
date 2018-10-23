@@ -15,11 +15,11 @@ class Cg::UsersController < CgLayoutsController
     if user.present? && user[:password] == params[:cg_user][:password]
       session[:user_id] = user.id
       session[:login_state] = 'OK'
-      redirect_to '/CuteGift/user/mypage'
+      redirect_to '/CuteGift/mypage'
     else
       session[:user] = params[:cg_user]
       session[:error_code] = '入力内容が間違っています'
-      redirect_to '/CuteGift/user/login'
+      redirect_to '/CuteGift/login'
     end
   end
 
@@ -27,7 +27,7 @@ class Cg::UsersController < CgLayoutsController
     if session[:login_state] == 'OK'
       @user = Cg::User.find_by(id: session[:user_id])
     else
-      redirect_to '/CuteGift/user/login'
+      redirect_to '/CuteGift/login'
     end
   end
 
@@ -36,7 +36,7 @@ class Cg::UsersController < CgLayoutsController
     return unless user.present?
 
     if session[:login_state] == 'OK' && session[:user_id] == user[:id]
-      redirect_to '/CuteGift/user/mypage'
+      redirect_to '/CuteGift/mypage'
     else
       @user = user
     end
