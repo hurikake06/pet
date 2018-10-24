@@ -1,0 +1,22 @@
+<% if error_code.present? %>
+  <p class='error_message container'><%= error_code %></p>
+<% end %>
+<%= form_for Cg::Pet.new , url:'/CuteGift/mypage/pet/new' do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class:'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :petname %>
+    <%= f.text_field :petname, class:'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :types_id %>
+    <%= f.number_field :types_id, class:'form-control'%>
+  </div>
+  <div class="form-group">
+    <%= f.label :about %>
+    <%= f.text_area :about, class:'form-control'%>
+  </div>
+  <%= f.button type:'submit', class: 'btn btn-primary' %>
+<% end %>
