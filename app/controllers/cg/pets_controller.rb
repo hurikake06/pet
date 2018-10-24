@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class Cg::PetsController < CgLayoutsController
-  def new; end
+  def new
+    return unless params[:cg_pet].present?
+    @pet = params[:cg_pet]
+    
+  end
 
   def edit; end
 

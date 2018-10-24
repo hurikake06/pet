@@ -15,8 +15,9 @@ Rails.application.routes.draw do
 
       namespace :pet do
         get 'new' => '/cg/pets#new'
-        get 'edit' => '/cg/pets#edit'
+        post 'new' => '/cg/pets#new'
         get ':petname' => '/cg/pets#mypage'
+        get ':petname/edit' => '/cg/pets#edit'
       end
     end
 

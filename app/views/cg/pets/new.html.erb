@@ -1,2 +1,6 @@
-<h1>Cg::Pets#new</h1>
-<p>Find me in app/views/cg/pets/new.html.erb</p>
+<h1>新規ペット登録</h1>
+<p>ペット情報を入力してください</p>
+<div class="container">
+  <p><% @pet&.to_json %></p>
+  <%= render partial: 'new_form', locals: { error_code: @error_code} %>
+</div>
