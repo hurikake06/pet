@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'login' => '/cg/users#login'
     post 'login/:user_mode' => '/cg/users#pass_check'
     get 'logout' => '/sessions#destroy'
-    get 'ChangeMode' => '/sessions#mode_change'
+    get 'ChangeMode/:user_mode' => '/sessions#mode_change'
 
     namespace :user do
       get 'new' => '/cg/users#new'
