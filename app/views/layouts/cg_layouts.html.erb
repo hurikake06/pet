@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <%= render "cg/layouts/header" %>
+    <% if session[:user_mode] == 'HOST' %>
+      <%= render "cg/layouts/host/header" %>
+    <% else %>
+      <%= render "cg/layouts/header" %>
+    <% end %>
     <div id = "pageContent">
       <%= yield %>
     </div>

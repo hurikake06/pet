@@ -8,16 +8,3 @@
     <li>E-mail : <%= @user.email %></li>
     <li>About   : <%= @user.about %></li>
 </ul>
-<h3>pet_list</h3>
-<% if @user.pets.present? %>
-  <ul>
-    <% @user.pets.each do |pet| %>
-      <a href="/CuteGift/mypage/pet/<%= pet.petname %>">
-        <li><%= pet.name %>:<%= pet.type.name %></li>
-      </a>
-    <% end %>
-  </ul>
-<% else %>
-  <p>ペットが登録されていません</p>
-<% end %>
-<h3><a href='/CuteGift/mypage/pet/new'>新規ペット追加</a></h3>

@@ -5,4 +5,10 @@ class SessionsController < ApplicationController
     reset_session
     redirect_to '/CuteGift/login'
   end
+
+  def mode_change
+    login_check
+    session[:user_mode] = session[:user_mode] == 'HOST' ? 'USER' : 'HOST'
+    redirect_to '/CuteGift/mypage'
+  end
 end

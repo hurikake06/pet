@@ -1,14 +1,25 @@
+<script type="text/javascript">
+function submitAction(url) {
+  $('form').attr('action', url);
+  $('form').submit();
+}
+</script>
 <% if error_code.present? %>
   <p class='error_message container'><%= error_code %></p>
 <% end %>
-<%= form_for Cg::User.new ,url:'/CuteGift/login' do |f| %>
+<%= form_for Cg::User.new, url: '' do |f| %>
   <div class="form-group">
     <%= f.label :username %>
-    <%= f.text_field :username,class:'form-control'%>
+    <%= f.text_field :username, class:'form-control', value:user&.username %>
   </div>
   <div class="form-group">
     <%= f.label :password %>
-    <%= f.password_field :password ,class:'form-control'%>
+    <%= f.password_field :password, class:'form-control', value:user&.password %>
   </div>
-  <%= f.button type:'submit',class: 'btn btn-primary' %>
+  <button name="button" type="button" class="btn btn-primary" onclick="submitAction('/CuteGift/login/HOST')" >
+    ペットを貸す
+  </button>
+  <button name="button" type="button" class="btn btn-primary" onclick="submitAction('/CuteGift/login/USER')" >
+    ペットを借りる
+  </button>
 <% end %>
