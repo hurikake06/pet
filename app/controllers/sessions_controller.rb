@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def mode_change
     login_check
-    session[:user_mode] = session[:user_mode] == 'HOST' ? 'USER' : 'HOST'
+    session[:user_mode] = params[:user_mode]
     redirect_to '/CuteGift/mypage'
   end
 end
