@@ -2,25 +2,26 @@
 
 class Cg::PetsController < CgLayoutsController
   def new
+    login_check
+    mode_check
     return unless params[:cg_pet].present?
+
     @pet = params[:cg_pet]
-    
   end
 
   def edit; end
 
   def mypage
-    if session[:login_state] == 'OK'
-      @pet = Cg::Pet.find_by( petname: params[:petname])
-      redirect_to '/CuteGift/login' unless @pet.present?
-    else
-      redirect_to '/CuteGift/login'
-    end
+    login_check
+    mode_check
+    @pet = Cg::Pet.find_by(petname: params[:petname])
   end
 
   def show
-    # user = Cg::User.find_by(username: params[:username])
     @pet = Cg::Pet.find_by(petname: params[:petname])
-    redirect_to '/CuteGift/login' unless @pet.present?
+  end
+
+  def mode_check
+    change_user_mode unless session[:user_mode] == 'HOST'
   end
 end
