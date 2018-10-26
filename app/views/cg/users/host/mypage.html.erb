@@ -12,7 +12,7 @@
 <% if @user.pets.present? %>
   <ul>
     <% @user.pets.each do |pet| %>
-      <a href="/CuteGift/mypage/pet/<%= pet.petname %>">
+      <a href="<%= mypage_pet_path(petname: pet.name) %>">
         <li><%= pet.name %>:<%= pet.type.name %></li>
       </a>
     <% end %>
@@ -20,4 +20,4 @@
 <% else %>
   <p>ペットが登録されていません</p>
 <% end %>
-<h3><a href='/CuteGift/mypage/pet/new'>新規ペット追加</a></h3>
+<h3><a href='<%= mypage_pet_new_path %>'>新規ペット追加</a></h3>
