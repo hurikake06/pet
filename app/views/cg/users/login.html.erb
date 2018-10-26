@@ -3,7 +3,7 @@
 <Hr>
   <div class="container">
     <h2>ユーザ名とパスワードを入力してください</h2>
-    <%= render partial: 'cg/users/login_form', locals: { error_code: @error_code, user: @user } %>
+    <%= render partial: 'cg/users/login_form', locals: { error_code: @error_code, user: @user , login_request_path: method(:login_request_path)} %>
   </div>
 <Hr>
 <div class='container' style = 'background-color:white'>

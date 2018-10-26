@@ -16,10 +16,10 @@ function submitAction(url) {
     <%= f.label :password %>
     <%= f.password_field :password, class:'form-control', value:user&.password %>
   </div>
-  <button name="button" type="button" class="btn btn-primary" onclick="submitAction('/CuteGift/login/HOST')" >
+  <button name="button" type="button" class="btn btn-primary" onclick="submitAction('<%= login_request_path(user_mode: 'HOST') %>')" >
     ペットを貸す
   </button>
-  <button name="button" type="button" class="btn btn-primary" onclick="submitAction('/CuteGift/login/USER')" >
+  <button name="button" type="button" class="btn btn-primary" onclick="submitAction('<%= login_request_path(user_mode: 'USER') %>')" >
     ペットを借りる
   </button>
 <% end %>
