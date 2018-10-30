@@ -1,0 +1,26 @@
+<% if error_code.present? %>
+  <p class='error_message container'><%= error_code %></p>
+<% end %>
+<%= form_for Cg::User.new, url: user_new_path() do |f| %>
+  <div class = "form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'form-control' %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :about %>
+    <%= f.text_area :about, class: 'form-control' %>
+  </div>
+  <%= f.button type:'submit', class: 'btn btn-primary' %>
+<% end %>
