@@ -1,0 +1,2 @@
+module Cg::SharesHelper
+end
