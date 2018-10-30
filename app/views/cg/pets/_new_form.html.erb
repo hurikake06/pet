@@ -1,7 +1,7 @@
 <% if error_code.present? %>
   <p class='error_message container'><%= error_code %></p>
 <% end %>
-<%= form_for Cg::Pet.new , url:'/CuteGift/mypage/pet/new' do |f| %>
+<%= form_for Cg::Pet.new , url: mypage_pet_new_path() do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class:'form-control' %>
@@ -11,8 +11,12 @@
     <%= f.text_field :petname, class:'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :types_id %>
-    <%= f.number_field :types_id, class:'form-control' %>
+    <label><%= f.radio_button :types_id, 1 %> 犬 </label>
+    <label><%= f.radio_button :types_id, 2 %> 猫 </label>
+    <label><%= f.radio_button :types_id, 3 %> 鳥 </label>
+    <label><%= f.radio_button :types_id, 4 %> 亀 </label>
+    <label><%= f.radio_button :types_id, 5 %> 猿 </label>
+    <label><%= f.radio_button :types_id, 6 %> 魚 </label>
   </div>
   <div class="form-group">
     <%= f.label :about %>
