@@ -68,3 +68,22 @@
 @pet.types_id = 4
 @pet.about = 'れっつ竜宮城'
 @pet.save
+
+@share_state = Cg::ShareState.new
+@share_state.name = '申請'
+@share_state.save
+@share_state = Cg::ShareState.new
+@share_state.name = '拒否'
+@share_state.save
+@share_state = Cg::ShareState.new
+@share_state.name = '許可'
+@share_state.save
+@share_state = Cg::ShareState.new
+@share_state.name = 'キャンセル'
+@share_state.save
+@share_state = Cg::ShareState.new
+@share_state.name = '支払い待ち'
+@share_state.save
+@share_state = Cg::ShareState.new
+@share_state.name = '終了'
+@share_state.save

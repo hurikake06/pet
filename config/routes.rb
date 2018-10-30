@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :cg do
+    get 'shares/new'
+    get 'shares/list'
+    get 'shares/show'
+  end
   scope :CuteGift do
     root to:'cg/cg_app#index'
     get 'index' => 'cg/cg_app#index'

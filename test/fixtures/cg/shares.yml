@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users_id: 
+  pets_id: 
+  share_states_id: 
+
+two:
+  users_id: 
+  pets_id: 
+  share_states_id: 
