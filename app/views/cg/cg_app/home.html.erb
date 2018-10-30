@@ -6,9 +6,12 @@
 <hr>
 <div class="container">
   <h3>おすすめ情報</h3>
-  <ul>
-    <% 100.times do |i| %>
-    <li>testContent<%= i %></li>
-    <% end %>
-  </ul>
+  <div style = "background-color:#ffc107" >
+    <h4>人気ホスト</h4>
+    <ul>
+      <% Cg::User.all.where.not(id: @user.id).each do |user| %>
+      <li><a href="<%= show_path username: user.username %>"><%= user.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
