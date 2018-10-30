@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     namespace :user do
       get 'new' => '/cg/users#new'
+      post 'new' => '/cg/users#new'
     end
 
     namespace :mypage do
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
 
       namespace :pet do
         get 'new' => '/cg/pets#new'
-        post 'new' => '/cg/pets#new', as: 'new_request'
+        post 'new' => '/cg/pets#new'
         get ':petname' => '/cg/pets#mypage'
         get ':petname/edit' => '/cg/pets#edit'
         post ':petname/edit' => '/cg/pets#update', as: 'edit_request'

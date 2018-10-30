@@ -12,7 +12,7 @@
 <% if @user.pets.present? %>
   <ul>
     <% @user.pets.each do |pet| %>
-      <a href="<%= mypage_pet_path(petname: pet.name) %>">
+      <a href="<%= mypage_pet_path(petname: pet.petname) %>">
         <li><%= pet.name %>:<%= pet.type.name %></li>
       </a>
     <% end %>

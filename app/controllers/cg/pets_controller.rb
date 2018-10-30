@@ -6,7 +6,16 @@ class Cg::PetsController < CgLayoutsController
     mode_check
     return unless params[:cg_pet].present?
 
-    @pet = params[:cg_pet]
+    @pet = Cg::Pet.create!({
+        users_id: session[:user_id],
+        name: params[:cg_pet][:name],
+        petname: params[:cg_pet][:petname],
+        types_id: params[:cg_pet][:types_id],
+        about: params[:cg_pet][:about]
+      })
+rescue ActiveRecord::RecordInvalid => e
+    p e.record.errors
+    @error_code = "入力内容が間違っています"
   end
 
   def edit; end
