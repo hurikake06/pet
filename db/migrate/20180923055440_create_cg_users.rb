@@ -6,6 +6,8 @@ class CreateCgUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :password
       t.text :about
+      t.bigint :share_user_info
+      t.bigint :share_host_info
 
       t.timestamps
     end

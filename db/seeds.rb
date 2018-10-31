@@ -12,6 +12,8 @@ Cg::User.transaction do
   @user.email = 'momo@trident.com'
   @user.password = 'momoPass'
   @user.about = 'どんぶらこどんぶらこってすごい擬音語'
+  @user.share_user_info = 12
+  @user.share_host_info = 14
   @user.save!
 
   @user_detail = Cg::UserDetail.new
@@ -24,6 +26,8 @@ Cg::User.transaction do
   @user.email = 'urashima@trident.com'
   @user.password = 'urashimaPass'
   @user.about = '私が亀を助けました。'
+  @user.share_user_info = 12
+  @user.share_host_info = 14
   @user.save!
 
   @user_detail = Cg::UserDetail.new
@@ -52,6 +56,7 @@ Cg::User.transaction do
   @pet.petname = 'momoinu'
   @pet.types_id = 1
   @pet.about = '桃1号'
+  @pet.share_pet_info = 16
   @pet.save!
 
   @pet = Cg::Pet.new
@@ -60,6 +65,7 @@ Cg::User.transaction do
   @pet.petname = 'momosaru'
   @pet.types_id = 5
   @pet.about = '桃2号'
+  @pet.share_pet_info = 16
   @pet.save!
 
   @pet = Cg::Pet.new
@@ -68,6 +74,7 @@ Cg::User.transaction do
   @pet.petname = 'momokiji'
   @pet.types_id = 3
   @pet.about = '桃3号'
+  @pet.share_pet_info = 16
   @pet.save!
 
   @pet = Cg::Pet.new
@@ -76,6 +83,7 @@ Cg::User.transaction do
   @pet.petname = 'urashimakame'
   @pet.types_id = 4
   @pet.about = 'れっつ竜宮城'
+  @pet.share_pet_info = 16
   @pet.save!
 
   @info_type = Cg::InfoType.new

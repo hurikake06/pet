@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_052337) do
     t.string "petname"
     t.bigint "types_id"
     t.text "about"
+    t.bigint "share_pet_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,6 +70,8 @@ ActiveRecord::Schema.define(version: 2018_10_31_052337) do
     t.string "email"
     t.string "password"
     t.text "about"
+    t.bigint "share_user_info"
+    t.bigint "share_host_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
