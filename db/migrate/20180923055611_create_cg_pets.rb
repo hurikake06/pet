@@ -6,6 +6,7 @@ class CreateCgPets < ActiveRecord::Migration[5.2]
       t.string :petname
       t.bigint :types_id
       t.text :about
+      t.bigint :share_pet_info
 
       t.timestamps
     end

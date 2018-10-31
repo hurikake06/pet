@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_025925) do
+ActiveRecord::Schema.define(version: 2018_10_31_052337) do
+
+  create_table "cg_info_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cg_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "info_types_id"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cg_pets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "users_id"
@@ -18,12 +31,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_025925) do
     t.string "petname"
     t.bigint "types_id"
     t.text "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "cg_share_states", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.bigint "share_pet_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_025925) do
   create_table "cg_shares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "users_id"
     t.bigint "pets_id"
-    t.bigint "share_states_id"
+    t.bigint "share_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,12 +50,28 @@ ActiveRecord::Schema.define(version: 2018_10_30_025925) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cg_user_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "users_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.bigint "document_info"
+    t.bigint "credit_info"
+    t.integer "age"
+    t.bigint "sex_info"
+    t.bigint "country_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cg_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "username"
     t.string "email"
     t.string "password"
     t.text "about"
+    t.bigint "share_user_info"
+    t.bigint "share_host_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
