@@ -14,6 +14,10 @@ Cg::User.transaction do
   @user.about = 'どんぶらこどんぶらこってすごい擬音語'
   @user.save!
 
+  @user_detail = Cg::UserDetail.new
+  @user_detail.users_id = 1
+  @user_detail.save!
+
   @user = Cg::User.new
   @user.name = '浦島 太郎'
   @user.username = 'urashima'
@@ -21,6 +25,10 @@ Cg::User.transaction do
   @user.password = 'urashimaPass'
   @user.about = '私が亀を助けました。'
   @user.save!
+
+  @user_detail = Cg::UserDetail.new
+  @user_detail.users_id = 2
+  @user_detail.save!
 
   @type = Cg::Type.new
   @type.name = '犬'
@@ -71,27 +79,35 @@ Cg::User.transaction do
   @pet.save!
 
   @info_type = Cg::InfoType.new
-  @info_type.value = 'シェア状態'
+  @info_type.value = 'share'
   @info_type.save!
 
   @info_type = Cg::InfoType.new
-  @info_type.value = '性別'
+  @info_type.value = 'sex'
   @info_type.save!
 
   @info_type = Cg::InfoType.new
-  @info_type.value = '国籍'
+  @info_type.value = 'country'
   @info_type.save!
 
   @info_type = Cg::InfoType.new
-  @info_type.value = 'シェアユーザ状態'
+  @info_type.value = 'share_user'
   @info_type.save!
 
   @info_type = Cg::InfoType.new
-  @info_type.value = 'シェアホスト状態'
+  @info_type.value = 'share_host'
   @info_type.save!
 
   @info_type = Cg::InfoType.new
-  @info_type.value = 'シェアペット状態'
+  @info_type.value = 'share_pet'
+  @info_type.save!
+
+  @info_type = Cg::InfoType.new
+  @info_type.value = 'document'
+  @info_type.save!
+
+  @info_type = Cg::InfoType.new
+  @info_type.value = 'credit'
   @info_type.save!
 
   @info = Cg::Info.new
@@ -177,5 +193,25 @@ Cg::User.transaction do
   @info = Cg::Info.new
   @info.info_types_id = 6
   @info.value = '利用可能'
+  @info.save!
+
+  @info = Cg::Info.new
+  @info.info_types_id = 7
+  @info.value = '未登録'
+  @info.save!
+
+  @info = Cg::Info.new
+  @info.info_types_id = 7
+  @info.value = '登録済み'
+  @info.save!
+
+  @info = Cg::Info.new
+  @info.info_types_id = 8
+  @info.value = '未登録'
+  @info.save!
+
+  @info = Cg::Info.new
+  @info.info_types_id = 8
+  @info.value = '登録済み'
   @info.save!
 end
