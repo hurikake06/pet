@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_052337) do
 
   create_table "cg_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.bigint "share_type_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

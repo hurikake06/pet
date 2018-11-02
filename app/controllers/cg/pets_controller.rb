@@ -31,6 +31,6 @@ rescue ActiveRecord::RecordInvalid => e
   end
 
   def mode_check
-    change_user_mode unless session[:user_mode] == 'HOST'
+    wrong_user_mode unless session[:user_mode] == 'HOST'
   end
 end

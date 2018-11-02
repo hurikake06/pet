@@ -3,6 +3,7 @@
 class Cg::Pet < ApplicationRecord
   belongs_to :cg_user, foreign_key: :users_id, primary_key: :id, class_name: 'Cg::User'
   belongs_to :cg_type, foreign_key: :types_id, primary_key: :id, class_name: 'Cg::Type'
+  belongs_to :cg_info, foreign_key: :share_pet_info, primary_key: :id, class_name: 'Cg::Info'
   has_many :cg_shares, class_name: 'Cg::Share'
 
   validates :users_id, presence: true

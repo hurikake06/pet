@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     redirect_to '/CuteGift/login'
   end
 
-  def mode_change
+  def change_user_mode
     login_check
-    session[:user_mode] = params[:user_mode]
+    save_user_mode params[:user_mode]
     redirect_to '/CuteGift/mypage'
   end
 end

@@ -11,6 +11,7 @@ class Cg::UsersController < CgLayoutsController
       password:params[:cg_user][:password],
       about:params[:cg_user][:about],
     })
+
   rescue ActiveRecord::RecordInvalid => e
     p e.record.errors
     @error_code = "入力内容が間違っています"
@@ -23,8 +24,10 @@ class Cg::UsersController < CgLayoutsController
   # ユーザ名とパスワードが正しい場合、
   # セッション変数:user_idにユーザのIDを入れ、:login_stateをOKにする
   def pass_check
-    session[:user_mode] = params[:user_mode]
-    user = params[:cg_user] ? Cg::User.find_by(username: params[:cg_user][:username]) : nil
+    render 'cg/users/login' unless params[:user_mode].present? && params[:cg_user].present?
+    save_user_mode params[:user_mode]
+    user = Cg::User.exists?(username: params[:cg_user][:username]) ? Cg::User.find_by(username: params[:cg_user][:username]) : nil
+
     if user.present? && user.password == params[:cg_user][:password]
       session[:user_id] = user.id
       session[:login_state] = 'OK'
