@@ -4,13 +4,14 @@ Rails.application.routes.draw do
     get 'shares/list'
     get 'shares/show'
   end
+
   scope :CuteGift do
     root to:'cg/cg_app#index'
     get 'index' => 'cg/cg_app#index'
     get 'login' => 'cg/users#login'
     post 'login/:user_mode' => 'cg/users#pass_check', as: 'login_request'
     get 'logout' => 'sessions#destroy'
-    get 'ChangeMode/:user_mode' => 'sessions#mode_change', as: 'change_mode'
+    get 'ChangeMode/:user_mode' => 'sessions#change_user_mode', as: 'change_user_mode'
 
     namespace :user do
       get 'new' => '/cg/users#new'
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
 
     namespace :show do
       get ':username', to: '/cg/users#show'
-      get ':username/pet/:petname', to: 'cg/pets#show', as: 'pet'
+      get ':username/pet/:petname', to: '/cg/pets#show', as: 'pet'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

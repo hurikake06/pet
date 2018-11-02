@@ -5,221 +5,115 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Cg::User.transaction do
-  @user = Cg::User.new
-  @user.name = '桃 太郎'
-  @user.username = 'momo'
-  @user.email = 'momo@trident.com'
-  @user.password = 'momoPass'
-  @user.about = 'どんぶらこどんぶらこってすごい擬音語'
-  @user.share_user_info = 12
-  @user.share_host_info = 14
-  @user.save!
 
-  @user_detail = Cg::UserDetail.new
-  @user_detail.users_id = 1
-  @user_detail.save!
+Cg::InfoType.create({ id: 1, value: 'share' })
+Cg::InfoType.create({ id: 2, value: 'sex' })
+Cg::InfoType.create({ id: 3, value: 'country' })
+Cg::InfoType.create({ id: 4, value: 'share_user' })
+Cg::InfoType.create({ id: 5, value: 'share_host' })
+Cg::InfoType.create({ id: 6, value: 'share_pet' })
+Cg::InfoType.create({ id: 7, value: 'document' })
+Cg::InfoType.create({ id: 8, value: 'credit' })
+Cg::InfoType.create({ id: 9, value: 'share_type' })
 
-  @user = Cg::User.new
-  @user.name = '浦島 太郎'
-  @user.username = 'urashima'
-  @user.email = 'urashima@trident.com'
-  @user.password = 'urashimaPass'
-  @user.about = '私が亀を助けました。'
-  @user.share_user_info = 12
-  @user.share_host_info = 14
-  @user.save!
+Cg::Info.create({ id: 1, info_types_id: 1, value: '申請' })
+Cg::Info.create({ id: 2, info_types_id: 1, value: '許可' })
+Cg::Info.create({ id: 3, info_types_id: 1, value: '拒否' })
+Cg::Info.create({ id: 4, info_types_id: 1, value: 'キャンセル' })
+Cg::Info.create({ id: 5, info_types_id: 1, value: '支払い待ち' })
+Cg::Info.create({ id: 6, info_types_id: 1, value: '終了' })
 
-  @user_detail = Cg::UserDetail.new
-  @user_detail.users_id = 2
-  @user_detail.save!
+Cg::Info.create({ id: 7, info_types_id: 2, value: '男性' })
+Cg::Info.create({ id: 8, info_types_id: 2, value: '女性' })
 
-  @type = Cg::Type.new
-  @type.name = '犬'
-  @type.save!
-  @type = Cg::Type.new
-  @type.name = '猫'
-  @type.save!
-  @type = Cg::Type.new
-  @type.name = '鳥'
-  @type.save!
-  @type = Cg::Type.new
-  @type.name = '亀'
-  @type.save!
-  @type = Cg::Type.new
-  @type.name = '猿'
-  @type.save!
+Cg::Info.create({ id: 9, info_types_id: 3, value: '日本' })
+Cg::Info.create({ id: 10, info_types_id: 3, value: 'マルタ' })
+Cg::Info.create({ id: 11, info_types_id: 3, value: 'アメリカ' })
 
-  @pet = Cg::Pet.new
-  @pet.users_id = 1
-  @pet.name = '桃 いぬ'
-  @pet.petname = 'momoinu'
-  @pet.types_id = 1
-  @pet.about = '桃1号'
-  @pet.share_pet_info = 16
-  @pet.save!
+Cg::Info.create({ id: 12, info_types_id: 4, value: '利用不可' })
+Cg::Info.create({ id: 13, info_types_id: 4, value: '利用可能' })
+Cg::Info.create({ id: 14, info_types_id: 5, value: '利用不可' })
+Cg::Info.create({ id: 15, info_types_id: 5, value: '利用可能' })
+Cg::Info.create({ id: 16, info_types_id: 6, value: '利用不可' })
+Cg::Info.create({ id: 17, info_types_id: 6, value: '利用可能' })
 
-  @pet = Cg::Pet.new
-  @pet.users_id = 1
-  @pet.name = '桃 さる'
-  @pet.petname = 'momosaru'
-  @pet.types_id = 5
-  @pet.about = '桃2号'
-  @pet.share_pet_info = 16
-  @pet.save!
+Cg::Info.create({ id: 18, info_types_id: 7, value: '未登録' })
+Cg::Info.create({ id: 19, info_types_id: 7, value: '登録済み' })
+Cg::Info.create({ id: 20, info_types_id: 8, value: '未登録' })
+Cg::Info.create({ id: 21, info_types_id: 8, value: '登録済み' })
 
-  @pet = Cg::Pet.new
-  @pet.users_id = 1
-  @pet.name = '桃 きじ'
-  @pet.petname = 'momokiji'
-  @pet.types_id = 3
-  @pet.about = '桃3号'
-  @pet.share_pet_info = 16
-  @pet.save!
+Cg::Info.create({ id: 22, info_types_id: 9, value: '利用不可' })
+Cg::Info.create({ id: 23, info_types_id: 9, value: '利用可能' })
 
-  @pet = Cg::Pet.new
-  @pet.users_id = 2
-  @pet.name = '浦島 かめ'
-  @pet.petname = 'urashimakame'
-  @pet.types_id = 4
-  @pet.about = 'れっつ竜宮城'
-  @pet.share_pet_info = 16
-  @pet.save!
+Cg::User.create({
+  id: 1,
+  name: '桃 太郎',
+  username: 'momo',
+  email: 'momo@trident.com',
+  password: 'momoPass',
+  about: 'どんぶらこどんぶらこってすごい擬音語',
+  share_user_info: 12,
+  share_host_info: 14
+})
 
-  @info_type = Cg::InfoType.new
-  @info_type.value = 'share'
-  @info_type.save!
+Cg::User.create({
+  id: 2,
+  name: '浦島 太郎',
+  username: 'urashima',
+  email: 'urashima@trident.com',
+  password: 'urashimaPass',
+  about: '私が亀を助けました。',
+  share_user_info: 12,
+  share_host_info: 14
+})
 
-  @info_type = Cg::InfoType.new
-  @info_type.value = 'sex'
-  @info_type.save!
+Cg::UserDetail.create({ users_id: 1 })
+Cg::UserDetail.create({ users_id: 2 })
 
-  @info_type = Cg::InfoType.new
-  @info_type.value = 'country'
-  @info_type.save!
+Cg::Type.create({ id:1, name: '犬', share_type_info: 23 })
 
-  @info_type = Cg::InfoType.new
-  @info_type.value = 'share_user'
-  @info_type.save!
+Cg::Type.create({ id:2, name: '猫', share_type_info: 23 })
 
-  @info_type = Cg::InfoType.new
-  @info_type.value = 'share_host'
-  @info_type.save!
+Cg::Type.create({ id:3, name: '鳥', share_type_info: 22 })
 
-  @info_type = Cg::InfoType.new
-  @info_type.value = 'share_pet'
-  @info_type.save!
+Cg::Type.create({ id:4, name: '亀', share_type_info: 22 })
 
-  @info_type = Cg::InfoType.new
-  @info_type.value = 'document'
-  @info_type.save!
+Cg::Type.create({ id:5, name: '猿', share_type_info: 22 })
 
-  @info_type = Cg::InfoType.new
-  @info_type.value = 'credit'
-  @info_type.save!
+Cg::Type.create({ id:6, name: '魚', share_type_info: 22 })
 
-  @info = Cg::Info.new
-  @info.info_types_id = 1
-  @info.value = '申請'
-  @info.save!
+Cg::Pet.create({
+  users_id: 1,
+  name: '桃 いぬ',
+  petname: 'momoinu',
+  types_id: 1,
+  about:'桃1号',
+  share_pet_info: 16,
+  })
 
-  @info = Cg::Info.new
-  @info.info_types_id = 1
-  @info.value = '許可'
-  @info.save!
+Cg::Pet.create({
+  users_id: 1,
+  name: '桃 猿',
+  petname: 'momosaru',
+  types_id: 5,
+  about:'桃2号',
+  share_pet_info: 16,
+  })
 
-  @info = Cg::Info.new
-  @info.info_types_id = 1
-  @info.value = '拒否'
-  @info.save!
+Cg::Pet.create({
+  users_id: 1,
+  name: '桃 キジ',
+  petname: 'momokiji',
+  types_id: 3,
+  about:'桃3号',
+  share_pet_info: 16,
+  })
 
-  @info = Cg::Info.new
-  @info.info_types_id = 1
-  @info.value = 'キャンセル'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 1
-  @info.value = '支払い待ち'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 1
-  @info.value = '終了'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 2
-  @info.value = '男性'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 2
-  @info.value = '女性'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 3
-  @info.value = '日本'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 3
-  @info.value = 'マルタ'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 3
-  @info.value = 'アメリカ'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 4
-  @info.value = '利用不可'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 4
-  @info.value = '利用可能'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 5
-  @info.value = '利用不可'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 5
-  @info.value = '利用可能'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 6
-  @info.value = '利用不可'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 6
-  @info.value = '利用可能'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 7
-  @info.value = '未登録'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 7
-  @info.value = '登録済み'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 8
-  @info.value = '未登録'
-  @info.save!
-
-  @info = Cg::Info.new
-  @info.info_types_id = 8
-  @info.value = '登録済み'
-  @info.save!
-end
+Cg::Pet.create({
+  users_id: 2,
+  name: '浦島 かめ',
+  petname: 'urashimakame',
+  types_id: 4,
+  about: 'れっつ竜宮城',
+  share_pet_info: 16,
+  })
