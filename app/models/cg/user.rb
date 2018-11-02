@@ -6,10 +6,14 @@ class Cg::User < ApplicationRecord
   has_many :cg_shares, class_name: 'Cg::Share'
   has_one :cg_user_detail, class_name: 'Cg::UserDetail'
 
-  validates :email, format: {
-    with: %r{\A([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)*\z},
-    message: '正しいメールアドレスを入力してください'
-  }
+  validates :name,
+    length: { in: 1..30, message: '30文字以内'}
+
+  validates :email,
+    format: {
+      with: %r{\A([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-]+)*\z},
+      message: '正しいメールアドレスを入力してください'
+    }
 
   validates :username,
     length: { in: 1..15, message: '15文字以内' },
