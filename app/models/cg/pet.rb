@@ -9,8 +9,23 @@ class Cg::Pet < ApplicationRecord
   has_one :cg_pet_detail, class_name: 'Cg::PetDetail'
 
   validates :users_id, presence: true
-  validates :name, presence: true
-  validates :petname, presence: true
+
+  validates :name,
+            presence: { message: NO_PRESENCE_MESSAGE },
+            length: { in: 1..30, message: '30文字以内にしてください' }
+
+  validates :petname,
+            presence: { message: NO_PRESENCE_MESSAGE },
+            uniqueness: { message: NO_UNIQUE_MESSAGE },
+            length: { in: 1..15, message: '15文字以内' },
+            format: {
+              with: /\A[a-zA1-9\_]+\z/,
+              message: '英数字又は_(アンダースコア)のみ入力してください'
+            }
+
+  validates :about,
+            length: { maximum: 100, message: '100文字以内' }
+
   validates :types_id, presence: true
 
   def type

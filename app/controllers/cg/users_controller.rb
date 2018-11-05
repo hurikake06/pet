@@ -13,8 +13,8 @@ class Cg::UsersController < CgLayoutsController
     })
 
   rescue ActiveRecord::RecordInvalid => e
-    p e.record.errors
-    @error_code = "入力内容が間違っています"
+    @error_messages =  e.record.errors.messages
+    #@error_code = "入力内容が間違っています"
   end
 
   def login
