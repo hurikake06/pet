@@ -15,6 +15,8 @@ Cg::InfoType.create({ id: 6, value: 'share_pet' })
 Cg::InfoType.create({ id: 7, value: 'document' })
 Cg::InfoType.create({ id: 8, value: 'credit' })
 Cg::InfoType.create({ id: 9, value: 'share_type' })
+Cg::InfoType.create({ id: 10, value: 'medical' })
+Cg::InfoType.create({ id: 11, value: 'pets_sex' })
 
 Cg::Info.create({ id: 1, info_types_id: 1, value: '申請' })
 Cg::Info.create({ id: 2, info_types_id: 1, value: '許可' })
@@ -44,6 +46,12 @@ Cg::Info.create({ id: 21, info_types_id: 8, value: '登録済み' })
 
 Cg::Info.create({ id: 22, info_types_id: 9, value: '利用不可' })
 Cg::Info.create({ id: 23, info_types_id: 9, value: '利用可能' })
+
+Cg::Info.create({ id: 24, info_types_id: 10, value: '未登録' })
+Cg::Info.create({ id: 25, info_types_id: 10, value: '登録済み' })
+
+Cg::Info.create({ id: 26, info_types_id: 11, value: 'オス' })
+Cg::Info.create({ id: 27, info_types_id: 11, value: 'メス' })
 
 Cg::User.create({
   id: 1,
@@ -83,26 +91,32 @@ Cg::Type.create({ id:5, name: '猿', share_type_info: 22 })
 Cg::Type.create({ id:6, name: '魚', share_type_info: 22 })
 
 Cg::Pet.create({
+  id: 1,
   users_id: 1,
   name: '桃 いぬ',
   petname: 'momoinu',
+  pets_sex_info: 26,
   types_id: 1,
   about:'桃1号',
   share_pet_info: 16,
   })
 
 Cg::Pet.create({
+  id: 2,
   users_id: 1,
   name: '桃 猿',
   petname: 'momosaru',
+  pets_sex_info: 26,
   types_id: 5,
   about:'桃2号',
   share_pet_info: 16,
   })
 
 Cg::Pet.create({
+  id: 3,
   users_id: 1,
   name: '桃 キジ',
+  pets_sex_info: 27,
   petname: 'momokiji',
   types_id: 3,
   about:'桃3号',
@@ -110,10 +124,17 @@ Cg::Pet.create({
   })
 
 Cg::Pet.create({
+  id: 4,
   users_id: 2,
   name: '浦島 かめ',
   petname: 'urashimakame',
+  pets_sex_info: 26,
   types_id: 4,
   about: 'れっつ竜宮城',
   share_pet_info: 16,
   })
+
+Cg::PetDetail.create({ pets_id: 1 })
+Cg::PetDetail.create({ pets_id: 2 })
+Cg::PetDetail.create({ pets_id: 3 })
+Cg::PetDetail.create({ pets_id: 4 })

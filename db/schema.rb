@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_052337) do
+ActiveRecord::Schema.define(version: 2018_11_05_052849) do
 
   create_table "cg_info_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "value"
@@ -25,10 +25,18 @@ ActiveRecord::Schema.define(version: 2018_10_31_052337) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cg_pet_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "pets_id"
+    t.bigint "medical_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cg_pets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "users_id"
     t.string "name"
     t.string "petname"
+    t.bigint "pets_sex_info"
     t.bigint "types_id"
     t.text "about"
     t.bigint "share_pet_info"

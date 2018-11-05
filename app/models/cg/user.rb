@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Cg::User < ApplicationRecord
+  belongs_to :cg_info, foreign_key: :share_user_info, primary_key: :id, class_name: 'Cg::Info'
   has_many :cg_pets, class_name: 'Cg::Pet'
   has_many :cg_shares, class_name: 'Cg::Share'
   has_one :cg_user_detail, class_name: 'Cg::UserDetail'
-  belongs_to :cg_info, foreign_key: :share_user_info, primary_key: :id, class_name: 'Cg::Info'
 
   validates :password, length: { minimum: 1}
   validates :username, length: { in: 1..15, message: "15文字以内" }
