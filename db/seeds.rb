@@ -75,8 +75,26 @@ Cg::User.create({
   share_host_info: 14
 })
 
-Cg::UserDetail.create({ users_id: 1 })
-Cg::UserDetail.create({ users_id: 2 })
+Cg::UserDetail.create({
+  users_id: 1,
+  first_name: '',
+  last_name: '',
+  address: '',
+  document_info: 18,
+  credit_info: 20,
+  age:25,
+  sex_info: 7,
+  country_info: 9
+  })
+
+  Cg::UserDetail.create({
+    users_id: 2,
+    document_info: 18,
+    credit_info: 20,
+    age:23,
+    sex_info: 7,
+    country_info: 9
+    })
 
 Cg::Type.create({ id:1, name: '犬', share_type_info: 23 })
 
@@ -134,7 +152,22 @@ Cg::Pet.create({
   share_pet_info: 16,
   })
 
-Cg::PetDetail.create({ pets_id: 1 })
-Cg::PetDetail.create({ pets_id: 2 })
-Cg::PetDetail.create({ pets_id: 3 })
-Cg::PetDetail.create({ pets_id: 4 })
+  Cg::PetDetail.create({
+    pets_id: 1,
+    medical_info: 24
+    })
+
+  Cg::PetDetail.create({
+    pets_id: 2,
+    medical_info: 24
+    })
+
+  Cg::PetDetail.create({
+    pets_id: 3,
+    medical_info: 24
+    })
+
+  Cg::PetDetail.create({
+    pets_id: 4,
+    medical_info: 24
+    })
