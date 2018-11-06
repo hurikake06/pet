@@ -5,16 +5,21 @@ footer {
   padding: 15px 5px 0 5px;;
   color: #fff;
   font-size: 12px;
+
+  .navbar-nav li {
+    a {
+      text-align: center;
+      color: #fff;
+      padding-left: 0.5em;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: #dcdcdc;
+    }
+  }
 }
-footer .navbar-nav li a {
-  text-align: center;
-  color: #fff;
-  padding-left: 0.5em;
-  text-decoration: underline;
-}
-footer .navbar-nav li a:hover {
-  color: #dcdcdc;
-}
+
 .copyright {
   text-align: left;
   font-size: 90%
