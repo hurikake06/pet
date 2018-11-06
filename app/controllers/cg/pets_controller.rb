@@ -11,7 +11,8 @@ class Cg::PetsController < CgLayoutsController
         name: params[:cg_pet][:name],
         petname: params[:cg_pet][:petname],
         types_id: params[:cg_pet][:types_id],
-        about: params[:cg_pet][:about]
+        about: params[:cg_pet][:about],
+        cg_pet_detail_attributes:{}
       })
 rescue ActiveRecord::RecordInvalid => e
   @error_messages =  e.record.errors.messages

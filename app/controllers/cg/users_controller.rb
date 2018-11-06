@@ -10,6 +10,7 @@ class Cg::UsersController < CgLayoutsController
       email:params[:cg_user][:email],
       password:params[:cg_user][:password],
       about:params[:cg_user][:about],
+      cg_user_detail_attributes:{}
     })
 
   rescue ActiveRecord::RecordInvalid => e

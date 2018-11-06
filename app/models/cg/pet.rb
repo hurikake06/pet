@@ -6,7 +6,8 @@ class Cg::Pet < ApplicationRecord
   belongs_to :cg_info, foreign_key: :pets_sex_info, primary_key: :id, class_name: 'Cg::Info'
   belongs_to :cg_info, foreign_key: :share_pet_info, primary_key: :id, class_name: 'Cg::Info'
   has_many :cg_shares, class_name: 'Cg::Share'
-  has_one :cg_pet_detail, class_name: 'Cg::PetDetail'
+  has_one :cg_pet_detail, class_name: 'Cg::PetDetail', foreign_key: :pets_id, inverse_of: :cg_pet
+  accepts_nested_attributes_for :cg_pet_detail
 
   validates :users_id, presence: true
 
