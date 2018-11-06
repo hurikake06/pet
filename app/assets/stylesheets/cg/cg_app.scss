@@ -4,31 +4,39 @@
 
 body {
   color: #576a8c;
+
+  hr {
+    border-top: 1px solid #576a8c;
+  }
 }
-body hr {
-  border-top: 1px solid #576a8c;
-}
+
 .container {
   background-color: #576a8c;
   color: white;
   padding: 20px;
+
+  hr {
+    border-top: 1px solid white;
+  }
 }
-.container hr {
-  border-top: 1px solid white;
-}
+
 .space {
   height: 400px;
 }
+
 #loginLink {
   text-align: center;
+
+  a {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .btn {
+    font-size: 36px;
+  }
 }
-#loginLink a {
-  margin: 20px auto;
-  padding: 20px;
-}
-#loginLink .btn {
-  font-size: 36px;
-}
+
 #cgTitle {
   margin: 20px;
 }
