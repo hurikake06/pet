@@ -2,9 +2,11 @@
 
 class Cg::User < ApplicationRecord
   belongs_to :cg_info, foreign_key: :share_user_info, primary_key: :id, class_name: 'Cg::Info'
+  belongs_to :cg_info, foreign_key: :share_host_info, primary_key: :id, class_name: 'Cg::Info'
   has_many :cg_pets, class_name: 'Cg::Pet'
   has_many :cg_shares, class_name: 'Cg::Share'
-  has_one :cg_user_detail, class_name: 'Cg::UserDetail'
+  has_one :cg_user_detail, class_name: 'Cg::UserDetail', foreign_key: :users_id, inverse_of: :cg_user
+  accepts_nested_attributes_for :cg_user_detail
 
   validates :name,
             presence: { message: NO_PRESENCE_MESSAGE },

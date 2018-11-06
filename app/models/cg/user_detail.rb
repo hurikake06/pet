@@ -3,4 +3,5 @@ class Cg::UserDetail < ApplicationRecord
   belongs_to :cg_info, foreign_key: :document_info, primary_key: :id, class_name: 'Cg::Info'
   belongs_to :cg_info, foreign_key: :credit_info, primary_key: :id, class_name: 'Cg::Info'
   belongs_to :cg_info, foreign_key: :country_info, primary_key: :id, class_name: 'Cg::Info'
+  belongs_to :cg_info, foreign_key: :sex_info, primary_key: :id, class_name: 'Cg::Info'
 end
