@@ -6,8 +6,8 @@ class CreateCgUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :password
       t.text :about
-      t.bigint :share_user_info
-      t.bigint :share_host_info
+      t.bigint :share_user_info, default: 12
+      t.bigint :share_host_info, default: 14
 
       t.timestamps
     end
