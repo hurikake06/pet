@@ -5,17 +5,17 @@ class Cg::UsersController < CgLayoutsController
   def new
     return unless params[:cg_user].present?
 
-    @user = Cg::User.create!({
-      name:params[:cg_user][:name],
-      username:params[:cg_user][:username],
-      email:params[:cg_user][:email],
-      password:params[:cg_user][:password],
-      about:params[:cg_user][:about],
-    })
-
+    @user = Cg::User.create!(
+      name: params[:cg_user][:name],
+      username: params[:cg_user][:username],
+      email: params[:cg_user][:email],
+      password: params[:cg_user][:password],
+      about: params[:cg_user][:about],
+      cg_user_detail_attributes: {}
+    )
   rescue ActiveRecord::RecordInvalid => e
-    p e.record.errors
-    @error_code = "入力内容が間違っています"
+    @error_messages = e.record.errors.messages
+    # @error_code = "入力内容が間違っています"
   end
 
   def login
