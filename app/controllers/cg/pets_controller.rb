@@ -16,7 +16,6 @@ class Cg::PetsController < CgLayoutsController
     )
   rescue ActiveRecord::RecordInvalid => e
     @error_messages = e.record.errors.messages
-    # @error_code = "入力内容が間違っています"
   end
 
   def edit; end
