@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Cg::UsersController < CgLayoutsController
-  protect_from_forgery except: :pass_check
   def new
     return unless params[:cg_user].present?
 
@@ -15,7 +14,6 @@ class Cg::UsersController < CgLayoutsController
     )
   rescue ActiveRecord::RecordInvalid => e
     @error_messages = e.record.errors.messages
-    # @error_code = "入力内容が間違っています"
   end
 
   def login
