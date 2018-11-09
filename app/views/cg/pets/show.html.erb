@@ -1,6 +1,9 @@
 <h1>~pet_show~</h1>
 <% if @pet.present? %>
 <h2><%= @pet.name %></h2>
+<% if share_info_flag && @pet.share_pet_info == 17 %>
+  <a href="<%= share_new_path @pet.petname %>"><h3>シェア申請</h3></a>
+<% end %>
 <Hr>
 <ul>
   <li><%= @pet.petname %></li>

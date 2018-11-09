@@ -1,2 +1,17 @@
-<h1>Cg::Shares#new</h1>
-<p>Find me in app/views/cg/shares/new.html.erb</p>
+<% if @share %>
+  <h1>シェア申請を行いました。</h1>
+<% else %>
+  <h1>シェア申請は行えませんでした。</h1>
+<% end %>
+<hr>
+<% if @pet.present? %>
+  <h2><% @pet.name %></h2>
+  <ul>
+    <li>petname:<%= @pet.petname %></li>
+    <li>type:<%= @pet.type.name %></li>
+    <li>about:<%= @pet.about %></li>
+  </ul>
+<% else %>
+  <p>not found</p>
+<% end %>
+<a href="<%= share_list_path %>">シェア一覧へ</a>

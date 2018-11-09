@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  namespace :cg do
-    get 'shares/new'
-    get 'shares/list'
-    get 'shares/show'
-  end
-
   scope :CuteGift do
     root to:'cg/cg_app#index'
     get 'index' => 'cg/cg_app#index'
@@ -32,7 +26,14 @@ Rails.application.routes.draw do
 
     namespace :show do
       get ':username', to: '/cg/users#show'
-      get ':username/pet/:petname', to: '/cg/pets#show', as: 'pet'
+      get 'pet/:petname', to: '/cg/pets#show', as: 'pet'
+    end
+
+    namespace :share do
+      get 'new/:petname', to: '/cg/shares#new', as: 'new'
+      post 'new/:petname', to: '/cg/shares#new'
+      get 'list', to: '/cg/shares#list'
+      get 'show/:shares_id', to: '/cg/shares#show', as: 'show'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module ViewHelper
-  def print_form_error (errors, key)
+  def print_form_error(errors, key)
     if errors.present? && errors[key].present?
-      str = ""
+      str = ''
       errors[key].each do |error|
         str += "#{error},"
       end
-      return str
+      str
     end
   end
 end

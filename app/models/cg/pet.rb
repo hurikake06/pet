@@ -32,4 +32,8 @@ class Cg::Pet < ApplicationRecord
   def type
     Cg::Type.find(types_id)
   end
+
+  def user
+    Cg::User.find(users_id)
+  end
 end
