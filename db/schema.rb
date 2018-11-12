@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_052508) do
     t.bigint "medical_info", default: 100
     t.integer "fixed_cost"
     t.integer "variable_cost"
+    t.text "share_about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,7 +56,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_052508) do
 
   create_table "cg_pets_facilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "pets_id"
-    t.bigint "facilitys_id"
+    t.bigint "facilities_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_052508) do
 
   create_table "cg_share_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "shares_id"
+    t.bigint "facilities_id"
     t.datetime "start"
     t.datetime "end"
     t.datetime "actually_start"
