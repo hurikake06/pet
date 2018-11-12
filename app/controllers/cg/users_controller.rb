@@ -3,6 +3,7 @@
 class Cg::UsersController < CgLayoutsController
   def new
     return unless params[:cg_user].present?
+    
     @user = Cg::User.new(
       name: params[:cg_user][:name],
       username: params[:cg_user][:username],

@@ -5,6 +5,7 @@ class Cg::PetsController < CgLayoutsController
     login_check
     mode_check
     return unless params[:cg_pet].present?
+    
     @pet = Cg::Pet.new(
       users_id: session[:user_id],
       name: params[:cg_pet][:name],
