@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_052849) do
+ActiveRecord::Schema.define(version: 2018_11_12_052508) do
+
+  create_table "cg_facilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cg_info_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "value"
@@ -27,7 +34,9 @@ ActiveRecord::Schema.define(version: 2018_11_05_052849) do
 
   create_table "cg_pet_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "pets_id"
-    t.bigint "medical_info"
+    t.bigint "medical_info", default: 100
+    t.integer "fixed_cost"
+    t.integer "variable_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,10 +45,36 @@ ActiveRecord::Schema.define(version: 2018_11_05_052849) do
     t.bigint "users_id"
     t.string "name"
     t.string "petname"
-    t.bigint "pets_sex_info"
+    t.bigint "pets_sex_info", default: 100
     t.bigint "types_id"
     t.text "about"
-    t.bigint "share_pet_info"
+    t.bigint "share_pet_info", default: 16
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cg_pets_facilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "pets_id"
+    t.bigint "facilitys_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cg_pets_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "pets_id"
+    t.bigint "infos_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cg_share_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "shares_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "actually_start"
+    t.datetime "actually_end"
+    t.integer "fixed_cost"
+    t.integer "variable_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,14 +82,14 @@ ActiveRecord::Schema.define(version: 2018_11_05_052849) do
   create_table "cg_shares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "users_id"
     t.bigint "pets_id"
-    t.bigint "share_info"
+    t.bigint "share_info", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cg_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.bigint "share_type_info"
+    t.bigint "share_type_info", default: 22
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,11 +99,11 @@ ActiveRecord::Schema.define(version: 2018_11_05_052849) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.bigint "document_info"
-    t.bigint "credit_info"
+    t.bigint "document_info", default: 100
+    t.bigint "credit_info", default: 100
     t.integer "age"
-    t.bigint "sex_info"
-    t.bigint "country_info"
+    t.bigint "sex_info", default: 100
+    t.bigint "country_info", default: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,8 +114,8 @@ ActiveRecord::Schema.define(version: 2018_11_05_052849) do
     t.string "email"
     t.string "password"
     t.text "about"
-    t.bigint "share_user_info"
-    t.bigint "share_host_info"
+    t.bigint "share_user_info", default: 12
+    t.bigint "share_host_info", default: 14
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
