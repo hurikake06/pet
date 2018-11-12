@@ -30,10 +30,11 @@ class Cg::SharesController < CgLayoutsController
   end
 
   def show
+    login_check
     share = Cg::Share.find(params[:shares_id])
     if session[:user_mode] == 'HOST'
       @share = share if share.pet.user.id == session[:user_id]
-      render 'cg/shares/host/show' if session[:user_mode] == 'HOST'
+      render 'cg/shares/host/show'
     elsif share.users_id == session[:user_id]
       @share = share
     end
