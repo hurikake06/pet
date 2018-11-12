@@ -6,8 +6,8 @@ class CreateCgShareDetails < ActiveRecord::Migration[5.2]
       t.datetime :end
       t.datetime :actually_start
       t.datetime :actually_end
-      t.int :fixed_cost
-      t.int :variable_cost
+      t.integer :fixed_cost
+      t.integer :variable_cost
 
       t.timestamps
     end
