@@ -3,8 +3,8 @@
 class Cg::UsersController < CgLayoutsController
   def new
     return unless params[:cg_user].present?
-
-    @user = Cg::User.create!(
+    
+    @user = Cg::User.new(
       name: params[:cg_user][:name],
       username: params[:cg_user][:username],
       email: params[:cg_user][:email],
@@ -12,8 +12,7 @@ class Cg::UsersController < CgLayoutsController
       about: params[:cg_user][:about],
       cg_user_detail_attributes: {}
     )
-  rescue ActiveRecord::RecordInvalid => e
-    @error_messages = e.record.errors.messages
+    @saved = @user.save
   end
 
   def login

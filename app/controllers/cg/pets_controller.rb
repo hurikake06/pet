@@ -5,8 +5,8 @@ class Cg::PetsController < CgLayoutsController
     login_check
     mode_check
     return unless params[:cg_pet].present?
-
-    @pet = Cg::Pet.create!(
+    
+    @pet = Cg::Pet.new(
       users_id: session[:user_id],
       name: params[:cg_pet][:name],
       petname: params[:cg_pet][:petname],
@@ -14,8 +14,7 @@ class Cg::PetsController < CgLayoutsController
       about: params[:cg_pet][:about],
       cg_pet_detail_attributes: {}
     )
-  rescue ActiveRecord::RecordInvalid => e
-    @error_messages = e.record.errors.messages
+    @saved = @pet.save
   end
 
   def edit; end
