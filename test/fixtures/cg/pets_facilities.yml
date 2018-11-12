@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pets_id: 
+  facilitys_id: 
+
+two:
+  pets_id: 
+  facilitys_id: 
