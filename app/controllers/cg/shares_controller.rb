@@ -12,7 +12,8 @@ class Cg::SharesController < CgLayoutsController
     @share = Cg::Share.create!(
       users_id: session[:user_id],
       pets_id: @pet.id,
-      share_info: 1
+      share_info: 1,
+      cg_share_detail_attributes:{}
     )
   rescue ActiveRecord::RecordInvalid => e
     @error_messages = e.record.errors.messages
