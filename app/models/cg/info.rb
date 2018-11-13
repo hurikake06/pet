@@ -7,4 +7,6 @@ class Cg::Info < ApplicationRecord
   has_many :cg_pet_details, class_name: 'Cg::PetDetail'
   has_many :cg_users, class_name: 'Cg::User'
   has_many :cg_user_details, class_name: 'Cg::UserDetail'
+  has_many :cg_pets_infos, class_name: 'Cg::PetsInfo'
+  has_many :cg_pets_through, class_name: 'Cg::Pet', through: :cg_pets_infos
 end

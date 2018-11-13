@@ -43,4 +43,8 @@ class Cg::User < ApplicationRecord
   def pets
     Cg::Pet.where(cg_pets: { users_id: id })
   end
+
+  def detail
+    Cg::UserDetail.find_by(users_id: id)
+  end
 end
