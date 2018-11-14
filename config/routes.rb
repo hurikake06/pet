@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   scope :CuteGift do
-    root to:'cg/cg_app#index'
+    root to: 'cg/cg_app#index'
     get 'index' => 'cg/cg_app#index'
     get 'login' => 'cg/users#login'
     post 'login/:user_mode' => 'cg/users#pass_check', as: 'login_request'
@@ -10,6 +12,13 @@ Rails.application.routes.draw do
     namespace :user do
       get 'new' => '/cg/users#new'
       post 'new' => '/cg/users#new'
+    end
+
+    namespace :setting do
+      root to: '/cg/users#edit'
+      namespace :pet do
+        get ':petname' => '/cg/pets#edit'
+      end
     end
 
     namespace :mypage do
