@@ -34,8 +34,10 @@ class Cg::PetsController < CgLayoutsController
   def edit
     login_check
     return unless params[:petname].present?
+
     @pet = Cg::Pet.find_by(petname: params[:petname])
     return unless @pet.present?
+
     @pet = @pet.user.id == session[:user_id] ? @pet : nil
   end
 end

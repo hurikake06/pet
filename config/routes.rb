@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   scope :CuteGift do
-    root to:'cg/cg_app#index'
+    root to: 'cg/cg_app#index'
     get 'index' => 'cg/cg_app#index'
     get 'login' => 'cg/users#login'
     post 'login/:user_mode' => 'cg/users#pass_check', as: 'login_request'
