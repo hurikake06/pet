@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Cg::UsersController < CgLayoutsController
+  protect_from_forgery except: :pass_check
   def new
     return unless params[:cg_user].present?
-    
+
     @user = Cg::User.new(
       name: params[:cg_user][:name],
       username: params[:cg_user][:username],
@@ -52,5 +53,10 @@ class Cg::UsersController < CgLayoutsController
       @user = user
       render 'cg/users/host/show' if session[:user_mode] == 'HOST'
     end
+  end
+
+  def edit
+    login_check
+    @user = Cg::User.find(session[:user_id])
   end
 end

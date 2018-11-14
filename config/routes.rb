@@ -12,6 +12,13 @@ Rails.application.routes.draw do
       post 'new' => '/cg/users#new'
     end
 
+    namespace :setting do
+      root to: '/cg/users#edit'
+      namespace :pet do
+        get ':petname' => '/cg/pets#edit'
+      end
+    end
+
     namespace :mypage do
       root to: '/cg/users#mypage'
 
