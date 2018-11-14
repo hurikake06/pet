@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shares_id: 
+  start: 2018-11-12 14:16:13
+  end: 2018-11-12 14:16:13
+  actually_start: 2018-11-12 14:16:13
+  actually_end: 2018-11-12 14:16:13
+  fixed_cost: 
+  variable_cost: 
+
+two:
+  shares_id: 
+  start: 2018-11-12 14:16:13
+  end: 2018-11-12 14:16:13
+  actually_start: 2018-11-12 14:16:13
+  actually_end: 2018-11-12 14:16:13
+  fixed_cost: 
+  variable_cost: 
