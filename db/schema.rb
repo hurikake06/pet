@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_052508) do
     t.bigint "facilities_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["pets_id", "facilities_id"], name: "index_cg_pets_facilities_on_pets_id_and_facilities_id", unique: true
   end
 
   create_table "cg_pets_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
