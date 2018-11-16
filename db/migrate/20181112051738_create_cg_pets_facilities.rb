@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCgPetsFacilities < ActiveRecord::Migration[5.2]
   def change
     create_table :cg_pets_facilities do |t|
@@ -5,6 +7,7 @@ class CreateCgPetsFacilities < ActiveRecord::Migration[5.2]
       t.bigint :facilities_id
 
       t.timestamps
+      t.index %i[pets_id facilities_id], unique: true
     end
   end
 end
