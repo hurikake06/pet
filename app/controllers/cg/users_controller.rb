@@ -4,15 +4,9 @@ class Cg::UsersController < CgLayoutsController
   protect_from_forgery except: :pass_check
   def new
     return unless params[:cg_user].present?
-
-    @user = Cg::User.new(
-      name: params[:cg_user][:name],
-      username: params[:cg_user][:username],
-      email: params[:cg_user][:email],
-      password: params[:cg_user][:password],
-      about: params[:cg_user][:about],
-      cg_user_detail_attributes: {}
-    )
+    p "----"
+    p user_params.to_json
+    @user = Cg::User.new(user_params)
     @saved = @user.save
   end
 
@@ -58,5 +52,19 @@ class Cg::UsersController < CgLayoutsController
   def edit
     login_check
     @user = Cg::User.find(session[:user_id])
+  end
+
+  private
+
+  def user_params
+    params[:cg_user][:cg_user_detail_attributes] = {}
+    params.require(:cg_user).permit(
+      :name,
+      :username,
+      :email,
+      :password,
+      :about,
+      cg_user_detail_attributes: {}
+    )
   end
 end

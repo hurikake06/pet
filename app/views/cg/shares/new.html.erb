@@ -1,17 +1,46 @@
-<% if @share %>
-  <h1>シェア申請を行いました。</h1>
-<% else %>
-  <h1>シェア申請は行えませんでした。</h1>
-<% end %>
+<h1>シェア申請</h1>
 <hr>
-<% if @pet.present? %>
-  <h2><% @pet.name %></h2>
-  <ul>
-    <li>petname:<%= @pet.petname %></li>
-    <li>type:<%= @pet.type.name %></li>
-    <li>about:<%= @pet.about %></li>
-  </ul>
+<% if @pet.present? && @pet.share_pet_info == 17 %>
+  <% if params[:cg_share_detail].present? %>
+    <% if @saved.present? %>
+      <h2>シェア申請を行いました。</h2>
+    <% else %>
+      <h3>シェア申請は行えませんでした。</h3>
+      <p>(入力項目が間違っているかもしれないや-つ)</p>
+    <% end %>
+    <hr>
+  <% end %>
+
+  <div class = "container">
+    <h2><%= @pet.name %>のシェア情報</h2>
+    <ul>
+      <li>petname:<%= @pet.petname %></li>
+      <li>type:<%= @pet.type.name %></li>
+      <li>about:<%= @pet.about %></li>
+      <li>detail:<%= @pet.detail.to_json %></li>
+    </ul>
+  </div>
+  <% unless false %>
+    <hr>
+    <h2>申請情報を記入してください</h2>
+    <div class = "container">
+      <p><h3>申請者:<%= Cg::User.find(session[:user_id]).name %></h3></p>
+      <p>
+        <h3>申請相手</h3>
+        飼い主：<strong><%= @pet.user.name %></strong><br>
+        ペット：<strong><%= @pet.name %></strong>
+      </p>
+      <%= render partial: 'new_form', locals: {
+        share: @share ||= Cg::Share.new(
+                      users_id: session[:user_id],
+                      pets_id: @pet.id,
+                      cg_share_detail_attributes: {}),
+        pet: @pet
+      } %>
+    </div>
+  <% end %>
 <% else %>
-  <p>not found</p>
+  <p>pet not found</p>
 <% end %>
+
 <a href="<%= share_list_path %>">シェア一覧へ</a>

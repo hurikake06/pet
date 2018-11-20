@@ -5,15 +5,9 @@ class Cg::PetsController < CgLayoutsController
     login_check
     mode_check
     return unless params[:cg_pet].present?
-
-    @pet = Cg::Pet.new(
-      users_id: session[:user_id],
-      name: params[:cg_pet][:name],
-      petname: params[:cg_pet][:petname],
-      types_id: params[:cg_pet][:types_id],
-      about: params[:cg_pet][:about],
-      cg_pet_detail_attributes: {}
-    )
+    p "--pet_params--"
+    p pet_params.to_json
+    @pet = Cg::Pet.new(pet_params)
     @saved = @pet.save
   end
 
@@ -39,5 +33,18 @@ class Cg::PetsController < CgLayoutsController
     return unless @pet.present?
 
     @pet = @pet.user.id == session[:user_id] ? @pet : nil
+  end
+
+  def pet_params
+    params[:cg_pet][:users_id] = session[:user_id]
+    params[:cg_pet][:cg_pet_detail_attributes] = {}
+    params.require(:cg_pet).permit(
+      :users_id,
+      :name,
+      :petname,
+      :types_id,
+      :about,
+      cg_pet_detail_attributes: {}
+    )
   end
 end
