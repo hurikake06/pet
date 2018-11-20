@@ -8,6 +8,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require './db/seeds/facility.rb'
+
 Cg::InfoType.create!(id: 1, value: 'share')
 Cg::InfoType.create!(id: 2, value: 'sex')
 Cg::InfoType.create!(id: 3, value: 'country')
