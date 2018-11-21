@@ -16,3 +16,11 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ body {
+	 background-color: #C7DDAE;
+
+	 &.HOST {
+		 background-color: #A5D1F4;
+	 }
+ }
