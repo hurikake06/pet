@@ -16,8 +16,10 @@ Rails.application.routes.draw do
 
     namespace :setting do
       root to: '/cg/users#edit'
+      post '/' => '/cg/users#edit'
       namespace :pet do
         get ':petname' => '/cg/pets#edit'
+        post ':petname' => '/cg/pets#edit'
       end
     end
 
@@ -28,8 +30,6 @@ Rails.application.routes.draw do
         get 'new' => '/cg/pets#new'
         post 'new' => '/cg/pets#new'
         get ':petname' => '/cg/pets#mypage'
-        get ':petname/edit' => '/cg/pets#edit'
-        post ':petname/edit' => '/cg/pets#update', as: 'edit_request'
       end
     end
 

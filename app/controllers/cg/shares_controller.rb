@@ -9,14 +9,13 @@ class Cg::SharesController < CgLayoutsController
     @pet = Cg::Pet.find_by(petname: params[:petname])
     return unless @pet.present? && @pet.share_pet_info == 17
 
-    @share = Cg::Share.create!(
-      users_id: session[:user_id],
-      pets_id: @pet.id,
-      share_info: 1,
-      cg_share_detail_attributes: {}
-    )
-  rescue ActiveRecord::RecordInvalid => e
-    @error_messages = e.record.errors.messages
+    if params[:cg_share].present?
+      # post
+      @share = Cg::Share.new(share_params(@pet.id))
+      @saved = @share.save
+    else
+      # get
+    end
   end
 
   def list
@@ -39,5 +38,24 @@ class Cg::SharesController < CgLayoutsController
     elsif share.users_id == session[:user_id]
       @share = share
     end
+  end
+
+  private
+
+  def share_params(pets_id)
+    params[:cg_share][:cg_share_detail_attributes] = params[:cg_share][:cg_share_detail]
+    params.require(:cg_share).permit(
+      cg_share_detail_attributes: %i[
+        facilities_id
+        start
+        end
+        fixed_cost
+        variable_cost
+      ]
+    ).merge(
+      users_id: session[:user_id],
+      pets_id: pets_id,
+      share_info: 1
+    )
   end
 end

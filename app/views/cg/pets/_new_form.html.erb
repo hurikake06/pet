@@ -1,4 +1,4 @@
-<% pet ||= Cg::Pet.new %>
+<% pet ||= Cg::Pet.new() %>
 <%= form_for pet, url: { action: 'new' } do |f| %>
   <div class="form-group">
     <%= f.label :name %>
@@ -11,12 +11,10 @@
     <%= print_form_error pet.errors, :petname %>
   </div>
   <div class="form-group">
-    <label><%= f.radio_button :types_id, 1 %> 犬 </label>
-    <label><%= f.radio_button :types_id, 2 %> 猫 </label>
-    <label><%= f.radio_button :types_id, 3 %> 鳥 </label>
-    <label><%= f.radio_button :types_id, 4 %> 亀 </label>
-    <label><%= f.radio_button :types_id, 5 %> 猿 </label>
-    <label><%= f.radio_button :types_id, 6 %> 魚 </label>
+    <% types = Cg::Type.all %>
+    <% types.each do |type| %>
+      <label><%= f.radio_button :types_id, type.id %><%= type.name %></label>
+    <% end %>
   </div>
   <div class="form-group">
     <%= f.label :about %>
