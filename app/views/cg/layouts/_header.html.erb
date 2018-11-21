@@ -15,19 +15,21 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <% if session[:user_id]%>
+          <% if session[:login_state] == 'OK' %>
           <li><a href="<%= mypage_root_path %>">myPage</a></li>
           <% end %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="#">シェアとは？</a></li>
+              <li><a href="#">おすすめ</a></li>
+              <li><a href="#">利用規約</a></li>
+              <% if share_info_flag %>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%= share_list_path %>">シェアリスト</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">シェア履歴</a></li>
+              <% end %>
             </ul>
           </li>
         </ul>
@@ -42,14 +44,14 @@
           <li><a href="<%= change_user_mode_path(user_mode: "HOST") %>">ChangeMode</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <%= Cg::User.find_by(:id => session[:user_id])[:name]%>㝕ん<span class="caret"></span>
+              <%= Cg::User.find_by(:id => session[:user_id])[:name]%>さん<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li><a href="<%= logout_path %>">Logout</a></li>
               <li><a href="<%= mypage_root_path %>">My Page</a></li>
               <li><a href="#">Something</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+              <li><a href="<%= setting_root_path %>">Setting</a></li>
             </ul>
           </li>
           <% else %>

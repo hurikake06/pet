@@ -1,10 +1,10 @@
 <h1>新規ペット登録</h1>
 <h2>ペット情報を入力してください</h2>
 <div class="container">
-  <% if @pet.present? %>
+  <% if @saved %>
     <h3>登録が完了しました。</h3>
   <% else %>
-    <%= render partial: 'new_form', locals: { error_code: @error_code, mypage_pet_new_path: method(:mypage_pet_new_path), errors: @error_messages } %>
+    <%= render partial: 'new_form', locals: { pet: @pet } %>
   <% end %>
 </div>
 <a href="<%= mypage_root_path %>">マイページに戻る</a>

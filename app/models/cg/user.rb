@@ -25,7 +25,7 @@ class Cg::User < ApplicationRecord
             uniqueness: { message: NO_UNIQUE_MESSAGE },
             length: { in: 1..15, message: '15文字以内' },
             format: {
-              with: /\A[a-zA1-9\_]+\z/,
+              with: /\A[a-zA-Z0-9\_]+\z/,
               message: '英数字又は_(アンダースコア)のみ入力してください'
             }
 
@@ -42,5 +42,9 @@ class Cg::User < ApplicationRecord
 
   def pets
     Cg::Pet.where(cg_pets: { users_id: id })
+  end
+
+  def detail
+    Cg::UserDetail.find_by(users_id: id)
   end
 end
