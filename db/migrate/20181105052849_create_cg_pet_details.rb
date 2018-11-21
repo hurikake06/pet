@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCgPetDetails < ActiveRecord::Migration[5.2]
   def change
     create_table :cg_pet_details do |t|
