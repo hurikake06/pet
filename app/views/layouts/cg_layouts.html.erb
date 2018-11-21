@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<% user_mode = 'NULL' %>
+<% if session[:login_state] == 'OK' %>
+  <% user_mode = 'HOST' if session[:user_mode] == 'HOST' %>
+  <% user_mode = 'USER' if session[:user_mode] == 'USER' %>
+<% end %>
 <html>
   <head>
     <title>CuteGift</title>
@@ -9,7 +14,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class = "<%= user_mode %>">
     <% if session[:user_mode] == 'HOST' %>
       <%= render "cg/layouts/host/header" %>
     <% else %>
