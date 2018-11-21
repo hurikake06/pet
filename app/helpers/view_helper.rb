@@ -1,11 +1,17 @@
+# frozen_string_literal: true
+
 module ViewHelper
-  def print_form_error (errors, key)
+  def print_form_error(errors, key)
     if errors.present? && errors[key].present?
-      str = ""
+      str = ''
       errors[key].each do |error|
         str += "#{error},"
       end
-      return str
+      str
     end
+  end
+
+  def user_mode_class
+    @temp_mode ||= session[:login_state] == 'OK' ? session[:user_mode] : 'NULL'
   end
 end
