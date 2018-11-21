@@ -1,9 +1,9 @@
 <% if share.present? %>
-  <%= form_for share, url: { action: 'new' } do |f| %>
+  <%= form_for share, url: { action: 'new'} do |f| %>
     <%= f.fields_for share.cg_share_detail do |ff| %>
       <div class = "form-group">
         <%= ff.label :facilities_id %>
-        <% facilities = Cg::Facility.where(id: Cg::PetsFacility.select(:facilities_id).where(pets_id: pet&.id) ) %>
+        <% facilities = Cg::Facility.where(id: Cg::PetsFacility.select(:facilities_id).where(pets_id: pet&.id)) %>
         <% facilities.each do |facility| %>
           <label><%= ff.radio_button :facilities_id, facility.id %><%= facility.name %></label>
         <% end %>

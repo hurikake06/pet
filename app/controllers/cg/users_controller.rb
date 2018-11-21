@@ -4,8 +4,7 @@ class Cg::UsersController < CgLayoutsController
   protect_from_forgery except: :pass_check
   def new
     return unless params[:cg_user].present?
-    p "----"
-    p user_params.to_json
+
     @user = Cg::User.new(user_params)
     @saved = @user.save
   end

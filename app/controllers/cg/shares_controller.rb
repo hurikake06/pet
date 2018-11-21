@@ -11,15 +11,7 @@ class Cg::SharesController < CgLayoutsController
 
     if params[:cg_share].present?
       # post
-      p "----------------------"
-      p "-----share_detail-----"
-      p "----------------------"
-      # p params.to_json
-      @share = Cg::Share.new(share_params @pet.id)
-
-      pp share_params @pet.id
-
-      # @share_detail = Cg::ShareDetail.new(share_detail_params)
+      @share = Cg::Share.new(share_params(@pet.id))
       @saved = @share.save
     else
       # get
@@ -50,15 +42,15 @@ class Cg::SharesController < CgLayoutsController
 
   private
 
-  def share_params pets_id
+  def share_params(pets_id)
     params[:cg_share][:cg_share_detail_attributes] = params[:cg_share][:cg_share_detail]
     params.require(:cg_share).permit(
-      cg_share_detail_attributes: [
-        :facilities_id,
-        :start,
-        :end,
-        :fixed_cost,
-        :variable_cost
+      cg_share_detail_attributes: %i[
+        facilities_id
+        start
+        end
+        fixed_cost
+        variable_cost
       ]
     ).merge(
       users_id: session[:user_id],

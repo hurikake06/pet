@@ -5,8 +5,7 @@ class Cg::PetsController < CgLayoutsController
     login_check
     mode_check
     return unless params[:cg_pet].present?
-    p "--pet_params--"
-    p pet_params.to_json
+
     @pet = Cg::Pet.new(pet_params)
     @saved = @pet.save
   end
