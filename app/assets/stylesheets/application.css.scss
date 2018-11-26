@@ -10,9 +10,52 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+
+ *= _ require blogpost
+ *= _ require button
+ *= _ require client
+ *= _ require comment_box
+ *= _ require common
+ *= _ require config
+ *= _ require cta
+ *= _ require docuentation
+ *= _ require footer
+ *= _ require forms
+ *= _ require funfact
+ *= _ require gallery
+ *= _ require gmap
+ *= _ require header
+ *= _ require media_querries
+ *= _ require navbar
+ *= _ require portfolio
+ *= _ require preloader
+ *= _ require price_table
+ *= _ require restaurant_menu
+ *= _ require services_and_features
+ *= _ require shop_items
+ *= _ require shop_single_product
+ *= _ require showcase
+ *= _ require single_portfolio
+ *= _ require slider
+ *= _ require team
+ *= _ require testimonial
+ *= _ require typography
+ *= _ require video_box
+ *= _ require widgets
+ *= require style-rtl
+ *= require style
+
+*= require_tree .
  *= require_self
  */
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ body {
+	 background-color: #C7DDAE;
+
+	 &.HOST {
+		 background-color: #A5D1F4;
+	 }
+ }
