@@ -15,5 +15,11 @@ module Pet
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    Rails.application.config.assets.paths << Rails.root.join('vendor', 'lib')
+    Rails.application.config.assets.paths << Rails.root.join('vendor', 'images')
+    Rails.application.config.assets.paths << Rails.root.join('vendor', 'javascripts')
+    Rails.application.config.assets.paths << Rails.root.join('vendor', 'stylesheets')
+    Rails.application.config.assets.precompile += %w(*.eot *.woff *.woff2 *.ttf *.svg *.otf *.png *.jpg *.gif )
   end
 end
