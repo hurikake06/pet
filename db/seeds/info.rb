@@ -35,5 +35,11 @@ Cg::Info.create!(id: 32, info_types_id: 12, value: '木')
 Cg::Info.create!(id: 33, info_types_id: 12, value: '金')
 Cg::Info.create!(id: 34, info_types_id: 12, value: '土')
 
+Cg::Info.create!(id: 35, info_types_id: 13, value: 'ホストを評価')
+Cg::Info.create!(id: 36, info_types_id: 13, value: 'ユーザーを評価')
+
+Cg::Info.create!(id: 37, info_types_id: 14, value: '一般DM')
+Cg::Info.create!(id: 38, info_types_id: 14, value: 'シェア用DM')
+
 Cg::Info.create!(id: 100, info_types_id: 100, value: '未登録')
 Cg::Info.create!(id: 101, info_types_id: 100, value: '登録済み')
