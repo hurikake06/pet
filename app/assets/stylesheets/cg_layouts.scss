@@ -1,9 +1,9 @@
 footer {
   clear: both;
-  background-color: #444;
+  background-color: #C7DDAE;
   bottom: 0px;
   padding: 15px 5px 0 5px;;
-  color: #fff;
+  color: gray;
   font-size: 12px;
 
   .navbar-nav li {
@@ -18,6 +18,15 @@ footer {
       color: #dcdcdc;
     }
   }
+
+  a{
+    color: gray;
+  }
+}
+
+.container-fluid{
+  background-color: #C7DDAE;
+  color: gray;
 }
 
 .copyright {
@@ -33,6 +42,33 @@ footer {
   font-size: 16px;
 }
 #pageContent {
-  margin: 20px 0;
+  background-color: #FFFFFF;
+  margin: 50px 0;
   min-height: 550px;
+  width:1050px;
+  height:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title_logo{
+  width:300px;
+  height:150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.side_right_color{
+  height:100%;
+  width:50px;
+  margin-left: auto;
+  background-color: #C7DDAE;
+}
+
+.side_left_color{
+  height:100%;
+  width:50px;
+  margin-right: auto;
+  background-color: #C7DDAE;
 }

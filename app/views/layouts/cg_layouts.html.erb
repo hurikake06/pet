@@ -10,6 +10,7 @@
   </head>
 
   <body class = "<%= user_mode_class %>">
+
     <% if session[:user_mode] == 'HOST' %>
       <%= render "cg/layouts/host/header" %>
     <% else %>
