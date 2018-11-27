@@ -23,15 +23,16 @@ class Cg::PetsController < Cg::LayoutsController
 
   def edit
     login_check
-    return unless params[:petname].present?
-
+    mode_check
     @pet = Cg::Pet.find_by(petname: params[:petname])
     return unless @pet.present?
+    return unless params[:cg_pet].present?
 
     @pet = @pet.user.id == session[:user_id] ? @pet : nil
+    @pet.update(pet_edit_params @pet)
   end
 
-  def pet_params
+  def pet_new_params
     params[:cg_pet][:user_id] = session[:user_id]
     params[:cg_pet][:detail_attributes] = {}
     params.require(:cg_pet).permit(
@@ -41,6 +42,21 @@ class Cg::PetsController < Cg::LayoutsController
       :type_id,
       :about,
       detail_attributes: {}
+    )
+  end
+
+  def pet_edit_params pet
+    params[:cg_pet][:cg_pet_detail_attributes] = params[:cg_pet][:cg_pet_detail]
+    params[:cg_pet][:medical_info] = 100
+    params.require(:cg_pet).permit(
+      :name,
+      :types_id,
+      :about,
+      cg_pet_detail_attributes: [
+        :variable_cost,
+        :fixed_cost,
+        :share_about
+      ]
     )
   end
 end
