@@ -1,0 +1,2 @@
+module Cg::DmsHelper
+end

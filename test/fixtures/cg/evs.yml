@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shares_id: 
+  val: 1
+  ev_type_info: 
+
+two:
+  shares_id: 
+  val: 1
+  ev_type_info: 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  users_id: 
+  pets_id: 
+  shares_id: 
+  dm_group_type_info: 
+
+two:
+  users_id: 
+  pets_id: 
+  shares_id: 
+  dm_group_type_info: 
