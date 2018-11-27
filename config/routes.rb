@@ -39,10 +39,21 @@ Rails.application.routes.draw do
     end
 
     namespace :share do
+      root to: '/cg/shares#list'
+      get 'list', to: '/cg/shares#list'
       get 'new/:petname', to: '/cg/shares#new', as: 'new'
       post 'new/:petname', to: '/cg/shares#new'
-      get 'list', to: '/cg/shares#list'
-      get 'show/:shares_id', to: '/cg/shares#show', as: 'show'
+      get 'show/:share_id', to: '/cg/shares#show', as: 'show'
+
+      get 'dm/:share_id', to: '/cg/dm_groups#show_share', as: 'dm'
+      post 'dm/:share_id', to: '/cg/dm#new'
+    end
+
+    namespace :dm do
+      root to: '/cg/dm_groups#list'
+      get 'list', to: '/cg/dm_groups#list'
+      get ':petname', to: '/cg/dm_groups#show'
+      post ':petname', to: '/cg/dm#new'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

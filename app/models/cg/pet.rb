@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 class Cg::Pet < ApplicationRecord
-  belongs_to :cg_user, foreign_key: :users_id, primary_key: :id, class_name: 'Cg::User'
-  belongs_to :cg_type, foreign_key: :types_id, primary_key: :id, class_name: 'Cg::Type'
-  belongs_to :cg_info, foreign_key: :pets_sex_info, primary_key: :id, class_name: 'Cg::Info'
-  belongs_to :cg_info, foreign_key: :share_pet_info, primary_key: :id, class_name: 'Cg::Info'
-  has_many :cg_pets_facilities, class_name: 'Cg::PetsFacility'
-  has_many :cg_facilities, class_name: 'Cg::Facility', through: :cg_pets_facilities
-  has_many :cg_pets_infos, class_name: 'Cg::PetsInfo'
-  has_many :cg_infos, class_name: 'Cg::Info', through: :cg_pets_infos
-  has_many :cg_shares, class_name: 'Cg::Share'
-  has_one :cg_pet_detail, class_name: 'Cg::PetDetail', foreign_key: :pets_id, inverse_of: :cg_pet
-  accepts_nested_attributes_for :cg_pet_detail
+  belongs_to :user, class_name: 'Cg::User'
+  belongs_to :type, class_name: 'Cg::Type'
+  belongs_to :sex, foreign_key: :pets_sex_info, primary_key: :id, class_name: 'Cg::Info'
+  belongs_to :share_pet, foreign_key: :share_pet_info, class_name: 'Cg::Info'
+  has_many :pets_facilities, class_name: 'Cg::PetsFacility'
+  has_many :facilities, class_name: 'Cg::Facility', through: :pets_facilities
+  has_many :pets_infos, class_name: 'Cg::PetsInfo'
+  has_many :infos, class_name: 'Cg::Info', through: :pets_infos
+  has_many :shares, class_name: 'Cg::Share'
+  has_one :detail, class_name: 'Cg::PetDetail', inverse_of: :pet
+  accepts_nested_attributes_for :detail
 
-  validates :users_id, presence: true
+  validates :user_id, presence: true
 
   validates :name,
             presence: { message: NO_PRESENCE_MESSAGE },
@@ -31,17 +31,5 @@ class Cg::Pet < ApplicationRecord
   validates :about,
             length: { maximum: 100, message: '100文字以内' }
 
-  validates :types_id, presence: true
-
-  def type
-    Cg::Type.find(types_id)
-  end
-
-  def user
-    Cg::User.find(users_id)
-  end
-
-  def detail
-    Cg::PetDetail.find_by(pets_id: id)
-  end
+  validates :type_id, presence: true
 end

@@ -3,7 +3,7 @@
 class CreateCgUserDetails < ActiveRecord::Migration[5.2]
   def change
     create_table :cg_user_details do |t|
-      t.bigint :users_id
+      t.bigint :user_id
       t.string :first_name
       t.string :last_name
       t.string :address

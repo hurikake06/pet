@@ -56,14 +56,14 @@ class Cg::UsersController < CgLayoutsController
   private
 
   def user_params
-    params[:cg_user][:cg_user_detail_attributes] = {}
+    params[:cg_user][:detail_attributes] = {}
     params.require(:cg_user).permit(
       :name,
       :username,
       :email,
       :password,
       :about,
-      cg_user_detail_attributes: {}
+      detail_attributes: {}
     )
   end
 end

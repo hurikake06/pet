@@ -1,7 +1,7 @@
 <h1>シェア申請</h1>
 <hr>
 <% if @pet.present? && @pet.share_pet_info == 17 %>
-  <% if params[:cg_share_detail].present? %>
+  <% if params[:cg_share].present? %>
     <% if @saved.present? %>
       <h2>シェア申請を行いました。</h2>
     <% else %>
@@ -20,7 +20,7 @@
       <li>detail:<%= @pet.detail.to_json %></li>
     </ul>
   </div>
-  <% unless false %>
+  <% unless @saved.present? %>
     <hr>
     <h2>申請情報を記入してください</h2>
     <div class = "container">
@@ -32,9 +32,9 @@
       </p>
       <%= render partial: 'new_form', locals: {
         share: @share ||= Cg::Share.new(
-                      users_id: session[:user_id],
-                      pets_id: @pet.id,
-                      cg_share_detail_attributes: {}),
+                      user_id: session[:user_id],
+                      pet_id: @pet.id,
+                      detail: Cg::ShareDetail.new ),
         pet: @pet
       } %>
     </div>

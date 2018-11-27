@@ -1,9 +1,9 @@
 <h1>シェア一覧_ホスト</h1>
 <hr>
 <% if share_info_flag %>
-  <% if @shares.present? %>
+  <% unless @user.host_shares.empty? %>
     <ul>
-      <% @shares.each do |share| %>
+      <% @user.host_shares.each do |share| %>
       <a href="<%= share_show_path share.id %>">
         <li>
           id:<%= share.id %> :
