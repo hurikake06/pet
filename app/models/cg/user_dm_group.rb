@@ -5,6 +5,6 @@ class Cg::UserDmGroup < Cg::DmGroup
     belongs_to :pet, class_name: 'Cg::Pet'
 
     def host
-      cg_pet.cg_user
+      pet.user
     end
 end
