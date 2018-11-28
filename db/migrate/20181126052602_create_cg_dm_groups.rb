@@ -5,7 +5,6 @@ class CreateCgDmGroups < ActiveRecord::Migration[5.2]
       t.bigint :users_id
       t.bigint :pets_id
       t.bigint :shares_id
-      t.bigint :dm_group_type_info
 
       t.timestamps
     end

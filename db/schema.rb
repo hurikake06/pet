@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.bigint "users_id"
     t.bigint "pets_id"
     t.bigint "shares_id"
-    t.bigint "dm_group_type_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
