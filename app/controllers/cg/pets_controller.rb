@@ -46,13 +46,13 @@ class Cg::PetsController < Cg::LayoutsController
   end
 
   def pet_edit_params pet
-    params[:cg_pet][:cg_pet_detail_attributes] = params[:cg_pet][:cg_pet_detail]
+    params[:cg_pet][:detail_attributes] = params[:cg_pet][:cg_pet_detail]
     params[:cg_pet][:medical_info] = 100
     params.require(:cg_pet).permit(
       :name,
       :types_id,
       :about,
-      cg_pet_detail_attributes: [
+      detail_attributes: [
         :variable_cost,
         :fixed_cost,
         :share_about

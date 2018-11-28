@@ -20,7 +20,7 @@
     <%= f.text_area :about, class:'form-control' %>
     <%= print_form_error pet.errors, :about %>
   </div>
-  <%= f.fields_for pet.cg_pet_detail do |ff| %>
+  <%= f.fields_for pet.detail do |ff| %>
     <div class="form-group">
       <%= ff.label :variable_cost %>
       <%= ff.number_field :variable_cost, class:'form-control' %>
