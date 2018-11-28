@@ -22,7 +22,7 @@ Cg::User.create!(
   about: 'どんぶらこどんぶらこってすごい擬音語',
   share_user_info: 12,
   share_host_info: 14,
-  cg_user_detail_attributes: {
+  detail_attributes: {
     first_name: '',
     last_name: '',
     address: '',
@@ -43,7 +43,7 @@ Cg::User.create!(
   about: '私が亀を助けました。',
   share_user_info: 12,
   share_host_info: 14,
-  cg_user_detail_attributes: {
+  detail_attributes: {
     document_info: 100,
     credit_info: 100,
     age: 23,
@@ -61,54 +61,54 @@ Cg::User.create!(
   about: 'テストユーザです',
   share_user_info: 12,
   share_host_info: 14,
-  cg_user_detail_attributes: {
+  detail_attributes: {
   }
 )
 
 Cg::Pet.create!(
   id: 1,
-  users_id: 1,
+  user_id: 1,
   name: '桃 いぬ',
   petname: 'momoinu',
   pets_sex_info: 26,
-  types_id: 1,
+  type_id: 1,
   about: '桃1号',
   share_pet_info: 16,
-  cg_pet_detail_attributes: {}
+  detail_attributes: {}
 )
 
 Cg::Pet.create!(
   id: 2,
-  users_id: 1,
+  user_id: 1,
   name: '桃 猿',
   petname: 'momosaru',
   pets_sex_info: 26,
-  types_id: 5,
+  type_id: 5,
   about: '桃2号',
   share_pet_info: 16,
-  cg_pet_detail_attributes: {}
+  detail_attributes: {}
 )
 
 Cg::Pet.create!(
   id: 3,
-  users_id: 1,
+  user_id: 1,
   name: '桃 キジ',
   pets_sex_info: 27,
   petname: 'momokiji',
-  types_id: 3,
+  type_id: 3,
   about: '桃3号',
   share_pet_info: 16,
-  cg_pet_detail_attributes: {}
+  detail_attributes: {}
 )
 
 Cg::Pet.create!(
   id: 4,
-  users_id: 2,
+  user_id: 2,
   name: '浦島 かめ',
   petname: 'urashimakame',
   pets_sex_info: 26,
-  types_id: 4,
+  type_id: 4,
   about: 'れっつ竜宮城',
   share_pet_info: 16,
-  cg_pet_detail_attributes: {}
+  detail_attributes: {}
 )

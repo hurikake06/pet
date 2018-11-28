@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 class Cg::User < ApplicationRecord
-  belongs_to :cg_info, foreign_key: :share_user_info, primary_key: :id, class_name: 'Cg::Info'
-  belongs_to :cg_info, foreign_key: :share_host_info, primary_key: :id, class_name: 'Cg::Info'
-  has_one :cg_user_detail, class_name: 'Cg::UserDetail', foreign_key: :users_id, inverse_of: :cg_user
-  has_many :cg_pets, class_name: 'Cg::Pet'
-  has_many :cg_shares, class_name: 'Cg::Share'
-  has_many :cg_dms, class_name: 'Cg::Dm'
-  accepts_nested_attributes_for :cg_user_detail
+  belongs_to :share_user, foreign_key: :share_user_info, primary_key: :id, class_name: 'Cg::Info'
+  belongs_to :share_host, foreign_key: :share_host_info, primary_key: :id, class_name: 'Cg::Info'
+  has_one :detail, class_name: 'Cg::UserDetail', inverse_of: :user
+  has_many :pets, class_name: 'Cg::Pet'
+  has_many :user_shares, class_name: 'Cg::Share'
+
+  has_many :dms, class_name: 'Cg::Dm'
+  accepts_nested_attributes_for :detail
 
   validates :name,
             presence: { message: NO_PRESENCE_MESSAGE },
@@ -41,11 +42,7 @@ class Cg::User < ApplicationRecord
   validates :about,
             length: { maximum: 100, message: '100文字以内' }
 
-  def pets
-    Cg::Pet.where(cg_pets: { users_id: id })
-  end
-
-  def detail
-    Cg::UserDetail.find_by(users_id: id)
+  def host_shares
+    Cg::Share.where(pet_id: pets.select(:id))
   end
 end

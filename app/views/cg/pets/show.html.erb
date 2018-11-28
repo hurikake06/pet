@@ -7,9 +7,15 @@
 <Hr>
 <ul>
   <li><%= @pet.petname %></li>
-  <li><%= @pet.types_id %></li>
+  <li><%= @pet.type_id %></li>
   <li><%= @pet.about %></li>
 </ul>
+<h3>detail</h3>
+<p><%= @pet.detail.to_json %></p>
+
+<h3>facilities</h3>
+<p><%= @pet.facilities.to_json %></p>
+
 <% else %>
   <p>Pet not found</p>
 <% end %>

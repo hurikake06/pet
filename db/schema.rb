@@ -13,24 +13,24 @@
 ActiveRecord::Schema.define(version: 2018_11_26_052627) do
 
   create_table "cg_dm_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "pets_id"
-    t.bigint "shares_id"
+    t.bigint "user_id"
+    t.bigint "pet_id"
+    t.bigint "share_id"
     t.bigint "dm_group_type_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cg_dms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "dm_groups_id"
-    t.bigint "users_id"
+    t.bigint "dm_group_id"
+    t.bigint "user_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cg_evs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "shares_id"
+    t.bigint "share_id"
     t.integer "val"
     t.bigint "ev_type_info"
     t.datetime "created_at", null: false
@@ -51,14 +51,14 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
   end
 
   create_table "cg_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "info_types_id"
+    t.bigint "info_type_id"
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cg_pet_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "pets_id"
+    t.bigint "pet_id"
     t.bigint "medical_info", default: 100
     t.integer "fixed_cost"
     t.integer "variable_cost"
@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
   end
 
   create_table "cg_pets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.string "name"
     t.string "petname"
     t.bigint "pets_sex_info", default: 100
-    t.bigint "types_id"
+    t.bigint "type_id"
     t.text "about"
     t.bigint "share_pet_info", default: 16
     t.datetime "created_at", null: false
@@ -80,23 +80,23 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
   end
 
   create_table "cg_pets_facilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "pets_id"
-    t.bigint "facilities_id"
+    t.bigint "pet_id"
+    t.bigint "facility_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pets_id", "facilities_id"], name: "index_cg_pets_facilities_on_pets_id_and_facilities_id", unique: true
+    t.index ["pet_id", "facility_id"], name: "index_cg_pets_facilities_on_pet_id_and_facility_id", unique: true
   end
 
   create_table "cg_pets_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "pets_id"
-    t.bigint "infos_id"
+    t.bigint "pet_id"
+    t.bigint "info_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cg_share_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "shares_id"
-    t.bigint "facilities_id"
+    t.bigint "share_id"
+    t.bigint "facility_id"
     t.datetime "start"
     t.datetime "end"
     t.datetime "actually_start"
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
   end
 
   create_table "cg_shares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "pets_id"
+    t.bigint "user_id"
+    t.bigint "pet_id"
     t.bigint "share_info", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
   end
 
   create_table "cg_user_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.string "first_name"
     t.string "last_name"
     t.string "address"

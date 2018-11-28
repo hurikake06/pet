@@ -35,15 +35,15 @@ class Cg::PetsController < CgLayoutsController
   end
 
   def pet_params
-    params[:cg_pet][:users_id] = session[:user_id]
-    params[:cg_pet][:cg_pet_detail_attributes] = {}
+    params[:cg_pet][:user_id] = session[:user_id]
+    params[:cg_pet][:detail_attributes] = {}
     params.require(:cg_pet).permit(
-      :users_id,
+      :user_id,
       :name,
       :petname,
-      :types_id,
+      :type_id,
       :about,
-      cg_pet_detail_attributes: {}
+      detail_attributes: {}
     )
   end
 end
