@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
 
   create_table "cg_dm_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
-    t.bigint "users_id"
-    t.bigint "pets_id"
-    t.bigint "shares_id"
+    t.bigint "user_id"
+    t.bigint "pet_id"
+    t.bigint "share_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
