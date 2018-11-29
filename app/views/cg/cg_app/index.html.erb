@@ -1,19 +1,58 @@
+<style media="screen">
+  .slide{
+    background: #e8fce5;
+    color: black;
+    border-radius: 20px;
+    height: 400px;
+    margin: 20px 0px;
+    text-align: center;
+  }
+  .slide img{
+    width: 80%;
+    height: 100%;
+  }
+}
+</style>
+
 <div id='cgTitle'>
-  <h1>CuteGift</h1>
-  <h1>PetsTweetへようこそ</h1>
-  <h2>top画面</h2>
-</div>
-<Hr>
-<div class="container" id="loginLink">
-  <a href="<%= login_path %>">
-    <button class="btn btn-primary">今すぐ始める</button>
-  </a>
-</div>
-<hr>
-<div class="container">
-  <ul>
-    <% 100.times do |i| %>
-    <li>testContent<%= i %></li>
-    <% end %>
-  </ul>
+  <%= image_tag("icon/logo/title_1.png", width:400, height: 150) %>
+  <div class="container" id="loginLink">
+    <a href="<%= login_path %>">
+      <button class="btn btn-primary">今すぐ始める</button>
+    </a>
+  </div>
+  <Hr>
+
+  <h1>CuteGiftへようこそ</h1>
+  <div class='slide'>
+  </div>
+  <div class='slide'>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_3.png") %>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_4.png") %>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_5.png") %>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_6.png") %>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_7.png") %>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_8.png") %>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_9.png") %>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_10.png") %>
+  </div>
+  <div class='slide'>
+    <%= image_tag("slide/slide_11.png") %>
+  </div>
 </div>
