@@ -1,0 +1,95 @@
+<!-- <div class="col-md-offset-1 col-md-2 sidebar">
+  <div class="widget">
+    <form role="form">
+      <div class="search-box">
+        <input class="form-control" type="text" placeholder="Search..."/>
+        <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+      </div>
+    </form>
+  </div>
+  <div class="widget">
+    <h5 class="widget-title font-alt">CuteGiftって？</h5>
+    <ul class="icon-list">
+      <li><a href="#">コンセプト</a></li>
+      <li><a href="#">使い方：シェアしたい方用</a></li>
+      <li><a href="#">使い方：シェアして欲しい方用</a></li>
+      <li><a href="#">大事なペットを守る取り組み</a></li>
+      <li><a href="#">利用規約</a></li>
+    </ul>
+  </div>
+  <div class="widget">
+    <h5 class="widget-title font-alt">今週の一押し</h5>
+    <ul class="widget-posts">
+      <li class="clearfix">
+        <div class="widget-posts-image"><a href="#"><%=image_tag("sample/dog3.jpg")%></a></div>
+        <div class="widget-posts-body">
+          <div class="widget-posts-title"><a href="#">ジョン</a></div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="widget-posts-image"><a href="#"><%=image_tag("sample/cat.jpg")%></a></div>
+        <div class="widget-posts-body">
+          <div class="widget-posts-title"><a href="#">たま</a></div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="widget-posts-image"><a href="#"><%=image_tag("sample/dog.jpg")%></a></div>
+        <div class="widget-posts-body">
+          <div class="widget-posts-title"><a href="#">まさお</a></div>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="widget-posts-image"><a href="#"><%=image_tag("sample/cat2.jpg")%></a></div>
+        <div class="widget-posts-body">
+          <div class="widget-posts-title"><a href="#">ポチ</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="widget">
+    <h5 class="widget-title font-alt">Tag</h5>
+    <div class="tags font-serif"><a href="#" rel="tag">柴犬</a><a href="#" rel="tag">ダックスフンド</a><a href="#" rel="tag">ラグドール</a><a href="#" rel="tag">PetShopワンワン</a><a href="#" rel="tag">インコ</a><a href="#" rel="tag">ヘビ</a><a href="#" rel="tag">渋かわ</a><a href="#" rel="tag">たけお</a>
+    </div>
+  </div>
+
+
+</div> -->
+
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#">
+                CuteGift
+            </a>
+        </li>
+        <li>
+            <%= link_to image_tag("man.png",:size => "40x40"), :action => "index"%>
+        </li>
+        <li>
+            <a href="#">検索</a>
+        </li>
+        <li>
+            <a href="#">ランキング</a>
+        </li>
+        <li>
+            <a href="#">新着</a>
+        </li>
+        <li>
+            <a href="#">イベント</a>
+        </li>
+        <li>
+            <a href="#">設定</a>
+        </li>
+        <li>
+            <a href="#">ヘルプ</a>
+        </li>
+        <li>
+            <a href="#">ご意見、ご要望</a>
+        </li>
+    </ul>
+
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+</script>
