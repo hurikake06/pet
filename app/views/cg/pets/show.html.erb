@@ -1,21 +1,83 @@
-<h1>~pet_show~</h1>
+<style>
+.profile{
+  padding-left:10px;
+}
+.profile table{
+}
+.profile .text_content{
+  margin-left:20px;
+
+}
+.profile .name{
+  font-size:1.8em;
+  font-weight: bold;
+    text-shadow: 0px 0px 5px white;
+}
+.profile .petname{
+  font-size:1.2em;
+  font-weight: bold;
+    text-shadow: 0px 0px 5px white;
+}
+.square_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #5e8d29;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #8a9d74;
+    border-radius: 3px;
+}
+.square_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-top: solid 4px transparent;
+    border-bottom: none;
+}
+.share{
+  margin:5px;
+  margin-top:10px;
+  margin-left:20px;
+}
+
+.about {
+    display: inline-block;
+    margin: 5px;
+    padding: 3px;
+    background-color: #f9fff3;
+    border: green 2px solid;
+    border-radius: 5px;
+    width: 50%;
+    min-height: 5em;
+    color: black;
+    font-size: 1.2em;
+}
+
+</style>
+
+<!-- h1>~pet_show~</h1-->
 <% if @pet.present? %>
-<h2><%= @pet.name %></h2>
-<% if share_info_flag && @pet.share_pet_info == 17 %>
-  <a href="<%= share_new_path @pet.petname %>"><h3>シェア申請</h3></a>
-<% end %>
-<Hr>
-<ul>
-  <li><%= @pet.petname %></li>
-  <li><%= @pet.type_id %></li>
-  <li><%= @pet.about %></li>
-</ul>
-<h3>detail</h3>
-<p><%= @pet.detail.to_json %></p>
-
-<h3>facilities</h3>
-<p><%= @pet.facilities.to_json %></p>
-
+  <div class="profile">
+    <table>
+      <tr>
+        <td rowspan="2"><%= image_tag(@pet.icon, class:'icon') %></td>
+        <td><h2 class="text_content name"><%= @pet.name %></h2></td>
+      </tr>
+        <tr>
+          <td class="text_content petname"><%= @pet.petname %></td>
+        </tr>
+    </table>
+  </div>
+  <div>
+    <% if share_info_flag && @pet.share_pet_info == 17 %>
+    <div class="share">
+      <a href="<%= share_new_path @pet.petname %>" class ="square_btn">シェア申請</a>
+    </div>
+    <% end %>
+    <h3>自己紹介</h3>
+    <p class="about"><%= @pet.about %></p>
+  </div>
 <% else %>
   <p>Pet not found</p>
 <% end %>
