@@ -45,4 +45,8 @@ class Cg::User < ApplicationRecord
   def host_shares
     Cg::Share.where(pet_id: pets.select(:id))
   end
+
+  def icon
+    return 'icon/person/b_12.png'
+  end
 end

@@ -1,12 +1,13 @@
 <h1>~pet_mypage~</h1>
 <% if @pet.present? %>
-<h2><%= @pet.name %></h2>
-<Hr>
-<ul>
-  <li><%= @pet.petname %></li>
-  <li><%= @pet.type_id %></li>
-  <li><%= @pet.about %></li>
-</ul>
+  <%= image_tag(@pet.icon, class:'icon') %>
+  <h2><%= @pet.name %></h2>
+  <Hr>
+  <ul>
+    <li><%= @pet.petname %></li>
+    <li><%= @pet.type_id %></li>
+    <li><%= @pet.about %></li>
+  </ul>
 <% else %>
   <p>Pet not found</p>
 <% end %>
