@@ -65,6 +65,43 @@ Cg::User.create!(
   }
 )
 
+Cg::User.create!(
+  id: 4,
+  name: 'ペットショップパトラ',
+  username: 'patora',
+  email: 'patora@trident.com',
+  password: 'Pass_patora0',
+  about: 'パトラです。営業中。。',
+  share_user_info: 12,
+  share_host_info: 15,
+  detail_attributes: {
+  }
+)
+Cg::User.create!(
+  id: 5,
+  name: 'トライデント 太郎',
+  username: 'taro',
+  email: 'taro@trident.com',
+  password: 'Pass_taro0',
+  about: '兄です',
+  share_user_info: 13,
+  share_host_info: 15,
+  detail_attributes: {
+  }
+)
+Cg::User.create!(
+  id: 6,
+  name: 'トライデント ﾀﾞﾒ太郎',
+  username: 'dame',
+  email: 'dame@trident.com',
+  password: 'Pass_taro0',
+  about: '弟です',
+  share_user_info: 12,
+  share_host_info: 14,
+  detail_attributes: {
+  }
+)
+
 Cg::Pet.create!(
   id: 1,
   user_id: 1,
@@ -109,6 +146,76 @@ Cg::Pet.create!(
   pets_sex_info: 26,
   type_id: 4,
   about: 'れっつ竜宮城',
+  share_pet_info: 16,
+  detail_attributes: {}
+)
+
+Cg::Pet.create!(
+  id: 5,
+  user_id: 4,
+  name: 'ココ',
+  petname: 'coco',
+  pets_sex_info: 26,
+  type_id: 1,
+  about: 'ここ',
+  share_pet_info: 17,
+  detail_attributes: {}
+)
+Cg::Pet.create!(
+  id: 6,
+  user_id: 4,
+  name: 'モモ',
+  petname: 'momo',
+  pets_sex_info: 27,
+  type_id: 1,
+  about: 'もも',
+  share_pet_info: 17,
+  detail_attributes: {}
+)
+Cg::Pet.create!(
+  id: 7,
+  user_id: 4,
+  name: 'マロン',
+  petname: 'marron',
+  pets_sex_info: 27,
+  type_id: 1,
+  about: 'まろん',
+  share_pet_info: 17,
+  detail_attributes: {}
+)
+
+Cg::Pet.create!(
+  id: 8,
+  user_id: 5,
+  name: 'コタロウ',
+  petname: 'kotaro',
+  pets_sex_info: 26,
+  type_id: 1,
+  about: 'コタロウです',
+  share_pet_info: 17,
+  detail_attributes: {}
+)
+
+Cg::Pet.create!(
+  id: 9,
+  user_id: 5,
+  name: 'タマ',
+  petname: 'tama',
+  pets_sex_info: 26,
+  type_id: 2,
+  about: 'コタロウです',
+  share_pet_info: 16,
+  detail_attributes: {}
+)
+
+Cg::Pet.create!(
+  id: 10,
+  user_id: 6,
+  name: 'ゴクウ',
+  petname: 'goku',
+  pets_sex_info: 26,
+  type_id: 5,
+  about: 'ごくうだよ',
   share_pet_info: 16,
   detail_attributes: {}
 )
