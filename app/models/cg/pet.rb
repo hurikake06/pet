@@ -32,4 +32,8 @@ class Cg::Pet < ApplicationRecord
             length: { maximum: 100, message: '100文字以内' }
 
   validates :type_id, presence: true
+
+  def icon
+    return 'icon/pet/dog_1.png'
+  end
 end
