@@ -33,7 +33,4 @@ class Cg::Pet < ApplicationRecord
 
   validates :type_id, presence: true
 
-  def icon
-    return 'icon/pet/dog_1.png'
-  end
 end

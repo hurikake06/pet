@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.string "petname"
     t.bigint "pets_sex_info", default: 100
     t.bigint "type_id"
+    t.string "icon", default: "icon/pet/dog_1.png"
     t.text "about"
     t.bigint "share_pet_info", default: 16
     t.datetime "created_at", null: false
@@ -141,6 +142,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.string "username"
     t.string "email"
     t.string "password"
+    t.string "icon", default: "icon/person/b_12.png"
     t.text "about"
     t.bigint "share_user_info", default: 12
     t.bigint "share_host_info", default: 14

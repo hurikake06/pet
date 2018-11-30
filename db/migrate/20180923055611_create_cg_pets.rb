@@ -8,6 +8,7 @@ class CreateCgPets < ActiveRecord::Migration[5.2]
       t.string :petname
       t.bigint :pets_sex_info, default: 100
       t.bigint :type_id
+      t.string :icon, default: 'icon/pet/dog_1.png'
       t.text :about
       t.bigint :share_pet_info, default: 16
 
