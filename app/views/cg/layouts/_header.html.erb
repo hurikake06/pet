@@ -2,7 +2,7 @@
 
   <nav class="navbar navbar-default">
     <div class="col-sm-12">
-      <%= link_to image_tag("CuteGift_logo.png",:class =>"title_logo"), :action => "index"%>
+      <%= link_to image_tag("CuteGift_logo.png",:class =>"title_logo"), :controller => "cg_app", :action => "index" %>
     </div>
     <div class="container-fluid">
       <%= link_to image_tag("menu.png",:size => "50x50",:class =>"btn btn-secondary",:id =>"menu-toggle"),:href =>"#menu-toggle"%>
