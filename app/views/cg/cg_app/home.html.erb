@@ -75,18 +75,18 @@
   <h3 style="color:black;">ペット</h3>
   <div class="pet-list">
     <% Cg::Pet.all.each do |pet| %>
-    <div class="pet">
-      <a href="<%= show_pet_path petname: pet.petname %>">
-        <table>
-          <tr>
-            <td><%= image_tag(pet.icon, class:'icon') %></td>
-          </tr>
-          <tr>
-            <td><p><%= pet.name %></p></td>
-          </tr>
-        </table>
-      </a>
-    </div>
+      <div class="pet">
+        <a href="<%= show_pet_path petname: pet.petname %>">
+          <table>
+            <tr>
+              <td><%= image_tag(pet.icon, class:'icon') %></td>
+            </tr>
+            <tr>
+              <td><p><%= pet.name %></p></td>
+            </tr>
+          </table>
+        </a>
+      </div>
     <% end %>
   </div>
 </div>
