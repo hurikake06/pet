@@ -203,7 +203,7 @@ Cg::Pet.create!(
   petname: 'tama',
   pets_sex_info: 26,
   type_id: 2,
-  about: 'コタロウです',
+  about: 'タマです',
   share_pet_info: 16,
   detail_attributes: {}
 )
@@ -218,4 +218,68 @@ Cg::Pet.create!(
   about: 'ごくうだよ',
   share_pet_info: 16,
   detail_attributes: {}
+)
+
+Cg::PetsFacility.create!(
+  id: 1,
+  pet_id: 5,
+  facility_id: 7
+)
+
+Cg::PetsFacility.create!(
+  id: 2,
+  pet_id: 5,
+  facility_id: 8
+)
+
+Cg::PetsFacility.create!(
+  id: 3,
+  pet_id: 5,
+  facility_id: 9
+)
+Cg::PetsFacility.create!(
+  id: 4,
+  pet_id: 6,
+  facility_id: 7
+)
+
+Cg::PetsFacility.create!(
+  id: 5,
+  pet_id: 6,
+  facility_id: 8
+)
+
+Cg::PetsFacility.create!(
+  id: 6,
+  pet_id: 6,
+  facility_id: 9
+)
+Cg::PetsFacility.create!(
+  id: 7,
+  pet_id: 7,
+  facility_id: 7
+)
+
+Cg::PetsFacility.create!(
+  id: 8,
+  pet_id: 7,
+  facility_id: 8
+)
+
+Cg::PetsFacility.create!(
+  id: 9,
+  pet_id: 7,
+  facility_id: 9
+)
+
+Cg::PetsFacility.create!(
+  id: 10,
+  pet_id: 8,
+  facility_id: 10
+)
+
+Cg::PetsFacility.create!(
+  id: 11,
+  pet_id: 8,
+  facility_id: 11
 )
