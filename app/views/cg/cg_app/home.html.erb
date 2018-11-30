@@ -39,15 +39,28 @@
 
   }
   .pet-list .pet{
-    width:140px;
-    height:120px;
+    width:120px;
+    height:140px;
     display:inline-block;
     border:solid 2px white;
     margin:2px;
+    background-color: #eefaeb;
   }
   .pet-list .pet a{
       display:block;
       color: black;
+  }
+  .pet-list .pet .icon{
+    width:100px;
+    height:100px;
+    margin-top:5px;
+    margin-left:10px;
+    margin-right:10px;
+  }
+  .pet-list .pet p{
+    text-align:center;
+    color:black;
+    font-size:1.5em;
   }
 </style>
 <div id='cgTitle'>
@@ -59,15 +72,19 @@
 <div class="container">
   <!-- h3>おすすめ情報</h3-->
   <h3 style="color:black;">ペット</h3>
-  <div class="petlist">
+  <div class="pet-list">
     <% Cg::Pet.all.each do |pet| %>
     <div class="pet">
-      <div class="card-body">
       <a href="<%= show_pet_path petname: pet.petname %>">
-        <%= image_tag(pet.icon, class:'icon') %>
-        <%= pet.name %>
+        <table>
+          <tr>
+            <td><%= image_tag(pet.icon, class:'icon') %></td>
+          </tr>
+          <tr>
+            <td><p><%= pet.name %></p></td>
+          </tr>
+        </table>
       </a>
-      </div>
     </div>
     <% end %>
   </div>
