@@ -1,3 +1,55 @@
+<style>
+  .container{
+    background-color:#004900;
+    background-color:transparent;
+    margin-left:10px;
+    margin-right:10px;
+    border: solid 3px white;
+    border-radius: 10px;
+  }
+  .user-list {
+    padding-left:2px;
+  }
+  .user-list h3{
+    color: black;
+  }
+  .user-list li{
+    padding: 1px;
+    display: block;
+    background-color: white;
+    margin-top: 1.2px;
+  }
+  .user-list li:nth-child(even){
+    background-color:#ddf3dd;
+  }
+  .user-list li:hover{
+    background-color:#216732;
+  }
+  .user-list li a{
+    display:block;
+    color: black;
+    font-size: 1.3em;
+  }
+  .user-list li a:hover{
+    text-decoration:none;
+    color:white;
+  }
+
+  .pet-list{
+
+  }
+  .pet-list .pet{
+    width:140px;
+    height:120px;
+    display:inline-block;
+    border:solid 2px white;
+    margin:2px;
+  }
+  .pet-list .pet a{
+      display:block;
+      color: black;
+  }
+</style>
 <div id='cgTitle'>
   <h1>CuteGift</h1>
   <h1><%= @user.name %>さん</h1>
@@ -5,13 +57,28 @@
 </div>
 <hr>
 <div class="container">
-  <h3>おすすめ情報</h3>
-  <div style = "background-color:#ffc107" >
-    <h4>人気ホスト</h4>
-    <ul>
-      <% Cg::User.all.where.not(id: @user.id).each do |user| %>
-      <li><a href="<%= show_path username: user.username %>"><%= user.name %></a></li>
-      <% end %>
-    </ul>
+  <!-- h3>おすすめ情報</h3-->
+  <h3 style="color:black;">ペット</h3>
+  <div class="petlist">
+    <% Cg::Pet.all.each do |pet| %>
+    <div class="pet">
+      <div class="card-body">
+      <a href="<%= show_pet_path petname: pet.petname %>">
+        <%= image_tag(pet.icon, class:'icon') %>
+        <%= pet.name %>
+      </a>
+      </div>
+    </div>
+    <% end %>
   </div>
+</div>
+<br>
+<div class="container">
+  <!-- h3>おすすめ情報</h3-->
+  <h3 style="color:black;">人気ホスト</h3>
+  <ul class="user-list">
+    <% Cg::User.all.where.not(id: @user.id).each do |user| %>
+    <li><a href="<%= show_path username: user.username %>"><%= user.name %></a></li>
+    <% end %>
+  </ul>
 </div>
