@@ -9,15 +9,26 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class = "<%= user_mode_class %>">
-    <% if session[:user_mode] == 'HOST' %>
-      <%= render "cg/layouts/host/header" %>
-    <% else %>
-      <%= render "cg/layouts/header" %>
-    <% end %>
-    <div id = "pageContent">
-      <%= yield %>
+  <body class = "<%= user_mode_class %>" id="wrapper">
+    <div id="sidebar-wrapper">
+      <%= render "cg/layouts/sidemenu" %>
     </div>
-    <%= render "cg/layouts/footer"%>
+
+    
+
+    <div id="page-content-wrapper">
+      <% if session[:user_mode] == 'HOST' %>
+        <%= render "cg/layouts/host/header" %>
+      <% else %>
+        <%= render "cg/layouts/header" %>
+      <% end %>
+      <!-- <div class="col-sm-9"> -->
+        <div id = "pageContent">
+          <%= yield %>
+        </div>
+      <!-- </div> -->
+      <%= render "cg/layouts/footer"%>
+    </div>
+
   </body>
 </html>
