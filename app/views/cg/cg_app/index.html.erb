@@ -1,7 +1,6 @@
 <style media="screen">
   .slide{
     background: #e8fce5;
-    color: black;
     border-radius: 20px;
     height: 400px;
     margin: 20px 0px;
@@ -14,15 +13,14 @@
 }
 </style>
 
-<div id='cgTitle'>
-  <%= image_tag("icon/logo/title_1.png", width:400, height: 150) %>
-  <div class="container" id="loginLink">
-    <a href="<%= login_path %>">
-      <button class="btn btn-primary">今すぐ始める</button>
-    </a>
-  </div>
-  <Hr>
+<div id="loginLink">
+  <a href="<%= login_path %>">
+    <button class="btn btn-primary">今すぐ始める</button>
+  </a>
+</div>
+<Hr>
 
+<div>
   <h1>CuteGiftへようこそ</h1>
   <div class='slide'>
     <h1 style='font-size:48px;line-height:8;'>～ペットの癒しをすぐそこに～</h1>
