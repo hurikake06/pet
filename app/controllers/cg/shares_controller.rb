@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Cg::SharesController < CgLayoutsController
+class Cg::SharesController < Cg::LayoutsController
   def new
     login_check
     return unless share_info_flag

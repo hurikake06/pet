@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Cg::PetsController < CgLayoutsController
+class Cg::PetsController < Cg::LayoutsController
   def new
     login_check
     mode_check

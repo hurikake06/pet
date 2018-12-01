@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Cg::UsersController < CgLayoutsController
+class Cg::UsersController < Cg::LayoutsController
   protect_from_forgery except: :pass_check
   def new
     return unless params[:cg_user].present?
