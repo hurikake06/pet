@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    "cg/layouts", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    "cg/#{controller.controller_name}", media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -13,8 +15,6 @@
     <div id="sidebar-wrapper">
       <%= render "cg/layouts/sidemenu" %>
     </div>
-
-    
 
     <div id="page-content-wrapper">
       <% if session[:user_mode] == 'HOST' %>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Cg::CgAppController < CgLayoutsController
+class Cg::CgAppController < Cg::LayoutsController
   def index
     return unless session[:login_state] == 'OK'
 
