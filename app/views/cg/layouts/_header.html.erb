@@ -1,4 +1,5 @@
 <header>
+
   <nav class="navbar navbar-default">
     <div class="col-sm-12">
       <%= link_to image_tag("icon/logo/title_1.png",:class =>"title_logo"), :controller => "cg_app", :action => "index" %>
@@ -7,7 +8,9 @@
       <%= link_to image_tag("icon/etc/b_33.png",:size => "50x50",:class =>"btn btn-secondary",:id =>"menu-toggle"),:href =>"#menu-toggle"%>
 
       <!-- Brand and toggle get grouped for better mobile display -->
+
       <div class="navbar-header">
+
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
@@ -16,37 +19,22 @@
         </button>
         <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
 
-        <a class="navbar-brand" href="<%= index_path %>">CuteGift</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <% if session[:login_state] == 'OK' %>
-            <li><a href="<%= mypage_root_path %>">myPage</a></li>
-          <% end %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">シェアについて<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">シェアとは？</a></li>
-              <li><a href="#">おすすめ</a></li>
-              <li><a href="#">利用規約</a></li>
-              <% if share_info_flag %>
-                <li role="separator" class="divider"></li>
-                <li><a href="<%= share_list_path %>">シェアリスト</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">シェア履歴</a></li>
-              <% end %>
-            </ul>
-          </li>
+
+
         </ul>
         <ul class="nav navbar-nav">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ペットの種類から探す<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <% Cg::Type.all.each do |type| %>
-                <li><a href="#"><%= type.name %></a></li>
-              <% end %>
+              <li><a href="#">犬</a></li>
+              <li><a href="#">猫</a></li>
+              <li><a href="#">鳥類</a></li>
+              <li><a href="#">その他</a></li>
             </ul>
           </li>
         </ul>
@@ -60,9 +48,7 @@
             </ul>
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">お知らせ</a></li>
-        </ul>
+
         <!-- <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
@@ -71,7 +57,7 @@
         </form> -->
         <ul class="nav navbar-nav navbar-right">
           <% if session[:login_state] == 'OK' %>
-          <li><a href="<%= change_user_mode_path(user_mode: "HOST") %>">ChangeMode</a></li>
+          <!-- <li><a href="<%= change_user_mode_path(user_mode: "HOST") %>">ChangeMode</a></li> -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <%= Cg::User.find_by(:id => session[:user_id])[:name]%>さん<span class="caret"></span>
