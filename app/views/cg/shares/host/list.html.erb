@@ -8,11 +8,11 @@
     margin: 20px 40px;
     padding: 10px;
   }
+  
   .icon{
     width: 60px;
     height: 60px;
   }
-}
 </style>
 <div class="wrap1">
   <h1>申請されたシェア</h1>
@@ -25,26 +25,28 @@
     </h2>
       <% unless pet.shares.empty? %>
         <% pet.shares.each do |share| %>
-          <div class='share'>
-            <h3>
-              <%= image_tag(share.user.icon, class: 'icon') %>
-              <%= share.user.name %>　からの申請
-            </h3>
-            <h4>状態：<%= share.info.value %></h4>
-            <hr>
-            <table class='table'>
-              <tr>
-                <th>日時</th>
-                <th>料金（頭金）</th>
-                <th>料金（1時間あたり）</th>
-              </tr>
-              <tr>
-                <td><%= share.detail.start.strftime('%Y年%m月%d日') %></td>
-                <td><%= share.detail.fixed_cost %></td>
-                <td><%= share.detail.variable_cost %></td>
-              </tr>
-            </table>
-          </div>
+          <a href="<%= share_show_path share.id %>">
+            <div class='share'>
+              <h3>
+                <%= image_tag(share.user.icon, class: 'icon') %>
+                <%= share.user.name %>　からの申請
+              </h3>
+              <h4>状態：<%= share.info.value %></h4>
+              <hr>
+              <table class='table'>
+                <tr>
+                  <th>日時</th>
+                  <th>料金（頭金）</th>
+                  <th>料金（1時間あたり）</th>
+                </tr>
+                <tr>
+                  <td><%= share.detail.start.strftime('%Y年%m月%d日') %></td>
+                  <td><%= share.detail.fixed_cost %></td>
+                  <td><%= share.detail.variable_cost %></td>
+                </tr>
+              </table>
+            </div>
+          </a>
         <% end %>
       <% else %>
       <p>~shared nothing~</p>
