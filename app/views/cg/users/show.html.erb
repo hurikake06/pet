@@ -21,19 +21,19 @@
   }
 
   .box_wrapper h1 {
-      margin: 0;
-      padding: 0;
-      text-align: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
   }
 
   .box_wrapper h3 {
-      margin: 0;
-      padding: 0;
-      text-align: center;
+    margin: 0;
+    padding: 0;
+    text-align: center;
   }
 
   .box_wrapper p {
-      text-align: center;
+    text-align: center;
   }
 
   .pet-list{
@@ -62,7 +62,7 @@
     margin-left:5px;
     margin-right:5px;
   }
-  
+
   .pet-list .pet p{
     text-align:center;
     color:black;
@@ -74,7 +74,7 @@
   <div class="box_wrapper">
     <h1><%= @user.name %></h1>
     <div class="profile_icon">
-      <%=image_tag(@user.icon,class:'icon')%>
+      <%= image_tag(@user.icon, class: 'icon') %>
     </div>
     <p><%= @user.username %></p>
     <p>E-mail : <%= @user.email %></p>
