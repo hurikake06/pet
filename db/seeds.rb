@@ -111,7 +111,11 @@ Cg::Pet.create!(
   type_id: 1,
   about: '桃1号',
   share_pet_info: 16,
-  detail_attributes: {}
+  detail_attributes: {
+    fixed_cost: 1000,
+    variable_cost: 500,
+    share_about: ''
+  }
 )
 
 Cg::Pet.create!(
@@ -159,7 +163,11 @@ Cg::Pet.create!(
   type_id: 1,
   about: 'ここ',
   share_pet_info: 17,
-  detail_attributes: {}
+  detail_attributes: {
+    fixed_cost: 1000,
+    variable_cost: 1500,
+    share_about: '超人気なので少し値段が高いです。'
+  }
 )
 Cg::Pet.create!(
   id: 6,
@@ -170,7 +178,11 @@ Cg::Pet.create!(
   type_id: 1,
   about: 'もも',
   share_pet_info: 17,
-  detail_attributes: {}
+  detail_attributes: {
+    fixed_cost: 1000,
+    variable_cost: 800,
+    share_about: 'ベテラン犬。おとなしいです。'
+  }
 )
 Cg::Pet.create!(
   id: 7,
@@ -181,7 +193,11 @@ Cg::Pet.create!(
   type_id: 1,
   about: 'まろん',
   share_pet_info: 17,
-  detail_attributes: {}
+  detail_attributes: {
+    fixed_cost: 1000,
+    variable_cost: 500,
+    share_about: '新人。若いのでボール遊びなど可。'
+  }
 )
 
 Cg::Pet.create!(
@@ -193,7 +209,11 @@ Cg::Pet.create!(
   type_id: 1,
   about: 'コタロウです',
   share_pet_info: 17,
-  detail_attributes: {}
+  detail_attributes: {
+    fixed_cost: 1200,
+    variable_cost: 1000,
+    share_about: '頭のいい子です。お金持ちと子供にやさしい。'
+  }
 )
 
 Cg::Pet.create!(
