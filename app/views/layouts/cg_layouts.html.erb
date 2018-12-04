@@ -17,11 +17,7 @@
     </div>
 
     <div id="page-content-wrapper">
-      <% if session[:user_mode] == 'HOST' %>
-        <%= render "cg/layouts/host/header" %>
-      <% else %>
-        <%= render "cg/layouts/header" %>
-      <% end %>
+      <%= render "cg/layouts/header" %>
       <!-- <div class="col-sm-9"> -->
         <div id = "pageContent">
           <%= yield %>
