@@ -1,0 +1,107 @@
+<style media="screen">
+  .box_wrapper{
+    width: 85%;
+    background: #f4f4f4;
+    border-left: solid 6px #5bb7ae;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+    margin-left: auto;
+    margin-right: auto;
+    padding : 20px ;
+  }
+
+  .box_wrapper .profile_icon{
+    text-align:center;
+    padding : 20px ;
+  }
+
+  .box_wrapper img{
+    width:100px;
+    height:100px;
+
+  }
+
+  .box_wrapper h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .box_wrapper h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .box_wrapper p {
+    text-align: center;
+  }
+
+  .pet-list{
+    text-align:center;
+  }
+
+  .pet-list .pet{
+    width:120px;
+    height:140px;
+    display:inline-block;
+    border:dotted 5px white;
+    margin:2px;
+    background-color: #eefaeb;
+    border-radius: 10px 0px 10px 0;
+  }
+
+  .pet-list .pet a{
+      display:block;
+      color: black;
+  }
+
+  .pet-list .pet .icon{
+    width:100px;
+    height:100px;
+    margin-top:2px;
+    margin-left:5px;
+    margin-right:5px;
+  }
+
+  .pet-list .pet p{
+    text-align:center;
+    color:black;
+    font-size:1.5em;
+  }
+</style>
+
+<% if @user.present? %>
+  <div class="box_wrapper">
+    <h1><%= @user.name %></h1>
+    <div class="profile_icon">
+      <%= image_tag(@user.icon, class: 'icon') %>
+    </div>
+    <p><%= @user.username %></p>
+    <p>E-mail : <%= @user.email %></p>
+    <p>About   : <%= @user.about %></p>
+    <br>
+    <h3>ペットリスト</h3>
+    <% if @user.pets.present? %>
+      <div class="pet-list">
+        <% @user.pets.each do |pet| %>
+          <div class="pet">
+            <a href="<%= show_pet_path petname: pet.petname %>">
+              <table>
+                <tr>
+                  <td><%= image_tag(pet.icon, class:'icon') %></td>
+                </tr>
+                <tr>
+                  <td><p><%= pet.name %></p></td>
+                </tr>
+              </table>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>ペットが登録されていません</p>
+    <% end %>
+  <% else %>
+    <p>urlが間違っています</p>
+  <% end %>
+</div>

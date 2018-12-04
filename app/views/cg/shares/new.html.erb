@@ -1,0 +1,95 @@
+<style media="screen">
+  .share{
+    background: #e8fce5;
+    color: black;
+    border-radius: 20px;
+    width: 80%;
+    margin: 20px 40px;
+    padding: 10px;
+  }
+
+  th{
+    background: #267e1963;
+    width: 150px;
+  }
+
+  td{
+    background: #ffffff75;
+  }
+
+  .icon{
+    width: 60px;
+    height: 60px;
+  }
+
+  .about {
+    display: inline-block;
+    margin: 5px;
+    padding: 3px;
+    background-color: #f9fff3;
+    border: green 2px solid;
+    border-radius: 5px;
+    width: 100%;
+    min-height: 5em;
+    color: black;
+    font-size: 1.2em;
+  }
+</style>
+
+<h1>シェア申請</h1>
+<hr>
+<% if @pet.present? && @pet.share_pet_info == 17 %>
+  <% if params[:cg_share].present? %>
+    <% if @saved.present? %>
+      <h2>シェア申請を行いました。</h2>
+    <% else %>
+      <h3>シェア申請は行えませんでした。</h3>
+      <p>(入力項目が間違っているかもしれないや-つ)</p>
+    <% end %>
+    <hr>
+  <% end %>
+  <div class='share'>
+    <h3>
+      <%= image_tag(@pet.icon, class: 'icon') %>
+      <%= @pet.name %>のシェア情報
+    </h3>
+    <hr>
+    <h4>基本料金</h4>
+    <p>(※基本料金は料金を決める際の目安です。)</p>
+    <table class='table'>
+      <tr>
+        <th>（頭金）</th>
+        <td><%= @pet.detail.fixed_cost %></td>
+        <th>（1時間あたり）</th>
+        <td><%= @pet.detail.variable_cost %></td>
+      </tr>
+    </table>
+    <h4>備考</h4>
+    <div class="about">
+      <%= @pet.detail.share_about %>
+    </div>
+  </div>
+  <% unless @saved.present? %>
+    <hr>
+    <h2>申請情報を記入してください</h2>
+    <div class = "container">
+      <p><h3>申請者:<%= Cg::User.find(session[:user_id]).name %></h3></p>
+      <p>
+        <h3>申請相手</h3>
+        飼い主：<strong><%= @pet.user.name %></strong><br>
+        ペット：<strong><%= @pet.name %></strong>
+      </p>
+      <%= render partial: 'new_form', locals: {
+        share: @share ||= Cg::Share.new(
+                      user_id: session[:user_id],
+                      pet_id: @pet.id,
+                      detail: Cg::ShareDetail.new ),
+        pet: @pet
+      } %>
+    </div>
+  <% end %>
+<% else %>
+  <p>pet not found</p>
+<% end %>
+
+<a href="<%= share_list_path %>">シェア一覧へ</a>

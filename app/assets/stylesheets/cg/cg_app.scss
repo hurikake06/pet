@@ -1,0 +1,24 @@
+// Place all the styles related to the cg/cgApp controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.space {
+  height: 400px;
+}
+
+#loginLink {
+  text-align: center;
+
+  a {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .btn {
+    font-size: 36px;
+  }
+}
+
+#cgTitle {
+  margin: 20px;
+}

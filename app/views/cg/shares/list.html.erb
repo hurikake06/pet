@@ -1,0 +1,53 @@
+<style media="screen">
+  .share{
+    background: #e8fce5;
+    color: black;
+    border-radius: 20px;
+    height: 200px;
+    width: 80%;
+    margin: 20px 40px;
+    padding: 10px;
+  }
+
+  .icon{
+    width: 60px;
+    height: 60px;
+  }
+</style>
+
+<h1>あなたが申請したシェア一覧</h1>
+<hr>
+<% if share_info_flag %>
+  <% unless @user.user_shares.empty? %>
+    <% unless @user.user_shares.where(share_info: 1).empty? %>
+      <h2>~~申請中~~</h2>
+      <% @user.user_shares.where(share_info: 1).each do |share| %>
+        <a href="<%= share_show_path share.id %>">
+          <div class='share'>
+            <h3>
+              <%= image_tag(share.pet.icon, class: 'icon') %>
+              <%= share.pet.name %>　へ会いに行く
+            </h3>
+            <hr>
+            <table class='table'>
+              <tr>
+                <th>日時</th>
+                <th>料金（頭金）</th>
+                <th>料金（1時間あたり）</th>
+              </tr>
+              <tr>
+                <td><%= share.detail.start.strftime('%Y年%m月%d日') %></td>
+                <td><%= share.detail.fixed_cost %></td>
+                <td><%= share.detail.variable_cost %></td>
+              </tr>
+            </table>
+          </div>
+        </a>
+      <% end %>
+    <% end %>
+  <% else %>
+    <h2>~shared nothing~</h2>
+  <% end %>
+<% else %>
+  <p>シェア条件を満たしていません</p>
+<% end %>

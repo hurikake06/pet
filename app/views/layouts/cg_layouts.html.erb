@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CuteGift</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    "cg/layouts", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    "cg/#{controller.controller_name}", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class = "<%= user_mode_class %>" id="wrapper">
+    <div id="sidebar-wrapper">
+      <%= render "cg/layouts/sidemenu" %>
+    </div>
+
+    <div id="page-content-wrapper">
+      <%= render "cg/layouts/header" %>
+      <!-- <div class="col-sm-9"> -->
+        <div id = "pageContent">
+          <%= yield %>
+        </div>
+      <!-- </div> -->
+      <%= render "cg/layouts/footer"%>
+    </div>
+
+  </body>
+</html>

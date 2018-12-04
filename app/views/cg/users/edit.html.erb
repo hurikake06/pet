@@ -1,0 +1,8 @@
+<h1><%= @user.name %>さんの設定</h1>
+<p>Find me in app/views/cg/pets/edit.html.erb</p>
+
+<% @user.pets.each do |pet| %>
+  <p>
+    <a href="<%= setting_pet_path pet.petname %>"><%= pet.name %></a>
+  </p>
+<% end %>

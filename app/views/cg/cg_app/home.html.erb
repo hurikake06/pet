@@ -1,0 +1,102 @@
+<style>
+  .container{
+    background-color:#004900;
+    background-color:transparent;
+    margin-left:10px;
+    margin-right:10px;
+    border: solid 3px white;
+    border-radius: 10px;
+  }
+  .user-list {
+    padding-left:2px;
+  }
+  .user-list h3{
+    color: black;
+  }
+  .user-list li{
+    padding: 1px;
+    display: block;
+    background-color: white;
+    margin-top: 1.2px;
+  }
+  .user-list li:nth-child(even){
+    background-color:#ddf3dd;
+  }
+  .user-list li:hover{
+    background-color:#216732;
+  }
+  .user-list li a{
+    display:block;
+    color: black;
+    font-size: 1.3em;
+  }
+  .user-list li a:hover{
+    text-decoration:none;
+    color:white;
+  }
+
+  .pet-list{
+
+  }
+  .pet-list .pet{
+    width:120px;
+    height:140px;
+    display:inline-block;
+    border:dotted 5px white;
+    margin:2px;
+    background-color: #eefaeb;
+    border-radius: 10px 0px 10px 0;
+  }
+  .pet-list .pet a{
+      display:block;
+      color: black;
+  }
+  .pet-list .pet .icon{
+    width:100px;
+    height:100px;
+    margin-top:2px;
+    margin-left:5px;
+    margin-right:5px;
+  }
+  .pet-list .pet p{
+    text-align:center;
+    color:black;
+    font-size:1.5em;
+  }
+</style>
+<div id='cgTitle'>
+  <h1>CuteGift</h1>
+  <h1><%= @user.name %>さん</h1>
+  <h2>home画面</h2>
+</div>
+<hr>
+<div class="container">
+  <!-- h3>おすすめ情報</h3-->
+  <h3 style="color:black;">ペット</h3>
+  <div class="pet-list">
+    <% Cg::Pet.all.each do |pet| %>
+      <div class="pet">
+        <a href="<%= show_pet_path petname: pet.petname %>">
+          <table>
+            <tr>
+              <td><%= image_tag(pet.icon, class:'icon') %></td>
+            </tr>
+            <tr>
+              <td><p><%= pet.name %></p></td>
+            </tr>
+          </table>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<div class="container">
+  <!-- h3>おすすめ情報</h3-->
+  <h3 style="color:black;">人気ホスト</h3>
+  <ul class="user-list">
+    <% Cg::User.all.where.not(id: @user.id).each do |user| %>
+    <li><a href="<%= show_path username: user.username %>"><%= user.name %></a></li>
+    <% end %>
+  </ul>
+</div>

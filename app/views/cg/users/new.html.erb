@@ -1,0 +1,10 @@
+<h1>新規ユーザ登録</h1>
+<p>ユーザ情報を入力してください</p>
+<div class="container">
+  <% if @saved.present? %>
+    <h3>登録が完了しました。</h3>
+    <p><%= @user&.to_json %></p>
+  <% else %>
+    <%= render partial: 'new_form', locals: { user: @user } %>
+  <% end %>
+</div>

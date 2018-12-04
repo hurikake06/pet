@@ -1,0 +1,69 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ *= require _blogpost
+ *= require _button
+ *= require _client
+ *= require _comment_box
+ *= require _common
+ *= require _config
+ *= require _cta
+ *= require _documentation
+ *= require _footer
+ *= require _forms
+ *= require _funfact
+ *= require _gallery
+ *= require _gmap
+ *= require _header
+ *= require _media_querries
+ *= require _navbar
+ *= require _portfolio
+ *= require _preloader
+ *= require _price_table
+ *= require _restaurant_menu
+ *= require _services_and_features
+ *= require _shop_items
+ *= require _shop_single_product
+ *= require _showcase
+ *= require _single_portfolio
+ *= require _slider
+ *= require _team
+ *= require _testimonial
+ *= require _typography
+ *= require _video_box
+ *= require _widgets
+ *= require style-rtl
+ *= require style
+
+ *= require animate
+ *= require bootstrap-theme
+ *= require bootstrap-theme.min
+ *= require bootstrap
+ *= require bootstrap.min
+ *= require font-awesome.min
+ *= require et-line-font
+ *= require flexslider
+ *= require magnific-popup
+ *= require owl.carousel
+ *= require owl.carousel.min
+ *= require owl.theme.default
+ *= require owl.theme.default.min
+ *= require owl.theme.green
+ *= require owl.theme.green.min
+
+ *= require_self
+ *= require_directory .
+*/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
