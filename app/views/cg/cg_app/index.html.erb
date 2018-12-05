@@ -4,7 +4,7 @@
     border-radius: 20px;
     margin: 20px 0px;
     text-align: center;
-    padding:5px;
+    padding: 5px;
   }
   .slide img{
     width: 80%;
@@ -13,7 +13,7 @@
 
   @keyframes backcoloranim_a {
     0% {background-color: #e8fce5;}
-    100% {background-color:white;}
+    100% {background-color: white;}
   }
 
   @keyframes backcoloranim_d {
@@ -22,118 +22,49 @@
   }
 
   .slide.active{
-    background-color:white;
+    background-color: white;
     animation: backcoloranim_a 0.8s ease 0s 1 alternate;
   }
 
   .slide.disable{
-    background-color:#e8fce5;
+    background-color: #e8fce5;
     animation: backcoloranim_d 0.8s ease 0s 1 alternate;
   }
+
   #pageContent{
-    max-width:none;
-    width:95%;
+    max-width: none;
+    width: 95%;
   }
-  .slide .loginLink{
+
+  .slide .loginlink{
     display: block;
     margin: 0 auto 20px auto;
     padding: 5px;
     font-size: 30px;
     color: gray;
     width: 400px;
-    background-color:#0000001c;
+    background-color: #0000001c;
     box-shadow: black 0 0 5px;
   }
-  .slide.active .loginLink{
-    background-color:white;
-  }
-  .slide .loginLink:hover{
-    text-decoration:none;
-    background-color:#c5c5c5;
+
+  .slide.active .loginlink{
+    background-color: white;
   }
 
+  .slide .loginlink:hover{
+    text-decoration: none;
+    background-color: #c5c5c5;
+  }
 
 </style>
-<script>
-  function getViewportOffset($e) {
-    var $window = $(window),
-      scrollLeft = $window.scrollLeft(),
-      scrollTop = $window.scrollTop(),
-      offset = {top:$e.offsetTop,left:$e.offsetLeft},
-      rect1 = { x1: scrollLeft, y1: scrollTop, x2: scrollLeft + $window.width(), y2: scrollTop + $window.height() },
-      rect2 = { x1: offset.left, y1: offset.top, x2: offset.left + $e.offsetWidth, y2: offset.top + $e.offsetHeight };
 
-    return {
-      left: offset.left - scrollLeft,
-      top: offset.top - scrollTop,
-      insideViewport: rect1.x1 < rect2.x2 && rect1.x2 > rect2.x1 && rect1.y1 < rect2.y2 && rect1.y2 > rect2.y1
-    };
-  }
-
-  var slides;
-  var slide_current;
-  var slide_current_index = 0;
-  var slide_top_timing_d = 0.4;
-  var slide_top_timing;
-  function nextPage(){
-    if(!$('html').is(':animated')){
-      var next = (slide_current_index + 1) % slides.length;
-      var pos = slides[next].offsetTop + slides[next].offsetHeight/2 - $(window).height()/2;
-      if(next == 0) pos = 0;
-      $("html,body").animate({scrollTop:pos});
-    }
-  }
-  function prevPage(){
-    if(!$('html').is(':animated')){
-      var next = (slide_current_index - 1 + slides.length) % slides.length;
-      var pos = slides[next].offsetTop + slides[next].offsetHeight/2 - $(window).height()/2;
-      if(next == 0) pos = 0;
-      $("html,body").animate({scrollTop:pos});
-    }
-  }
-  $(function(){
-    slides = $("#slides > .slide");
-    slide_current = $("#slides > .active")[0];
-    document.addEventListener("mousewheel", function(e) {
-        if(e.deltaY > 0){
-          nextPage();
-        }else{
-          prevPage();
-        }
-        e.preventDefault();
-    });
-    $(window).scroll(function() {
-      slide_top_timing = $(window).height() * slide_top_timing_d;
-      console.log("scroll");
-
-      var temp_current = null;
-      for(var i = 0;i < slides.length; i++ ){
-        if(getViewportOffset(slides[i]).top < slide_top_timing){
-          temp_current = slides[i];
-          slide_current_index = i;
-        }
-      }
-
-      if(temp_current != null){
-        if(temp_current != slide_current){
-          console.log("change slide");
-          slide_current.setAttribute("class", "slide disable");
-          temp_current.setAttribute("class", "slide active");
-          slide_current = temp_current;
-        }
-      }
-    });
-  });
-
-</script>
+<script src="/assets/slides.js"></script>
 
 <h1>CuteGiftへようこそ</h1>
 <div id="slides">
   <div class='slide active'>
     <h1 style='font-size:48px;line-height:3;'>～ペットの癒しをすぐそこに～</h1>
-      <a href="<%= login_path %>" class="loginLink">
-        今すぐ始める
-      </a>
+    <%= link_to '今すぐ始める', login_path, class: "loginlink" %>
   </div>
   <div class='slide'>
     <h3 style='font-size:36px;line-height:4;'>CuteGiftとは</h3>
