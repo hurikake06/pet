@@ -6,18 +6,17 @@
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
     margin-left: auto;
     margin-right: auto;
-    padding : 20px ;
+    padding: 20px ;
   }
 
   .box_wrapper .profile_icon{
     text-align:center;
-    padding : 20px ;
+    padding: 20px ;
   }
 
   .box_wrapper img{
     width:100px;
     height:100px;
-
   }
 
   .box_wrapper h1 {
@@ -37,40 +36,45 @@
   }
 
   .pet-list{
-    text-align:center;
+    text-align: center;
   }
 
   .pet-list .pet{
-    width:120px;
-    height:140px;
-    display:inline-block;
-    border:dotted 5px white;
-    margin:2px;
+    width: 120px;
+    height: 140px;
+    display: inline-block;
+    border: dotted 5px white;
+    margin: 2px;
     background-color: #eefaeb;
     border-radius: 10px 0px 10px 0;
   }
 
   .pet-list .pet a{
-      display:block;
-      color: black;
+    display: block;
+    color: black;
   }
 
   .pet-list .pet .icon{
-    width:100px;
-    height:100px;
-    margin-top:2px;
-    margin-left:5px;
-    margin-right:5px;
+    width: 100px;
+    height: 100px;
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
   .pet-list .pet p{
-    text-align:center;
-    color:black;
-    font-size:1.5em;
+    text-align: center;
+    color: black;
+    font-size: 1.5rem;
   }
 
   .edit_prof{
-    text-align:right;
+    text-align: right;
+    margin-top: 2rem;
+  }
+
+  .edit_prof a{
+    display: block;
   }
 </style>
 
@@ -109,9 +113,8 @@
     <p>urlが間違っています</p>
   <% end %>
   <div class="edit_prof">
+    <%= link_to '新規ペット追加', mypage_pet_new_path,:class=> 'mb-1'%>
     <br>
-    <%= link_to '新規ペット追加', mypage_pet_new_path %>
-    <br><br>
     <%= link_to 'プロフィールを編集', setting_path %>
   </div>
 </div>
