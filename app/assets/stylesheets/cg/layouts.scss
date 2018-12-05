@@ -20,7 +20,7 @@ footer {
   }
 }
 
-.container-fluid{
+.container-fluid {
   background-color: transparent;
   color: gray;
 }
@@ -52,7 +52,7 @@ footer {
   max-width: 800px;
 }
 
-.title_logo{
+.title_logo {
   width: 350px;
   height: 150px;
   display: block;
@@ -61,14 +61,14 @@ footer {
   padding: 10px;
 }
 
-.side_right_color{
+.side_right_color {
   height: 100%;
   width: 50px;
   margin-left: auto;
   background-color: #C7DDAE;
 }
 
-.side_left_color{
+.side_left_color {
   height: 100%;
   width: 50px;
   margin-right: auto;
@@ -163,9 +163,7 @@ footer {
   background: none;
 }
 
-.navbar-header{}
-
-.btn-secondary{
+.btn-secondary {
   position: fixed;            /* ヘッダーの固定 */
   top: 30px;                   /* 位置(上0px) */
   right: 30px;                 /* 位置(右0px) */
