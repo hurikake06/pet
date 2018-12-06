@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -75,6 +76,12 @@ Cg::User.create!(
   share_user_info: 12,
   share_host_info: 15,
   detail_attributes: {
+    last_name: 'ペットショップ',
+    first_name: 'パトラ',
+    address: '愛知県〇〇市〇〇町123-1',
+    document_info: 101,
+    credit_info: 101,
+    country_info: 9
   }
 )
 Cg::User.create!(
@@ -83,15 +90,23 @@ Cg::User.create!(
   username: 'taro',
   email: 'taro@trident.com',
   password: 'Pass_taro0',
-  about: '兄です',
+  about: 'トイプードルが好きです。',
   share_user_info: 13,
   share_host_info: 15,
   detail_attributes: {
+    last_name: 'トライデント',
+    first_name: '太郎',
+    address: '愛知県△△区△△町123-1',
+    document_info: 101,
+    credit_info: 101,
+    age: 21,
+    sex_info: 7,
+    country_info: 9
   }
 )
 Cg::User.create!(
   id: 6,
-  name: 'トライデント ﾀﾞﾒ太郎',
+  name: 'トライデント ダメ太郎',
   username: 'dame',
   email: 'dame@trident.com',
   password: 'Pass_taro0',
@@ -99,6 +114,14 @@ Cg::User.create!(
   share_user_info: 12,
   share_host_info: 14,
   detail_attributes: {
+    last_name: 'トライデント',
+    first_name: 'ダメ太郎',
+    address: '愛知県△△区△△町123-1',
+    document_info: 100,
+    credit_info: 100,
+    age: 15,
+    sex_info: 7,
+    country_info: 9
   }
 )
 
