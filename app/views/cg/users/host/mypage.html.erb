@@ -36,7 +36,13 @@
   }
 
   .pet-list{
+    border: solid white 2px;
+    border-radius: 20px;
     text-align: center;
+  }
+
+  .pet-list h3{
+    margin: 2rem;
   }
 
   .pet-list .pet{
@@ -76,10 +82,47 @@
   .edit_prof a{
     display: block;
   }
+
+  .user_detail{
+    margin-top: 50px;
+  }
+
+  .user_detail p{
+    text-align: left;
+  }
+
+  .user_detail tr.empty{
+    background-color: #fce6e6;
+  }
+
+  .share_info{
+    text-align: center;
+    width: 28rem;
+    padding: 3px;
+    background-color: #c2f5ba;
+    margin-left: auto;
+    margin-bottom: 20px;
+    border: solid 2px gray;
+    border-radius: 30px;
+    font-size: 24px;
+  }
+
+  .share_info_false{
+    background-color: #bcd4f4;
+  }
 </style>
 
 <% if @user.present? %>
   <div class="box_wrapper">
+    <% if @user.share_host_info == 15 %>
+      <div class="share_info">
+        シェア可能（ホスト）
+      </div>
+    <% else %>
+      <div class="share_info share_info_false">
+        シェア不可（ホスト）
+      </div>
+    <% end %>
     <h1><%= @user.name %></h1>
     <div class="profile_icon">
       <%= image_tag(@user.icon, class: 'icon') %>
@@ -88,12 +131,12 @@
     <p>E-mail : <%= @user.email %></p>
     <p>About   : <%= @user.about %></p>
     <br>
+    <div class="pet-list">
     <h3>ペットリスト</h3>
-    <% if @user.pets.present? %>
-      <div class="pet-list">
+      <% if @user.pets.present? %>
         <% @user.pets.each do |pet| %>
           <div class="pet">
-            <a href="<%= show_pet_path petname: pet.petname %>">
+            <a href="<%= mypage_pet_path petname: pet.petname %>">
               <table>
                 <tr>
                   <td><%= image_tag(pet.icon, class:'icon') %></td>
@@ -105,16 +148,52 @@
             </a>
           </div>
         <% end %>
-      </div>
-    <% else %>
-      <p>ペットが登録されていません</p>
-    <% end %>
+      <% else %>
+        <p>ペットは登録されていません</p>
+      <% end %>
+    </div>
+
+    <div class="user_detail">
+      <h2>詳細情報</h2>
+      <p>(※企業の方は「性別」「年齢」の記載は不要です)</p>
+      <% detail = @user.detail %>
+      <table class='table'>
+        <tr <%= 'class = empty' unless detail.last_name.present? %>>
+          <th>姓</th>
+          <td><%= detail.last_name.presence || '未登録' %></td>
+        </tr>
+        <tr <%= 'class = empty' unless detail.first_name.present? %>>
+          <th>名</th>
+          <td><%= detail.first_name.presence || '未登録' %></td>
+        </tr>
+        <tr <%= 'class = empty' unless detail.age.present? %>>
+          <th>年齢</th>
+          <td><%= detail.age.presence || '未登録' %></td>
+        </tr>
+        <tr <%= 'class = empty' if detail.sex_info == 100 %>>
+          <th>性別</th>
+          <td><%= detail.sex.value %></td>
+        </tr>
+        <tr <%= 'class = empty' if detail.country_info == 100 %>>
+          <th>国籍</th>
+          <td><%= detail.country.value %></td>
+        </tr>
+        <tr <%= 'class = empty' unless detail.address.present? %>>
+          <th>住所</th>
+          <td><%= detail.address.presence || '未登録' %></td>
+        </tr>
+        <tr <%= 'class = empty' if detail.document_info == 100 %>>
+          <th>本人確認書類</th>
+          <td><%= detail.document.value %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="edit_prof">
+      <%= link_to '新規ペット追加', mypage_pet_new_path, class: 'mb-1' %>
+      <br>
+      <%= link_to 'プロフィールを編集', setting_path %>
+    </div>
   <% else %>
     <p>urlが間違っています</p>
   <% end %>
-  <div class="edit_prof">
-    <%= link_to '新規ペット追加', mypage_pet_new_path, class: 'mb-1' %>
-    <br>
-    <%= link_to 'プロフィールを編集', setting_path %>
-  </div>
 </div>
