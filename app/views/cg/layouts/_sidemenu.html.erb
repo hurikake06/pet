@@ -1,37 +1,88 @@
-
-
-    <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-            <a href="#">
-                CuteGift
-            </a>
-        </li>
+<ul class="sidebar-nav">
+  <li class="sidebar-brand">
+      <a href="<%= root_path %>">
+          CuteGift
+      </a>
+  </li>
+  <% if session[:login_state] == 'OK' %>
+    <% user = Cg::User.find(session[:user_id]) %>
+    <%= link_to mypage_root_path do %>
+      <li>
+        <%= image_tag(user.icon, size: '40x40') %>
+        <%= user.name %>さん
+      </li>
+    <% end %>
+    <% unless user.pets.empty? %>
+      <% user.pets.each do |pet| %>
         <li>
-            <%= image_tag("icon/person/b_12.png",:size => "40x40")%>
-
+          <%= link_to setting_pet_path petname: pet.petname do %>
+            <%= image_tag(pet.icon, size: '40x40') %>
+            <%= pet.name %>
+          <% end %>
         </li>
-        <li>
-            <a href="#">検索</a>
-        </li>
-        <li>
-            <a href="#">ランキング</a>
-        </li>
-        <li>
-            <a href="#">新着</a>
-        </li>
-        <li>
-            <a href="#">イベント</a>
-        </li>
-        <li>
-            <a href="#">設定</a>
-        </li>
-        <li>
-            <a href="#">ヘルプ</a>
-        </li>
-        <li>
-            <a href="#">ご意見、ご要望</a>
-        </li>
-    </ul>
+      <% end %>
+    <% end %>
+    <hr>
+    <li>
+        <%= link_to 'logout', logout_path %>
+    </li>
+    <hr>
+    <li>
+      <a href="#">お知らせ</a>
+    </li>
+    <li>
+      <a href="<%= setting_root_path %>">設定</a>
+    </li>
+    <li>
+      <a href="#">CuteGiftについて</a>
+    </li>
+    <li>
+      <a href="#">ヘルプ</a>
+    </li>
+    <hr>
+    <li>
+      <a href="#">利用規約</a>
+    </li>
+    <li>
+      <a href="#">サポート</a>
+    </li>
+    <li>
+      <a href="#">プライバシーポリシー</a>
+    </li>
+    <li>
+      <a href="#">ご意見・ご要望</a>
+    </li>
+  <% else %>
+    <li>
+      <%= image_tag("icon/person/b_12.png",:size => "40x40")%>
+      ゲスト
+    </li>
+    <hr>
+    <li>
+        <%= link_to 'login', login_path %>
+    </li>
+    <hr>
+    <li>
+      <a href="#">CuteGiftについて</a>
+    </li>
+    <li>
+      <a href="#">ヘルプ</a>
+    </li>
+    <hr>
+    <li>
+      <a href="#">利用規約</a>
+    </li>
+    <li>
+      <a href="#">サポート</a>
+    </li>
+    <li>
+      <a href="#">プライバシーポリシー</a>
+    </li>
+    <li>
+      <a href="#">ご意見・ご要望</a>
+    </li>
+  <% end %>
+</ul>
 
 <script>
 $(function(){
