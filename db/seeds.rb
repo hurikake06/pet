@@ -84,6 +84,7 @@ Cg::User.create!(
     country_info: 9
   }
 )
+
 Cg::User.create!(
   id: 5,
   name: 'トライデント 太郎',
@@ -104,6 +105,7 @@ Cg::User.create!(
     country_info: 9
   }
 )
+
 Cg::User.create!(
   id: 6,
   name: 'トライデント ダメ太郎',
@@ -187,11 +189,13 @@ Cg::Pet.create!(
   about: 'ここ',
   share_pet_info: 17,
   detail_attributes: {
+    medical_info: 101,
     fixed_cost: 1000,
     variable_cost: 1500,
     share_about: '超人気なので少し値段が高いです。'
   }
 )
+
 Cg::Pet.create!(
   id: 6,
   user_id: 4,
@@ -202,11 +206,13 @@ Cg::Pet.create!(
   about: 'もも',
   share_pet_info: 17,
   detail_attributes: {
+    medical_info: 101,
     fixed_cost: 1000,
     variable_cost: 800,
     share_about: 'ベテラン犬。おとなしいです。'
   }
 )
+
 Cg::Pet.create!(
   id: 7,
   user_id: 4,
@@ -217,6 +223,7 @@ Cg::Pet.create!(
   about: 'まろん',
   share_pet_info: 17,
   detail_attributes: {
+    medical_info: 101,
     fixed_cost: 1000,
     variable_cost: 500,
     share_about: '新人。若いのでボール遊びなど可。'
@@ -233,6 +240,7 @@ Cg::Pet.create!(
   about: 'コタロウです',
   share_pet_info: 17,
   detail_attributes: {
+    medical_info: 101,
     fixed_cost: 1200,
     variable_cost: 1000,
     share_about: '頭のいい子です。お金持ちと子供にやさしい。'
@@ -246,9 +254,12 @@ Cg::Pet.create!(
   petname: 'tama',
   pets_sex_info: 26,
   type_id: 2,
-  about: 'タマです',
+  about: '真っ白い猫です。お魚はくわえません。',
   share_pet_info: 16,
-  detail_attributes: {}
+  detail_attributes: {
+    variable_cost: 1000,
+    share_about: '室内限定貸し出しを予定しています。'
+  }
 )
 
 Cg::Pet.create!(
@@ -280,6 +291,7 @@ Cg::PetsFacility.create!(
   pet_id: 5,
   facility_id: 9
 )
+
 Cg::PetsFacility.create!(
   id: 4,
   pet_id: 6,
@@ -297,6 +309,7 @@ Cg::PetsFacility.create!(
   pet_id: 6,
   facility_id: 9
 )
+
 Cg::PetsFacility.create!(
   id: 7,
   pet_id: 7,

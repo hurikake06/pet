@@ -1,13 +1,121 @@
-<h1>~pet_mypage~</h1>
-<% if @pet.present? %>
-  <%= image_tag(@pet.icon, class:'icon') %>
-  <h2><%= @pet.name %></h2>
-  <Hr>
-  <ul>
-    <li><%= @pet.petname %></li>
-    <li><%= @pet.type_id %></li>
-    <li><%= @pet.about %></li>
-  </ul>
-<% else %>
-  <p>Pet not found</p>
-<% end %>
+<style media="screen">
+  .box_wrapper{
+    width: 85%;
+    background: #f4f4f4;
+    border-left: solid 6px #5bb7ae;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px ;
+  }
+
+  .box_wrapper .profile_icon{
+    text-align: center;
+    padding: 20px ;
+  }
+
+  .box_wrapper img{
+    width: 100px;
+    height: 100px;
+  }
+
+  .box_wrapper h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .box_wrapper h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .box_wrapper p {
+    text-align: center;
+  }
+
+  .edit_prof{
+    text-align: right;
+  }
+
+  .pet_detail{
+    margin-top: 50px;
+  }
+
+  .pet_detail p{
+    text-align: left;
+  }
+
+  .pet_detail tr.empty{
+    background-color: #fce6e6;
+  }
+
+  .share_info{
+    text-align: center;
+    width: 28rem;
+    padding: 3px;
+    background-color: #c2f5ba;
+    margin-left: auto;
+    margin-bottom: 20px;
+    border: solid 2px gray;
+    border-radius: 30px;
+    font-size: 24px;
+  }
+
+  .share_info_false{
+    background-color: #bcd4f4;
+  }
+</style>
+
+<div class="box_wrapper">
+  <% if @pet.present? %>
+    <% if @pet.share_pet_info == 17 %>
+      <div class="share_info">
+        シェア可能（ユーザー）
+      </div>
+    <% else %>
+      <div class="share_info share_info_false">
+        シェア不可（ユーザー）
+      </div>
+    <% end %>
+
+    <h1><%= @pet.name %></h1>
+    <div class="profile_icon">
+      <%= image_tag(@pet.icon, class: 'icon') %>
+    </div>
+    <p><%= @pet.petname %></p>
+    <p>sex : <%= @pet.sex.value %></p>
+    <p>type   : <%= @pet.type.name %></p>
+    <p>about   : <%= @pet.about %></p>
+
+    <div class="pet_detail">
+      <h2>詳細情報</h2>
+      <% detail = @pet.detail %>
+      <table class='table'>
+        <tr <%= 'class = empty' unless detail.fixed_cost.present? %>>
+          <th>シェアする際の頭金</th>
+          <td><%= detail.fixed_cost.presence || '未登録' %></td>
+        </tr>
+        <tr <%= 'class = empty' unless detail.variable_cost.present? %>>
+          <th>1時間あたりの料金</th>
+          <td><%= detail.variable_cost.presence || '未登録' %></td>
+        </tr>
+        <tr <%= 'class = empty' if detail.medical_info == 100 %>>
+          <th>1年以内の健康診断</th>
+          <td><%= detail.medical.value %></td>
+        </tr>
+        <tr>
+          <th>その他 注意事項</th>
+          <td><%= detail.share_about.presence || '未登録' %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="edit_prof">
+      <br>
+      <%= link_to 'プロフィールを編集', setting_pet_path(petname: @pet.petname) %>
+    </div>
+  <% else %>
+    <p>Pet not found</p>
+  <% end %>
+</div>

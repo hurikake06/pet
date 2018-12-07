@@ -47,7 +47,7 @@
 
   .pet-list .pet{
     width: 120px;
-    height: 140px;
+    height: 160px;
     display: inline-block;
     border: dotted 5px white;
     margin: 2px;
@@ -107,6 +107,12 @@
     font-size: 24px;
   }
 
+  .pet .share_info{
+    font-size: 12px;
+    width: 10rem;
+    margin: 0 auto;
+  }
+
   .share_info_false{
     background-color: #bcd4f4;
   }
@@ -136,6 +142,15 @@
       <% if @user.pets.present? %>
         <% @user.pets.each do |pet| %>
           <div class="pet">
+            <% if pet.share_pet_info == 17 %>
+              <div class="share_info">
+                シェア可能
+              </div>
+            <% else %>
+              <div class="share_info share_info_false">
+                シェア不可
+              </div>
+            <% end %>
             <a href="<%= mypage_pet_path petname: pet.petname %>">
               <table>
                 <tr>
