@@ -1,24 +1,62 @@
-<style>
-  .profile{
-    padding-left:10px;
+<style media="screen">
+  .box_wrapper{
+    width: 85%;
+    background: #f4f4f4;
+    border-left: solid 6px #5bb7ae;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px ;
   }
 
-  .profile table{}
-
-  .profile .text_content{
-    margin-left:20px;
+  .box_wrapper .profile_icon{
+    text-align: center;
+    padding: 20px ;
   }
 
-  .profile .name{
-    font-size:1.8em;
-    font-weight: bold;
-    text-shadow: 0px 0px 5px white;
+  .box_wrapper img{
+    width: 100px;
+    height: 100px;
   }
 
-  .profile .petname{
-    font-size:1.2em;
-    font-weight: bold;
-    text-shadow: 0px 0px 5px white;
+  .box_wrapper h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .box_wrapper h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  .box_wrapper p {
+    text-align: center;
+  }
+
+  .pet_detail{
+    margin-top: 50px;
+  }
+
+  .pet_detail p{
+    text-align: left;
+  }
+
+  .share_info{
+    text-align: center;
+    width: 28rem;
+    padding: 3px;
+    background-color: #c2f5ba;
+    margin-left: auto;
+    margin-bottom: 20px;
+    border: solid 2px gray;
+    border-radius: 30px;
+    font-size: 24px;
+  }
+
+  .share_info_false{
+    background-color: #bcd4f4;
   }
 
   .square_btn{
@@ -40,48 +78,68 @@
     border-bottom: none;
   }
 
-  .share{
-    margin:5px;
-    margin-top:10px;
-    margin-left:20px;
+  .pet_user{
+    border: solid 2px white;
+    border-radius: 10px;
+    padding: 5px;
+    height: 65px;
+    display: inline-block;
+    margin-right: auto;
+    background-color: #ffffff9c;
   }
 
-  .about {
-    display: inline-block;
-    margin: 5px;
-    padding: 3px;
-    background-color: #f9fff3;
-    border: green 2px solid;
-    border-radius: 5px;
-    width: 50%;
-    min-height: 5em;
-    color: black;
-    font-size: 1.2em;
+  .pet_user .icon{
+    width: 50px;
+    height: 50px;
   }
 </style>
 
-<!-- h1>~pet_show~</h1-->
-<% if @pet.present? %>
-  <div class="profile">
-    <table>
-      <tr>
-        <td rowspan="2"><%= image_tag(@pet.icon, class:'icon') %></td>
-        <td><h2 class="text_content name"><%= @pet.name %></h2></td>
-      </tr>
-        <tr>
-          <td class="text_content petname"><%= @pet.petname %></td>
-        </tr>
-    </table>
-  </div>
-  <div>
-    <% if share_info_flag && @pet.share_pet_info == 17 %>
-    <div class="share">
-      <a href="<%= share_new_path @pet.petname %>" class ="square_btn">シェア申請</a>
-    </div>
+<div class="box_wrapper">
+  <% if @pet.present? %>
+    <%= link_to show_path username: @pet.user.username do %>
+      <div class="pet_user">
+        <%= image_tag(@pet.user.icon, class: 'icon') %>
+        <%= @pet.user.name %>
+      </div>
     <% end %>
-    <h3>自己紹介</h3>
-    <p class="about"><%= @pet.about %></p>
-  </div>
-<% else %>
-  <p>Pet not found</p>
-<% end %>
+    <h1><%= @pet.name %></h1>
+    <div class="profile_icon">
+      <%= image_tag(@pet.icon, class: 'icon') %>
+    </div>
+    <p><%= @pet.petname %></p>
+    <p>sex : <%= @pet.sex.value %></p>
+    <p>type   : <%= @pet.type.name %></p>
+    <p>about   : <%= @pet.about %></p>
+
+    <% if share_info_flag && @pet.share_pet_info == 17 %>
+      <div class="share">
+        <a href="<%= share_new_path @pet.petname %>" class ="square_btn">シェア申請</a>
+      </div>
+    <% end %>
+
+    <div class="pet_detail">
+      <h2>詳細情報</h2>
+      <% detail = @pet.detail %>
+      <table class='table'>
+        <tr>
+          <th>シェアする際の頭金</th>
+          <td><%= detail.fixed_cost.presence || '未登録' %></td>
+        </tr>
+        <tr>
+          <th>1時間あたりの料金</th>
+          <td><%= detail.variable_cost.presence || '未登録' %></td>
+        </tr>
+        <tr>
+          <th>1年以内の健康診断</th>
+          <td><%= detail.medical.value %></td>
+        </tr>
+        <tr>
+          <th>その他 注意事項</th>
+          <td><%= detail.share_about.presence || '未登録' %></td>
+        </tr>
+      </table>
+    </div>
+  <% else %>
+    <p>Pet not found</p>
+  <% end %>
+</div>
