@@ -1,7 +1,12 @@
+<style media="screen">
+  .navbar-default .navbar-nav li a{
+    font-size: 1.75rem;
+  }
+</style>
+
 <ul class="nav navbar-nav">
   <% if session[:login_state] == 'OK' %>
-    <li><a href="<%= mypage_root_path %>">myPage</a></li>
-    <li><%= link_to 'ChangeMode', change_user_mode_path(user_mode: 'HOST') %></li>
+    <li><a href="<%= mypage_root_path %>">マイページ</a></li>
   <% end %>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">シェアについて<span class="caret"></span></a>
@@ -17,21 +22,20 @@
       <% end %>
     </ul>
   </li>
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">カテゴリー<span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <li><a href="#">ペットの種類から探す</a></li>
-      <li><a href="#">場所から探す</a></li>
-    </ul>
+</ul>
+<ul class="nav navbar-nav">
+  <li><a href="#">ペットの種類から探す</a></li>
+  <li><a href="#">場所から探す</a></li>
+  <li>
+    <form class="navbar-form" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="キーワードから検索">
+      </div>
+      <button type="submit" class="btn btn-default">検索</button>
+    </form>
   </li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-  <li><a href="">やることリスト</a></li>
-  <li><a href="">スケジュール</a></li>
+    <li><a href="">やることリスト</a></li>
+    <li><a href="">スケジュール</a></li>
 </ul>
-<form class="navbar-form navbar-left" role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>

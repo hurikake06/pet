@@ -1,10 +1,15 @@
+<style media="screen">
+  .navbar-default .navbar-nav li a{
+    font-size: 1.75rem;
+  }
+</style>
+
 <ul class="nav navbar-nav">
   <% if session[:login_state] == 'OK' %>
-    <li><a href="<%= mypage_root_path %>">myPage</a></li>
-    <li><%= link_to 'ChangeMode', change_user_mode_path(user_mode: 'USER') %></li>
+    <li><a href="<%= mypage_root_path %>">マイページ</a></li>
   <% end %>
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Share <span class="caret"></span></a>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">シェアについて <span class="caret"></span></a>
     <ul class="dropdown-menu">
       <li><a href="#">シェアとは？</a></li>
       <li><a href="#">利用規約</a></li>
