@@ -2,6 +2,43 @@
   .navbar-default .navbar-nav li a{
     font-size: 1.75rem;
   }
+  .form1{
+    position: relative;
+    max-width: 270px;
+    margin-bottom: 15px;
+  }
+  .sbox{
+    left: 0;
+    top: 0;
+    outline: 0;
+    height: 55px;
+    padding: 0 10px;
+    border: none;
+    background: #eee;
+  }
+  .sbtn{
+    width: 70px;
+    height: 55px;
+    left: 270px;
+    top: 0;
+    background: cyan;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .sbtn:hover{
+    color: #666;
+  }
+  .search_category{
+    background: #eee;
+    height: 55px;
+    border-right: solid 2px lightgray;
+  }
+  .search_area{
+    border: solid 5px lightgray;
+    border-radius: 10px;
+  }
 </style>
 
 <ul class="nav navbar-nav">
@@ -23,15 +60,18 @@
     </ul>
   </li>
 </ul>
-<ul class="nav navbar-nav">
-  <li><a href="#">ペットの種類から探す</a></li>
-  <li><a href="#">場所から探す</a></li>
+<ul class="nav navbar-nav search_area">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle search_category" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">検索カテゴリ<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="#">ペットの種類から探す</a></li>
+      <li><a href="#">場所から探す</a></li>
+    </ul>
+  </li>
   <li>
-    <form class="navbar-form" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="キーワードから検索">
-      </div>
-      <button type="submit" class="btn btn-default">検索</button>
+    <form class="form">
+      <input class="sbox"  type="text" placeholder="キーワードを入力">
+      <button type="submit" class="sbtn">検索</button>
     </form>
   </li>
 </ul>
