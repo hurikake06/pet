@@ -3,7 +3,7 @@
 class Cg::PetsController < Cg::LayoutsController
   def new
     login_check
-    mode_check
+
     return unless params[:cg_pet].present?
 
     @pet = Cg::Pet.new(pet_params)
@@ -12,16 +12,13 @@ class Cg::PetsController < Cg::LayoutsController
 
   def mypage
     login_check
-    mode_check
-    @pet = Cg::Pet.find_by(petname: params[:petname])
+    pet = Cg::Pet.find_by(petname: params[:petname])
+    @pet = pet.user.id == session[:user_id]? pet : nil
   end
 
   def show
     @pet = Cg::Pet.find_by(petname: params[:petname])
-  end
-
-  def mode_check
-    wrong_user_mode unless session[:user_mode] == 'HOST'
+    redirect_to mypage_pet_path @pet.petname if session[:login_state] == 'OK' && session[:user_id] == @pet.user.id
   end
 
   def edit

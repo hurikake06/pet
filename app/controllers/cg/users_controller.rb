@@ -23,7 +23,7 @@ class Cg::UsersController < Cg::LayoutsController
     if user.present? && user.password == params[:cg_user][:password]
       session[:user_id] = user.id
       session[:login_state] = 'OK'
-      redirect_to '/CuteGift/mypage'
+      redirect_to mypage_root_path
     else
       @error_code = '入力内容が間違っています'
       render 'cg/users/login'
@@ -32,20 +32,13 @@ class Cg::UsersController < Cg::LayoutsController
 
   def mypage
     login_check
-    @user = Cg::User.find_by(id: session[:user_id])
-    render 'cg/users/host/mypage' if session[:user_mode] == 'HOST'
+    @user = Cg::User.find(session[:user_id])
   end
 
   def show
     user = Cg::User.find_by(username: params[:username])
     return unless user.present?
-
-    if session[:login_state] == 'OK' && session[:user_id] == user[:id]
-      redirect_to '/CuteGift/mypage'
-    else
-      @user = user
-      render 'cg/users/host/show' if session[:user_mode] == 'HOST'
-    end
+    redirect_to mypage_root_path if session[:login_state] == 'OK' && session[:user_id] == user[:id]
   end
 
   def edit
