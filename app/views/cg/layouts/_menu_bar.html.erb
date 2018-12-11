@@ -1,6 +1,12 @@
+<style media="screen">
+  .navbar-default .navbar-nav li a {
+    font-size: 1.75rem;
+  }
+</style>
+
 <ul class="nav navbar-nav">
   <% if session[:login_state] == 'OK' %>
-    <li><a href="<%= mypage_root_path %>">myPage</a></li>
+    <li><a href="<%= mypage_root_path %>">マイページ</a></li>
   <% end %>
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">シェアについて<span class="caret"></span></a>
@@ -17,51 +23,14 @@
     </ul>
   </li>
 </ul>
-<ul class="nav navbar-nav">
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ペットの種類から探す<span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <% Cg::Type.all.each do |type| %>
-        <li><a href="#"><%= type.name %></a></li>
-      <% end %>
-    </ul>
-  </li>
-</ul>
-<ul class="nav navbar-nav">
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">場所から探す<span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <li><a href="#">北海道</a></li>
-      <li><a href="#">青森</a></li>
-      <li><a href="#">岩手</a></li>
-    </ul>
-  </li>
-</ul>
-<ul class="nav navbar-nav navbar-right">
-  <li><a href="#">お知らせ</a></li>
-</ul>
-<!-- <form class="navbar-form navbar-left" role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form> -->
-<ul class="nav navbar-nav navbar-right">
-  <% if session[:login_state] == 'OK' %>
-  <li><a href="<%= change_user_mode_path(user_mode: "HOST") %>">ChangeMode</a></li>
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      <%= Cg::User.find_by(:id => session[:user_id])[:name]%>さん<span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu">
-      <li><a href="<%= logout_path %>">Logout</a></li>
-      <li><a href="<%= mypage_root_path %>">My Page</a></li>
-      <li><a href="#">Something</a></li>
-      <li role="separator" class="divider"></li>
-      <li><a href="<%= setting_root_path %>">Setting</a></li>
-    </ul>
-  </li>
-  <% else %>
-    <li><a href="/CuteGift/login">Login</a></li>
-  <% end %>
-</ul>
+<% if session[:login_state] == 'OK' %>
+  <ul class="nav navbar-nav search_area">
+    <li>
+      <%= link_to image_tag("icon/etc/b_42.png",:size => "25x25")%>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+      <li><a href="">やることリスト</a></li>
+      <li><a href="">スケジュール</a></li>
+  </ul>
+<% end %>
