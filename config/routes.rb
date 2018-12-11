@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root to: 'cg/cg_app#index'
     get 'index' => 'cg/cg_app#index'
     get 'login' => 'cg/users#login'
-    post 'login/:user_mode' => 'cg/users#pass_check', as: 'login_request'
+    post 'login' => 'cg/users#pass_check'
     get 'logout' => 'sessions#destroy'
     get 'ChangeMode/:user_mode' => 'sessions#change_user_mode', as: 'change_user_mode'
 

@@ -3,7 +3,7 @@
 <Hr>
   <div class="container">
     <h2>ユーザ名とパスワードを入力してください</h2>
-    <%= render partial: 'cg/users/login_form', locals: { error_code: @error_code, user: @user , login_request_path: method(:login_request_path)} %>
+    <%= render partial: 'cg/users/login_form', locals: { error_code: @error_code, user: @user } %>
   </div>
 <Hr>
 <%= link_to(user_new_path) do %>
