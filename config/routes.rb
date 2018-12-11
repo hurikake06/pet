@@ -55,6 +55,10 @@ Rails.application.routes.draw do
       get ':petname', to: '/cg/dm_groups#show'
       post ':petname', to: '/cg/dm#new'
     end
+
+    namespace :search do
+      root to: '/cg/searchs#index'
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
