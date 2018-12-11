@@ -34,8 +34,13 @@
   }
 
   .btn-secondary{
-    top: 56px;
+    top: 60px;
     right:50px;
+  }
+
+  .navbar_toggle_button{
+    background: none;
+    border: none;
   }
 
 </style>
@@ -48,7 +53,7 @@
     <div class="container-fluid">
       <%= image_tag("icon/etc/b_33.png",:size => "50x50",:class =>"btn btn-secondary",:id =>"menu-toggle") %>
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed navbar_toggle_button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <%= image_tag("icon/etc/b_73.png",:size => "20x20") %>
         </button>
         <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
