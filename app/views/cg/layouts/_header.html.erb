@@ -1,5 +1,4 @@
 <style>
-
   .fixed .navbar>:not(.container-fluid){
     display: none;
   }
@@ -34,6 +33,11 @@
     transition: none;
   }
 
+  .btn-secondary{
+    top: 56px;
+    right:50px;
+  }
+
 </style>
 <header>
   <div id="navbar-space" style="height: 210px;"></div>
@@ -47,10 +51,7 @@
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <%= image_tag("icon/etc/b_73.png",:size => "20x20") %>
         </button>
         <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
         <!-- <a class="navbar-brand" href="<%= index_path %>">CuteGift</a> -->
