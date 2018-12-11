@@ -1,7 +1,7 @@
 <style>
 
   .fixed .navbar>:not(.container-fluid){
-    display:none;
+    display: none;
   }
 
   .navbar{
@@ -17,12 +17,12 @@
     background: linear-gradient(to bottom, #ffffffbd 0, #ffffff6e 100%);
     position: fixed;
     top: 0;
-    margin-left:0px;
+    margin-left: 0px;
     transition: all 0.5s ease;
   }
 
   .fixed.toggled .navbar{
-    margin-left:250px;
+    margin-left: 250px;
     transition: all 0.5s ease;
   }
 
@@ -68,14 +68,19 @@
     </div><!-- /.container-fluid -->
   </nav>
   <script>
+
     $(window).load(function(){
       var $navbar = $(".navbar")[0];
+
       $("#navbar-space").animate({height: $navbar.offsetTop + $navbar.offsetHeight + "px"});
+      // ヘッダー箇所の空間のheightの調整
+
       var $navbar_header = $(".navbar-header")[0];
       let scroll = $navbar_header.offsetTop;
+      var $window = $(window);
+      var $body = $("body");
+
       $(window).scroll(function() {
-        var $window = $(window);
-        var $body = $("body");
         if($window.scrollTop() > scroll){
           $body.addClass("fixed");
           if($body.hasClass("toggled")){
@@ -93,5 +98,6 @@
         }
       });
     });
+
   </script>
 </header>
