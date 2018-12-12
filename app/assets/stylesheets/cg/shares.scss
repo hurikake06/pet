@@ -7,20 +7,16 @@
 			width: 300px;
 		}
 
-
-
     td{
 			background: white;
     }
   }
 }
 
-body{
-	&.HOST{
-		.share_detail{
-			th{
-				background-color: #cee6f9;
-			}
+.share_host_detail{
+	.table{
+		th{
+			background-color: #cee6f9;
 		}
 	}
 }

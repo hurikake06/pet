@@ -18,7 +18,7 @@ class Cg::PetsController < Cg::LayoutsController
 
   def show
     @pet = Cg::Pet.find_by(petname: params[:petname])
-    redirect_to mypage_pet_path @pet.petname if session[:login_state] == 'OK' && session[:user_id] == @pet.user.id
+    redirect_to mypage_pet_path @pet.petname if login_flag && session[:user_id] == @pet.user.id
   end
 
   def edit

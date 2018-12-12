@@ -2,9 +2,9 @@
 
 class Cg::CgAppController < Cg::LayoutsController
   def index
-    return unless session[:login_state] == 'OK'
+    return unless login_flag
 
-    @user = Cg::User.find(session[:user_id])
+    @user = session_user
     render :home
   end
 end

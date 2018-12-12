@@ -43,7 +43,9 @@ Rails.application.routes.draw do
       get 'list', to: '/cg/shares#list'
       get 'new/:petname', to: '/cg/shares#new', as: 'new'
       post 'new/:petname', to: '/cg/shares#new'
-      get 'show/:share_id', to: '/cg/shares#show', as: 'show'
+
+      get 'show/user/:share_id', to: '/cg/shares#show_user', as: 'show_user'
+      get 'show/host/:share_id', to: '/cg/shares#show_host', as: 'show_host'
 
       get 'dm/:share_id', to: '/cg/dm_groups#show_share', as: 'dm'
       post 'dm/:share_id', to: '/cg/dm#new'

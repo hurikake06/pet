@@ -12,6 +12,6 @@ module ViewHelper
   end
 
   def user_mode_class
-    @temp_mode ||= session[:login_state] == 'OK' ? session[:user_mode] : 'NULL'
+    @temp_mode ||= login_flag ? session[:user_mode] : 'NULL'
   end
 end
