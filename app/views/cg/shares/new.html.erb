@@ -38,7 +38,7 @@
 
 <h1>シェア申請</h1>
 <hr>
-<% if @pet.present? && @pet.share_pet_info == 17 %>
+<% if @pet.present? && @pet.share_flag %>
   <% if params[:cg_share].present? %>
     <% if @saved.present? %>
       <h2>シェア申請を行いました。</h2>

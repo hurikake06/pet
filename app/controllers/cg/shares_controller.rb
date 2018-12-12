@@ -6,7 +6,7 @@ class Cg::SharesController < Cg::LayoutsController
     return unless params[:petname].present?
 
     @pet = Cg::Pet.find_by(petname: params[:petname])
-    return unless @pet.present? && @pet.share_pet_info == 17
+    return unless @pet.present? && @pet.share_flag
 
     if params[:cg_share].present?
       # post
