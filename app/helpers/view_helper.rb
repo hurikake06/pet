@@ -10,8 +10,4 @@ module ViewHelper
       str
     end
   end
-
-  def user_mode_class
-    @temp_mode ||= login_flag ? session[:user_mode] : 'NULL'
-  end
 end

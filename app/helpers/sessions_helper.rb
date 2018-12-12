@@ -12,8 +12,4 @@ module SessionsHelper
   def session_user
     Cg::User.find(session[:user_id]) if login_flag
   end
-
-  def save_user_mode(param)
-    session[:user_mode] = param == 'HOST' ? 'HOST' : 'USER'
-  end
 end
