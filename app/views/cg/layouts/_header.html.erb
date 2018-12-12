@@ -81,10 +81,10 @@
 
       var $navbar_header = $(".navbar-header")[0];
       let scroll = $navbar_header.offsetTop;
-      var $window = $(window);
-      var $body = $("body");
 
       $(window).scroll(function() {
+        var $window = $(window);
+        var $body = $("body");
         if($window.scrollTop() > scroll){
           $body.addClass("fixed");
           if($body.hasClass("toggled")){
