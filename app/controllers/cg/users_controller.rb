@@ -17,7 +17,6 @@ class Cg::UsersController < Cg::LayoutsController
   # セッション変数:user_idにユーザのIDを入れ、:login_stateをOKにする
   def pass_check
     redirect_to logint_path unless params[:cg_user].present?
-    save_user_mode 'USER'
     user = Cg::User.exists?(username: params[:cg_user][:username]) ? Cg::User.find_by(username: params[:cg_user][:username]) : nil
 
     if user.present? && user.password == params[:cg_user][:password]
@@ -36,9 +35,9 @@ class Cg::UsersController < Cg::LayoutsController
   end
 
   def show
-    user = Cg::User.find_by(username: params[:username])
-    return unless user.present?
-    redirect_to mypage_root_path if login_flag && session[:user_id] == user[:id]
+    @user = Cg::User.find_by(username: params[:username])
+    return unless @user.present?
+    redirect_to mypage_root_path if login_flag && session[:user_id] == @user[:id]
   end
 
   def edit
