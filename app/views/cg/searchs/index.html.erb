@@ -1,2 +1,97 @@
-<h1>Cg::Searchs#index</h1>
-<p>Find me in app/views/cg/searchs/index.html.erb</p>
+<style media="screen">
+  .form{
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+  }
+  .sbox{
+    width: 75%;
+    height: 45px;
+    padding: 0 10px;
+    border: solid 1px lightgray;
+    background: #eee;
+  }
+  .sbtn{
+    width: 20%;
+    height: 45px;
+    background: cyan;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .sbtn:hover{
+    color: #666;
+  }
+  .box_wrapper {
+    width: 85%;
+    background: #f4f4f4;
+    border-left: solid 6px #5bb7ae;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+  }
+  .search_category{
+    background: #eee;
+    text-align:center;
+    border: solid 1px lightgray;
+  }
+  .search_category a {
+    color: gray;
+  }
+  .serach_pets_results{
+
+  }
+  .serach_users_results{
+
+  }
+  .ribbon {
+    display: inline-block;
+    position: relative;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #FFF;
+    background: #a6d3c8;
+  }
+  .ribbon:before {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 0;
+    border: none;
+    border-bottom: solid 15px transparent;
+    border-right: solid 20px rgb(149, 158, 155);
+  }
+</style>
+<div class="box_wrapper">
+  <form class="form form-inline">
+    <input class="sbox"  type="text" placeholder="キーワードを入力">
+    <button type="submit" class="sbtn">検索</button>
+  </form>
+  <div class="col-sm-6 search_category">
+    <%= link_to 'ペットの種類から探す' %>
+  </div>
+  <div class="col-sm-6 search_category">
+    <%= link_to '場所から探す' %>
+  </div>
+  <h3 class="ribbon">ペットの検索結果</h3>
+  <div class="serach_pets_results">
+    <% @pets.each do |pet| %>
+      <div class="col-sm-4">
+        <a href="<%= show_pet_path petname: pet.petname %>">
+          <%= image_tag(pet.icon, class:'icon') %>
+          <p><%= pet.name %></p>
+        </a>
+      </div>
+    <% end %>
+  </div>
+  <h3 class="ribbon">ユーザーの検索結果</h3>
+  <div class="serach_users_results">
+    <% @users.each do |user| %>
+      <div class="col-sm-4">
+        <%= image_tag(user.icon, class: 'icon') %>
+        <p><%= user.name %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
