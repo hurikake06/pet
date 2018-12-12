@@ -23,7 +23,6 @@ class Cg::PetsController < Cg::LayoutsController
 
   def edit
     login_check
-    mode_check
     @pet = Cg::Pet.find_by(petname: params[:petname])
     return unless @pet.present?
     return unless params[:cg_pet].present?
