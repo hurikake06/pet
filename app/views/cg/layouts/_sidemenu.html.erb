@@ -17,8 +17,8 @@
   <li class="sidebar-brand">
       <%= image_tag('icon/logo/title_1.png', size: '100x100') %>
   </li>
-  <% if session[:login_state] == 'OK' %>
-    <% user = Cg::User.find(session[:user_id]) %>
+  <% if login_flag %>
+    <% user = session_user %>
     <%= link_to mypage_root_path do %>
       <li>
         <%= image_tag(user.icon, size: '40x40') %>

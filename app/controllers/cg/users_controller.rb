@@ -32,18 +32,18 @@ class Cg::UsersController < Cg::LayoutsController
 
   def mypage
     login_check
-    @user = Cg::User.find(session[:user_id])
+    @user = session_user
   end
 
   def show
     user = Cg::User.find_by(username: params[:username])
     return unless user.present?
-    redirect_to mypage_root_path if session[:login_state] == 'OK' && session[:user_id] == user[:id]
+    redirect_to mypage_root_path if login_flag && session[:user_id] == user[:id]
   end
 
   def edit
     login_check
-    @user = Cg::User.find(session[:user_id])
+    @user = session_user
   end
 
   private
