@@ -46,7 +46,7 @@
     animation: backcoloranim_d 0.8s ease 0s 1 normal;
   }
 
-  .loginlink {
+  .login-link {
     display: block;
     margin: 0 auto 20px auto;
     padding: 5px;
@@ -68,7 +68,7 @@
   width: 95%;
 }
 
-@keyframes backcoloranim_a {
+@keyframes backcoloranim-a {
   0% {
     background-color: #e8fce5;
   }
@@ -77,7 +77,7 @@
   }
 }
 
-@keyframes backcoloranim_d {
+@keyframes backcoloranim-d {
   0% {
     background-color: white;
   }
