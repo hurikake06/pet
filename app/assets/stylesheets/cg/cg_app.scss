@@ -1,24 +1,74 @@
-// Place all the styles related to the cg/cgApp controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 .space {
   height: 400px;
 }
 
-#loginLink {
-  text-align: center;
+#cg_title {
+  margin: 20px;
+}
 
-  a {
-    margin: 20px auto;
-    padding: 20px;
+//index.html.erbより
+.slide {
+  background: #e8fce5;
+  border-radius: 20px;
+  margin: 20px 0px;
+  text-align: center;
+  padding: 5px;
+
+  img {
+    width: 80%;
+    height: auto;
   }
 
-  .btn {
-    font-size: 36px;
+  &.active {
+    background-color: white;
+    animation: backcoloranim_a 0.8s ease 0s 1 normal;
+
+    .login-link {
+      background-color: white;
+    }
+  }
+
+  &.disable {
+    background-color: #e8fce5;
+    animation: backcoloranim_d 0.8s ease 0s 1 normal;
+  }
+
+  .login-link {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 5px;
+    font-size: 30px;
+    color: gray;
+    width: 400px;
+    background-color: #0000001c;
+    box-shadow: black 0 0 5px;
+
+    &:hover {
+      text-decoration: none;
+      background-color: #c5c5c5;
+    }
   }
 }
 
-#cgTitle {
-  margin: 20px;
+#page_content {
+  max-width: none;
+  width: 95%;
+}
+
+@keyframes backcoloranim-a {
+  0% {
+    background-color: #e8fce5;
+  }
+  100% {
+    background-color: white;
+  }
+}
+
+@keyframes backcoloranim-d {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: #e8fce5;
+  }
 }
