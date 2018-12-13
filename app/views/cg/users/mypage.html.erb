@@ -10,13 +10,13 @@
   }
 
   .box_wrapper .profile_icon{
-    text-align: center;
+    text-align:center;
     padding: 20px ;
   }
 
   .box_wrapper img{
-    width: 100px;
-    height: 100px;
+    width:100px;
+    height:100px;
   }
 
   .box_wrapper h1 {
@@ -35,8 +35,52 @@
     text-align: center;
   }
 
+  .pet-list{
+    border: solid white 2px;
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .pet-list h3{
+    margin: 2rem;
+  }
+
+  .pet-list .pet{
+    width: 120px;
+    height: 160px;
+    display: inline-block;
+    border: dotted 5px white;
+    margin: 2px;
+    background-color: #eefaeb;
+    border-radius: 10px 0px 10px 0;
+  }
+
+  .pet-list .pet a{
+    display: block;
+    color: black;
+  }
+
+  .pet-list .pet .icon{
+    width: 100px;
+    height: 100px;
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .pet-list .pet p{
+    text-align: center;
+    color: black;
+    font-size: 1.5rem;
+  }
+
   .edit_prof{
     text-align: right;
+    margin-top: 2rem;
+  }
+
+  .edit_prof a{
+    display: block;
   }
 
   .user_detail{
@@ -63,6 +107,12 @@
     font-size: 24px;
   }
 
+  .pet .share_info{
+    font-size: 12px;
+    width: 10rem;
+    margin: 0 auto;
+  }
+
   .share_info_false{
     background-color: #bcd4f4;
   }
@@ -70,6 +120,15 @@
 
 <% if @user.present? %>
   <div class="box_wrapper">
+    <% if @user.share_host_info == 15 %>
+      <div class="share_info">
+        シェア可能（ホスト）
+      </div>
+    <% else %>
+      <div class="share_info share_info_false">
+        シェア不可（ホスト）
+      </div>
+    <% end %>
     <% if @user.share_user_info == 13 %>
       <div class="share_info">
         シェア可能（ユーザー）
@@ -79,6 +138,7 @@
         シェア不可（ユーザー）
       </div>
     <% end %>
+
     <h1><%= @user.name %></h1>
     <div class="profile_icon">
       <%= image_tag(@user.icon, class: 'icon') %>
@@ -86,6 +146,38 @@
     <p><%= @user.username %></p>
     <p>E-mail : <%= @user.email %></p>
     <p>About   : <%= @user.about %></p>
+    <br>
+    <div class="pet-list">
+    <h3>ペットリスト</h3>
+      <% if @user.pets.present? %>
+        <% @user.pets.each do |pet| %>
+          <div class="pet">
+            <% if pet.share_flag %>
+              <div class="share_info">
+                シェア可能
+              </div>
+            <% else %>
+              <div class="share_info share_info_false">
+                シェア不可
+              </div>
+            <% end %>
+            <a href="<%= mypage_pet_path petname: pet.petname %>">
+              <table>
+                <tr>
+                  <td><%= image_tag(pet.icon, class:'icon') %></td>
+                </tr>
+                <tr>
+                  <td><p><%= pet.name %></p></td>
+                </tr>
+              </table>
+            </a>
+          </div>
+        <% end %>
+      <% else %>
+        <p>ペットは登録されていません</p>
+      <% end %>
+    </div>
+
     <div class="user_detail">
       <h2>詳細情報</h2>
       <p>(※企業の方は「性別」「年齢」の記載は不要です)</p>
@@ -122,10 +214,11 @@
       </table>
     </div>
     <div class="edit_prof">
+      <%= link_to '新規ペット追加', mypage_pet_new_path, class: 'mb-1' %>
       <br>
       <%= link_to 'プロフィールを編集', setting_path %>
     </div>
-  </div>
-<% else %>
-  <p>urlが間違っています</p>
-<% end %>
+  <% else %>
+    <p>urlが間違っています</p>
+  <% end %>
+</div>

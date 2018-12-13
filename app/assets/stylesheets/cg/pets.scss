@@ -1,3 +1,61 @@
-// Place all the styles related to the cg/pets controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.box_wrapper {
+  width: 85%;
+  background: #f4f4f4;
+  border-left: solid 6px #5bb7ae;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+
+  .profile_icon {
+    text-align: center;
+    padding: 20px;
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  h1, h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  p {
+    text-align: center;
+  }
+}
+
+.edit_prof {
+  text-align: right;
+}
+
+.pet_detail {
+  margin-top: 50px;
+  
+  p {
+    text-align: left;
+  }
+}
+
+.pet_detail tr.empty {
+  background-color: #fce6e6;
+}
+
+.share_info {
+  text-align: center;
+  width: 28rem;
+  padding: 3px;
+  background-color: #c2f5ba;
+  margin-left: auto;
+  margin-bottom: 20px;
+  border: solid 2px gray;
+  border-radius: 30px;
+  font-size: 24px;
+
+  &_false {
+    background-color: #bcd4f4;
+  }
+}

@@ -5,9 +5,8 @@ Rails.application.routes.draw do
     root to: 'cg/cg_app#index'
     get 'index' => 'cg/cg_app#index'
     get 'login' => 'cg/users#login'
-    post 'login/:user_mode' => 'cg/users#pass_check', as: 'login_request'
+    post 'login' => 'cg/users#pass_check'
     get 'logout' => 'sessions#destroy'
-    get 'ChangeMode/:user_mode' => 'sessions#change_user_mode', as: 'change_user_mode'
 
     namespace :user do
       get 'new' => '/cg/users#new'
@@ -43,7 +42,9 @@ Rails.application.routes.draw do
       get 'list', to: '/cg/shares#list'
       get 'new/:petname', to: '/cg/shares#new', as: 'new'
       post 'new/:petname', to: '/cg/shares#new'
-      get 'show/:share_id', to: '/cg/shares#show', as: 'show'
+
+      get 'show/user/:share_id', to: '/cg/shares#show_user', as: 'show_user'
+      get 'show/host/:share_id', to: '/cg/shares#show_host', as: 'show_host'
 
       get 'dm/:share_id', to: '/cg/dm_groups#show_share', as: 'dm'
       post 'dm/:share_id', to: '/cg/dm#new'

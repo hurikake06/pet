@@ -1,3 +1,22 @@
-// Place all the styles related to the cg/shares controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.share_detail{
+	.table{
+		text-indent: 1em;
+
+    th{
+			background: #ddf8bf;
+			width: 300px;
+		}
+
+    td{
+			background: white;
+    }
+  }
+}
+
+.share_host_detail{
+	.table{
+		th{
+			background-color: #cee6f9;
+		}
+	}
+}

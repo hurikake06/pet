@@ -38,7 +38,7 @@
 
 <h1>シェア申請</h1>
 <hr>
-<% if @pet.present? && @pet.share_pet_info == 17 %>
+<% if @pet.present? && @pet.share_flag %>
   <% if params[:cg_share].present? %>
     <% if @saved.present? %>
       <h2>シェア申請を行いました。</h2>
@@ -73,7 +73,7 @@
     <hr>
     <h2>申請情報を記入してください</h2>
     <div class = "container">
-      <p><h3>申請者:<%= Cg::User.find(session[:user_id]).name %></h3></p>
+      <p><h3>申請者:<%= session_user.name %></h3></p>
       <p>
         <h3>申請相手</h3>
         飼い主：<strong><%= @pet.user.name %></strong><br>

@@ -11,19 +11,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class = "<%= user_mode_class %>" id="wrapper">
+  <body id="wrapper">
     <div id="sidebar-wrapper">
-      <%= render "cg/layouts/sidemenu" %>
+      <%= render 'cg/layouts/sidemenu' %>
     </div>
 
     <div id="page-content-wrapper">
-      <%= render "cg/layouts/header" %>
+      <%= render 'cg/layouts/header' %>
       <!-- <div class="col-sm-9"> -->
         <div id = "pageContent">
           <%= yield %>
         </div>
       <!-- </div> -->
-      <%= render "cg/layouts/footer"%>
+      <%= render 'cg/layouts/footer' %>
     </div>
 
   </body>

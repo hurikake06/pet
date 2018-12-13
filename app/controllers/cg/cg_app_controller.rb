@@ -2,13 +2,9 @@
 
 class Cg::CgAppController < Cg::LayoutsController
   def index
-    return unless session[:login_state] == 'OK'
+    return unless login_flag
 
-    @user = Cg::User.find(session[:user_id])
-    if session[:user_mode] == 'HOST'
-      render 'cg/cg_app/host/home'
-    else
-      render :home
-    end
+    @user = session_user
+    render :home
   end
 end
