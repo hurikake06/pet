@@ -1,0 +1,43 @@
+<div class='share_detail share_host_detail'>
+  <h1>シェア詳細</h1>
+  <h2>状態：<%= share.info.value %></h2>
+  <hr>
+  <table class='table'>
+    <tr>
+      <th>申請者</th>
+      <td><%= share.user.name %></td>
+    </tr>
+    <tr>
+      <th>ペット</th>
+      <td><%= share.pet.name %></td>
+    </tr>
+    <tr>
+      <th>飼い主</th>
+      <td><%= share.pet.user.name %></td>
+    </tr>
+    <tr>
+      <th>場所</th>
+      <td><%= share.detail.facility.name %></td>
+    </tr>
+    <tr>
+      <th>日付</th>
+      <td><%= share.detail.start.strftime('%Y年%m月%d日') %></td>
+    </tr>
+    <tr>
+      <th>開始予定時間</th>
+      <td><%= share.detail.start.strftime('%H時　%M分　%S秒') %></td>
+    </tr>
+    <tr>
+      <th>終了予定時間</th>
+      <td><%= share.detail.end.strftime('%H時　%M分　%S秒') %></td>
+    </tr>
+    <tr>
+      <th>料金（頭金）</th>
+      <td><%= share.detail.fixed_cost %></td>
+    </tr>
+    <tr>
+      <th>料金（1時間あたり）</th>
+      <td><%= share.detail.variable_cost %></td>
+    </tr>
+  </table>
+</div>

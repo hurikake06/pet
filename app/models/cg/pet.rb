@@ -33,4 +33,8 @@ class Cg::Pet < ApplicationRecord
 
   validates :type_id, presence: true
 
+  def share_flag
+    share_pet_info == 17
+  end
+
 end

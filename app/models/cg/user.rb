@@ -45,4 +45,12 @@ class Cg::User < ApplicationRecord
   def host_shares
     Cg::Share.where(pet_id: pets.select(:id))
   end
+
+  def share_host_flag
+    share_host_info == 15
+  end
+  
+  def share_user_flag
+    share_user_info == 13
+  end
 end

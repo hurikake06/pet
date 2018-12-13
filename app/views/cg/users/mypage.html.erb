@@ -138,7 +138,7 @@
         シェア不可（ユーザー）
       </div>
     <% end %>
-    
+
     <h1><%= @user.name %></h1>
     <div class="profile_icon">
       <%= image_tag(@user.icon, class: 'icon') %>
@@ -152,7 +152,7 @@
       <% if @user.pets.present? %>
         <% @user.pets.each do |pet| %>
           <div class="pet">
-            <% if pet.share_pet_info == 17 %>
+            <% if pet.share_flag %>
               <div class="share_info">
                 シェア可能
               </div>

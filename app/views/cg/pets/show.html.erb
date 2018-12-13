@@ -111,7 +111,7 @@
     <p>type   : <%= @pet.type.name %></p>
     <p>about   : <%= @pet.about %></p>
 
-    <% if share_info_flag && @pet.share_pet_info == 17 %>
+    <% if session_user.share_user_flag && @pet.share_flag %>
       <div class="share">
         <a href="<%= share_new_path @pet.petname %>" class ="square_btn">シェア申請</a>
       </div>

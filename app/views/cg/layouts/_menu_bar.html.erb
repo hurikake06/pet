@@ -5,7 +5,7 @@
 </style>
 
 <ul class="nav navbar-nav">
-  <% if session[:login_state] == 'OK' %>
+  <% if login_flag %>
     <li><a href="<%= mypage_root_path %>">マイページ</a></li>
   <% end %>
   <li class="dropdown">
@@ -14,16 +14,14 @@
       <li><a href="#">シェアとは？</a></li>
       <li><a href="#">おすすめ</a></li>
       <li><a href="#">利用規約</a></li>
-      <% if share_info_flag %>
-        <li role="separator" class="divider"></li>
-        <li><a href="<%= share_list_path %>">シェアリスト</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">シェア履歴</a></li>
-      <% end %>
+      <li role="separator" class="divider"></li>
+      <li><a href="<%= share_list_path %>">シェアリスト</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">シェア履歴</a></li>
     </ul>
   </li>
 </ul>
-<% if session[:login_state] == 'OK' %>
+<% if login_flag %>
   <ul class="nav navbar-nav search_area">
     <li>
       <%= link_to image_tag("icon/etc/b_42.png",:size => "25x25")%>
