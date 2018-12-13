@@ -32,6 +32,8 @@
     padding: 20px;
   }
   .search_category{
+    font-weight: bold;
+    font-size: 16px;
     background: #eee;
     text-align:center;
     border: solid 1px lightgray;
@@ -75,7 +77,7 @@
     <%= link_to '場所から探す' %>
   </div>
   <h3 class="ribbon">ペットの検索結果</h3>
-  <div class="serach_pets_results">
+  <div class="serach_pets_results row">
     <% @pets.each do |pet| %>
       <div class="col-sm-4">
         <a href="<%= show_pet_path petname: pet.petname %>">
@@ -85,8 +87,8 @@
       </div>
     <% end %>
   </div>
-  <h3 class="ribbon">ユーザーの検索結果</h3>
-  <div class="serach_users_results">
+  <h3 class="ribbon">ユーザの検索結果</h3>
+  <div class="serach_users_results row">
     <% @users.each do |user| %>
       <div class="col-sm-4">
         <%= image_tag(user.icon, class: 'icon') %>
