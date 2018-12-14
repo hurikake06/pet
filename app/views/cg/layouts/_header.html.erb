@@ -28,12 +28,12 @@
     transition: none;
   }
 
-  .sidebar_toggle_button{
+  .sidebar-toggle-button{
     top: 64px;
     right: 50px;
   }
 
-  .navbar_toggle_button{
+  .navbar-toggle-button{
     background: none;
     border: none;
   }
@@ -49,14 +49,14 @@
   <!-- navbarの縦幅が変わる変更があった際にheightを変更してください。 -->
   <nav class="navbar navbar-default" id="navbar">
     <div class="col-sm-12">
-      <%= link_to image_tag('icon/logo/title_1.png', class: 'title_logo'), controller: 'cg_app', action: 'index' %>
+      <%= link_to image_tag('icon/logo/title_1.png', class: 'title-logo'), controller: 'cg_app', action: 'index' %>
     </div>
     <div class="container-fluid">
-      <%= image_tag('icon/etc/b_33.png', size: '50x50', class: 'btn btn-secondary sidebar_toggle_button', id: 'menu-toggle') %>
+      <%= image_tag('icon/etc/b_33.png', size: '50x50', class: 'btn btn-secondary sidebar-toggle-button', id: 'menu-toggle') %>
 
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header" id="navbar-header">
-        <button type="button" class="navbar-toggle collapsed navbar_toggle_button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <div class="navbar-header" id="navbar_header">
+        <button type="button" class="navbar-toggle collapsed navbar-toggle-button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <%= image_tag("icon/etc/b_73.png",size: "20x20") %>
         </button>
       </div>
@@ -75,7 +75,7 @@
     $("#navbar_space").animate({height: $header.offsetTop + $header.offsetHeight + "px"});
 
     // ヘッダー箇所の空間のheightの調整
-    var $navbar_header = $("#navbar-header")[0];
+    var $navbar_header = $("#navbar_header")[0];
     let scroll = $navbar_header.offsetTop;
 
     $(window).scroll(function() {
