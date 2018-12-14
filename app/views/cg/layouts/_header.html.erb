@@ -45,6 +45,7 @@
 </style>
 <header>
   <div id="navbar_space" class="navbar-space"></div>
+
   <!-- navbarの縦幅が変わる変更があった際にheightを変更してください。 -->
   <nav class="navbar navbar-default" id="navbar">
     <div class="col-sm-12">
@@ -62,8 +63,8 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <%= render 'cg/layouts/menu_bar' %>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+    </div>
 </header>
 </nav>
 
@@ -72,8 +73,8 @@
     var $header = $("#navbar")[0];
 
     $("#navbar_space").animate({height: $header.offsetTop + $header.offsetHeight + "px"});
-    // ヘッダー箇所の空間のheightの調整
 
+    // ヘッダー箇所の空間のheightの調整
     var $navbar_header = $("#navbar-header")[0];
     let scroll = $navbar_header.offsetTop;
 
@@ -97,5 +98,4 @@
       }
     });
   });
-
 </script>
