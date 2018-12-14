@@ -1,26 +1,101 @@
+<style>
+  .fixed .navbar>:not(.container-fluid){
+    display: none;
+  }
+
+  .navbar{
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+  }
+
+  .fixed .navbar{
+    border: double 5px #FFFFFF;
+    border-top: 0px;
+    background: linear-gradient(to bottom, #ffffffbd 0, #ffffff6e 100%);
+    position: fixed;
+    top: 0;
+    margin-left: 0px;
+    transition: all 0.5s ease;
+  }
+
+  .fixed.toggled .navbar{
+    margin-left: 250px;
+  }
+
+  .fixed .navbar.none-anim{
+    transition: none;
+  }
+
+  .sidebar_toggle_button{
+    top: 64px;
+    right: 50px;
+  }
+
+  .navbar_toggle_button{
+    background: none;
+    border: none;
+  }
+
+  /* navbarの縦幅が変わる変更があった際、heightを変更してください。 */
+  .navbar-space{
+    height: 210px;
+  }
+</style>
 <header>
-  <nav class="navbar navbar-default">
+  <div id="navbar_space" class="navbar-space"></div>
+
+  <!-- navbarの縦幅が変わる変更があった際にheightを変更してください。 -->
+  <nav class="navbar navbar-default" id="navbar">
     <div class="col-sm-12">
-      <%= link_to image_tag('icon/logo/title_1.png', class: "title-logo"), controller: 'cg_app', action: 'index' %>
+      <%= link_to image_tag('icon/logo/title_1.png', class: 'title_logo'), controller: 'cg_app', action: 'index' %>
     </div>
     <div class="container-fluid">
-      <%= image_tag('icon/etc/b_33.png', size: '50x50', class: 'btn btn-secondary', id: 'menu-toggle') %>
+      <%= image_tag('icon/etc/b_33.png', size: '50x50', class: 'btn btn-secondary sidebar_toggle_button', id: 'menu-toggle') %>
 
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+      <div class="navbar-header" id="navbar-header">
+        <button type="button" class="navbar-toggle collapsed navbar_toggle_button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <%= image_tag("icon/etc/b_73.png",size: "20x20") %>
         </button>
-        <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
-        <!-- <a class="navbar-brand" href="<%= index_path %>">CuteGift</a> -->
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <%= render 'cg/layouts/menu_bar' %>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+      </div>
+    </div>
 </header>
+</nav>
+
+<script>
+  $(window).on('load', function() {
+    var $header = $("#navbar")[0];
+
+    $("#navbar_space").animate({height: $header.offsetTop + $header.offsetHeight + "px"});
+
+    // ヘッダー箇所の空間のheightの調整
+    var $navbar_header = $("#navbar-header")[0];
+    let scroll = $navbar_header.offsetTop;
+
+    $(window).scroll(function() {
+      var $window = $(window);
+      var $body = $("body");
+      if($window.scrollTop() > scroll){
+        $body.addClass("fixed");
+        if($body.hasClass("toggled")){
+          $("#navbar").addClass("none-anim");
+        }else{
+          $("#navbar").removeClass("none-anim");
+        }
+      }else if($window.scrollTop() < scroll){
+        $body.removeClass("fixed");
+        if($body.hasClass("toggled")){
+          $("#navbar").addClass("none-anim");
+        }else{
+          $("#navbar").removeClass("none-anim");
+        }
+      }
+    });
+  });
+</script>
