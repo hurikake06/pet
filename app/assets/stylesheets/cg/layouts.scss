@@ -13,7 +13,7 @@ body {
   background: linear-gradient(to bottom,#fff0 0,#ffffffd1 100%);
 }
 
-.icon{
+.icon {
   width: 100px;
   height: 100px;
   border-radius: 100px;
@@ -51,7 +51,7 @@ footer {
   font-size: 90%;
 }
 
-.error_message {
+.error-message {
   background-color: #ffc7c7;
   color: black;
   width: 80%;
@@ -60,7 +60,7 @@ footer {
   font-size: 16px;
 }
 
-#pageContent {
+#page_content {
   margin: 50px 0;
   min-height: 550px;
   height: 100%;
@@ -72,7 +72,7 @@ footer {
   max-width: 800px;
 }
 
-.title_logo {
+.title-logo {
   width: 350px;
   height: 150px;
   display: block;
@@ -88,11 +88,11 @@ footer {
   background-color: #C7DDAE;
 }
 
-.side_right_color {
+.side-right-color {
   @include side-color;
 }
 
-.side_left_color {
+.side-left-color {
   @include side-color;
 }
 
@@ -107,12 +107,12 @@ footer {
 #wrapper.toggled {
   padding-left: 250px;
 
-  #sidebar-wrapper {
+  #sidebar_wrapper {
     width: 250px;
   }
 }
 
-#sidebar-wrapper {
+#sidebar_wrapper {
   z-index: 1000;
   position: fixed;
   left: 250px;
@@ -127,13 +127,13 @@ footer {
   transition: all 0.5s ease;
 }
 
-#page-content-wrapper {
+#page_content_wrapper {
   width: 100%;
   position: absolute;
   padding: 15px;
 }
 
-#wrapper.toggled #page-content-wrapper {
+#wrapper.toggled #page_content_wrapper {
   position: absolute;
   margin-right: -250px;
 }
@@ -200,20 +200,20 @@ footer {
     padding-left: 250px;
   }
 
-  #sidebar-wrapper {
+  #sidebar_wrapper {
     width: 0;
   }
 
-  #wrapper.toggled #sidebar-wrapper {
+  #wrapper.toggled #sidebar_wrapper {
     width: 250px;
   }
 
-  #page-content-wrapper {
+  #page_content_wrapper {
     padding: 20px;
     position: relative;
   }
 
-  #wrapper.toggled #page-content-wrapper {
+  #wrapper.toggled #page_content_wrapper {
     position: relative;
     margin-right: 0;
   }
