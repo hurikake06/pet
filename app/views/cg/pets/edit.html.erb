@@ -1,4 +1,4 @@
 <% if @pet.present? %>
   <h1><%= @pet.name %>のプロフィール</h1>
-  <%= render partial: 'edit_form', locals: { pet: @pet } %>
+  <%= render partial: 'edit_form', locals: { pet: @pet, pet_edit: @pet_edit } %>
 <% end %>
