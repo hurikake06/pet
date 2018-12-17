@@ -11,6 +11,14 @@ body {
 .navbar-default{
   border: double 5px #FFFFFF;
   background: linear-gradient(to bottom,#fff0 0,#ffffffd1 100%);
+
+  .navbar-nav {
+    li {
+      a {
+        font-size: 1.75rem;
+      }
+    }
+  }
 }
 
 .icon {
