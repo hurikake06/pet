@@ -62,36 +62,6 @@
 }
 
 // from show.html.erb
-.box_wrapper {
-  width: 85%;
-  background: #f4f4f4;
-  border-left: solid 6px #5bb7ae;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
-
-  .profile_icon {
-    text-align: center;
-    padding: 20px;
-  }
-
-  img {
-    width: 100px;
-    height: 100px;
-  }
-
-  h1, h3 {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  p {
-    text-align: center;
-  }
-}
-
 .pet_detail {
   margin-top: 50px;
 
