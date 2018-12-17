@@ -24,7 +24,7 @@ class Cg::PetsController < Cg::LayoutsController
   def edit
     login_check
     @pet_edit = Cg::Pet.find_by(petname: params[:petname])
-    @pet = Cg::Pet.find_by(petname: params[:petname])
+    @pet = Marshal.load(Marshal.dump(@pet_edit))
     return unless @pet_edit.present?
     return unless params[:cg_pet].present?
 
