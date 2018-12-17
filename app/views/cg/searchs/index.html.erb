@@ -1,17 +1,17 @@
-<div class="search_results">
-  <div class="box_wrapper">
+<div class="search-results">
+  <div class="box-wrapper">
     <form class="form form-inline">
       <input class="sbox"  type="text" placeholder="キーワードを入力">
       <button type="submit" class="sbtn">検索</button>
     </form>
-    <div class="col-sm-6 search_category">
+    <div class="col-sm-6 search-category">
       <%= link_to 'ペットの種類から探す' %>
     </div>
-    <div class="col-sm-6 search_category">
+    <div class="col-sm-6 search-category">
       <%= link_to '場所から探す' %>
     </div>
     <div class="row">
-      <h3 class="ribbon col-md-4 col-md-offset-4">ペットの検索結果</h3>
+      <h3 class="ribbon">ペットの検索結果</h3>
     </div>
     <div class="row">
       <% @pets.each do |pet| %>
@@ -24,7 +24,7 @@
       <% end %>
     </div>
     <div class="row">
-      <h3 class="ribbon col-md-4 col-md-offset-4">ユーザの検索結果</h3>
+      <h3 class="ribbon">ユーザの検索結果</h3>
     </div>
     <div class="row">
       <% @users.each do |user| %>
