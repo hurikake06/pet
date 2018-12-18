@@ -70,17 +70,17 @@
 
 /* from home.html.erb */
 .container {
-  background-color:#004900;
-  background-color:transparent;
-  margin-left:10px;
-  margin-right:10px;
+  background-color: #004900;
+  background-color: transparent;
+  margin-left: 10px;
+  margin-right: 10px;
   border: solid 3px white;
   border-radius: 10px;
 }
 .user-list {
   padding-left:2px;
   
-  h3{
+  h3 {
     color: black;
   }
 
@@ -91,13 +91,13 @@
     margin-top: 1.2px;
 
     a {
-      display:block;
+      display: block;
       color: black;
       font-size: 1.3em;
 
       &:hover {
-        text-decoration:none;
-        color:white;
+        text-decoration: none;
+        color: white;
       }
     }
 
@@ -113,31 +113,31 @@
 
 .pet-list {
   .pet {
-    width:120px;
-    height:140px;
-    display:inline-block;
-    border:dotted 5px white;
-    margin:2px;
+    width: 120px;
+    height: 140px;
+    display: inline-block;
+    border: dotted 5px white;
+    margin: 2px;
     background-color: #eefaeb;
     border-radius: 10px 0px 10px 0;
 
     a {
-      display:block;
+      display: block;
       color: black;
     }
 
     .icon {
-      width:100px;
-      height:100px;
-      margin-top:2px;
-      margin-left:5px;
-      margin-right:5px;
+      width: 100px;
+      height: 100px;
+      margin-top: 2px;
+      margin-left: 5px;
+      margin-right: 5px;
     }
 
     p {
-      text-align:center;
-      color:black;
-      font-size:1.5em;
+      text-align: center;
+      color: black;
+      font-size: 1.5em;
     }
   }
 }
