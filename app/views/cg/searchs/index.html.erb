@@ -10,31 +10,33 @@
     <div class="col-sm-6 search-category">
       <%= link_to '場所から探す' %>
     </div>
-    <div class="row">
-      <h3 class="ribbon">ペットの検索結果</h3>
-    </div>
-    <div class="row">
-      <% @pets.each do |pet| %>
-        <div class="col-sm-4">
-          <%= link_to show_pet_path petname: pet.petname do %>
-            <%= image_tag(pet.icon, class:'icon') %>
-            <p><%= pet.name %></p>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="row">
-      <h3 class="ribbon">ユーザの検索結果</h3>
-    </div>
-    <div class="row">
-      <% @users.each do |user| %>
-        <div class="col-sm-4">
-          <%= link_to show_path username: user.username do %>
-            <%= image_tag(user.icon, class: 'icon') %>
-            <p><%= user.name %></p>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <% if @searched %>
+      <div class="row">
+        <h3 class="ribbon">ペットの検索結果</h3>
+      </div>
+      <div class="row">
+        <% @pets.each do |pet| %>
+          <div class="col-sm-4">
+            <%= link_to show_pet_path petname: pet.petname do %>
+              <%= image_tag(pet.icon, class:'icon') %>
+              <p><%= pet.name %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <h3 class="ribbon">ユーザの検索結果</h3>
+      </div>
+      <div class="row">
+        <% @users.each do |user| %>
+          <div class="col-sm-4">
+            <%= link_to show_path username: user.username do %>
+              <%= image_tag(user.icon, class: 'icon') %>
+              <p><%= user.name %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
