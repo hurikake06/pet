@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       post '/' => '/cg/users#edit'
       namespace :pet do
         get ':petname' => '/cg/pets#edit'
-        post ':petname' => '/cg/pets#edit'
+        patch ':petname' => '/cg/pets#edit'
       end
     end
 
