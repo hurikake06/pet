@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       post '/' => '/cg/users#edit'
       namespace :pet do
         get ':petname' => '/cg/pets#edit'
-        post ':petname' => '/cg/pets#edit'
+        patch ':petname' => '/cg/pets#edit'
       end
     end
 
@@ -55,6 +55,10 @@ Rails.application.routes.draw do
       get 'list', to: '/cg/dm_groups#list'
       get ':petname', to: '/cg/dm_groups#show'
       post ':petname', to: '/cg/dm#new'
+    end
+
+    namespace :search do
+      root to: '/cg/searchs#index'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
