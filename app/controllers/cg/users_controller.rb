@@ -7,6 +7,12 @@ class Cg::UsersController < Cg::LayoutsController
 
     @user = Cg::User.new(user_params)
     @saved = @user.save
+
+    if @saved
+      session[:user_id] = @user.id
+      session[:login_state] = 'OK'
+      redirect_to mypage_root_path
+    end
   end
 
   def login
