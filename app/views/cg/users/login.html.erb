@@ -9,15 +9,6 @@
         <%= render partial: 'cg/users/login_form', locals: { error_code: @error_code, user: @user } %>
       </div>
     <Hr>
-    <%= link_to(user_new_path) do %>
-      <div class='container' style = '
-        font-size: 24px;
-        background-color: #ffffff5e;
-        color: #576a8c;
-        border: solid;'>
-        新規登録
-      </div>
-    <% end %>
-
+    <h3><%= link_to 'アカウントを作成していない方はこちら', user_new_path %></h3>
   </div>
 </div>
