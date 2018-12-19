@@ -7,6 +7,8 @@ class CreateCgDmGroups < ActiveRecord::Migration[5.2]
       t.bigint :share_id
 
       t.timestamps
+      t.index %i[user_id pet_id], unique: true
+      t.index :share_id, unique: true
     end
   end
 end

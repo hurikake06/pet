@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.bigint "share_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["share_id"], name: "index_cg_dm_groups_on_share_id", unique: true
+    t.index ["user_id", "pet_id"], name: "index_cg_dm_groups_on_user_id_and_pet_id", unique: true
   end
 
   create_table "cg_dms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
