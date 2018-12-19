@@ -1,22 +1,59 @@
 .share_detail{
-	.table{
-		text-indent: 1em;
+  .table{
+    text-indent: 1em;
 
     th{
-			background: #ddf8bf;
-			width: 300px;
-		}
+      background: #ddf8bf;
+	    width: 300px;
+    }
 
     td{
-			background: white;
+      background: white;
     }
   }
 }
 
 .share_host_detail{
-	.table{
-		th{
-			background-color: #cee6f9;
-		}
-	}
+  .table{
+    th{
+      background-color: #cee6f9;
+    }
+  }
+}
+
+/* from new.html.erb */
+.share {
+  background: #e8fce5;
+  color: black;
+  border-radius: 20px;
+  width: 80%;
+  margin: 20px 40px;
+  padding: 10px;
+}
+
+th {
+  background: #267e1963;
+  width: 150px;
+}
+
+td {
+  background: #ffffff75;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+}
+
+.about {
+  display: inline-block;
+  margin: 5px;
+  padding: 3px;
+  background-color: #f9fff3;
+  border: green 2px solid;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 5em;
+  color: black;
+  font-size: 1.2em;
 }
