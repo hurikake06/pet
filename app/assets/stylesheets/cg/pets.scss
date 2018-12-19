@@ -22,6 +22,7 @@
       margin: 0;
       padding: 0;
       text-align: center;
+      margin-bottom: 10px;
     }
 
     p {
@@ -40,20 +41,29 @@
       background-color: #fce6e6;
     }
   }
+}
+
+.pets-mypage{
+  @include pets-common;
+  .edit-prof {
+    text-align: right;
+  }
 
   .share-info {
-    text-align: center;
-    width: 28rem;
-    padding: 3px;
-    background-color: #c2f5ba;
-    margin-left: auto;
-    margin-bottom: 20px;
-    border: solid 2px gray;
-    border-radius: 30px;
-    font-size: 24px;
+    p {
+        text-align: center;
+        width: 28rem;
+        padding: 3px;
+        background-color: #c2f5ba;
+        margin-left: auto;
+        margin-bottom: 20px;
+        border: solid 2px gray;
+        border-radius: 30px;
+        font-size: 24px;
 
-    &-false {
-      background-color: #bcd4f4;
+      &-false {
+        background-color: #bcd4f4;
+      }
     }
   }
 }
@@ -85,19 +95,31 @@
       border-bottom: none;
     }
   }
+}
 
-  .pet-user {
-    border: solid 2px white;
-    border-radius: 10px;
-    padding: 5px;
-    height: 65px;
-    display: inline-block;
-    margin-right: auto;
-    background-color: #ffffff9c;
+.pet-user {
+  border: solid 2px white;
+  border-radius: 10px;
+  padding: 5px;
+  height: 65px;
+  display: inline-block;
+  margin-right: auto;
+  background-color: #ffffff9c;
 
-    .icon {
-      width: 50px;
-      height: 50px;
-    }
+  .icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.pets-new{
+  @include pets-common;
+  .back-page{
+     text-align: right;
+     margin-top: 15px;
+  }
+
+  img{
+    margin-bottom: 10px;
   }
 }
