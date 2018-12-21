@@ -59,10 +59,12 @@ td {
 }
 
 /* from list.html.erb */
-.share-user-list {
-  border: solid 2px white;
-}
-
-.share-host-list {
-  border: solid 2px black;
+.shares-list {
+  .share-user-list {
+    border: solid 2px white;
+  }
+  
+  .share-host-list {
+    border: solid 2px black;
+  }
 }
