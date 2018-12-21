@@ -1,0 +1,2 @@
+$("<%= escape_javascript(render partial: 'pet', collection: @pets) %>").appendTo("#pet_contents").hide().fadeIn('slow');
+$("#more_link_p").replaceWith("<%= escape_javascript(link_to_next_page(@pets, 'もっと見る', remote: true, id: 'more_link')) %>");

@@ -1,0 +1,6 @@
+<div class="col-sm-4">
+  <%= link_to show_pet_path petname: pet.petname do %>
+    <%= image_tag(pet.icon, class:'icon') %>
+    <p><%= pet.name %></p>
+  <% end %>
+</div>

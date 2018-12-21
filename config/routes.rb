@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 
       namespace :searchs do
         root action: :index
+        get 'user', action: :user_index
+        get 'pet', action: :pet_index
       end
     end
   end
