@@ -8,7 +8,7 @@ body {
   }
 }
 
-.navbar-default{
+.navbar-default {
   border: double 5px #FFFFFF;
   background: linear-gradient(to bottom,#fff0 0,#ffffffd1 100%);
 
@@ -107,13 +107,18 @@ footer {
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-}
 
-#wrapper.toggled {
-  padding-left: 250px;
+  &.toggled {
+    padding-left: 250px;
 
-  #sidebar_wrapper {
-    width: 250px;
+    #sidebar_wrapper {
+      width: 250px;
+    }
+
+    #page_content_wrapper {
+      position: absolute;
+      margin-right: -250px;
+    }
   }
 }
 
@@ -138,11 +143,6 @@ footer {
   padding: 15px;
 }
 
-#wrapper.toggled #page_content_wrapper {
-  position: absolute;
-  margin-right: -250px;
-}
-
 /* Sidebar Styles */
 .sidebar-nav {
   position: absolute;
@@ -155,6 +155,7 @@ footer {
   li {
     text-indent: 20px;
     line-height: 40px;
+    font-size: 2rem;
 
     a {
       display: block;
@@ -166,12 +167,21 @@ footer {
         color: lightgray;
         background: rgba(255, 255, 255, 0.2);
       }
+
+      &:active, &:focus {
+        text-decoration: none;
+      }
     }
   }
-}
 
-.sidebar-nav li a:active, .sidebar-nav li a:focus {
-  text-decoration: none;
+  p {
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .sidebar-brand {
+    text-align: center;
+  }
 }
 
 .sidebar-nav>.sidebar-brand {
@@ -203,43 +213,22 @@ footer {
 
   #wrapper.toggled {
     padding-left: 250px;
-  }
 
-  #sidebar_wrapper {
-    width: 0;
-  }
+    #sidebar_wrapper {
+      width: 250px;
+    }
 
-  #wrapper.toggled #sidebar_wrapper {
-    width: 250px;
+    #page_content_wrapper {
+      position: relative;
+      margin-right: 0;
+    }
   }
 
   #page_content_wrapper {
     padding: 20px;
     position: relative;
   }
-
-  #wrapper.toggled #page_content_wrapper {
-    position: relative;
-    margin-right: 0;
-  }
 }
-
-/* from _sidemenu.html.erb */
-.sidebar-nav {
-  p {
-    text-align: center;
-    text-decoration: underline;
-  }
-
-  .sidebar-brand {
-    text-align: center;
-  }
-
-  li {
-    font-size: 2rem;
-  }
-}
-
 /* from _header.html.erb */
 .navbar {
   position: absolute;
