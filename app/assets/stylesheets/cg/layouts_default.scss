@@ -182,12 +182,11 @@ footer {
   .sidebar-brand {
     text-align: center;
   }
-}
 
-.sidebar-nav>.sidebar-brand {
-  height: 65px;
-  font-size: 18px;
-  line-height: 60px;
+  &>.sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
 
   a {
     color: #999999;
@@ -196,6 +195,7 @@ footer {
       color: lightgray;
       background: none;
     }
+  }
   }
 }
 
