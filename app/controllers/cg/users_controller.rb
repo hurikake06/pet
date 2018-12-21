@@ -53,6 +53,18 @@ class Cg::UsersController < Cg::LayoutsController
 
   def destroy; end
 
+  def edit
+    login_check
+    @user = session_user
+    @user_edit = Marshal.load(Marshal.dump(@user))
+    return unless @user.present?
+    return unless params[:cg_user].present?
+
+    if @user_edit.update(user_edit_params @user)
+      @user = @user_edit
+    end
+  end
+
   private
 
   def user_params
@@ -64,6 +76,25 @@ class Cg::UsersController < Cg::LayoutsController
       :password,
       :about,
       detail_attributes: {}
+    )
+  end
+
+  def user_edit_params user
+    params[:cg_user][:detail_attributes] = params[:cg_user][:cg_user_detail]
+    params[:cg_user][:detail_attributes][:id] = user.detail.id
+    params.require(:cg_user).permit(
+      :name,
+      :email,
+      :about,
+      detail_attributes: [
+        :id,
+        :first_name,
+        :last_name,
+        :address,
+        :age,
+        :sex_info,
+        :country_info
+      ]
     )
   end
 end

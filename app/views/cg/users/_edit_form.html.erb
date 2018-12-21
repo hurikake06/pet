@@ -1,0 +1,59 @@
+<%= form_for user, url: { action: 'edit' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+    <%= print_form_error user_edit.errors, :name %>
+  </div>
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'form-control', disabled: true %>
+    <%= print_form_error user_edit.errors, :username %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
+    <%= print_form_error user_edit.errors, :email %>
+  </div>
+  <div class="form-group">
+    <%= f.label :about %>
+    <%= f.text_area :about, class:'form-control' %>
+    <%= print_form_error user_edit.errors, :about %>
+  </div>
+  <%= f.fields_for user.detail do |ff| %>
+    <div class="form-group">
+      <%= ff.label :first_name %>
+      <%= ff.text_field :first_name, class:'form-control' %>
+      <%= print_form_error user_edit.errors, :"detail.first_name" %>
+    </div>
+    <div class="form-group">
+      <%= ff.label :last_name %>
+      <%= ff.text_field :last_name, class:'form-control' %>
+      <%= print_form_error user_edit.errors, :"detail.last_name" %>
+    </div>
+    <div class="form-group">
+      <%= ff.label :address %>
+      <%= ff.text_area :address, class:'form-control' %>
+      <%= print_form_error user_edit.errors, :"detail.address" %>
+    </div>
+    <div class="form-group">
+      <%= ff.label :age %>
+      <%= ff.number_field :age, class:'form-control' %>
+      <%= print_form_error user_edit.errors, :"detail.age" %>
+    </div>
+    <div class="form-group">
+      <%= ff.label :sex_info %>
+      <% infos = Cg::Info.select(:id,:value).where(info_type_id: 2) %>
+      <% infos.each do |info| %>
+        <label><%= ff.radio_button :sex_info, info.id %><%= info.value %></label>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= ff.label :country_info %>
+      <% infos = Cg::Info.select(:id,:value).where(info_type_id: 3) %>
+      <% infos.each do |info| %>
+        <label><%= ff.radio_button :country_info, info.id %><%= info.value %></label>
+      <% end %>
+    </div>
+  <% end %>
+  <%= f.button type:'submit', class: 'btn btn-primary' %>
+<% end %>

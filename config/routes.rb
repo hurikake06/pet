@@ -39,7 +39,6 @@ Rails.application.routes.draw do
 
         get 'new/:petname', action: :new, as: :new
         post 'new/:petname', action: :create, as: :create
-
         get ':share_id', action: :show
         patch ':share_id', action: :update
       end
