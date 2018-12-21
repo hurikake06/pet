@@ -1,7 +1,7 @@
 <div class="pets-new">
   <div class="box-wrapper">
     <h1>新規ペット登録</h1>
-    <%= image_tag('icon/animal/dog_7.png',class: 'center-block') %>
+    <%= image_tag('icon/animal/dog_7.png', class: 'center-block') %>
     <h3>ペットの情報を入力してください</h3>
     <div class="container">
       <% if @saved %>
@@ -11,7 +11,7 @@
       <% end %>
     </div>
     <div class="back-page">
-      <a href="<%= mypage_root_path %>">マイページに戻る</a>
+      <%= link_to 'マイページに戻る', mypage_root_path %>
     </div>
   </div>
 </div>
