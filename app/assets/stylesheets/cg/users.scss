@@ -47,3 +47,91 @@
     margin-bottom: 10px;
   }
 }
+
+/* from mypage.html.erb */
+.users-mypage {
+  @include users-common;
+
+  .pet-list{
+    border: solid white 2px;
+    border-radius: 20px;
+    text-align: center;
+  
+    h3 {
+      margin: 2rem;
+    }
+  
+    .pet {
+      width: 120px;
+      height: 160px;
+      display: inline-block;
+      border: dotted 5px white;
+      margin: 2px;
+      background-color: #eefaeb;
+      border-radius: 10px 0px 10px 0;
+  
+      a {
+        display: block;
+        color: black;
+      }
+  
+      .icon {
+        width: 100px;
+        height: 100px;
+        margin-top: 2px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+  
+      p {
+        text-align: center;
+        color: black;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  .edit-prof{
+    text-align: right;
+    margin-top: 2rem;
+  
+    a {
+      display: block;
+    }
+  }
+  
+  .user-detail{
+    margin-top: 50px;
+  
+    p {
+      text-align: left;
+    }
+  
+    tr.empty {
+      background-color: #fce6e6;
+    }
+  }
+  
+  .share-info{
+    text-align: center;
+    width: 28rem;
+    padding: 3px;
+    background-color: #c2f5ba;
+    margin-left: auto;
+    margin-bottom: 20px;
+    border: solid 2px gray;
+    border-radius: 30px;
+    font-size: 24px;
+  
+    &-false {
+      background-color: #bcd4f4;
+    }
+  }
+  
+  .pet .share-info{
+    font-size: 12px;
+    width: 10rem;
+    margin: 0 auto;
+  }
+}
+
