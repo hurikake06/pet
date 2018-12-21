@@ -1,3 +1,4 @@
+@import "../mixin";
 $color-main-thema: #FFB952;
 
 body {
@@ -84,13 +85,6 @@ footer {
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-}
-
-@mixin side-color {
-  height: 100%;
-  width: 50px;
-  margin-left: auto;
-  background-color: #C7DDAE;
 }
 
 .side-right-color {
