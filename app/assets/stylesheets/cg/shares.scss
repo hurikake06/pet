@@ -57,3 +57,11 @@ td {
   color: black;
   font-size: 1.2em;
 }
+
+/* from list.html.erb */
+.share-user-list{
+  border: solid 2px white;
+}
+.share-host-list{
+  border: solid 2px black;
+}
