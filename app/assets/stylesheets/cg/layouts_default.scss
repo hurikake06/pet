@@ -239,3 +239,52 @@ footer {
     font-size: 2rem;
   }
 }
+
+/* from _header.html.erb */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+}
+
+.fixed {
+  .navbar{
+    border: double 5px #FFFFFF;
+    border-top: 0px;
+    background: linear-gradient(to bottom, #ffffffbd 0, #ffffff6e 100%);
+    position: fixed;
+    top: 0;
+    margin-left: 0px;
+    transition: all 0.5s ease;
+
+    &.none-anim {
+      transition: none;
+    }
+
+    &>:not(.container-fluid) {
+      display: none;
+    }
+  }
+
+  &.toggled {
+    .navbar {
+      margin-left: 250px;
+    }
+  }
+}
+
+.sidebar-toggle-button{
+  top: 64px;
+  right: 50px;
+}
+
+.navbar-toggle-button{
+  background: none;
+  border: none;
+}
+
+/* navbarの縦幅が変わる変更があった際、heightを変更してください。 */
+.navbar-space{
+  height: 210px;
+}
