@@ -1,3 +1,5 @@
+$color-main-thema: #FFB952;
+
 body {
   overflow-x: hidden;
   color: #576a8c;
@@ -191,7 +193,7 @@ footer {
   position: fixed;            /* ヘッダーの固定 */
   top: 30px;                   /* 位置(上0px) */
   right: 30px;                 /* 位置(右0px) */
-  background-color: lightgray;
+  background-color: $color-main-thema;
 }
 
 @media(min-width:768px) {
