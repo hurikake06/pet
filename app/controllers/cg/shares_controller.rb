@@ -11,6 +11,16 @@ class Cg::SharesController < Cg::LayoutsController
     @pet = pet
   end
 
+  def update_user
+    p 'update_user'
+    redirect_to share_show_user_path params[:share_id]
+  end
+
+  def update_host
+    p 'update_host'
+    redirect_to share_show_host_path params[:share_id]
+  end
+
   def list
     login_check
     @user = session_user

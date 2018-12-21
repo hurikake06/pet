@@ -1,0 +1,4 @@
+<%= form_with(url: { action: action }, local: true ) do |form| %>
+  <input id="cg_share_share_info" name="cg_share[share_info]" type="hidden" value=<%= info.id %> />
+  <%= form.button info.value, type: 'submit', class: 'btn btn-primary' %>
+<% end %>

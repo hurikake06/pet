@@ -1,5 +1,18 @@
 <div class='share_detail share_host_detail'>
   <h1>シェア詳細</h1>
+  <div class="update_share_detail">
+    <%# <% case share.share_info %> %>
+    <%# <% when 1 then %> %>
+      <%= render partial: 'cg/shares/info_form',
+          locals: { info: Cg::Info.find(2), action: 'update_host' } %>
+
+      <%= render partial: 'cg/shares/info_form',
+          locals: { info: Cg::Info.find(3), action: 'update_host' } %>
+
+      <%= render partial: 'cg/shares/info_form',
+          locals: { info: Cg::Info.find(4), action: 'update_host' } %>
+    <%# <% end %> %>
+  </div>
   <h2>状態：<%= share.info.value %></h2>
   <hr>
   <table class='table'>
