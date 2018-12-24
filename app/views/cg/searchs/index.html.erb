@@ -17,7 +17,7 @@
       <div class="row">
         <% @pets.each do |pet| %>
           <div class="col-sm-4">
-            <%= link_to show_pet_path petname: pet.petname do %>
+            <%= link_to cg_pets_path petname: pet.petname do %>
               <%= image_tag(pet.icon, class:'icon') %>
               <p><%= pet.name %></p>
             <% end %>
@@ -30,7 +30,7 @@
       <div class="row">
         <% @users.each do |user| %>
           <div class="col-sm-4">
-            <%= link_to show_path username: user.username do %>
+            <%= link_to cg_users_path username: user.username do %>
               <%= image_tag(user.icon, class: 'icon') %>
               <p><%= user.name %></p>
             <% end %>

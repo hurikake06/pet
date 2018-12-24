@@ -44,7 +44,7 @@
       </div>
       <div class="edit-prof">
         <br>
-        <%= link_to 'プロフィールを編集', setting_pet_path(petname: @pet.petname) %>
+        <%= link_to 'プロフィールを編集', cg_settings_pets_path(petname: @pet.petname) %>
       </div>
     <% else %>
       <p>Pet not found</p>

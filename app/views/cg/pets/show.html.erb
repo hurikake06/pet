@@ -1,7 +1,7 @@
 <div class="pets-show">
   <div class="box-wrapper">
     <% if @pet.present? %>
-      <%= link_to show_path username: @pet.user.username do %>
+      <%= link_to cg_users_path username: @pet.user.username do %>
         <div class="pet-user">
           <%= image_tag(@pet.user.icon, class: 'icon') %>
           <%= @pet.user.name %>
@@ -18,7 +18,7 @@
 
       <% if session_user.share_user_flag && @pet.share_flag %>
         <div class="share">
-          <a href="<%= share_new_path @pet.petname %>" class ="square-btn">シェア申請</a>
+          <a href="<%= cg_shares_new_path @pet.petname %>" class ="square-btn">シェア申請</a>
         </div>
       <% end %>
 

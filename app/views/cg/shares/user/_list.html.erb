@@ -22,7 +22,7 @@
     <% unless user.user_shares.where(share_info: 1).empty? %>
       <h2>~~申請中~~</h2>
       <% user.user_shares.where(share_info: 1).each do |share| %>
-        <a href="<%= share_show_user_path share.id %>">
+        <a href="<%= cg_shares_path share.id %>">
           <div class='share'>
             <h3>
               <%= image_tag(share.pet.icon, class: 'icon') %>

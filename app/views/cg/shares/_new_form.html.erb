@@ -5,7 +5,7 @@
     display:inline-block;
   }
 </style>
-  <%= form_for share, url: { action: 'new'} do |f| %>
+  <%= form_for share, url: { action: 'create'} do |f| %>
     <%= f.fields_for share.detail do |ff| %>
       <div class = "form-group">
         <%= ff.label :facility_id %>

@@ -5,16 +5,10 @@ class Cg::SharesController < Cg::LayoutsController
     return unless session_user&.share_user_flag
     return unless params[:petname].present?
 
-    @pet = Cg::Pet.find_by(petname: params[:petname])
-    return unless @pet.present? && @pet.share_flag
+    pet = Cg::Pet.find_by(petname: params[:petname])
+    return unless pet&.share_flag
 
-    if params[:cg_share].present?
-      # post
-      @share = Cg::Share.new(share_params(@pet.id))
-      @saved = @share.save
-    else
-      # get
-    end
+    @pet = pet
   end
 
   def list
@@ -22,21 +16,37 @@ class Cg::SharesController < Cg::LayoutsController
     @user = session_user
   end
 
-  def show_user
-    @to_page = 'USER'
+  def show
     login_check
     share = Cg::Share.find(params[:share_id])
-    @share = share if share.user_id == session[:user_id]
-    render 'cg/shares/show'
+
+    if share.user_id == session[:user_id]
+      # シェアユーザー
+      @to_page = 'USER'
+      @share = share
+    elsif share.pet.user.id == session[:user_id]
+      # シェアホスト
+      @to_page = 'HOST'
+      @share = share
+    end
   end
 
-  def show_host
-    @to_page = 'HOST'
-    login_check
-    share = Cg::Share.find(params[:share_id])
-    @share = share if share.pet.user.id == session[:user_id]
-    render 'cg/shares/show'
+  def create
+    @pet = Cg::Pet.find_by(petname: params[:petname])
+    redirect_to cg_pets_path(pet.petname) unless session_user&.share_user_flag && @pet&.share_flag
+
+    @share = Cg::Share.new(share_params(@pet.id))
+    @saved = @share.save
+    if @saved
+      redirect_to cg_shares_root_path
+    else
+      render :new
+    end
   end
+
+  def update; end
+
+  def destroy; end
 
   private
 

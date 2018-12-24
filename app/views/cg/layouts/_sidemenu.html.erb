@@ -1,12 +1,12 @@
 <ul class="sidebar-nav">
-  <%= link_to root_path do %>
+  <%= link_to cg_root_path do %>
     <li class="sidebar-brand">
         <%= image_tag('icon/logo/title_1.png', size: '100x100') %>
     </li>
   <% end %>
   <% if login_flag %>
     <% user = session_user %>
-    <%= link_to mypage_root_path do %>
+    <%= link_to cg_users_path(user.username) do %>
       <li>
         <%= image_tag(user.icon, size: '40x40') %><br>
         <%= user.name %>さん
@@ -17,7 +17,7 @@
     <% unless user.pets.empty? %>
       <% user.pets.each do |pet| %>
         <li>
-          <%= link_to mypage_pet_path petname: pet.petname do %>
+          <%= link_to cg_pets_path(pet.petname) do %>
             <%= image_tag(pet.icon, size: '40x40') %>
             <%= pet.name %>
           <% end %>
@@ -26,14 +26,14 @@
     <% end %>
     <hr>
     <li>
-        <%= link_to 'logout', logout_path %>
+        <%= link_to 'logout', cg_logout_path %>
     </li>
     <hr>
     <li>
       <a href="#">お知らせ</a>
     </li>
     <li>
-      <a href="<%= setting_root_path %>">設定</a>
+      <a href="<%= cg_settings_users_root_path %>">設定</a>
     </li>
     <li>
       <a href="#">CuteGiftについて</a>
@@ -61,7 +61,7 @@
     </li>
     <hr>
     <li>
-        <%= link_to 'login', login_path %>
+        <%= link_to 'login', cg_login_path %>
     </li>
     <hr>
     <li>

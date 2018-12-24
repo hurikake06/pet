@@ -8,7 +8,7 @@
   <div class="pet-list">
     <% Cg::Pet.all.each do |pet| %>
       <div class="pet">
-        <a href="<%= show_pet_path petname: pet.petname %>">
+        <a href="<%= cg_pets_path petname: pet.petname %>">
           <table>
             <tr>
               <td><%= image_tag(pet.icon, class:'icon') %></td>
@@ -28,7 +28,7 @@
   <h3 style="color:black;">人気ホスト</h3>
   <ul class="user-list">
     <% Cg::User.all.where.not(id: @user.id).each do |user| %>
-    <li><a href="<%= show_path username: user.username %>"><%= user.name %></a></li>
+    <li><a href="<%= cg_users_path username: user.username %>"><%= user.name %></a></li>
     <% end %>
   </ul>
 </div>
