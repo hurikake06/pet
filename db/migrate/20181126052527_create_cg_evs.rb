@@ -6,6 +6,7 @@ class CreateCgEvs < ActiveRecord::Migration[5.2]
       t.bigint :ev_type_info
 
       t.timestamps
+      t.index %i[share_id ev_type_info], unique: true
     end
   end
 end
