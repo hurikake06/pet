@@ -12,13 +12,7 @@ class Cg::PetsController < Cg::LayoutsController
 
   def edit
     login_check
-    @pet_edit = Cg::Pet.find_by(petname: params[:petname])
-    @pet = Marshal.load(Marshal.dump(@pet_edit))
-    return unless @pet_edit.present?
-    return unless params[:cg_pet].present?
-
-    @pet_edit = @pet_edit.user.id == session[:user_id] ? @pet_edit : nil
-    @pet = @pet_edit if @pet_edit.update(pet_edit_params(@pet_edit))
+    @pet = Cg::Pet.find_by(petname: params[:petname])
   end
 
   def create
@@ -32,7 +26,16 @@ class Cg::PetsController < Cg::LayoutsController
     end
   end
 
-  def update; end
+  def update
+    @pet = Cg::Pet.find_by(petname: params[:petname])
+    @pet_edit = Marshal.load(Marshal.dump(@pet))
+    return unless @pet_edit.present?
+    return unless params[:cg_pet].present?
+
+    @pet_edit = @pet_edit.user.id == session[:user_id] ? @pet_edit : nil
+    @pet = @pet_edit if @pet_edit.update(pet_edit_params(@pet))
+    render :edit
+  end
 
   def destroy; end
 
