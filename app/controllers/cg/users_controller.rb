@@ -49,10 +49,7 @@ class Cg::UsersController < Cg::LayoutsController
     @user_edit = Marshal.load(Marshal.dump(@user))
     return unless @user.present?
     return unless params[:cg_user].present?
-
-    if @user_edit.update(user_edit_params @user)
-      @user = @user_edit
-    end
+    @user = @user_edit if @user_edit.update(user_edit_params @user)
     render :edit
   end
 
