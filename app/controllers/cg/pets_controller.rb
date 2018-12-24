@@ -3,22 +3,11 @@
 class Cg::PetsController < Cg::LayoutsController
   def new
     login_check
-
-    return unless params[:cg_pet].present?
-
-    @pet = Cg::Pet.new(pet_params)
-    @saved = @pet.save
-  end
-
-  def mypage
-    login_check
-    pet = Cg::Pet.find_by(petname: params[:petname])
-    @pet = pet.user.id == session[:user_id]? pet : nil
   end
 
   def show
     @pet = Cg::Pet.find_by(petname: params[:petname])
-    redirect_to mypage_pet_path @pet.petname if login_flag && session[:user_id] == @pet.user.id
+    render 'cg/pets/mypage' if login_flag && session[:user_id] == @pet.user.id
   end
 
   def edit
@@ -29,10 +18,25 @@ class Cg::PetsController < Cg::LayoutsController
     return unless params[:cg_pet].present?
 
     @pet_edit = @pet_edit.user.id == session[:user_id] ? @pet_edit : nil
-    if @pet_edit.update(pet_edit_params @pet_edit)
-      @pet = @pet_edit
+    @pet = @pet_edit if @pet_edit.update(pet_edit_params(@pet_edit))
+  end
+
+  def create
+    login_check
+    @pet = Cg::Pet.new(pet_new_params)
+    @saved = @pet.save
+    if @saved
+      redirect_to cg_pets_path @pet.petname
+    else
+      render :new
     end
   end
+
+  def update; end
+
+  def destroy; end
+
+  private
 
   def pet_new_params
     params[:cg_pet][:user_id] = session[:user_id]
@@ -47,7 +51,7 @@ class Cg::PetsController < Cg::LayoutsController
     )
   end
 
-  def pet_edit_params pet
+  def pet_edit_params(pet)
     params[:cg_pet][:detail_attributes] = params[:cg_pet][:cg_pet_detail]
     params[:cg_pet][:medical_info] = pet[:medical_info]
     params[:cg_pet][:detail_attributes][:id] = pet.detail.id
@@ -55,11 +59,11 @@ class Cg::PetsController < Cg::LayoutsController
       :name,
       :types_id,
       :about,
-      detail_attributes: [
-        :id,
-        :variable_cost,
-        :fixed_cost,
-        :share_about
+      detail_attributes: %i[
+        id
+        variable_cost
+        fixed_cost
+        share_about
       ]
     )
   end

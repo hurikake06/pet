@@ -3,6 +3,6 @@
 class SessionsController < ApplicationController
   def destroy
     reset_session
-    redirect_to '/CuteGift/login'
+    redirect_to cg_root_path
   end
 end

@@ -85,7 +85,7 @@
       <div class="pet-list">
         <% @user.pets.each do |pet| %>
           <div class="pet">
-            <a href="<%= show_pet_path petname: pet.petname %>">
+            <a href="<%= cg_pets_path petname: pet.petname %>">
               <table>
                 <tr>
                   <td><%= image_tag(pet.icon, class:'icon') %></td>

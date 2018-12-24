@@ -36,5 +36,4 @@ class Cg::Pet < ApplicationRecord
   def share_flag
     share_pet_info == 17
   end
-
 end

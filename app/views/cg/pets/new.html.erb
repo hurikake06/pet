@@ -7,4 +7,4 @@
     <%= render partial: 'new_form', locals: { pet: @pet } %>
   <% end %>
 </div>
-<a href="<%= mypage_root_path %>">マイページに戻る</a>
+<a href="<%= cg_users_path session_user.username %>">マイページに戻る</a>

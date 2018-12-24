@@ -25,7 +25,7 @@
   </h2>
     <% unless pet.shares.empty? %>
       <% pet.shares.each do |share| %>
-        <a href="<%= share_show_host_path share.id %>">
+        <a href="<%= cg_shares_path share.id %>">
           <div class='share'>
             <h3>
               <%= image_tag(share.user.icon, class: 'icon') %>

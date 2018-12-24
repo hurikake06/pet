@@ -3,6 +3,6 @@
 
 <% @user.pets.each do |pet| %>
   <p>
-    <a href="<%= setting_pet_path pet.petname %>"><%= pet.name %></a>
+    <a href="<%= cg_settings_pets_path pet.petname %>"><%= pet.name %></a>
   </p>
 <% end %>
