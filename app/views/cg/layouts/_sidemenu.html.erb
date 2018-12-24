@@ -17,7 +17,7 @@
     <% unless user.pets.empty? %>
       <% user.pets.each do |pet| %>
         <li>
-          <%= link_to cg_users_path(user.username), petname: pet.petname do %>
+          <%= link_to cg_pets_path(pet.petname) do %>
             <%= image_tag(pet.icon, size: '40x40') %>
             <%= pet.name %>
           <% end %>
