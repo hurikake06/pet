@@ -49,12 +49,7 @@ class Cg::UsersController < Cg::LayoutsController
     end
   end
 
-  def update; end
-
-  def destroy; end
-
-  def edit
-    login_check
+  def update
     @user = session_user
     @user_edit = Marshal.load(Marshal.dump(@user))
     return unless @user.present?
@@ -63,6 +58,15 @@ class Cg::UsersController < Cg::LayoutsController
     if @user_edit.update(user_edit_params @user)
       @user = @user_edit
     end
+    render :edit
+  end
+
+  def destroy; end
+
+  def edit
+    login_check
+    @user = session_user
+    @user_edit = Marshal.load(Marshal.dump(@user))
   end
 
   private
