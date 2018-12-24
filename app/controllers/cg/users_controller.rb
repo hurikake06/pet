@@ -15,11 +15,6 @@ class Cg::UsersController < Cg::LayoutsController
     render 'cg/users/mypage' if login_flag && session[:user_id] == @user[:id]
   end
 
-  def edit
-    login_check
-    @user = session_user
-  end
-
   # ユーザ名とパスワードが正しい場合、
   # セッション変数:user_idにユーザのIDを入れ、:login_stateをOKにする
   def pass_check
@@ -66,7 +61,6 @@ class Cg::UsersController < Cg::LayoutsController
   def edit
     login_check
     @user = session_user
-    @user_edit = Marshal.load(Marshal.dump(@user))
   end
 
   private
