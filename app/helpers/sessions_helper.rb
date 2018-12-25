@@ -2,7 +2,7 @@
 
 module SessionsHelper
   def login_check
-    redirect_to '/CuteGift/login' unless login_flag
+    redirect_to cg_login_path unless login_flag
   end
 
   def login_flag
