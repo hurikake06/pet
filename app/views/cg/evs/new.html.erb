@@ -1,0 +1,4 @@
+<h1>Cg::Evs#new</h1>
+<p>Find me in app/views/cg/evs/new.html.erb</p>
+<%= render partial: 'host_ev_new_form', locals: { ev: @ev } if @ev.type == 'Cg::HostEv' %>
+<%= render partial: 'user_ev_new_form', locals: { ev: @ev } if @ev.type == 'Cg::UserEv' %>
