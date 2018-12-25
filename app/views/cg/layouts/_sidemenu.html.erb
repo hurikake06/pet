@@ -1,17 +1,17 @@
 <ul class="sidebar-nav">
   <%= link_to cg_root_path do %>
     <li class="sidebar-brand">
-        <%= image_tag('icon/logo/title_1.png', size: '100x100') %>
+        <%= image_tag('icon/logo/title_1.png', size: '150x150', class: 'logo-sidebar') %>
     </li>
   <% end %>
   <% if login_flag %>
     <% user = session_user %>
-    <%= link_to cg_users_path(user.username) do %>
-      <li>
-        <%= image_tag(user.icon, size: '40x40') %><br>
-        <%= user.name %>さん
-      </li>
-    <% end %>
+    <li>
+      <%= image_tag(user.icon, size: '40x40', class: 'center-block profile-icon-sidebar') %>
+      <%= link_to cg_users_path(user.username) do %>
+          <%= user.name %>さん
+      <% end %>
+    </li>
     <hr>
     <p>ペットリスト</p>
     <% unless user.pets.empty? %>
