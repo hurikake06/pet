@@ -15,11 +15,6 @@ class Cg::UsersController < Cg::LayoutsController
     render 'cg/users/mypage' if login_flag && session[:user_id] == @user[:id]
   end
 
-  def edit
-    login_check
-    @user = session_user
-  end
-
   # ユーザ名とパスワードが正しい場合、
   # セッション変数:user_idにユーザのIDを入れ、:login_stateをOKにする
   def pass_check
@@ -49,9 +44,21 @@ class Cg::UsersController < Cg::LayoutsController
     end
   end
 
-  def update; end
+  def update
+    @user = session_user
+    @user_edit = Marshal.load(Marshal.dump(@user))
+    return unless @user.present?
+    return unless params[:cg_user].present?
+    @user = @user_edit if @user_edit.update(user_edit_params @user)
+    render :edit
+  end
 
   def destroy; end
+
+  def edit
+    login_check
+    @user = session_user
+  end
 
   private
 
@@ -64,6 +71,25 @@ class Cg::UsersController < Cg::LayoutsController
       :password,
       :about,
       detail_attributes: {}
+    )
+  end
+
+  def user_edit_params user
+    params[:cg_user][:detail_attributes] = params[:cg_user][:cg_user_detail]
+    params[:cg_user][:detail_attributes][:id] = user.detail.id
+    params.require(:cg_user).permit(
+      :name,
+      :email,
+      :about,
+      detail_attributes: [
+        :id,
+        :first_name,
+        :last_name,
+        :address,
+        :age,
+        :sex_info,
+        :country_info
+      ]
     )
   end
 end

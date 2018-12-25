@@ -1,5 +1,5 @@
 <h1><%= @user.name %>さんの設定</h1>
-<p>Find me in app/views/cg/pets/edit.html.erb</p>
+<%= render partial: 'edit_form', locals: { user: @user, user_edit: @user_edit } %>
 
 <% @user.pets.each do |pet| %>
   <p>
