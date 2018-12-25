@@ -12,19 +12,14 @@
     </div>
     <% if @searched %>
       <div class="row">
-        <h3 class="ribbon">ペットの検索結果</h3>
-      </div>
-      <div class="row" id="pet_contents">
-        <%= render partial: 'pet', collection: @pets %>
-      </div>
-      <%= link_to '全て見る', cg_searchs_pet_path(keyword: params[:keyword]) %>
-      <div class="row">
         <h3 class="ribbon">ユーザの検索結果</h3>
       </div>
       <div class="row" id="user_contents">
         <%= render partial: 'user', collection: @users %>
       </div>
-      <%= link_to '全て見る', cg_searchs_user_path(keyword: params[:keyword]) %>
+      <div id="next">
+        <%= link_to_next_page @users, 'もっと見る', remote: true, id: 'more_link' %>
+      </div>
     <% end %>
   </div>
 </div>
