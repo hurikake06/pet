@@ -1,17 +1,15 @@
 <div class='share_detail share_host_detail'>
   <h1>シェア詳細</h1>
   <div class="update_share_detail">
-    <%# <% case share.share_info %> %>
-    <%# <% when 1 then %> %>
-      <%= render partial: 'cg/shares/info_form',
-          locals: { info: Cg::Info.find(2), action: 'update_host' } %>
-
-      <%= render partial: 'cg/shares/info_form',
-          locals: { info: Cg::Info.find(3), action: 'update_host' } %>
-
-      <%= render partial: 'cg/shares/info_form',
-          locals: { info: Cg::Info.find(4), action: 'update_host' } %>
-    <%# <% end %> %>
+    <% case share.share_info %>
+    <% when 1 then %>
+      <%= button_to '許可', cg_shares_path(share.id), method: :patch, params: { method: :update_info, share_info: 2 } %>
+      <%= button_to '拒否', cg_shares_path(share.id), method: :patch, params: { method: :update_info, share_info: 3 } %>
+    <% when 2 then %>
+      <%= button_to 'キャンセル', cg_shares_path(share.id), method: :patch, params: { method: :update_info, share_info: 4 } %>
+    <% when 3 then %>
+      <%= button_to '許可', cg_shares_path(share.id), method: :patch, params: { method: :update_info, share_info: 2 } %>
+    <% end %>
   </div>
   <h2>状態：<%= share.info.value %></h2>
   <hr>

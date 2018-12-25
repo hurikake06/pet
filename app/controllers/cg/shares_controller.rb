@@ -11,15 +11,6 @@ class Cg::SharesController < Cg::LayoutsController
     @pet = pet
   end
 
-  def update_user
-    p 'update_user'
-    redirect_to share_show_user_path params[:share_id]
-  end
-
-  def update_host
-    p 'update_host'
-    redirect_to share_show_host_path params[:share_id]
-  end
 
   def list
     login_check
@@ -28,16 +19,16 @@ class Cg::SharesController < Cg::LayoutsController
 
   def show
     login_check
-    share = Cg::Share.find(params[:share_id])
-
-    if share.user_id == session[:user_id]
+    set_share
+    return unless @share.present?
+    if check_shre_user
       # シェアユーザー
-      @to_page = 'USER'
-      @share = share
-    elsif share.pet.user.id == session[:user_id]
+      @to_page = 'cg/shares/user/show'
+    elsif check_share_host
       # シェアホスト
-      @to_page = 'HOST'
-      @share = share
+      @to_page = 'cg/shares/host/show'
+    else
+      @share = nil
     end
   end
 
@@ -54,11 +45,69 @@ class Cg::SharesController < Cg::LayoutsController
     end
   end
 
-  def update; end
+  def update
+    p 'update'
+    set_share
+    @saved = nil
+    case params[:method].presence
+    when 'update_info' then
+      @user_mode = :host
+      redirect_to cg_shares_root_path unless check_share_host
+      update_info
+    when 'update_user' then
+      @user_mode = :user
+      redirect_to cg_shares_root_path unless check_share_user
+      update_user
+    when 'update_host' then
+      redirect_to cg_shares_root_path unless check_share_host
+      @user_mode = :host
+      update_host
+    else
+      p params[:method].presence&.to_s
+    end
+
+    @to_page = "cg/shares/#{@user_mode}/show"
+    render :show
+  end
+
+  # 未実装
+  def update_user
+    p 'update_user'
+    redirect_to cg_shares_path params[:share_id]
+  end
+
+  # 未実装
+  def update_host
+    p 'update_host'
+    redirect_to cg_shares_path params[:share_id]
+  end
+
+  def update_info
+    p 'update_info'
+    flag = false
+
+    case @share.share_id
+    when 1 then
+      flag = [2, 3].include? params[:share_id]
+    when 2 then
+      flag = [4].include? params[:share_id]
+    when 3 then
+      flag = [2].include? params[:share_id]
+    end
+
+    if flag
+      @share.share_info = params[:share_info]
+      @saved = @share.save
+    end
+  end
 
   def destroy; end
 
   private
+
+  def set_share
+    @share = Cg::Share.find(params[:share_id])
+  end
 
   def share_params(pets_id)
     params[:cg_share][:detail_attributes] = params[:cg_share][:cg_share_detail]
@@ -75,5 +124,15 @@ class Cg::SharesController < Cg::LayoutsController
       pet_id: pets_id,
       share_info: 1
     )
+  end
+
+  # 申請者か？
+  def check_shre_user
+    @share.user_id == session[:user_id]
+  end
+
+  # 申請された側か？
+  def check_share_host
+    @share.pet.user_id == session[:user_id]
   end
 end

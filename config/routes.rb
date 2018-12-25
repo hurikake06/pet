@@ -22,7 +22,7 @@ Rails.application.routes.draw do
         post 'new', action: :create
         get ':petname', action: :show
       end
-      
+
       scope :settings, as: 'settings' do
         namespace :users do
           root action: :edit
