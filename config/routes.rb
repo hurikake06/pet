@@ -47,6 +47,13 @@ Rails.application.routes.draw do
       namespace :searchs do
         root action: :index
       end
+
+      namespace :evs do
+        get 'new/:share_id', action: :new, as: :new
+        post 'new/:share_id', action: :create, as: :create
+        get ':ev_id', action: :edit
+        patch ':ev_id', action: :update
+      end
     end
   end
 end
