@@ -11,3 +11,7 @@
     text-align: center;
   }
 }
+
+.users-edit{
+  @include page-common;
+}
