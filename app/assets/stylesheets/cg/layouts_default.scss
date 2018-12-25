@@ -11,7 +11,7 @@ body {
   }
 }
 
-.navbar-default{
+.navbar-default {
   background: linear-gradient(to bottom,#fff0 0,#ffffffd1 100%);
   border-bottom: solid 4px lightgray;
 
@@ -163,7 +163,7 @@ footer {
       }
     }
 
-    .profile-icon-sidebar{
+    .profile-icon-sidebar {
       width: 70px;
       height: 70px;
       border-radius: 100px;
@@ -171,7 +171,7 @@ footer {
       border: solid 1px gray;
     }
 
-    .logo-sidebar{
+    .logo-sidebar {
       margin-bottom: 30px;
     }
   }
@@ -292,6 +292,6 @@ footer {
 }
 
 /* navbarの縦幅が変わる変更があった際、heightを変更してください。 */
-.navbar-space{
+.navbar-space {
   height: 210px;
 }
