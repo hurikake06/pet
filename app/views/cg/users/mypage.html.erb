@@ -20,7 +20,7 @@
         </div>
       <% end %>
 
-      <h1><%= @user.name %></h1>
+  <h1><%= @user.name %></h1>
       <div class="profile-icon">
         <%= image_tag(@user.icon, class: 'icon') %>
       </div>
@@ -38,11 +38,11 @@
                   シェア可能
                 </div>
               <% else %>
-                <div class="share-info share-info_false">
+                <div class="share-info share-info-false">
                   シェア不可
                 </div>
               <% end %>
-              <a href="<%= mypage_pet_path petname: pet.petname %>">
+              <a href="<%= cg_pets_path petname: pet.petname %>">
                 <table>
                   <tr>
                     <td><%= image_tag(pet.icon, class:'icon') %></td>
@@ -95,9 +95,9 @@
         </table>
       </div>
       <div class="edit-prof">
-        <%= link_to '新規ペット追加', mypage_pet_new_path, class: 'mb-1' %>
+        <%= link_to '新規ペット追加', cg_pets_new_path, class: 'mb-1' %>
         <br>
-        <%= link_to 'プロフィールを編集', setting_path %>
+        <%= link_to 'プロフィールを編集', cg_settings_users_path %>
       </div>
     <% else %>
       <p>urlが間違っています</p>
