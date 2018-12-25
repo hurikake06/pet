@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
   end
 
   create_table "cg_evs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type"
     t.bigint "share_id"
     t.integer "val"
-    t.bigint "ev_type_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["share_id", "type"], name: "index_cg_evs_on_share_id_and_type", unique: true
   end
 
   create_table "cg_facilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
