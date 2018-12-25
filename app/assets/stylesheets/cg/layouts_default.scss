@@ -53,7 +53,6 @@ footer {
   padding: 15px 5px 0 5px;
   color: gray;
   font-size: 12px;
-  background-color: white;
 }
 
 .container-fluid {
@@ -123,9 +122,9 @@ footer {
   left: 250px;
   width: 0;
   height: 100%;
+  border-right: solid 8px lightgray;
   margin-left: -250px;
   overflow-y: auto;
-  background: #f8f4e6;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -164,6 +163,18 @@ footer {
       &:hover {
         background: linear-gradient(transparent 70%,$color-main-thema 70%);
       }
+    }
+
+    .profile-icon-sidebar{
+      width: 70px;
+      height: 70px;
+      border-radius: 100px;
+      background: white;
+      border: solid 1px gray;
+    }
+
+    .logo-sidebar{
+      margin-bottom: 30px;
     }
   }
 }
