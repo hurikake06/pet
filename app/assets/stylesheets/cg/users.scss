@@ -40,4 +40,19 @@
         padding: 0;
     }
   }
+
+  .pet-info{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: gray;
+    background: #ffebe9;
+    border-top: solid 5px lightgray;
+
+    p {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        color: gray;
+    }
+  }
 }
