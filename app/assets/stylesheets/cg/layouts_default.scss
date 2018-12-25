@@ -18,6 +18,10 @@ body {
     li {
       a {
         font-size: 1.75rem;
+
+        &:hover {
+          background: linear-gradient(transparent 70%,$color-main-thema 70%);
+        }
       }
     }
   }
@@ -156,9 +160,7 @@ footer {
       color: #999999;
 
       &:hover {
-        text-decoration: none;
-        color: lightgray;
-        background: rgba(255, 255, 255, 0.2);
+        background: linear-gradient(transparent 70%,$color-main-thema 70%);
       }
     }
   }
