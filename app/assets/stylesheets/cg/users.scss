@@ -14,4 +14,30 @@
 
 .users-edit{
   @include page-common;
+
+  .account-info {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: gray;
+    background: #f4f4f4;
+    border-top: solid 10px #5bb7ae;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+  }
+
+  .personal-info {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #ff7d6e;
+    background: #ffebe9;
+    border-top: solid 10px #ff7d6e;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+  }
 }

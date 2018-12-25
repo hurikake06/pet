@@ -1,4 +1,6 @@
 <%= form_for user, url: { action: 'edit' } do |f| %>
+<div class="account-info">
+  <h3>アカウント情報</h3>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
@@ -19,6 +21,9 @@
     <%= f.text_area :about, class:'form-control' %>
     <%= print_form_error user_edit&.errors, :about %>
   </div>
+</div>
+<div class="personal-info">
+  <h3>個人情報</h3>
   <%= f.fields_for user.detail do |ff| %>
     <div class="form-group">
       <%= ff.label :first_name %>
@@ -55,5 +60,6 @@
       <% end %>
     </div>
   <% end %>
+</div>
   <%= f.button type:'submit', class: 'btn btn-primary' %>
 <% end %>
