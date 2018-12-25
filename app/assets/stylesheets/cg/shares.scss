@@ -68,3 +68,43 @@ td {
     border: solid 2px black;
   }
 }
+
+/* from host/_list.html.erb */
+.shares-host-list {
+  .share-host-list {
+    .share {
+      background: #e5f3fc;
+      color: black;
+      border-radius: 20px;
+      height: 300px;
+      width: 80%;
+      margin: 20px 40px;
+      padding: 10px;
+    }
+  
+    .icon {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+/* from users/_list.html.erb */
+.shares-user-list {
+  .share-user-list {
+    .share {
+      background: #e8fce5;
+      color: black;
+      border-radius: 20px;
+      height: 200px;
+      width: 80%;
+      margin: 20px 40px;
+      padding: 10px;
+    }
+  
+    .icon {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
