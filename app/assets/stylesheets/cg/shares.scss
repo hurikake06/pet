@@ -78,22 +78,12 @@
   @include share-common;
 }
 
-.shares-host-show{
-  @include page-common;
-  @include share-common;
-}
-
 .shares-new{
   @include page-common;
   @include share-common;
 }
 
 .shares-list{
-  @include page-common;
-  @include share-common;
-}
-
-.shares-host-list{
   @include page-common;
   @include share-common;
 }
