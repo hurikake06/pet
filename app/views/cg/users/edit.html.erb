@@ -1,8 +1,17 @@
-<h1><%= @user.name %>さんの設定</h1>
-<%= render partial: 'edit_form', locals: { user: @user, user_edit: @user_edit } %>
-
-<% @user.pets.each do |pet| %>
-  <p>
-    <a href="<%= cg_settings_pets_path pet.petname %>"><%= pet.name %></a>
-  </p>
-<% end %>
+<div class="users-edit">
+  <div class="box-wrapper">
+    <h1><%= @user.name %>さんの設定</h1>
+    <%= image_tag('icon/etc/b_35.png', class: 'center-block') %>
+    <%= render partial: 'edit_form', locals: { user: @user, user_edit: @user_edit } %>
+    <div class="pet-info">
+      <h3>ペット情報の設定に進む</h3>
+      <% @user.pets.each do |pet| %>
+        <%= link_to cg_pets_path(pet.petname) do %>
+          <%= image_tag(pet.icon, size: '40x40', class: 'center-block') %>
+          <p><%= pet.name %></p>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
