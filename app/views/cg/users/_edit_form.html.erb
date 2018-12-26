@@ -2,22 +2,22 @@
 <div class="account-info">
   <h3>アカウント情報</h3>
   <div class="form-group">
-    <%= f.label :name %>
+    <%= f.label '名前' %>
     <%= f.text_field :name, class: 'form-control' %>
     <%= print_form_error user_edit&.errors, :name %>
   </div>
   <div class="form-group">
-    <%= f.label :username %>
+    <%= f.label 'ユーザネーム' %>
     <%= f.text_field :username, class: 'form-control', disabled: true %>
     <%= print_form_error user_edit&.errors, :username %>
   </div>
   <div class="form-group">
-    <%= f.label :email %>
+    <%= f.label 'メールアドレス' %>
     <%= f.text_field :email, class: 'form-control' %>
     <%= print_form_error user_edit&.errors, :email %>
   </div>
   <div class="form-group">
-    <%= f.label :about %>
+    <%= f.label '自己紹介' %>
     <%= f.text_area :about, class:'form-control' %>
     <%= print_form_error user_edit&.errors, :about %>
   </div>
@@ -26,34 +26,34 @@
   <h3>個人情報</h3>
   <%= f.fields_for user.detail do |ff| %>
     <div class="form-group">
-      <%= ff.label :first_name %>
+      <%= ff.label '姓' %>
       <%= ff.text_field :first_name, class:'form-control' %>
       <%= print_form_error user_edit&.errors, :"detail.first_name" %>
     </div>
     <div class="form-group">
-      <%= ff.label :last_name %>
+      <%= ff.label '名' %>
       <%= ff.text_field :last_name, class:'form-control' %>
       <%= print_form_error user_edit&.errors, :"detail.last_name" %>
     </div>
     <div class="form-group">
-      <%= ff.label :address %>
+      <%= ff.label '住所' %>
       <%= ff.text_area :address, class:'form-control' %>
       <%= print_form_error user_edit&.errors, :"detail.address" %>
     </div>
     <div class="form-group">
-      <%= ff.label :age %>
+      <%= ff.label '年齢' %>
       <%= ff.number_field :age, class:'form-control' %>
       <%= print_form_error user_edit&.errors, :"detail.age" %>
     </div>
     <div class="form-group">
-      <%= ff.label :sex_info %>
+      <%= ff.label '性別：' %>
       <% infos = Cg::Info.select(:id,:value).where(info_type_id: 2) %>
       <% infos.each do |info| %>
         <label><%= ff.radio_button :sex_info, info.id %><%= info.value %></label>
       <% end %>
     </div>
     <div class="form-group">
-      <%= ff.label :country_info %>
+      <%= ff.label '国籍：' %>
       <% infos = Cg::Info.select(:id,:value).where(info_type_id: 3) %>
       <% infos.each do |info| %>
         <label><%= ff.radio_button :country_info, info.id %><%= info.value %></label>
