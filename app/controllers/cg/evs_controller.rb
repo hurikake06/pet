@@ -5,6 +5,7 @@ class Cg::EvsController < Cg::LayoutsController
     @ev = Cg::Ev.find(params[:ev_id])
     return unless @ev.present?
     return if @ev.info == 41
+
     share = @ev.share
     case @ev.type
     when 'Cg::UserEv' then
