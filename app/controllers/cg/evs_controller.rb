@@ -5,6 +5,15 @@ class Cg::EvsController < Cg::LayoutsController
     @ev = Cg::Ev.find(params[:ev_id])
     return unless @ev.present?
     return if @ev.info == 41
+    share = @ev.share
+    case @ev.type
+    when 'Cg::UserEv' then
+      # ユーザについてのレビュー
+      @ev = nil unless session_user.id == share.pet.user_id
+    when 'Cg::HostEv' then
+      # ホストについてのレビュー
+      @ev = nil unless session_user.id == share.user_id
+    end
   end
 
   def update
@@ -28,6 +37,7 @@ class Cg::EvsController < Cg::LayoutsController
       ev_params = ev_host_params
     end
     @ev_edit = Marshal.load(Marshal.dump(@ev))
+    ev_params[:ev_info] = 40
     @ev = @ev_edit if @ev_edit.update(ev_params)
     render :edit
   end
