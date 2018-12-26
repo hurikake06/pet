@@ -1,6 +1,10 @@
-<% if @share.present? %>
-  <% link = @to_page == 'HOST' ? 'cg/shares/host/show' : 'cg/shares/user/show' %>
-  <%= render partial: link, locals: { share: @share } %>
-<% else %>
-  <p>error</p>
-<% end %>
+<div class="shares-show">
+  <div class="box-wrapper">
+    <% if @share.present? %>
+      <% link = @to_page == 'HOST' ? 'cg/shares/host/show' : 'cg/shares/user/show' %>
+      <%= render partial: link, locals: { share: @share } %>
+    <% else %>
+      <p>error</p>
+    <% end %>
+  </div>
+</div>
