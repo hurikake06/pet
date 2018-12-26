@@ -22,6 +22,9 @@
       <%= print_form_error user_edit&.errors, :about %>
     </div>
   </div>
+  <div class="submit-area">
+    <%= f.button '更新する',type:'submit', class: 'btn btn-primary submit-btn' %>
+  </div>
   <div class="personal-info">
     <h3>個人情報</h3>
     <%= f.fields_for user.detail do |ff| %>
@@ -61,5 +64,7 @@
       </div>
     <% end %>
   </div>
-  <%= f.button '更新する',type:'submit', class: 'btn btn-primary submit-btn pull-right' %>
+  <div class="submit-area">
+    <%= f.button '更新する',type:'submit', class: 'btn btn-primary submit-btn' %>
+  </div>
 <% end %>
