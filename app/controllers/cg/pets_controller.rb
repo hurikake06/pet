@@ -60,7 +60,7 @@ class Cg::PetsController < Cg::LayoutsController
     params[:cg_pet][:detail_attributes][:id] = pet.detail.id
     params.require(:cg_pet).permit(
       :name,
-      :types_id,
+      :type_id,
       :about,
       detail_attributes: %i[
         id

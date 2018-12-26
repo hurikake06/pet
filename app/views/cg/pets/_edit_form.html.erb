@@ -13,7 +13,10 @@
     <div class="form-group">
       <% types = Cg::Type.all %>
       <% types.each do |type| %>
-        <label><%= f.radio_button :type_id, type.id %><%= type.name %></label>
+        <%= f.label type.name, for: "type_radio_#{type.id}", class: 'radio' do %>
+          <%= f.radio_button :type_id, type.id, id: "type_radio_#{type.id}" %>
+          <%= type.name %>
+        <% end %>
       <% end %>
     </div>
     <div class="form-group">
