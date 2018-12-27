@@ -41,5 +41,9 @@ Cg::Info.create!(id: 36, info_type_id: 13, value: 'ユーザーを評価')
 Cg::Info.create!(id: 37, info_type_id: 14, value: '一般DM')
 Cg::Info.create!(id: 38, info_type_id: 14, value: 'シェア用DM')
 
+Cg::Info.create!(id: 39, info_type_id: 15, value: '未入力')
+Cg::Info.create!(id: 40, info_type_id: 15, value: '入力済み')
+Cg::Info.create!(id: 41, info_type_id: 15, value: '反映済み')
+
 Cg::Info.create!(id: 100, info_type_id: 100, value: '未登録')
 Cg::Info.create!(id: 101, info_type_id: 100, value: '登録済み')
