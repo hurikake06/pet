@@ -11,6 +11,6 @@ class Cg::CgAppController < Cg::LayoutsController
 
   def home
     @user = session_user
-    render :home, layout: 'cg_layouts_nomal'
+    render :home, layout: 'cg_layouts_width_stuffing'
   end
 end
