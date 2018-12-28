@@ -50,10 +50,14 @@ class Cg::SharesController < Cg::LayoutsController
     set_share
     @saved = nil
     case params[:method].presence
-    when 'update_info' then
+    when 'update_info_host' then
       @user_mode = :host
       redirect_to cg_shares_root_path unless check_share_host
-      update_info
+      update_info_host
+    when 'update_info_user' then
+      @user_mode = :user
+      redirect_to cg_shares_root_path unless check_share_user
+      update_info_user
     when 'update_user' then
       @user_mode = :user
       redirect_to cg_shares_root_path unless check_share_user
@@ -68,37 +72,6 @@ class Cg::SharesController < Cg::LayoutsController
 
     @to_page = "cg/shares/#{@user_mode}/show"
     render :show
-  end
-
-  # 未実装
-  def update_user
-    p 'update_user'
-    redirect_to cg_shares_path params[:share_id]
-  end
-
-  # 未実装
-  def update_host
-    p 'update_host'
-    redirect_to cg_shares_path params[:share_id]
-  end
-
-  def update_info
-    p 'update_info'
-    flag = false
-
-    case @share.share_id
-    when 1 then
-      flag = [2, 3].include? params[:share_id]
-    when 2 then
-      flag = [4].include? params[:share_id]
-    when 3 then
-      flag = [2].include? params[:share_id]
-    end
-
-    if flag
-      @share.share_info = params[:share_info]
-      @saved = @share.save
-    end
   end
 
   def destroy; end
@@ -134,5 +107,55 @@ class Cg::SharesController < Cg::LayoutsController
   # 申請された側か？
   def check_share_host
     @share.pet.user_id == session[:user_id]
+  end
+
+  # 未実装
+  def update_user
+    p 'update_user'
+    redirect_to cg_shares_path params[:share_id]
+  end
+
+  # 未実装
+  def update_host
+    p 'update_host'
+    redirect_to cg_shares_path params[:share_id]
+  end
+
+  def update_info_host
+    p 'update_info_host'
+    flag = false
+
+    case @share.share_id
+    when 1 then
+      flag = [2, 3].include? params[:share_id]
+    when 2 then
+      flag = [4].include? params[:share_id]
+    when 3 then
+      flag = [2].include? params[:share_id]
+    end
+
+    if flag
+      @share.share_info = params[:share_info]
+      @saved = @share.save
+    end
+  end
+
+  def update_info_user
+    p 'update_info_user'
+    flag = false
+
+    case @share.share_id
+    when 1 then
+      flag = [4].include? params[:share_id]
+    when 2 then
+      flag = [4].include? params[:share_id]
+    when 3 then
+      flag = [1].include? params[:share_id]
+    end
+
+    if flag
+      @share.share_info = params[:share_info]
+      @saved = @share.save
+    end
   end
 end
