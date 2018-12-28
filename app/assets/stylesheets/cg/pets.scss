@@ -113,14 +113,14 @@
      display: block;
      content: '';
      background: white;
-     border: lightgray 2px solid;
+     border: $color-main-thema 2px solid;
      position: unset;
      width: 1.2rem;
      height: 1.2rem;
     }
 
     &:checked:after{
-      background: lightgray;
+      background: $color-main-thema;
     }
   }
 
@@ -142,7 +142,7 @@
     }
 
     &:hover {
-      background-color: #e2edd7;
+      background-color: #ffecd1;
 
       &:after {
         border-color: #53b300;
