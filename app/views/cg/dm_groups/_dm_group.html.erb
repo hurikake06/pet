@@ -1,0 +1,14 @@
+<a href="<%= cg_dm_groups_path dm_group.id %>">
+  <div class="col-sm-4 dm-group">
+    <% case opponent %>
+    <% when :host %>
+      トーク相手：<%= dm_group.share.pet.name %>
+    <% when :user %>
+      トーク相手：<%= dm_group.share.user.name %>
+    <% end %>
+    <% last_message = Cg::Dm.where(dm_group_id: dm_group.id).last %>
+    <% if last_message.present? %>
+      最新メッセージ：<% last_message.content %>
+    <% end %>
+  </div>
+</a>

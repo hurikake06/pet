@@ -4,14 +4,14 @@ class Cg::DmGroupsController < Cg::LayoutsController
   def list
     login_check
     @user = session_user
-    host_share_dm_groups = Cg::ShareDmGroup.eager_load(:share)
-                                           .where(
-                                             cg_shares: {
-                                               pet_id: Cg::Pet.where(user_id: @user.id).select(:id)
-                                             }
-                                           )
-    user_share_dm_groups = Cg::ShareDmGroup.eager_load(:share)
-                                           .where(cg_shares: { user_id: @user.id })
+    @host_share_dm_groups = Cg::ShareDmGroup.eager_load(:share)
+                                            .where(
+                                              cg_shares: {
+                                                pet_id: Cg::Pet.where(user_id: @user.id).select(:id)
+                                              }
+                                            )
+    @user_share_dm_groups = Cg::ShareDmGroup.eager_load(:share)
+                                            .where(cg_shares: { user_id: @user.id })
   end
 
   def show
