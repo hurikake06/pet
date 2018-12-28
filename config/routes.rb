@@ -56,6 +56,7 @@ Rails.application.routes.draw do
         get ':ev_id', action: :edit
         patch ':ev_id', action: :update
       end
+<<<<<<< HEAD
 
       namespace :dm_groups do
         root action: :list
@@ -67,6 +68,8 @@ Rails.application.routes.draw do
       namespace :dms do
         post 'new/:dm_group_id', action: :create, as: :create
       end
+=======
+>>>>>>> ミス修正
     end
   end
 end
