@@ -112,15 +112,15 @@
     &:after {
      display: block;
      content: '';
-     height: 13px;
-     width: 13px;
      background: white;
-     border: $color-main-thema 2px solid;
+     border: lightgray 2px solid;
      position: unset;
+     width: 1.2rem;
+     height: 1.2rem;
     }
 
     &:checked:after{
-      background: $color-main-thema;
+      background: lightgray;
     }
   }
 
@@ -147,6 +147,12 @@
       &:after {
         border-color: #53b300;
       }
+    }
+  }
+
+  .category-select{
+    label{
+      margin-left: 0.5rem;
     }
   }
 }

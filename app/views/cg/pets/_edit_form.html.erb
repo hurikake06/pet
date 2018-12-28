@@ -10,7 +10,7 @@
       <%= f.text_field :petname, class: 'form-control', disabled: true %>
       <%= print_form_error pet_edit&.errors, :petname %>
     </div>
-    <div class="form-group">
+    <div class="form-group category-select">
       <% types = Cg::Type.all %>
       <% types.each do |type| %>
         <%= f.label type.name, for: "type_radio_#{type.id}", class: 'radio' do %>
