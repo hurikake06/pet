@@ -130,6 +130,7 @@ Cg::User.create!(
 Cg::Pet.create!(
   id: 1,
   user_id: 1,
+  icon: 'sample/dog_1.jpg',
   name: '桃 いぬ',
   petname: 'momoinu',
   pets_sex_info: 26,
@@ -146,6 +147,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 2,
   user_id: 1,
+  icon: 'sample/dog_2.jpg',
   name: '桃 猿',
   petname: 'momosaru',
   pets_sex_info: 26,
@@ -158,6 +160,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 3,
   user_id: 1,
+  icon: 'sample/dog_3.jpg',
   name: '桃 キジ',
   pets_sex_info: 27,
   petname: 'momokiji',
@@ -170,6 +173,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 4,
   user_id: 2,
+  icon: 'sample/dog_4.jpg',
   name: '浦島 かめ',
   petname: 'urashimakame',
   pets_sex_info: 26,
@@ -182,6 +186,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 5,
   user_id: 4,
+  icon: 'sample/dog_5.jpg',
   name: 'ココ',
   petname: 'coco',
   pets_sex_info: 26,
@@ -199,6 +204,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 6,
   user_id: 4,
+  icon: 'sample/cat_1.jpg',
   name: 'モモ',
   petname: 'momo',
   pets_sex_info: 27,
@@ -216,6 +222,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 7,
   user_id: 4,
+  icon: 'sample/cat_2.jpg',
   name: 'マロン',
   petname: 'marron',
   pets_sex_info: 27,
@@ -233,6 +240,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 8,
   user_id: 5,
+  icon: 'sample/cat_3.jpg',
   name: 'コタロウ',
   petname: 'kotaro',
   pets_sex_info: 26,
@@ -250,6 +258,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 9,
   user_id: 5,
+  icon: 'sample/cat_4.jpg',
   name: 'タマ',
   petname: 'tama',
   pets_sex_info: 26,
@@ -265,6 +274,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 10,
   user_id: 6,
+  icon: 'sample/cat_5.jpg',
   name: 'ゴクウ',
   petname: 'goku',
   pets_sex_info: 26,
