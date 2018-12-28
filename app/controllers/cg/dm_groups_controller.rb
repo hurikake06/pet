@@ -9,7 +9,7 @@ class Cg::DmGroupsController < Cg::LayoutsController
 
   def show_share
     login_check
-    dmGroup = Cg::DmGroup.find_by(share_id: params[:share_id])
+    dmGroup = Cg::ShareDmGroup.find_by(share_id: params[:share_id])
     if dmGroup.nil?
       dmGroup = Cg::ShareDmGroup.create!(share_id: params[:share_id])
     end
@@ -20,12 +20,10 @@ class Cg::DmGroupsController < Cg::LayoutsController
     login_check
     pet = Cg::Pet.find(params[:pet_id])
     return if pet.user_id == session_user.id
-    dmGroup = Cg::DmGroup.find_by(pet_id: pet.id,user_id: session_user.id)
+    dmGroup = Cg::UserDmGroup.find_by(pet_id: pet.id,user_id: session_user.id)
     if dmGroup.nil?
       dmGroup = Cg::UserDmGroup.create!(pet_id: pet.id,user_id: session_user.id)
     end
     redirect_to cg_dm_groups_path dmGroup.id
   end
-
-  def new; end
 end
