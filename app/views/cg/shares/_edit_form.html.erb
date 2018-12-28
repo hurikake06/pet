@@ -1,15 +1,16 @@
 <% if share.present? %>
-<style>
-  .bootstrap-date{
-    width:auto;
-    display:inline-block;
-  }
-</style>
-  <%= form_for share, url: { action: 'create'} do |f| %>
+  <style>
+    .bootstrap-date{
+      width:auto;
+      display:inline-block;
+    }
+  </style>
+  <%= form_for share, url: { action: 'update'}, params:{ method: method } do |f| %>
     <%= f.fields_for share.detail do |ff| %>
       <div class = "form-group">
         <%= ff.label :facility_id %>
-        <% pet&.facilities.each do |facility| %>
+        <% facilities = Cg::Facility.where(id: Cg::PetsFacility.select(:facility_id).where(pet_id: pet&.id)) %>
+        <% facilities.each do |facility| %>
           <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
         <% end %>
       </div>

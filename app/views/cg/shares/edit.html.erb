@@ -1,0 +1,9 @@
+<div class="shares-show">
+  <div class="box-wrapper">
+    <% if @share.present? && @form.present? %>
+      <%= render partial: @form, locals: { share: @share } %>
+    <% else %>
+      <p>error</p>
+    <% end %>
+  </div>
+</div>

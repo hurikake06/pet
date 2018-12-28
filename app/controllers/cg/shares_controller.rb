@@ -11,6 +11,15 @@ class Cg::SharesController < Cg::LayoutsController
     @pet = pet
   end
 
+  def edit
+    @share = Cg::Share.find(params[:share_id])
+    return unless @share.present?
+    if check_share_user
+      @form = 'cg/shares/user/edit_form'
+    elsif check_share_host
+      @form = 'cg/shares/host/edit_form'
+    end
+  end
 
   def list
     login_check
@@ -21,7 +30,7 @@ class Cg::SharesController < Cg::LayoutsController
     login_check
     set_share
     return unless @share.present?
-    if check_shre_user
+    if check_share_user
       # シェアユーザー
       @to_page = 'cg/shares/user/show'
     elsif check_share_host
@@ -49,6 +58,7 @@ class Cg::SharesController < Cg::LayoutsController
     p 'update'
     set_share
     @saved = nil
+    set_share
     case params[:method].presence
     when 'update_info_host' then
       @user_mode = :host
@@ -67,11 +77,13 @@ class Cg::SharesController < Cg::LayoutsController
       @user_mode = :host
       update_host
     else
+      @share = nil
+      p 'update_else'
       p params[:method].presence&.to_s
     end
 
-    @to_page = "cg/shares/#{@user_mode}/show"
-    render :show
+    @form = "cg/shares/#{@user_mode}/edit_form"
+    render :edit
   end
 
   def destroy; end
@@ -100,7 +112,7 @@ class Cg::SharesController < Cg::LayoutsController
   end
 
   # 申請者か？
-  def check_shre_user
+  def check_share_user
     @share.user_id == session[:user_id]
   end
 
@@ -112,13 +124,11 @@ class Cg::SharesController < Cg::LayoutsController
   # 未実装
   def update_user
     p 'update_user'
-    redirect_to cg_shares_path params[:share_id]
   end
 
   # 未実装
   def update_host
     p 'update_host'
-    redirect_to cg_shares_path params[:share_id]
   end
 
   def update_info_host
