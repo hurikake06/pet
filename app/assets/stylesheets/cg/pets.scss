@@ -1,13 +1,13 @@
 @import "../mixin";
 
-.pets-mypage{
+.pets-mypage {
   @include page-common;
   .edit-prof {
     text-align: right;
   }
 }
 
-.pets-show{
+.pets-show {
   @include page-common;
   .square-btn {
     display: inline-block;
@@ -44,19 +44,19 @@
   }
 }
 
-.pets-new{
+.pets-new {
   @include page-common;
-  .back-page{
-     text-align: right;
-     margin-top: 15px;
+  .back-page {
+    text-align: right;
+    margin-top: 15px;
   }
 
-  img{
+  img {
     margin-bottom: 10px;
   }
 }
 
-.pets-edit{
+.pets-edit {
   @include page-common;
 
   .share-info-edit {
@@ -67,8 +67,8 @@
     border-top: solid 10px #00a6ff;
 
     p {
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      padding: 0;
     }
   }
 
@@ -80,10 +80,10 @@
     border-top: solid 10px #5bb7ae;
 
     p {
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        color: gray;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: gray;
     }
   }
 
@@ -104,23 +104,23 @@
     }
   }
 
-  .submit-area{
+  .submit-area {
     text-align: right;
   }
 
-  input[type=radio]{
+  input[type=radio] {
     &:after {
-     display: block;
-     content: '';
-     background: white;
-     border: $color-main-thema 2px solid;
-     position: unset;
-     width: 1.2rem;
-     height: 1.2rem;
-     border-radius: 3px;
+      display: block;
+      content: '';
+      background: white;
+      border: $color-main-thema 2px solid;
+      position: unset;
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 3px;
     }
 
-    &:checked:after{
+    &:checked:after {
       background: $color-main-thema;
     }
   }
@@ -138,7 +138,7 @@
     cursor: pointer;
     position: unset;
 
-    input[type=radio]{
+    input[type=radio] {
       position: unset;
       margin-right: 1rem;
     }
@@ -152,8 +152,8 @@
     }
   }
 
-  .category-select{
-    label{
+  .category-select {
+    label {
       margin-left: 0.3rem;
     }
   }
