@@ -72,6 +72,16 @@
 .cg-app-home{
   background-color: white;
 
+  .work-caption{
+    .work-title{
+      font-size:7rem;
+    }
+
+    .work-descr{
+      font-size:4rem;
+    }
+  }
+
   .home-container {
     background-color: #004900;
     background-color: transparent;
@@ -111,37 +121,6 @@
 
       &:hover {
         background-color: #216732;
-      }
-    }
-  }
-
-  .pet-list {
-    .pet {
-      width: 120px;
-      height: 140px;
-      display: inline-block;
-      border: dotted 5px white;
-      margin: 2px;
-      background-color: #eefaeb;
-      border-radius: 10px 0px 10px 0;
-
-      a {
-        display: block;
-        color: black;
-      }
-
-      .icon {
-        width: 100px;
-        height: 100px;
-        margin-top: 2px;
-        margin-left: 5px;
-        margin-right: 5px;
-      }
-
-      p {
-        text-align: center;
-        color: black;
-        font-size: 1.5em;
       }
     }
   }

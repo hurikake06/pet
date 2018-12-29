@@ -1,38 +1,4 @@
 <div class="cg-app-home">
-  <div id='cg_title'>
-    <h1>home画面</h1>
-  </div>
-  <hr>
-  <div class="container home-container">
-    <!-- h3>おすすめ情報</h3-->
-    <h3 style="color:black;">ペット</h3>
-    <div class="pet-list">
-      <% Cg::Pet.all.each do |pet| %>
-        <div class="pet">
-          <a href="<%= cg_pets_path petname: pet.petname %>">
-            <table>
-              <tr>
-                <td><%= image_tag(pet.icon, class:'icon') %></td>
-              </tr>
-              <tr>
-                <td><p><%= pet.name %></p></td>
-              </tr>
-            </table>
-          </a>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <br>
-  <div class="container home-container">
-    <!-- h3>おすすめ情報</h3-->
-    <h3 style="color:black;">人気ホスト</h3>
-    <ul class="user-list">
-      <% Cg::User.all.where.not(id: @user.id).each do |user| %>
-      <li><a href="<%= cg_users_path username: user.username %>"><%= user.name %></a></li>
-      <% end %>
-    </ul>
-  </div>
   <ul class="works-grid works-grid-masonry works-grid-3 works-hover-w" id="works-grid">
     <% Cg::Pet.all.each do |pet| %>
       <li class="work-item marketing webdesign">
@@ -46,4 +12,12 @@
       </li>
     <% end %>
   </ul>
+  <div class="container home-container">
+    <h3 style="color:black;">人気ホスト</h3>
+    <ul class="user-list">
+      <% Cg::User.all.where.not(id: @user.id).each do |user| %>
+      <li><a href="<%= cg_users_path username: user.username %>"><%= user.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
