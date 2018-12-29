@@ -1,3 +1,5 @@
+@import "../mixin";
+
 .space {
   height: 400px;
 }
@@ -79,6 +81,18 @@
 
     .work-descr{
       font-size:4rem;
+    }
+  }
+
+  .title-box{
+    margin-bottom: 5rem;
+    width: 600px;
+    color: #5d627b;
+    background: white;
+    border-bottom: solid 5px $color-main-thema;
+
+    h1{
+      text-align: center;
     }
   }
 

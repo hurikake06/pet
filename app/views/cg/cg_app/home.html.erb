@@ -1,17 +1,22 @@
 <div class="cg-app-home">
-  <ul class="works-grid works-grid-masonry works-grid-3 works-hover-w" id="works-grid">
-    <% Cg::Pet.all.each do |pet| %>
-      <li class="work-item marketing webdesign">
-        <a href="<%= cg_pets_path petname: pet.petname %>">
-          <div class="work-image"><%= image_tag(pet.icon, size: '300x300') %></div>
-          <div class="work-caption font-alt">
-            <h3 class="work-title"><%= pet.name %></h3>
-            <div class="work-descr"><%= pet.about %></div>
-          </div>
-        </a>
-      </li>
-    <% end %>
-  </ul>
+  <div class="pet-list">
+    <div class="title-box center-block">
+      <h1>おすすめペット</h1>
+    </div>
+    <ul class="works-grid works-grid-masonry works-grid-3 works-hover-w" id="works-grid">
+      <% Cg::Pet.all.each do |pet| %>
+        <li class="work-item marketing webdesign">
+          <a href="<%= cg_pets_path petname: pet.petname %>">
+            <div class="work-image"><%= image_tag(pet.icon, size: '300x300') %></div>
+            <div class="work-caption font-alt">
+              <h3 class="work-title"><%= pet.name %></h3>
+              <div class="work-descr"><%= pet.about %></div>
+            </div>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
   <div class="container home-container">
     <h3 style="color:black;">人気ホスト</h3>
     <ul class="user-list">
