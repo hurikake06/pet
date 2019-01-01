@@ -18,6 +18,30 @@ class Cg::DmGroupsController < Cg::LayoutsController
     login_check
     @user = session_user
     @dm_group = Cg::DmGroup.find(params[:dm_group_id])
+    @page = 0
+    @log_disp_id = params[:log_disp_id]
+
+    if params[:page].present?
+      @page = params[:page]
+    end
+
+    if @log_disp_id.nil?
+      @log_disp_id = -1
+      last = Cg::Dm.where(dm_group_id: @dm_group.id).last
+      if last.present?
+        @log_disp_id = last.id
+      end
+    end
+
+    if @log_disp_id != -1
+      last = Cg::Dm.find(@log_disp_id)
+      @dms = Cg::Dm.where(dm_group_id: @dm_group.id)
+                   .or(Cg::Dm.where('created_at >= ?', last.created_at))
+                   .order('created_at DESC')
+                   .page(@page).per(5)
+    else
+      @dms = []
+    end
   end
 
   def show_share
