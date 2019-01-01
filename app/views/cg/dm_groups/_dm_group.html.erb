@@ -6,9 +6,9 @@
     <% when :user %>
       トーク相手：<%= dm_group.share.user.name %>
     <% end %>
-    <% last_message = Cg::Dm.where(dm_group_id: dm_group.id).last %>
+    <% last_message = Cg::Dm.where(dm_group_id: dm_group.id).order(created_at: :desc).take %>
     <% if last_message.present? %>
-      最新メッセージ：<% last_message.content %>
+      最新メッセージ：<%= last_message.content %>
     <% end %>
   </div>
 </a>

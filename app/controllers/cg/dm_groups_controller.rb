@@ -16,6 +16,7 @@ class Cg::DmGroupsController < Cg::LayoutsController
 
   def show
     login_check
+    @user = session_user
     @dm_group = Cg::DmGroup.find(params[:dm_group_id])
   end
 
