@@ -6,8 +6,13 @@ class Cg::DmsController < Cg::LayoutsController
   def create
     login_check
     @user = session_user
-
-    Cg::Dm.create!(dm_new_params)
+    @dm_group = Cg::DmGroup.find params[:dm_group_id]
+    dm = Cg::Dm.new dm_new_params
+    if dm.save
+      ActionCable.server.broadcast "dm_#{@dm_group.id}_channel",
+                                   html: render(partial: '/cg/dms/dm', locals: { dm: dm, user: @user })
+      head :ok
+    end
   end
 
   def dm_new_params

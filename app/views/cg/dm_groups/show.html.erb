@@ -5,3 +5,22 @@
   <%= render partial: '/cg/dms/dm', collection: @dms.reverse, locals: { user: @user } %>
 </div>
 <%= render partial: '/cg/dms/new_form', locals: { dm_group: @dm_group } %>
+<script>
+  var channel = 'DmChannel';
+  var dm_group = <%= @dm_group.id %>;
+  App.cable.subscriptions.create({channel: channel, dm_group: dm_group}, {
+    connected: function () {
+      console.log('connected')
+    },
+    disconnected: function () {
+
+    },
+    rejected: function () {
+
+    },
+    received: function (data) {
+      console.log(data.html)
+      return $(data.html).appendTo('#dm_list').hide().fadeIn('slow');
+    }
+  });
+</script>
