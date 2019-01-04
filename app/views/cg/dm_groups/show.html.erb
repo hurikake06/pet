@@ -1,6 +1,6 @@
 <h1>Cg::DmGroups#show</h1>
 <p>Find me in app/views/cg/dm_groups/list.html.erb</p>
-<%= link_to_next_page(@dms, 'もっと見る', remote: true, id: 'next', params: {log_disp_id: @log_disp_id }) %>
+<%= link_to_next_page(@dms, 'もっと見る', remote: true, id: 'next', params: {log_disp_id: @log_disp_id }) if @dms.present? %>
 <div id="dm_list">
   <%= render partial: '/cg/dms/dm', collection: @dms.reverse, locals: { user: @user } %>
 </div>

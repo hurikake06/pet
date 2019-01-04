@@ -7,6 +7,8 @@ class Cg::DmsController < Cg::LayoutsController
     login_check
     @user = session_user
     @dm_group = Cg::DmGroup.find params[:dm_group_id]
+    return unless @user.accesable? @dm_group
+
     dm = Cg::Dm.new dm_new_params
     if dm.save
       ActionCable.server.broadcast "dm_#{@dm_group.id}_channel",
