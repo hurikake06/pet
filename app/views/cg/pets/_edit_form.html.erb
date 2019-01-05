@@ -6,6 +6,12 @@
       <%= print_form_error pet_edit&.errors, :name %>
     </div>
     <div class="form-group">
+      <%= f.label 'アイコン' %>
+      <%= f.file_field :icon %>
+      <%= f.hidden_field :icon_cache %>
+      <%= print_form_error pet_edit&.errors, :icon %>
+    </div>
+    <div class="form-group">
       <%= f.label 'ペット名' %>
       <%= f.text_field :petname, class: 'form-control', disabled: true %>
       <%= print_form_error pet_edit&.errors, :petname %>
