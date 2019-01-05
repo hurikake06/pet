@@ -164,3 +164,41 @@
     margin: 0 auto;
   }
 }
+
+/* form show.html.erb */
+.users-show {
+  @include page-common;
+
+  .pet-list {
+    text-align: center;
+
+    .pet {
+      width: 120px;
+      height: 140px;
+      display: inline-block;
+      border: dotted 5px white;
+      margin: 2px;
+      background-color: #eefaeb;
+      border-radius: 10px 0px 10px 0;
+
+      a {
+        display: block;
+        color:  black;
+      }
+
+      .icon {
+        width: 100px;
+        height: 100px;
+        margin-top: 2px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      p {
+        text-align: center;
+        color: black;
+        font-size: 1.5em;
+      }
+    }
+  }
+}
