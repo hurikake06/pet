@@ -3,13 +3,13 @@
     <% if @pet.present? %>
       <%= link_to cg_users_path username: @pet.user.username do %>
         <div class="pet-user">
-          <%= image_tag(@pet.user.icon, class: 'icon') %>
+          <%= image_tag(@pet.user.icon_url, class: 'icon') %>
           <%= @pet.user.name %>
         </div>
       <% end %>
       <h1><%= @pet.name %></h1>
       <div class="profile-icon">
-        <%= image_tag(@pet.icon, class: 'icon') %>
+        <%= image_tag(@pet.icon_url, class: 'icon') %>
       </div>
       <p><%= @pet.petname %></p>
       <p>sex : <%= @pet.sex.value %></p>
