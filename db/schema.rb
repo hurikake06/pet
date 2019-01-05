@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.string "petname"
     t.bigint "pets_sex_info", default: 100
     t.bigint "type_id"
-    t.string "icon", default: "icon/animal/dog_1.png"
+    t.string "icon"
     t.text "about"
     t.bigint "share_pet_info", default: 16
     t.datetime "created_at", null: false
