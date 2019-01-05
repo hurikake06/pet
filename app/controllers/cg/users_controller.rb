@@ -81,6 +81,7 @@ class Cg::UsersController < Cg::LayoutsController
       :name,
       :email,
       :about,
+      :icon,
       detail_attributes: [
         :id,
         :first_name,

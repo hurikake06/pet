@@ -6,6 +6,7 @@ class Cg::User < ApplicationRecord
   has_one :detail, class_name: 'Cg::UserDetail', inverse_of: :user
   has_many :pets, class_name: 'Cg::Pet'
   has_many :user_shares, class_name: 'Cg::Share'
+  mount_uploader :icon, IconUploader 
 
   has_many :dms, class_name: 'Cg::Dm'
   accepts_nested_attributes_for :detail
