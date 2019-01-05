@@ -63,3 +63,5 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 
 gem 'kaminari'
+
+gem 'carrierwave'
