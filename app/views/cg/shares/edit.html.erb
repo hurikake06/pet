@@ -1,0 +1,11 @@
+<div class="shares-show">
+  <div class="box-wrapper">
+    <h1>シェア詳細</h1>
+    <h2>状態：<%= @share.info.value %></h2>
+    <% if @share.present? && @form.present? %>
+      <%= render partial: @form, locals: { share: @share } %>
+    <% else %>
+      <p>error</p>
+    <% end %>
+  </div>
+</div>
