@@ -158,13 +158,13 @@ class Cg::SharesController < Cg::LayoutsController
   def update_info_host
     flag = false
 
-    case @share.share_id
+    case @share.share_info
     when 1 then
-      flag = [2, 3].include? params[:share_id]
+      flag = [2, 3].include? params[:share_info]
     when 2 then
-      flag = [4].include? params[:share_id]
+      flag = [4].include? params[:share_info]
     when 3 then
-      flag = [2].include? params[:share_id]
+      flag = [2].include? params[:share_info]
     end
 
     if flag
@@ -176,13 +176,13 @@ class Cg::SharesController < Cg::LayoutsController
   def update_info_user
     flag = false
 
-    case @share.share_id
+    case @share.share_info
     when 1 then
-      flag = [4].include? params[:share_id]
+      flag = [4].include? params[:share_info]
     when 2 then
-      flag = [4].include? params[:share_id]
+      flag = [4].include? params[:share_info]
     when 3 then
-      flag = [1].include? params[:share_id]
+      flag = [1].include? params[:share_info]
     end
 
     if flag
