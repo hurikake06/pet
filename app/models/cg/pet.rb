@@ -10,6 +10,8 @@ class Cg::Pet < ApplicationRecord
   has_many :pets_infos, class_name: 'Cg::PetsInfo'
   has_many :infos, class_name: 'Cg::Info', through: :pets_infos
   has_many :shares, class_name: 'Cg::Share'
+  mount_uploader :icon, IconUploader
+  
   has_one :detail, class_name: 'Cg::PetDetail', inverse_of: :pet
   accepts_nested_attributes_for :detail
 

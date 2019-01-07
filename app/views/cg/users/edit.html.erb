@@ -7,7 +7,7 @@
       <h3>ペット情報の設定に進む</h3>
       <% @user.pets.each do |pet| %>
         <%= link_to cg_pets_path(pet.petname) do %>
-          <%= image_tag(pet.icon, size: '40x40', class: 'center-block') %>
+          <%= image_tag(pet.icon_url, size: '40x40', class: 'center-block') %>
           <p><%= pet.name %></p>
           <br>
         <% end %>

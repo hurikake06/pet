@@ -7,7 +7,7 @@
   <% if login_flag %>
     <% user = session_user %>
     <li>
-      <%= image_tag(user.icon, size: '40x40', class: 'center-block profile-icon-sidebar') %>
+      <%= image_tag(user.icon_url, size: '40x40', class: 'center-block profile-icon-sidebar') %>
       <%= link_to cg_users_path(user.username) do %>
           <%= user.name %>さん
       <% end %>
@@ -18,7 +18,7 @@
       <% user.pets.each do |pet| %>
         <li>
           <%= link_to cg_pets_path(pet.petname) do %>
-            <%= image_tag(pet.icon, size: '40x40') %>
+            <%= image_tag(pet.icon_url, size: '40x40') %>
             <%= pet.name %>
           <% end %>
         </li>
