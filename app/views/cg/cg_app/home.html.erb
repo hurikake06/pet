@@ -38,7 +38,7 @@
         <div class="item<%= ' active' if first %>">
           <%= image_tag(user.icon, class: 'center-block') %>
           <div class="carousel-caption">
-            <p><%= user.name %></p>
+            <p><%= link_to user.name, cg_users_path(user.username)%></p>
             <p><%= user.about %></p>
           </div>
         </div>
