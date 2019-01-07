@@ -1,2 +1,9 @@
 <h1>Cg::DmGroups#list</h1>
 <p>Find me in app/views/cg/dm_groups/list.html.erb</p>
+
+<div class="row">
+  <%= render partial: 'dm_group', collection: @host_share_dm_groups, locals: {opponent: :user} %>
+</div>
+<div class="row">
+  <%= render partial: 'dm_group', collection: @user_share_dm_groups, locals: {opponent: :host} %>
+</div>

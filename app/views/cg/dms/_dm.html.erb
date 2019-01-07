@@ -1,0 +1,9 @@
+<% mine = user.id == dm.user.id %>
+<div class="row dm-<%= mine ? 'my' : 'other' %>">
+  <%= dm.created_at %>
+  <% if mine %>
+  <% else %>
+    <%= dm.user.name %>
+  <% end %>
+  <%= dm.content %>
+</div>

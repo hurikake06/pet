@@ -1,0 +1,9 @@
+<h1>Cg::Dms#new</h1>
+<p>Find me in app/views/cg/dms/new.html.erb</p>
+<%= form_with model: Cg::Dm.new(), url: cg_dms_create_path(dm_group.id) do |f| %>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, class: 'form-control' %>
+  </div>
+  <%= f.button type:'submit', class: 'btn btn-primary' %>
+<% end %>
