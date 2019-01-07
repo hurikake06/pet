@@ -17,18 +17,8 @@
       <% end %>
     </ul>
   </div>
-  <div class="user-list">
-    <div class="title-box center-block">
-      <h1>人気ホスト</h1>
-    </div>
-    <div class="container home-container">
-      <h3 style="color:black;">人気ホスト</h3>
-      <ul class="user-list">
-        <% Cg::User.all.where.not(id: @user.id).each do |user| %>
-        <li><a href="<%= cg_users_path username: user.username %>"><%= user.name %></a></li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="title-box center-block">
+    <h1>人気ホスト</h1>
   </div>
 </div>
 
@@ -36,31 +26,23 @@
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      <% Cg::User.all.where.not(id: @user.id).count.times do |timesCount| %>
+      <li data-target="#carousel-example-generic" data-slide-to="<%= timesCount %>"<%= 'class="active"' if timesCount == 0 %>></li>
+      <% end %>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <%= image_tag('sample/person/man_1.jpg', size: '300x300') %>
+      <% first = true %>
+      <% Cg::User.all.where.not(id: @user.id).each do |user| %>
+        <div class="item<%= ' active' if first %>">
+          <%= image_tag(user.icon, size: '300x300') %>
           <div class="carousel-caption">
             キャプション
           </div>
         </div>
-      <div class="item">
-        <%= image_tag('sample/person/woman_1.jpg', size: '300x300') %>
-        <div class="carousel-caption">
-          キャプション
-        </div>
-      </div>
-      <div class="item">
-        <%= image_tag('sample/person/woman_2.jpg', size: '300x300') %>
-        <div class="carousel-caption">
-          キャプション
-        </div>
-      </div>
+        <% first = false %>
+      <% end %>
     </div>
 
 <!-- Controls -->

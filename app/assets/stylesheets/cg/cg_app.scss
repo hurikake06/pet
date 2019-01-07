@@ -105,38 +105,4 @@
     border: solid 3px white;
     border-radius: 10px;
   }
-
-  .user-list {
-    padding-left:2px;
-
-    h3 {
-      color: black;
-    }
-
-    li {
-      padding: 1px;
-      display: block;
-      background-color: white;
-      margin-top: 1.2px;
-
-      a {
-        display: block;
-        color: black;
-        font-size: 1.3em;
-
-        &:hover {
-          text-decoration: none;
-          color: white;
-        }
-      }
-
-      &:nth-child(even) {
-        background-color: #ddf3dd;
-      }
-
-      &:hover {
-        background-color: #216732;
-      }
-    }
-  }
 }
