@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div class="worksslider inside">
+<div class="worksslider inside center-block">
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -36,9 +36,10 @@
       <% first = true %>
       <% Cg::User.all.where.not(id: @user.id).each do |user| %>
         <div class="item<%= ' active' if first %>">
-          <%= image_tag(user.icon, size: '300x300') %>
+          <%= image_tag(user.icon, class: 'center-block') %>
           <div class="carousel-caption">
-            キャプション
+            <p><%= user.name %></p>
+            <p><%= user.about %></p>
           </div>
         </div>
         <% first = false %>
