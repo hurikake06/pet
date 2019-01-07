@@ -54,4 +54,8 @@ class Cg::User < ApplicationRecord
   def share_user_flag
     share_user_info == 13
   end
+
+  def accesable?(group)
+    group.host.id == id || group.user.id == id
+  end
 end

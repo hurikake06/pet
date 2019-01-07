@@ -24,6 +24,7 @@ class Cg::UsersController < Cg::LayoutsController
     if user.present? && user.password == params[:cg_user][:password]
       session[:user_id] = user.id
       session[:login_state] = 'OK'
+      cookies.encrypted[:user_id] = user.id
       redirect_to cg_users_path user.username
     else
       @error_code = '入力内容が間違っています'
@@ -49,7 +50,8 @@ class Cg::UsersController < Cg::LayoutsController
     @user_edit = Marshal.load(Marshal.dump(@user))
     return unless @user.present?
     return unless params[:cg_user].present?
-    @user = @user_edit if @user_edit.update(user_edit_params @user)
+
+    @user = @user_edit if @user_edit.update(user_edit_params(@user))
     render :edit
   end
 
@@ -74,7 +76,7 @@ class Cg::UsersController < Cg::LayoutsController
     )
   end
 
-  def user_edit_params user
+  def user_edit_params(user)
     params[:cg_user][:detail_attributes] = params[:cg_user][:cg_user_detail]
     params[:cg_user][:detail_attributes][:id] = user.detail.id
     params.require(:cg_user).permit(
@@ -82,14 +84,14 @@ class Cg::UsersController < Cg::LayoutsController
       :email,
       :about,
       :icon,
-      detail_attributes: [
-        :id,
-        :first_name,
-        :last_name,
-        :address,
-        :age,
-        :sex_info,
-        :country_info
+      detail_attributes: %i[
+        id
+        first_name
+        last_name
+        address
+        age
+        sex_info
+        country_info
       ]
     )
   end

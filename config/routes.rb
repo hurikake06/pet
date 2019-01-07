@@ -55,6 +55,17 @@ Rails.application.routes.draw do
         get ':ev_id', action: :edit
         patch ':ev_id', action: :update
       end
+
+      namespace :dm_groups do
+        root action: :list
+        get ':dm_group_id', action: :show
+        get 'share/:share_id', action: :show_share
+        get 'user/:pet_id', action: :show_user
+      end
+
+      namespace :dms do
+        post 'new/:dm_group_id', action: :create, as: :create
+      end
     end
   end
 end
