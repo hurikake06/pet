@@ -14,6 +14,7 @@ class Cg::SharesController < Cg::LayoutsController
   def edit
     @share = Cg::Share.find(params[:share_id])
     return unless @share.present?
+
     if check_share_user
       @form = 'cg/shares/user/edit_form'
     elsif check_share_host
@@ -30,6 +31,7 @@ class Cg::SharesController < Cg::LayoutsController
     login_check
     set_share
     return unless @share.present?
+
     if check_share_user
       # シェアユーザー
       @to_page = 'cg/shares/user/show'
@@ -55,7 +57,6 @@ class Cg::SharesController < Cg::LayoutsController
   end
 
   def update
-    p 'update'
     set_share
     @saved = nil
     set_share
@@ -82,8 +83,8 @@ class Cg::SharesController < Cg::LayoutsController
       p params[:method].presence&.to_s
     end
 
-    @form = "cg/shares/#{@user_mode}/edit_form"
-    render :edit
+    @to_page = "cg/shares/#{@user_mode}/show"
+    render :show
   end
 
   def destroy; end
@@ -111,6 +112,21 @@ class Cg::SharesController < Cg::LayoutsController
     )
   end
 
+  def share_edit_params(share)
+    params[:cg_share][:detail_attributes] = params[:cg_share][:cg_share_detail]
+    params[:cg_share][:detail_attributes][:id] = share.detail.id
+    params.require(:cg_share).permit(
+      detail_attributes: %i[
+        id
+        facility_id
+        start
+        end
+        fixed_cost
+        variable_cost
+      ]
+    )
+  end
+
   # 申請者か？
   def check_share_user
     @share.user_id == session[:user_id]
@@ -121,18 +137,25 @@ class Cg::SharesController < Cg::LayoutsController
     @share.pet.user_id == session[:user_id]
   end
 
-  # 未実装
   def update_user
-    p 'update_user'
+    @share = Cg::Share.find_by(id: params[:share_id])
+    @share_edit = Marshal.load(Marshal.dump(@share))
+    return unless @share_edit.present?
+    return unless params[:cg_share].present?
+
+    @share = @share_edit if @share_edit.update(share_edit_params(@share))
   end
 
-  # 未実装
   def update_host
-    p 'update_host'
+    @share = Cg::Share.find_by(id: params[:share_id])
+    @share_edit = Marshal.load(Marshal.dump(@share))
+    return unless @share_edit.present?
+    return unless params[:cg_share].present?
+
+    @share = @share_edit if @share_edit.update(share_edit_params(@share))
   end
 
   def update_info_host
-    p 'update_info_host'
     flag = false
 
     case @share.share_id
@@ -151,7 +174,6 @@ class Cg::SharesController < Cg::LayoutsController
   end
 
   def update_info_user
-    p 'update_info_user'
     flag = false
 
     case @share.share_id

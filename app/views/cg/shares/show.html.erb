@@ -2,6 +2,7 @@
   <div class="box-wrapper">
     <% if @share.present? %>
       <%= render partial: @to_page, locals: { share: @share } %>
+      <%= link_to('シェア詳細を編集', action: :edit ) %>
     <% else %>
       <p>error</p>
     <% end %>
