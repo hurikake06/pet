@@ -6,8 +6,9 @@
       <%= print_form_error pet_edit&.errors, :name %>
     </div>
     <div class="form-group">
-      <%= f.label 'アイコン' %>
-      <%= f.file_field :icon %>
+      <%= f.label 'アイコン' %><br />
+      <%= image_tag pet.icon_url, size: '20x20', id: :img_prev %>
+      <%= f.file_field :icon, id: :icon_img %>
       <%= f.hidden_field :icon_cache %>
       <%= print_form_error pet_edit&.errors, :icon %>
     </div>
@@ -54,3 +55,20 @@
     <%= f.button '更新する', type:'submit', class: 'btn btn-primary submit-btn' %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+$(function() {
+ function readURL(input) {
+   if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function (e) {
+       $('#img_prev').attr('src', e.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+   }
+ }
+ $("#icon_img").change(function(){
+   readURL(this);
+ });
+});
+</script>
