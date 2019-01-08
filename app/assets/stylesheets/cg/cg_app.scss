@@ -8,6 +8,14 @@
   width: 80%;
 }
 
+.carousel-control.left{
+  background-image: unset;
+}
+
+.carousel-control.right{
+  background-image: unset;
+}
+
 .carousel-inner{
   .item{
     img{
@@ -34,7 +42,7 @@
 
 //index.html.erbより
 .slide {
-  background: #e8fce5;
+  background: #ffd8a0;
   border-radius: 20px;
   margin: 20px 0px;
   text-align: center;
@@ -96,7 +104,6 @@
 
 /* from home.html.erb */
 .cg-app-home{
-  background-color: white;
 
   .work-caption{
     .work-title{
@@ -113,7 +120,6 @@
     margin-bottom: 5rem;
     width: 600px;
     color: #5d627b;
-    background: white;
     border-bottom: solid 5px $color-main-thema;
 
     h1{
