@@ -1,24 +1,26 @@
 <div class="users-mypage">
   <% if @user.present? %>
     <div class="box-wrapper">
-      <% if @user.share_host_info == 15 %>
-        <div class="share-info">
-          シェア可能（ホスト）
-        </div>
-      <% else %>
-        <div class="share-info share-info-false">
-          シェア不可（ホスト）
-        </div>
-      <% end %>
-      <% if @user.share_user_info == 13 %>
-        <div class="share-info">
-          シェア可能（ユーザー）
-        </div>
-      <% else %>
-        <div class="share-info share-info-false">
-          シェア不可（ユーザー）
-        </div>
-      <% end %>
+      <div class="row">
+        <% if @user.share_host_info == 15 %>
+          <div class="share-info col-sm-6">
+            <%= image_tag('icon/etc/share_info_host_true.png', class: 'center-block') %>
+          </div>
+        <% else %>
+          <div class="share-info share-info-false col-sm-6">
+            <%= image_tag('icon/etc/share_info_host_false.png',class: 'center-block') %>
+          </div>
+        <% end %>
+        <% if @user.share_user_info == 13 %>
+          <div class="share-info col-sm-6">
+            <%= image_tag('icon/etc/share_info_user_true.png',class: 'center-block') %>
+          </div>
+        <% else %>
+          <div class="share-info share-info-false col-sm-6">
+            <%= image_tag('icon/etc/share_info_user_false.png',class: 'center-block') %>
+          </div>
+        <% end %>
+      </div>
 
       <h1><%= @user.name %></h1>
       <div class="profile-icon">
