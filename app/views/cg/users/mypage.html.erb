@@ -34,15 +34,13 @@
         <% if @user.pets.present? %>
           <% @user.pets.each do |pet| %>
             <div class="pet">
-              <% if pet.share_flag %>
-                <div class="share-info">
-                  シェア可能
-                </div>
-              <% else %>
-                <div class="share-info share-info-false">
-                  シェア不可
-                </div>
-              <% end %>
+              <div class="pet-share-info">
+                <% if pet.share_flag %>
+                  <%= image_tag('icon/etc/share_info_pet_true.png',class: 'center-block') %>
+                <% else %>
+                  <%= image_tag('icon/etc/share_info_pet_false.png',class: 'center-block') %>
+                <% end %>
+              </div>
               <a href="<%= cg_pets_path petname: pet.petname %>">
                 <table>
                   <tr>

@@ -97,7 +97,6 @@
       display: inline-block;
       border: dotted 5px white;
       border: 2px;
-      background-color: #eefaeb;
       border-radius: 10px 0px 10px 0;
 
       a {
@@ -151,6 +150,13 @@
   .row{
     img{
       width: 30px;
+      height: 30px;
+    }
+  }
+
+  .pet-share-info{
+    img{
+      width: 40px;
       height: 30px;
     }
   }
