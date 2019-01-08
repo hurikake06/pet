@@ -16,12 +16,6 @@
       <p>type   : <%= @pet.type.name %></p>
       <p>about   : <%= @pet.about %></p>
 
-      <% if session_user&.share_user_flag && @pet.share_flag %>
-        <div class="share">
-          <a href="<%= cg_shares_new_path @pet.petname %>" class ="square-btn">シェア申請</a>
-        </div>
-      <% end %>
-
       <div class="pet-detail">
         <h2>詳細情報</h2>
         <% detail = @pet.detail %>
@@ -43,6 +37,13 @@
             <td><%= detail.share_about.presence || '未登録' %></td>
           </tr>
         </table>
+      </div>
+      <div class="submit-area">
+        <% if session_user&.share_user_flag && @pet.share_flag %>
+          <div class="share">
+            <a href="<%= cg_shares_new_path @pet.petname %>" class ="submit-btn">シェア申請</a>
+          </div>
+        <% end %>
       </div>
     <% else %>
       <p>Pet not found</p>
