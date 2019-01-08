@@ -18,6 +18,7 @@ Cg::User.create!(
   id: 1,
   name: '桃 太郎',
   username: 'momo',
+  icon: open("#{Rails.root}/app/assets/images/sample/person/man_1.jpg"),
   email: 'momo@trident.com',
   password: 'Pass_momo0',
   about: 'どんぶらこどんぶらこってすごい擬音語',
@@ -39,6 +40,7 @@ Cg::User.create!(
   id: 2,
   name: '浦島 太郎',
   username: 'urashima',
+  icon: open("#{Rails.root}/app/assets/images/sample/person/man_2.jpg"),
   email: 'urashima@trident.com',
   password: 'Pass_urashima0',
   about: '私が亀を助けました。',
@@ -57,6 +59,7 @@ Cg::User.create!(
   id: 3,
   name: 'てすと',
   username: 'test_username',
+  icon: open("#{Rails.root}/app/assets/images/sample/person/man_3.jpg"),
   email: 'test@trident.com',
   password: 'Test_0',
   about: 'テストユーザです',
@@ -70,6 +73,7 @@ Cg::User.create!(
   id: 4,
   name: 'ペットショップパトラ',
   username: 'patora',
+  icon: open("#{Rails.root}/app/assets/images/sample/person/woman_1.jpg"),
   email: 'patora@trident.com',
   password: 'Pass_patora0',
   about: 'パトラです。営業中。。',
@@ -89,6 +93,7 @@ Cg::User.create!(
   id: 5,
   name: 'トライデント 太郎',
   username: 'taro',
+  icon: open("#{Rails.root}/app/assets/images/sample/person/man_4.jpg"),
   email: 'taro@trident.com',
   password: 'Pass_taro0',
   about: 'トイプードルが好きです。',
@@ -110,6 +115,7 @@ Cg::User.create!(
   id: 6,
   name: 'トライデント ダメ太郎',
   username: 'dame',
+  icon: open("#{Rails.root}/app/assets/images/sample/person/woman_2.jpg"),
   email: 'dame@trident.com',
   password: 'Pass_taro0',
   about: '弟です',
@@ -130,6 +136,7 @@ Cg::User.create!(
 Cg::Pet.create!(
   id: 1,
   user_id: 1,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_1.jpg"),
   name: '桃 いぬ',
   petname: 'momoinu',
   pets_sex_info: 26,
@@ -146,6 +153,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 2,
   user_id: 1,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_2.jpg"),
   name: '桃 猿',
   petname: 'momosaru',
   pets_sex_info: 26,
@@ -158,6 +166,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 3,
   user_id: 1,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_3.jpg"),
   name: '桃 キジ',
   pets_sex_info: 27,
   petname: 'momokiji',
@@ -170,6 +179,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 4,
   user_id: 2,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_4.jpg"),
   name: '浦島 かめ',
   petname: 'urashimakame',
   pets_sex_info: 26,
@@ -182,6 +192,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 5,
   user_id: 4,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_5.jpg"),
   name: 'ココ',
   petname: 'coco',
   pets_sex_info: 26,
@@ -199,6 +210,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 6,
   user_id: 4,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_1.jpg"),
   name: 'モモ',
   petname: 'momo',
   pets_sex_info: 27,
@@ -216,6 +228,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 7,
   user_id: 4,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_2.jpg"),
   name: 'マロン',
   petname: 'marron',
   pets_sex_info: 27,
@@ -233,6 +246,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 8,
   user_id: 5,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_3.jpg"),
   name: 'コタロウ',
   petname: 'kotaro',
   pets_sex_info: 26,
@@ -250,6 +264,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 9,
   user_id: 5,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_4.jpg"),
   name: 'タマ',
   petname: 'tama',
   pets_sex_info: 26,
@@ -265,6 +280,7 @@ Cg::Pet.create!(
 Cg::Pet.create!(
   id: 10,
   user_id: 6,
+  icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_5.jpg"),
   name: 'ゴクウ',
   petname: 'goku',
   pets_sex_info: 26,

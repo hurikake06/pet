@@ -1,34 +1,58 @@
-<div id='cg_title'>
-  <h1>home画面</h1>
-</div>
-<hr>
-<div class="container home-container">
-  <!-- h3>おすすめ情報</h3-->
-  <h3 style="color:black;">ペット</h3>
+<div class="cg-app-home">
   <div class="pet-list">
-    <% Cg::Pet.all.each do |pet| %>
-      <div class="pet">
-        <a href="<%= cg_pets_path petname: pet.petname %>">
-          <table>
-            <tr>
-              <td><%= image_tag(pet.icon, class:'icon') %></td>
-            </tr>
-            <tr>
-              <td><p><%= pet.name %></p></td>
-            </tr>
-          </table>
-        </a>
-      </div>
-    <% end %>
+    <div class="title-box center-block">
+      <h1>おすすめペット</h1>
+    </div>
+    <ul class="works-grid works-grid-masonry works-grid-3 works-hover-w" id="works-grid">
+      <% @pets.each do |pet| %>
+        <li class="work-item marketing webdesign">
+          <a href="<%= cg_pets_path petname: pet.petname %>">
+            <div class="work-image"><%= image_tag(pet.icon_url, size: '300x300') %></div>
+            <div class="work-caption font-alt">
+              <h3 class="work-title"><%= pet.name %></h3>
+              <div class="work-descr"><%= pet.about %></div>
+            </div>
+          </a>
+        </li>
+      <% end %>
+    </ul>
   </div>
-</div>
-<br>
-<div class="container home-container">
-  <!-- h3>おすすめ情報</h3-->
-  <h3 style="color:black;">人気ホスト</h3>
-  <ul class="user-list">
-    <% Cg::User.all.where.not(id: @user.id).each do |user| %>
-    <li><a href="<%= cg_users_path username: user.username %>"><%= user.name %></a></li>
-    <% end %>
-  </ul>
+  <div class="title-box center-block">
+    <h1>人気ホスト</h1>
+  </div>
+  <div class="worksslider inside center-block">
+  	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% @users.count.times do |timesCount| %>
+        <li data-target="#carousel-example-generic" data-slide-to="<%= timesCount %>"<%= 'class="active"' if timesCount == 0 %>></li>
+        <% end %>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <% first = true %>
+        <% @users.each do |user| %>
+          <div class="item<%= ' active' if first %>">
+            <%= image_tag(user.icon_url, class: 'center-block') %>
+            <div class="carousel-caption">
+              <p><%= link_to user.name, cg_users_path(user.username)%></p>
+              <p><%= user.about %></p>
+            </div>
+          </div>
+          <% first = false %>
+        <% end %>
+      </div>
+
+  <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
 </div>
