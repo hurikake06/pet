@@ -173,21 +173,26 @@
 .users-show {
   @include page-common;
 
-  .pet-list {
+  .pet-list{
+    border: solid white 2px;
+    border-radius: 20px;
     text-align: center;
+
+    h3 {
+      margin: 2rem;
+    }
 
     .pet {
       width: 120px;
-      height: 140px;
+      height: 160px;
       display: inline-block;
       border: dotted 5px white;
-      margin: 2px;
-      background-color: #eefaeb;
+      border: 2px;
       border-radius: 10px 0px 10px 0;
 
       a {
         display: block;
-        color:  black;
+        color: black;
       }
 
       .icon {
@@ -201,7 +206,7 @@
       p {
         text-align: center;
         color: black;
-        font-size: 1.5em;
+        font-size: 1.5rem;
       }
     }
   }

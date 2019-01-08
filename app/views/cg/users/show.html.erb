@@ -9,9 +9,9 @@
       <p>E-mail : <%= @user.email %></p>
       <p>About   : <%= @user.about %></p>
       <br>
-      <h3>ペットリスト</h3>
       <% if @user.pets.present? %>
         <div class="pet-list">
+          <h3>ペットリスト</h3>
           <% @user.pets.each do |pet| %>
             <div class="pet">
               <a href="<%= cg_pets_path petname: pet.petname %>">
