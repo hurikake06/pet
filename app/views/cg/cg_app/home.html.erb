@@ -4,10 +4,10 @@
       <h1>おすすめペット</h1>
     </div>
     <ul class="works-grid works-grid-masonry works-grid-3 works-hover-w" id="works-grid">
-      <% Cg::Pet.all.each do |pet| %>
+      <% @pets.each do |pet| %>
         <li class="work-item marketing webdesign">
           <a href="<%= cg_pets_path petname: pet.petname %>">
-            <div class="work-image"><%= image_tag(pet.icon, size: '300x300') %></div>
+            <div class="work-image"><%= image_tag(pet.icon_url, size: '300x300') %></div>
             <div class="work-caption font-alt">
               <h3 class="work-title"><%= pet.name %></h3>
               <div class="work-descr"><%= pet.about %></div>
@@ -24,7 +24,7 @@
   	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
       <!-- Indicators -->
       <ol class="carousel-indicators">
-        <% Cg::User.all.where.not(id: @user.id).count.times do |timesCount| %>
+        <% @users.count.times do |timesCount| %>
         <li data-target="#carousel-example-generic" data-slide-to="<%= timesCount %>"<%= 'class="active"' if timesCount == 0 %>></li>
         <% end %>
       </ol>
@@ -32,9 +32,9 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <% first = true %>
-        <% Cg::User.all.where.not(id: @user.id).each do |user| %>
+        <% @users.each do |user| %>
           <div class="item<%= ' active' if first %>">
-            <%= image_tag(user.icon, class: 'center-block') %>
+            <%= image_tag(user.icon_url, class: 'center-block') %>
             <div class="carousel-caption">
               <p><%= link_to user.name, cg_users_path(user.username)%></p>
               <p><%= user.about %></p>
