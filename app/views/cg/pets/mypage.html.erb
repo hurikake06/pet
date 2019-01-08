@@ -3,7 +3,7 @@
     <% if @pet.present? %>
       <h1><%= @pet.name %></h1>
       <div class="profile-icon">
-        <%= image_tag(@pet.icon_url, class: 'icon') %>
+        <%= image_tag(@pet.icon_url) %>
       </div>
       <div class="pet-share-info">
         <% if @pet.share_flag %>
