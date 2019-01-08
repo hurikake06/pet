@@ -20,7 +20,7 @@
 <% if user.share_host_flag %>
   <% user.pets.each do |pet| %>
   <h2>
-    <%= image_tag(pet.icon, class: 'icon') %>
+    <%= image_tag(pet.icon_url, class: 'icon') %>
     <%= pet.name %>　に対する申請
   </h2>
     <% unless pet.shares.empty? %>
@@ -28,7 +28,7 @@
         <a href="<%= cg_shares_path share.id %>">
           <div class='share'>
             <h3>
-              <%= image_tag(share.user.icon, class: 'icon') %>
+              <%= image_tag(share.user.icon_url, class: 'icon') %>
               <%= share.user.name %>　からの申請
             </h3>
             <h4>状態：<%= share.info.value %></h4>
