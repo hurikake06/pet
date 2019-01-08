@@ -1,12 +1,6 @@
 <div class="pets-show">
   <div class="box-wrapper">
     <% if @pet.present? %>
-      <%= link_to cg_users_path username: @pet.user.username do %>
-        <div class="pet-user">
-          <%= image_tag(@pet.user.icon_url, class: 'icon') %>
-          <%= @pet.user.name %>
-        </div>
-      <% end %>
       <h1><%= @pet.name %></h1>
       <div class="profile-icon">
         <%= image_tag(@pet.icon_url) %>
@@ -15,7 +9,13 @@
       <p>sex : <%= @pet.sex.value %></p>
       <p>type   : <%= @pet.type.name %></p>
       <p>about   : <%= @pet.about %></p>
-
+      <div class="pet-user">
+        <h3>飼い主</h3>
+        <%= link_to cg_users_path username: @pet.user.username do %>
+          <%= image_tag(@pet.user.icon_url, class: 'icon') %><br>
+          <%= @pet.user.name %>
+        <% end %>
+      </div>
       <div class="pet-detail">
         <h2>詳細情報</h2>
         <% detail = @pet.detail %>
