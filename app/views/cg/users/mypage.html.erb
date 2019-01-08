@@ -3,7 +3,7 @@
     <div class="box-wrapper">
       <h1><%= @user.name %></h1>
       <div class="profile-icon">
-        <%= image_tag(@user.icon_url, class: 'icon') %>
+        <%= image_tag(@user.icon_url) %>
       </div>
       <div class="row">
         <% if @user.share_host_info == 15 %>
