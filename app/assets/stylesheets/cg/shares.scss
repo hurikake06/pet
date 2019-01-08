@@ -26,7 +26,6 @@
 
   /* from new.html.erb */
   .share {
-    background: #e8fce5;
     color: black;
     border-radius: 20px;
     width: 80%;
@@ -35,7 +34,7 @@
   }
 
   th {
-    background: #267e1963;
+    background: $color-main-thema;
     width: 150px;
   }
 
@@ -52,8 +51,8 @@
     display: inline-block;
     margin: 5px;
     padding: 3px;
-    background-color: #f9fff3;
-    border: green 2px solid;
+    background-color: whitesmoke;
+    border: $color-main-thema 2px solid;
     border-radius: 5px;
     width: 100%;
     min-height: 5em;
