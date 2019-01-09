@@ -1,37 +1,47 @@
-.space {
-  height: 400px;
-}
+@import "../mixin";
 
-#cg_title {
-  margin: 20px;
-}
-
-//index.html.erbより
-.slide {
-  background: #e8fce5;
-  border-radius: 20px;
-  margin: 20px 0px;
-  text-align: center;
-  padding: 5px;
-
-  img {
-    width: 80%;
-    height: auto;
+@mixin slider-common{
+  .space {
+    height: 400px;
   }
 
-  &.active {
-    background-color: white;
-    animation: backcoloranim-a 0.8s ease 0s 1 normal;
+  .inside{
+    width: 80%;
+    background-color: #f9e9e9;
+  }
 
-    .login-link {
-      background-color: white;
+  .carousel-control.left{
+    background-image: unset;
+  }
+
+  .carousel-control.right{
+    background-image: unset;
+  }
+
+  .carousel-inner{
+    .item{
+      img{
+        width: 70%;
+        height: 400px;
+      }
+
+      .carousel-caption{
+        right: 30%;
+        left: 30%;
+        padding: 0.5rem 1rem;
+        margin: 2rem 0;
+        color: #5d627b;
+        background: white;
+        border-top: solid 5px #5d627b;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+      }
     }
   }
+}
 
-  &.disable {
-    background-color: #e8fce5;
-    animation: backcoloranim-d 0.8s ease 0s 1 normal;
-  }
+//index.html.erb
+.cg-app-index{
+  @include slider-common;
 
   .login-link {
     display: block;
@@ -50,95 +60,29 @@
   }
 }
 
-@keyframes backcoloranim-a {
-  0% {
-    background-color: #e8fce5;
-  }
-  100% {
-    background-color: white;
-  }
-}
-
-@keyframes backcoloranim-d {
-  0% {
-    background-color: white;
-  }
-  100% {
-    background-color: #e8fce5;
-  }
-}
-
 /* from home.html.erb */
-.home-container {
-  background-color: #004900;
-  background-color: transparent;
-  margin-left: 10px;
-  margin-right: 10px;
-  border: solid 3px white;
-  border-radius: 10px;
-}
+.cg-app-home{
+  @include slider-common;
 
-.user-list {
-  padding-left:2px;
-
-  h3 {
-    color: black;
-  }
-
-  li {
-    padding: 1px;
-    display: block;
-    background-color: white;
-    margin-top: 1.2px;
-
-    a {
-      display: block;
-      color: black;
-      font-size: 1.3em;
-
-      &:hover {
-        text-decoration: none;
-        color: white;
-      }
+  .work-caption{
+    .work-title{
+      font-size:4rem;
     }
 
-    &:nth-child(even) {
-      background-color: #ddf3dd;
-    }
-
-    &:hover {
-      background-color: #216732;
+    .work-descr{
+      font-size:3rem;
     }
   }
-}
 
-.pet-list {
-  .pet {
-    width: 120px;
-    height: 140px;
-    display: inline-block;
-    border: dotted 5px white;
-    margin: 2px;
-    background-color: #eefaeb;
-    border-radius: 10px 0px 10px 0;
+  .title-box{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 600px;
+    color: #5d627b;
+    border-bottom: solid 5px $color-main-thema;
 
-    a {
-      display: block;
-      color: black;
-    }
-
-    .icon {
-      width: 100px;
-      height: 100px;
-      margin-top: 2px;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-
-    p {
+    h1{
       text-align: center;
-      color: black;
-      font-size: 1.5em;
     }
   }
 }
