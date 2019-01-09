@@ -1,9 +1,20 @@
-<h1>Cg::Dms#new</h1>
-<p>Find me in app/views/cg/dms/new.html.erb</p>
 <%= form_with model: Cg::Dm.new(), url: cg_dms_create_path(dm_group.id) do |f| %>
-  <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_field :content, class: 'form-control' %>
+  <div class="form-group text">
+    <%= f.text_field :content, class: 'form-control', id: 'text_field' %>
   </div>
-  <%= f.button type:'submit', class: 'btn btn-primary' %>
+  <%= f.button '送信', type:'submit', class: 'btn btn-primary', id: 'submit_btn' %>
 <% end %>
+<script>
+  $(function(){
+    if ($("#text_field").val().length == 0) {
+      $("#submit_btn").prop("disabled", true);
+    }
+    $("#text_field").on("keydown keyup keypress change", function() {
+      if ($(this).val().length == 0) {
+        $("#submit_btn").prop("disabled", true);
+      } else {
+        $("#submit_btn").prop("disabled", false);
+      }
+    });
+  });
+</script>

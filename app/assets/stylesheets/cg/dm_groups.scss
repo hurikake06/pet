@@ -1,3 +1,173 @@
-// Place all the styles related to the cg/dm_groups controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "../mixin";
+
+.dm {
+  margin-bottom: 25px;
+
+  .icon {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+  }
+
+  .text {
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0 0 20px;
+    word-break: break-all;
+    top: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:before,&:after{
+      position: absolute;
+      content: '';
+      border: 10px solid transparent;
+    }
+  }
+
+  figure img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    margin: 0;
+  }
+
+  .description {
+    padding: 5px 0 0;
+    font-size: 10px;
+    position: relative;
+    bottom: 15px;
+    width: 20rem;
+  }
+
+  &:after,&:before {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
+.dm-other {
+  @extend .dm;
+
+  .icon {
+    float: left;
+    margin-right: -70px;
+  }
+
+  .text {
+    margin-left: 80px;
+    background: #eee;
+    margin-right: 12%;
+    float: left;
+
+    &:before{
+      top: 15px;
+      left: -20px;
+    }
+
+    &:after{
+      border-right: 10px solid #eee;
+      top: 15px;
+      left: -19px;
+    }
+  }
+
+  .description {
+    text-align: left;
+  }
+}
+
+.dm-my {
+  @extend .dm;
+
+  .icon {
+    float: right;
+    margin-left: -70px;
+  }
+
+  .text {
+    margin-right: 80px;
+    background-color: #ffd4b0;
+    margin-left: 12%;
+    float: right;
+
+    &:before{
+      top: 15px;
+      right: -20px;
+    }
+
+    &:after{
+      border-left: 10px solid #ffd4b0;
+      top: 15px;
+      right: -19px;
+    }
+  }
+
+  .description {
+    text-align: right;
+  }
+}
+
+.next {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.dm-list {
+
+}
+
+.send-form{
+  background: #fcfbe8;
+  padding: 10px;
+  border-radius: 7px;
+  border: white 5px ridge;
+  box-shadow: 0 0 1px black;
+
+  form {
+    display: flex;
+
+    .form-group {
+      margin:0;
+
+      &.text {
+          width: 100%;
+          padding-right: 10px;
+
+          &:hover {
+            box-shadow: none;
+          }
+      }
+    }
+  }
+
+  button {
+    background-color: #e7955b;
+    border: solid #925e37 1.4px;
+    height: 100%;
+
+    &:focus,&:active {
+      border: solid #925e37 1.4px;
+      background-color: #e7955b;
+    }
+    &:disabled {
+      background-color: #f8cfb2;
+    }
+    &:hover {
+      border: solid #925e37 1.4px;
+      background-color: #e37b31;
+
+      &:active,&:disabled{
+        border: solid #925e37 1.4px;
+        background-color: #f8cfb2;
+        //background-color: #ebbc9b;
+      }
+    }
+  }
+}

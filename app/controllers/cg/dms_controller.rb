@@ -12,7 +12,8 @@ class Cg::DmsController < Cg::LayoutsController
     dm = Cg::Dm.new dm_new_params
     if dm.save
       ActionCable.server.broadcast "dm_#{@dm_group.id}_channel",
-                                   html: render(partial: '/cg/dms/dm', locals: { dm: dm, user: @user })
+                                   html: render(partial: '/cg/dms/dm', locals: { dm: dm, user: @user }),
+                                   user_id: @user.id
       head :ok
     end
   end
