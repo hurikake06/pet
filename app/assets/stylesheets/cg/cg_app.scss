@@ -43,19 +43,29 @@
 .cg-app-index{
   @include slider-common;
 
+  .inside{
+    width: 100%;
+  }
+
+  .carousel-inner{
+    .item{
+      img{
+        width: 100%;
+      }
+    }
+  }
+
   .login-link {
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 20px 20px 20px;
     padding: 5px;
     font-size: 30px;
     color: gray;
-    width: 400px;
-    background-color: #0000001c;
-    box-shadow: black 0 0 5px;
+    background-color: $color-main-thema;
 
     &:hover {
-      text-decoration: none;
-      background-color: #c5c5c5;
+      font-size: 35px;
+      background-color: #ffd496;
     }
   }
 }
