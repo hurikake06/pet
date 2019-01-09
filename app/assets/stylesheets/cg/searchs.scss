@@ -1,3 +1,5 @@
+@import "../mixin";
+
 .search-results {
   .form {
     width: 100%;
@@ -30,7 +32,7 @@
   .sbtn {
     @include search-area;
     width: 20%;
-    background: lightgreen;
+    background: $color-main-thema;
     color: gray;
     font-weight: bold;
     font-size: 16px;

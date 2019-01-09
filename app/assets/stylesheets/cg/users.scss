@@ -97,7 +97,6 @@
       display: inline-block;
       border: dotted 5px white;
       border: 2px;
-      background-color: #eefaeb;
       border-radius: 10px 0px 10px 0;
 
       a {
@@ -142,26 +141,31 @@
     }
   }
 
-  .share-info {
-    text-align: center;
-    width: 28rem;
-    padding: 3px;
-    background-color: #c2f5ba;
-    margin-left: auto;
-    margin-bottom: 20px;
-    border: solid 2px gray;
-    border-radius: 30px;
-    font-size: 24px;
-
-    &_false {
-      background-color: #bcd4f4;
-    }
-  }
-
   .pet .share-info{
     font-size: 12px;
     width: 10rem;
     margin: 0 auto;
+  }
+
+  .row{
+    img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .pet-share-info{
+    img{
+      width: 40px;
+      height: 30px;
+    }
+  }
+
+  .profile-icon{
+    img{
+      width: 500px;
+      height: 300px;
+    }
   }
 }
 
@@ -169,21 +173,26 @@
 .users-show {
   @include page-common;
 
-  .pet-list {
+  .pet-list{
+    border: solid white 2px;
+    border-radius: 20px;
     text-align: center;
+
+    h3 {
+      margin: 2rem;
+    }
 
     .pet {
       width: 120px;
-      height: 140px;
+      height: 160px;
       display: inline-block;
       border: dotted 5px white;
-      margin: 2px;
-      background-color: #eefaeb;
+      border: 2px;
       border-radius: 10px 0px 10px 0;
 
       a {
         display: block;
-        color:  black;
+        color: black;
       }
 
       .icon {
@@ -197,8 +206,15 @@
       p {
         text-align: center;
         color: black;
-        font-size: 1.5em;
+        font-size: 1.5rem;
       }
+    }
+  }
+
+  .profile-icon{
+    img{
+      width: 500px;
+      height: 300px;
     }
   }
 }

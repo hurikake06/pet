@@ -5,41 +5,62 @@
   .edit-prof {
     text-align: right;
   }
+
+  .pet-share-info{
+    img{
+      width: 40px;
+      height: 30px;
+    }
+  }
+
+  .profile-icon{
+    img{
+      width: 300px;
+      height: 300px;
+    }
+  }
 }
 
 .pets-show {
   @include page-common;
-  .square-btn {
-    display: inline-block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    background: #5e8d29;/*ボタン色*/
-    color: #FFF;
-    border-bottom: solid 4px #8a9d74;
-    border-radius: 3px;
 
-    &:active {
-      -ms-transform: translateY(4px);
-      -webkit-transform: translateY(4px);
-      transform: translateY(4px);
-      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
-      border-top: solid 4px transparent;
-      border-bottom: none;
+  .submit-btn {
+    height: 30px;
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    color: #FFF;
+    background: $color-main-thema;
+    border-bottom: solid 2px #d27d00;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+
+    &:hover {
+      border-bottom: solid 2px #fd9535;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
     }
   }
 
+  .submit-area{
+    text-align: right;
+  }
+
   .pet-user {
-    border: solid 2px white;
-    border-radius: 10px;
-    padding: 5px;
-    height: 65px;
-    display: inline-block;
-    margin-right: auto;
-    background-color: #ffffff9c;
+    margin-top: 50px;
+    padding: 30px;
+    border: solid white 2px;
+    text-align: center;
 
     .icon {
-      width: 50px;
-      height: 50px;
+      width: 70px;
+      height: 70px;
+    }
+  }
+
+  .profile-icon{
+    img{
+      width: 300px;
+      height: 300px;
     }
   }
 }

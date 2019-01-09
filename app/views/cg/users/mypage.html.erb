@@ -1,28 +1,29 @@
 <div class="users-mypage">
   <% if @user.present? %>
     <div class="box-wrapper">
-      <% if @user.share_host_info == 15 %>
-        <div class="share-info">
-          シェア可能（ホスト）
-        </div>
-      <% else %>
-        <div class="share-info share-info-false">
-          シェア不可（ホスト）
-        </div>
-      <% end %>
-      <% if @user.share_user_info == 13 %>
-        <div class="share-info">
-          シェア可能（ユーザー）
-        </div>
-      <% else %>
-        <div class="share-info share-info-false">
-          シェア不可（ユーザー）
-        </div>
-      <% end %>
-
       <h1><%= @user.name %></h1>
       <div class="profile-icon">
-        <%= image_tag(@user.icon_url, class: 'icon') %>
+        <%= image_tag(@user.icon_url) %>
+      </div>
+      <div class="row">
+        <% if @user.share_host_info == 15 %>
+          <div class="col-sm-2 col-sm-offset-4">
+            <%= image_tag('icon/etc/share_info_host_true.png', class: 'center-block') %>
+          </div>
+        <% else %>
+          <div class="col-sm-2 col-sm-offset-4">
+            <%= image_tag('icon/etc/share_info_host_false.png',class: 'center-block') %>
+          </div>
+        <% end %>
+        <% if @user.share_user_info == 13 %>
+          <div class="col-sm-2">
+            <%= image_tag('icon/etc/share_info_user_true.png',class: 'center-block') %>
+          </div>
+        <% else %>
+          <div class="col-sm-2">
+            <%= image_tag('icon/etc/share_info_user_false.png',class: 'center-block') %>
+          </div>
+        <% end %>
       </div>
       <p><%= @user.username %></p>
       <p>E-mail : <%= @user.email %></p>
@@ -33,15 +34,13 @@
         <% if @user.pets.present? %>
           <% @user.pets.each do |pet| %>
             <div class="pet">
-              <% if pet.share_flag %>
-                <div class="share-info">
-                  シェア可能
-                </div>
-              <% else %>
-                <div class="share-info share-info-false">
-                  シェア不可
-                </div>
-              <% end %>
+              <div class="pet-share-info">
+                <% if pet.share_flag %>
+                  <%= image_tag('icon/etc/share_info_pet_true.png',class: 'center-block') %>
+                <% else %>
+                  <%= image_tag('icon/etc/share_info_pet_false.png',class: 'center-block') %>
+                <% end %>
+              </div>
               <a href="<%= cg_pets_path petname: pet.petname %>">
                 <table>
                   <tr>

@@ -45,15 +45,13 @@
     }
 
     .share-info {
+      padding: 0.5em 1em;
+      margin: 2em 0;
+      color: #474747;
+      background: whitesmoke;/*背景色*/
+      border-left: double 7px #4ec4d3;/*左線*/
+      border-right: double 7px #4ec4d3;/*右線*/
       text-align: center;
-      width: 28rem;
-      padding: 3px;
-      background-color: #c2f5ba;
-      margin-left: auto;
-      margin-bottom: 20px;
-      border: solid 2px gray;
-      border-radius: 30px;
-      font-size: 24px;
 
       &-false {
         background-color: #bcd4f4;
