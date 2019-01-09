@@ -1,4 +1,5 @@
 <div class="shares-show">
+  <%= render partial: 'show_info', locals: { share: @share } if @share.present? %>
   <div class="box-wrapper">
     <% if @share.present? %>
       <%= render partial: @to_page, locals: { share: @share } %>
