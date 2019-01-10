@@ -1,5 +1,12 @@
 @import "../mixin";
 
+.dm_space {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  background: white;
+}
+
 .dm {
   margin-bottom: 25px;
 
@@ -117,6 +124,10 @@
   display: block;
   width: 100%;
   text-align: center;
+  height: 2em;
+  vertical-align: middle;
+  border-bottom: 1px black solid;
+  margin-bottom: 5px;
 }
 
 .dm-list {
@@ -124,7 +135,7 @@
 }
 
 .send-form{
-  background: #fcfbe8;
+  background: #fcefe8;
   padding: 10px;
   border-radius: 7px;
   border: white 5px ridge;
