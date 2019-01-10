@@ -15,6 +15,7 @@
 
 .users-edit{
   @include page-common;
+  @include form-common;
 
   .account-info {
     padding: 0.5rem 1rem;
