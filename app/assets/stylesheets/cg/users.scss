@@ -6,6 +6,7 @@
 
 .users-login{
   @include page-common;
+  @include form-common;
 
   a{
     text-align: center;

@@ -4,8 +4,7 @@
     <%= image_tag('icon/etc/b_45.png', class: 'center-block') %>
     <h3>CuteGiftへようこそ</h3>
     <Hr>
-      <div class="container">
-        <h2>ユーザ名とパスワードを入力してください</h2>
+      <div class="container-form">
         <%= render partial: 'cg/users/login_form', locals: { error_code: @error_code, user: @user } %>
       </div>
     <Hr>
