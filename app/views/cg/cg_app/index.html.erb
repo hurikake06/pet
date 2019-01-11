@@ -1,79 +1,68 @@
 <script src='/assets/slides.js'></script>
 
-<h1>CuteGiftへようこそ</h1>
-<div id='slides'>
-  <div class='slide'>
-    <h1 style='font-size:48px;line-height:3;'>～ペットの癒しをすぐそこに～</h1>
-    <%= link_to '今すぐ始める', cg_login_path, class: 'login-link' %>
-    <!-- ペットの癒しをすぐそこに -->
+<div class="cg-app-index">
+  <%= image_tag('icon/logo/index_top.png') %>
+  <div class="worksslider inside">
+  	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="10000">
+    <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <%= image_tag('slide/slide_3.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_4.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_5.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_6.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_7.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_8.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_9.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_10.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_11.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_12.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_13.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_14.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_15.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/slide_16.png') %>
+        </div>
+        <div class="item">
+          <%= image_tag('slide/cg_logo_serif.png') %>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
-  <div class='slide'>
-    <h3 style='font-size:36px;line-height:4;'>CuteGiftとは</h3>
-    <h3 style='font-size:30px;line-height:3;'>「ペットの癒しを共有するソーシャルネットワークサービス」</h3>
-    <!-- 概要 -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_3.png') %>
-    <!-- こんな悩みありませんか？ -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_4.png') %>
-    <!-- そんなあなたに！ -->
-  </div>
-  <h2 style='font-size:36px;'>use</h2>
-  <div class='slide'>
-    <%= image_tag('slide/slide_5.png') %>
-    <!-- CtoCの側面について -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_6.png') %>
-    <!-- BtoCの側面について -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_7.png') %>
-    <!-- シェアの諸条件 -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_8.png') %>
-    <!-- シェアする場所 -->
-  </div>
-  <h2 style='font-size:36px;'>メリット</h2>
-  <div class='slide'>
-    <%= image_tag('slide/slide_9.png') %>
-    <!-- ペットを飼っている人 -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_10.png') %>
-    <!-- ペットを飼えない人 -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_11.png') %>
-    <!-- ペットショップ -->
-  </div>
-  <h2 style='font-size:36px;'>ペットをシェアするって不安じゃない？</h2>
-  <div class='slide'>
-    <%= image_tag('slide/slide_12.png') %>
-    <!-- 運営による厳正な審査 -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_13.png') %>
-    <!-- 審査 具体的な内容 -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_14.png') %>
-    <!-- 相互評価 -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_15.png') %>
-    <!-- シェアトラブル -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/slide_16.png') %>
-    <!-- 人がペットを傷つける・ペットが人を傷つける -->
-  </div>
-  <div class='slide'>
-    <%= image_tag('slide/cg_logo_serif.png') %>
-    <%= link_to '今すぐ始める', cg_login_path, class: 'login-link' %>
-    <!-- ペットの癒しをすぐそこに　再掲 -->
-  </div>
+  <%= link_to '今すぐ始める', cg_login_path, class: 'btn btn-d btn-circle btn-lg login-link' %>
 </div>

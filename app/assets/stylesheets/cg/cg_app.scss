@@ -1,117 +1,87 @@
 @import "../mixin";
 
-.space {
-  height: 400px;
-}
-
-.inside{
-  width: 80%;
-}
-
-.carousel-control.left{
-  background-image: unset;
-}
-
-.carousel-control.right{
-  background-image: unset;
-}
-
-.carousel-inner{
-  .item{
-    img{
-      width: 70%;
-      height: 400px;
-    }
-
-    .carousel-caption{
-      right: 30%;
-      left: 30%;
-      padding: 0.5rem 1rem;
-      margin: 2rem 0;
-      color: #5d627b;
-      background: white;
-      border-top: solid 5px #5d627b;
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-    }
+@mixin slider-common{
+  .space {
+    height: 400px;
   }
-}
 
-#cg_title {
-  margin: 20px;
-}
-
-//index.html.erbより
-.slide {
-  background: #ffd8a0;
-  border-radius: 20px;
-  margin: 20px 0px;
-  text-align: center;
-  padding: 5px;
-
-  img {
+  .inside{
     width: 80%;
-    height: auto;
+    background-color: #f9e9e9;
   }
 
-  &.active {
-    background-color: white;
-    animation: backcoloranim-a 0.8s ease 0s 1 normal;
+  .carousel-control.left{
+    background-image: unset;
+  }
 
-    .login-link {
-      background-color: white;
+  .carousel-control.right{
+    background-image: unset;
+  }
+
+  .carousel-inner{
+    .item{
+      img{
+        width: 70%;
+        height: 400px;
+      }
+
+      .carousel-caption{
+        right: 30%;
+        left: 30%;
+        padding: 0.5rem 1rem;
+        margin: 2rem 0;
+        color: #5d627b;
+        background: white;
+        border-top: solid 5px #5d627b;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+      }
     }
   }
+}
 
-  &.disable {
-    background-color: #e8fce5;
-    animation: backcoloranim-d 0.8s ease 0s 1 normal;
+//index.html.erb
+.cg-app-index{
+  @include slider-common;
+
+  .inside{
+    width: 100%;
+    margin: 20px 0px;
+  }
+
+  .carousel-inner{
+    .item{
+      img{
+        width: 100%;
+      }
+    }
   }
 
   .login-link {
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 20px 20px 20px;
     padding: 5px;
     font-size: 30px;
     color: gray;
-    width: 400px;
-    background-color: #0000001c;
-    box-shadow: black 0 0 5px;
+    background-color: $color-main-thema;
 
     &:hover {
-      text-decoration: none;
-      background-color: #c5c5c5;
+      font-size: 35px;
+      background-color: #ffd496;
     }
-  }
-}
-
-@keyframes backcoloranim-a {
-  0% {
-    background-color: #e8fce5;
-  }
-  100% {
-    background-color: white;
-  }
-}
-
-@keyframes backcoloranim-d {
-  0% {
-    background-color: white;
-  }
-  100% {
-    background-color: #e8fce5;
   }
 }
 
 /* from home.html.erb */
 .cg-app-home{
+  @include slider-common;
 
   .work-caption{
     .work-title{
-      font-size:7rem;
+      font-size:4rem;
     }
 
     .work-descr{
-      font-size:4rem;
+      font-size:3rem;
     }
   }
 
