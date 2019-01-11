@@ -52,14 +52,6 @@ body {
   }
 }
 
-footer {
-  clear: both;
-  bottom: 0px;
-  padding: 15px 5px 0 5px;
-  color: gray;
-  font-size: 12px;
-}
-
 .container-fluid {
   background-color: transparent;
   color: gray;
@@ -295,4 +287,23 @@ footer {
 /* navbarの縦幅が変わる変更があった際、heightを変更してください。 */
 .navbar-space {
   height: 210px;
+}
+
+/* footer layout */
+footer {
+  clear: both;
+  bottom: 0px;
+  padding: 3rem 3rem;
+  color: gray;
+  font-size: 12px;
+  background-color: #f4f4f4;
+
+  .app-title {
+    max-width: 350px;
+    max-height: 350px;
+
+    &-font {
+      font-size: 16px;
+    }
+  }
 }
