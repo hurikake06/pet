@@ -35,25 +35,28 @@
       </div>
       <% unless @saved.present? %>
         <hr>
-        <h2>申請情報を記入してください</h2>
-        <div class = "container-form">
-          <h3>申請者:<%= session_user.name %></h3>
-          <h3>申請相手</h3>
-          飼い主：<strong><%= @pet.user.name %></strong><br>
-          ペット：<strong><%= @pet.name %></strong>
-          <%= render partial: 'new_form', locals: {
-            share: @share ||= Cg::Share.new(
-                          user_id: session[:user_id],
-                          pet_id: @pet.id,
-                          detail: Cg::ShareDetail.new ),
-            pet: @pet
-          } %>
+        <div class="shares-new-form">
+          <div class = "container-form">
+            <h2>申請情報を記入してください</h2>
+            <h3>申請者:<%= session_user.name %></h3>
+            <h3>申請相手</h3>
+            飼い主：<strong><%= @pet.user.name %></strong><br>
+            ペット：<strong><%= @pet.name %></strong>
+            <%= render partial: 'new_form', locals: {
+              share: @share ||= Cg::Share.new(
+                            user_id: session[:user_id],
+                            pet_id: @pet.id,
+                            detail: Cg::ShareDetail.new ),
+              pet: @pet
+            } %>
+          </div>
         </div>
       <% end %>
     <% else %>
       <p>pet not found</p>
     <% end %>
-
-    <a href="<%= cg_shares_root_path %>">シェア一覧へ</a>
+    <div class="move-to-share-list">
+      <h3><a href="<%= cg_shares_root_path %>">自分のシェア状況を見る</a></h3>
+    </div>
   </div>
 </div>
