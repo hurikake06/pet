@@ -36,7 +36,7 @@ class Cg::DmGroupsController < Cg::LayoutsController
       @dms = Cg::Dm.where(dm_group_id: @dm_group.id)
                    .or(Cg::Dm.where('created_at >= ?', last.created_at))
                    .order('created_at DESC')
-                   .page(@page).per(5)
+                   .page(@page).per(8)
     else
       @dms = []
     end
