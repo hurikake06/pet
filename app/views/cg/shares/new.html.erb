@@ -36,13 +36,11 @@
       <% unless @saved.present? %>
         <hr>
         <h2>申請情報を記入してください</h2>
-        <div class = "container">
-          <p><h3>申請者:<%= session_user.name %></h3></p>
-          <p>
-            <h3>申請相手</h3>
-            飼い主：<strong><%= @pet.user.name %></strong><br>
-            ペット：<strong><%= @pet.name %></strong>
-          </p>
+        <div class = "container-form">
+          <h3>申請者:<%= session_user.name %></h3>
+          <h3>申請相手</h3>
+          飼い主：<strong><%= @pet.user.name %></strong><br>
+          ペット：<strong><%= @pet.name %></strong>
           <%= render partial: 'new_form', locals: {
             share: @share ||= Cg::Share.new(
                           user_id: session[:user_id],

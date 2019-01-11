@@ -1,35 +1,31 @@
-<% if share.present? %>
-<style>
-  .bootstrap-date{
-    width:auto;
-    display:inline-block;
-  }
-</style>
-  <%= form_for share, url: { action: 'create'} do |f| %>
-    <%= f.fields_for share.detail do |ff| %>
-      <div class = "form-group">
-        <%= ff.label :facility_id %>
-        <% pet&.facilities.each do |facility| %>
-          <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
-        <% end %>
-      </div>
-      <div class = "form-group">
-        <%= ff.label :start %>
-        <%= ff.datetime_select :start, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
-      </div>
-      <div class = "form-group">
-        <%= ff.label :end %>
-        <%= ff.datetime_select :end, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
-      </div>
-      <div class = "form-group">
-        <%= ff.label :fixed_cost %>
-        <%= ff.number_field :fixed_cost, class: 'form-control' %>
-      </div>
-      <div class = "form-group">
-        <%= ff.label :variable_cost %>
-        <%= ff.number_field :variable_cost, class: 'form-control' %>
-      </div>
+<div class = "shares-new-form">
+  <% if share.present? %>
+    <%= form_for share, url: { action: 'create'} do |f| %>
+      <%= f.fields_for share.detail do |ff| %>
+        <div class = "form-group">
+          <%= ff.label :facility_id %>
+          <% pet&.facilities.each do |facility| %>
+            <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
+          <% end %>
+        </div>
+        <div class = "form-group">
+          <%= ff.label :start %>
+          <%= ff.datetime_select :start, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+        </div>
+        <div class = "form-group">
+          <%= ff.label :end %>
+          <%= ff.datetime_select :end, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+        </div>
+        <div class = "form-group">
+          <%= ff.label :fixed_cost %>
+          <%= ff.number_field :fixed_cost, class: 'form-control' %>
+        </div>
+        <div class = "form-group">
+          <%= ff.label :variable_cost %>
+          <%= ff.number_field :variable_cost, class: 'form-control' %>
+        </div>
+      <% end %>
+      <%= f.button type:'submit', class: 'btn btn-primary' %>
     <% end %>
-    <%= f.button type:'submit', class: 'btn btn-primary' %>
   <% end %>
-<% end %>
+</div>

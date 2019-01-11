@@ -80,6 +80,15 @@
 .shares-new{
   @include page-common;
   @include share-common;
+
+  .shares-new-form{
+    @include form-common;
+
+    .bootstrap-date{
+      width: auto;
+      display: inline-block;
+    }
+  }
 }
 
 .shares-list{
