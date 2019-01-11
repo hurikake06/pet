@@ -108,7 +108,7 @@ class Cg::SharesController < Cg::LayoutsController
     ).merge(
       user_id: session[:user_id],
       pet_id: pets_id,
-      share_info: 1
+      share_info: 101
     )
   end
 
@@ -156,19 +156,26 @@ class Cg::SharesController < Cg::LayoutsController
   end
 
   def update_info_host
+    p "----------update_info_host---------"
+    p @share.share_info
+    p params[:share_info]
     flag = false
 
     case @share.share_info
-    when 1 then
-      flag = [2, 3].include? params[:share_info]
-    when 2 then
-      flag = [4].include? params[:share_info]
-    when 3 then
-      flag = [2].include? params[:share_info]
+    when 101 then
+      flag = [102, 152].include? params[:share_info].to_i
+    when 102 then
+      flag = [152, 104].include? params[:share_info].to_i
+    when 103 then
+      flag = [102, 152, 104].include? params[:share_info].to_i
+    when 104 then
+      flag = [155, 105].include? params[:share_info].to_i
+    when 105 then
+      flag = [106].include? params[:share_info].to_i
     end
 
     if flag
-      @share.share_info = params[:share_info]
+      @share.share_info = params[:share_info].to_i
       @saved = @share.save
     end
   end
@@ -177,16 +184,22 @@ class Cg::SharesController < Cg::LayoutsController
     flag = false
 
     case @share.share_info
-    when 1 then
-      flag = [4].include? params[:share_info]
-    when 2 then
-      flag = [4].include? params[:share_info]
-    when 3 then
-      flag = [1].include? params[:share_info]
+    when 101 then
+      flag = [153].include? params[:share_info].to_i
+    when 102 then
+      flag = [153, 103].include? params[:share_info].to_i
+    when 103 then
+      flag = [153].include? params[:share_info].to_i
+    when 104 then
+      flag = [154].include? params[:share_info].to_i
+    when 105 then
+      flag = false
+    when 106 then
+      flag = [151].include? params[:share_info].to_i
     end
 
     if flag
-      @share.share_info = params[:share_info]
+      @share.share_info = params[:share_info].to_i
       @saved = @share.save
     end
   end

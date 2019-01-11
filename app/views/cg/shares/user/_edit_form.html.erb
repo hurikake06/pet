@@ -7,12 +7,17 @@
 
 <div class="update_share_info">
   <% case share.share_info %>
-  <% when 1 then %>
-    <%= button_to 'キャンセル', cg_shares_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 4 } %>
-  <% when 2 then %>
-    <%= button_to 'キャンセル', cg_shares_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 4 } %>
-  <% when 3 then %>
-    <%= button_to '再申請', cg_shares_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 1 } %>
+  <% when 101 then %>
+    <%= button_to '申請取り消し', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 153 } %>
+  <% when 102 then %>
+    <%= button_to '再申請', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 103 } %>
+    <%= button_to '申請取り消し', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 153 } %>
+  <% when 103 then %>
+    <%= button_to '申請取り消し', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 153 } %>
+  <% when 104 then %>
+    <%= button_to 'シェアのキャンセル', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 154 } %>
+  <% when 106 then %>
+    <%= button_to '支払い完了', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 151 } %>
   <% end %>
 </div>
 

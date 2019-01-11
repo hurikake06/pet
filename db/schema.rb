@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
   create_table "cg_evs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
     t.bigint "share_id"
-    t.bigint "ev_info", default: 39
+    t.bigint "ev_info", default: 1501
     t.integer "val"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
 
   create_table "cg_pet_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "pet_id"
-    t.bigint "medical_info", default: 100
+    t.bigint "medical_info", default: 10001
     t.integer "fixed_cost"
     t.integer "variable_cost"
     t.text "share_about"
@@ -75,11 +75,11 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.bigint "user_id"
     t.string "name"
     t.string "petname"
-    t.bigint "pets_sex_info", default: 100
+    t.bigint "pets_sex_info", default: 10001
     t.bigint "type_id"
     t.string "icon"
     t.text "about"
-    t.bigint "share_pet_info", default: 16
+    t.bigint "share_pet_info", default: 601
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -115,14 +115,14 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
   create_table "cg_shares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "pet_id"
-    t.bigint "share_info", default: 1
+    t.bigint "share_info", default: 101
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cg_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.bigint "share_type_info", default: 22
+    t.bigint "share_type_info", default: 701
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -132,11 +132,11 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.bigint "document_info", default: 100
-    t.bigint "credit_info", default: 100
+    t.bigint "document_info", default: 10001
+    t.bigint "credit_info", default: 10001
     t.integer "age"
-    t.bigint "sex_info", default: 100
-    t.bigint "country_info", default: 100
+    t.bigint "sex_info", default: 10001
+    t.bigint "country_info", default: 10001
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -148,8 +148,8 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.string "password"
     t.string "icon"
     t.text "about"
-    t.bigint "share_user_info", default: 12
-    t.bigint "share_host_info", default: 14
+    t.bigint "share_user_info", default: 401
+    t.bigint "share_host_info", default: 501
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

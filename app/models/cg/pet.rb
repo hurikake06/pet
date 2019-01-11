@@ -11,7 +11,7 @@ class Cg::Pet < ApplicationRecord
   has_many :infos, class_name: 'Cg::Info', through: :pets_infos
   has_many :shares, class_name: 'Cg::Share'
   mount_uploader :icon, IconUploader
-  
+
   has_one :detail, class_name: 'Cg::PetDetail', inverse_of: :pet
   accepts_nested_attributes_for :detail
 
@@ -36,6 +36,6 @@ class Cg::Pet < ApplicationRecord
   validates :type_id, presence: true
 
   def share_flag
-    share_pet_info == 17
+    share_pet_info == 602
   end
 end

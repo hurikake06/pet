@@ -1,0 +1,48 @@
+<% if share.present? %>
+  <% infos = Cg::Info.where(info_type_id: 1).where('id < 152').order(:id) %>
+  <% width = (100.0 - 5.0*(infos.length - 1.0)) / (infos.length) %>
+  <style>
+    .info_flow{
+      height: 50px;
+      margin: 30px auto;
+      width: 800px;
+    }
+    td.step{
+      border-radius: 30px / 50px ;
+      background-color: aliceblue;
+      padding: 10px 3px ;
+      text-align: center ;
+      float: left ;
+      width: <%= width %>% ;
+      height: 100% ;
+      border: solid 5px gray ;
+      margin: auto;
+    }
+    td.arrow{
+      float: left ;
+      width: 5% ;
+      height: auto ;
+      margin-top: 10px ;
+    }
+    .info_flow img.arrow{
+      width: 100%;
+      height: 100%;
+    }
+    td.active-step{
+      background-color: pink;
+    }
+  </style>
+  <table class="info_flow">
+    <% infos.each do |info| %>
+      <% step_class = info.id == share.share_info ? 'step active-step' : 'step' %>
+      <td id="step<%= info.id %>" class="<%= step_class %>">
+        <%= info.value %>
+      </td>
+      <% unless info.id == 151 %>
+        <td class='arrow'>
+          <%= image_tag 'icon/etc/b_74.png', class: 'arrow' %>
+        </td>
+      <% end %>
+    <% end %>
+  </table>
+<% end %>

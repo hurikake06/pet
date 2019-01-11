@@ -6,7 +6,7 @@ class Cg::User < ApplicationRecord
   has_one :detail, class_name: 'Cg::UserDetail', inverse_of: :user
   has_many :pets, class_name: 'Cg::Pet'
   has_many :user_shares, class_name: 'Cg::Share'
-  mount_uploader :icon, IconUploader 
+  mount_uploader :icon, IconUploader
 
   has_many :dms, class_name: 'Cg::Dm'
   accepts_nested_attributes_for :detail
@@ -48,11 +48,11 @@ class Cg::User < ApplicationRecord
   end
 
   def share_host_flag
-    share_host_info == 15
+    share_host_info == 502
   end
 
   def share_user_flag
-    share_user_info == 13
+    share_user_info == 402
   end
 
   def accesable?(group)

@@ -19,9 +19,9 @@
 <hr>
 <% if user.share_user_flag %>
   <% unless user.user_shares.empty? %>
-    <% unless user.user_shares.where(share_info: 1).empty? %>
+    <% unless user.user_shares.where(share_info: 101).empty? %>
       <h2>~~申請中~~</h2>
-      <% user.user_shares.where(share_info: 1).each do |share| %>
+      <% user.user_shares.where(share_info: 101).each do |share| %>
         <a href="<%= cg_shares_path share.id %>">
           <div class='share'>
             <h3>
