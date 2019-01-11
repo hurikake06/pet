@@ -40,6 +40,7 @@ class Cg::DmGroupsController < Cg::LayoutsController
     else
       @dms = []
     end
+    render layout: 'cg_layouts_width_stuffing'
   end
 
   def show_share

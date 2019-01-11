@@ -1,11 +1,31 @@
 @import "../mixin";
 
-.dm_space {
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 5px;
-  background: white;
+.share-state-space {
+
 }
+
+.dm-room-box {
+  display: flex;
+
+  .dm-space {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    background: white;
+    width: 100%;
+  }
+
+  .share-detail-box {
+    width: 600px;
+
+    .share-detail{
+      min-height: 80px;
+      width: 100%;
+      border: 1px solid black;
+    }
+  }
+}
+
 
 .dm {
   margin-bottom: 25px;
@@ -130,8 +150,9 @@
   margin-bottom: 5px;
 }
 
-.dm-list {
-
+.dm-scroll-field {
+    overflow-y: auto;
+    height: 500px;
 }
 
 .send-form{
