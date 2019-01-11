@@ -88,6 +88,13 @@
       width: auto;
       display: inline-block;
     }
+
+    .container-form{
+      .row{
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+    }
   }
 
   .move-to-share-list{
@@ -95,6 +102,38 @@
     margin: 2em 0;
     color: #ff7d6e;
     border-top: solid 3px lightgray;
+  }
+
+  .apply-to{
+    position: relative;
+    padding:0.25em 1em;
+
+    &:before, &:after {
+      content:'';
+      width: 20px;
+      height: 30px;
+      position: absolute;
+      display: inline-block;
+    }
+
+    &:before{
+      border-left: solid 1px #5767bf;
+      border-top: solid 1px #5767bf;
+      top:0;
+      left: 0;
+    }
+
+    &:after{
+      border-right: solid 1px #5767bf;
+      border-bottom: solid 1px #5767bf;
+      bottom:0;
+      right: 0;
+    }
+
+    p{
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 

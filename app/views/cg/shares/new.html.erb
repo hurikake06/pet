@@ -37,11 +37,18 @@
         <hr>
         <div class="shares-new-form">
           <div class = "container-form">
-            <h2>申請情報を記入してください</h2>
-            <h3>申請者:<%= session_user.name %></h3>
-            <h3>申請相手</h3>
-            飼い主：<strong><%= @pet.user.name %></strong><br>
-            ペット：<strong><%= @pet.name %></strong>
+            <h3>申請情報を記入してください</h3>
+            <div class="row">
+              <div class="apply-to col-sm-4 col-sm-offset-1">
+                <h3>申請者</h3>
+                <p><%= session_user.name %></p>
+              </div>
+              <div class="apply-to col-sm-5 col-sm-offset-1">
+                <h3>申請相手</h3>
+                <p><%= @pet.user.name %></p>
+                <p><%= @pet.name %></p>
+              </div>
+            </div>
             <%= render partial: 'new_form', locals: {
               share: @share ||= Cg::Share.new(
                             user_id: session[:user_id],
