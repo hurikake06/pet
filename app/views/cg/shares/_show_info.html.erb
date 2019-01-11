@@ -1,5 +1,5 @@
 <% if share.present? %>
-  <% infos = Cg::Info.where(info_type_id: 1).order(:id) %>
+  <% infos = Cg::Info.where(info_type_id: 1).where('id < 152').order(:id) %>
   <% width = (100.0 - 5.0*(infos.length - 1.0)) / (infos.length) %>
   <style>
     .info_flow{
@@ -10,7 +10,7 @@
     td.step{
       border-radius: 30px / 50px ;
       background-color: aliceblue;
-      padding: 10px 0 ;
+      padding: 10px 3px ;
       text-align: center ;
       float: left ;
       width: <%= width %>% ;
@@ -34,11 +34,11 @@
   </style>
   <table class="info_flow">
     <% infos.each do |info| %>
-    <% step_class = info.id == share.share_info ? 'step active-step' : 'step' %>
+      <% step_class = info.id == share.share_info ? 'step active-step' : 'step' %>
       <td id="step<%= info.id %>" class="<%= step_class %>">
         <%= info.value %>
       </td>
-      <% if info.id != 106 %>
+      <% unless info.id == 151 %>
         <td class='arrow'>
           <%= image_tag 'icon/etc/b_74.png', class: 'arrow' %>
         </td>

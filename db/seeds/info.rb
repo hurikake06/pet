@@ -1,11 +1,22 @@
 # frozen_string_literal: true
 
+# 103までは契約は交わされていないのでキャンセルではなく拒否・申請取り消しを使用
 Cg::Info.create!(id: 101, info_type_id: 1, value: '申請')
-Cg::Info.create!(id: 102, info_type_id: 1, value: '許可')
-Cg::Info.create!(id: 103, info_type_id: 1, value: '拒否')
-Cg::Info.create!(id: 104, info_type_id: 1, value: 'キャンセル')
-Cg::Info.create!(id: 105, info_type_id: 1, value: '支払い待ち')
-Cg::Info.create!(id: 106, info_type_id: 1, value: '終了')
+Cg::Info.create!(id: 102, info_type_id: 1, value: 'シェア条件の相談')
+Cg::Info.create!(id: 103, info_type_id: 1, value: '再申請')
+
+# 104の際にキャンセル機能が使える
+Cg::Info.create!(id: 104, info_type_id: 1, value: 'シェア条件成立')
+
+# 105からはキャンセル不可
+Cg::Info.create!(id: 105, info_type_id: 1, value: 'シェア中')
+Cg::Info.create!(id: 106, info_type_id: 1, value: '料金支払い待ち')
+
+Cg::Info.create!(id: 151, info_type_id: 1, value: '終了')
+Cg::Info.create!(id: 152, info_type_id: 1, value: '拒否')
+Cg::Info.create!(id: 153, info_type_id: 1, value: '申請取り消し')
+Cg::Info.create!(id: 154, info_type_id: 1, value: 'ユーザーキャンセル')
+Cg::Info.create!(id: 155, info_type_id: 1, value: 'ホストキャンセル')
 
 Cg::Info.create!(id: 201, info_type_id: 2, value: '男性')
 Cg::Info.create!(id: 202, info_type_id: 2, value: '女性')
