@@ -4,7 +4,7 @@ class Cg::EvsController < Cg::LayoutsController
   def edit
     @ev = Cg::Ev.find(params[:ev_id])
     return unless @ev.present?
-    return if @ev.info == 41
+    return if @ev.info == 1503
 
     share = @ev.share
     case @ev.type
@@ -20,7 +20,7 @@ class Cg::EvsController < Cg::LayoutsController
   def update
     @ev = Cg::Ev.find(params[:ev_id])
     return unless @ev.present?
-    return if @ev.info == 41
+    return if @ev.info == 1503
 
     share = @ev.share
     case @ev.type
@@ -38,7 +38,7 @@ class Cg::EvsController < Cg::LayoutsController
       ev_params = ev_host_params
     end
     @ev_edit = Marshal.load(Marshal.dump(@ev))
-    ev_params[:ev_info] = 40
+    ev_params[:ev_info] = 1502
     @ev = @ev_edit if @ev_edit.update(ev_params)
     render :edit
   end

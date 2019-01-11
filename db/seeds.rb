@@ -22,17 +22,17 @@ Cg::User.create!(
   email: 'momo@trident.com',
   password: 'Pass_momo0',
   about: 'どんぶらこどんぶらこってすごい擬音語',
-  share_user_info: 12,
-  share_host_info: 14,
+  share_user_info: 402,
+  share_host_info: 501,
   detail_attributes: {
     first_name: '',
     last_name: '',
     address: '',
-    document_info: 100,
-    credit_info: 100,
+    document_info: 10002,
+    credit_info: 10002,
     age: 25,
-    sex_info: 7,
-    country_info: 9
+    sex_info: 201,
+    country_info: 301
   }
 )
 
@@ -44,14 +44,14 @@ Cg::User.create!(
   email: 'urashima@trident.com',
   password: 'Pass_urashima0',
   about: '私が亀を助けました。',
-  share_user_info: 12,
-  share_host_info: 14,
+  share_user_info: 401,
+  share_host_info: 501,
   detail_attributes: {
-    document_info: 100,
-    credit_info: 100,
+    document_info: 10001,
+    credit_info: 10001,
     age: 23,
-    sex_info: 7,
-    country_info: 9
+    sex_info: 201,
+    country_info: 301
   }
 )
 
@@ -63,8 +63,8 @@ Cg::User.create!(
   email: 'test@trident.com',
   password: 'Test_0',
   about: 'テストユーザです',
-  share_user_info: 12,
-  share_host_info: 14,
+  share_user_info: 401,
+  share_host_info: 501,
   detail_attributes: {
   }
 )
@@ -77,15 +77,15 @@ Cg::User.create!(
   email: 'patora@trident.com',
   password: 'Pass_patora0',
   about: 'パトラです。営業中。。',
-  share_user_info: 12,
-  share_host_info: 15,
+  share_user_info: 401,
+  share_host_info: 502,
   detail_attributes: {
     last_name: 'ペットショップ',
     first_name: 'パトラ',
     address: '愛知県〇〇市〇〇町123-1',
-    document_info: 101,
-    credit_info: 101,
-    country_info: 9
+    document_info: 10002,
+    credit_info: 10002,
+    country_info: 301
   }
 )
 
@@ -97,17 +97,17 @@ Cg::User.create!(
   email: 'taro@trident.com',
   password: 'Pass_taro0',
   about: 'トイプードルが好きです。',
-  share_user_info: 13,
-  share_host_info: 15,
+  share_user_info: 402,
+  share_host_info: 502,
   detail_attributes: {
     last_name: 'トライデント',
     first_name: '太郎',
     address: '愛知県△△区△△町123-1',
-    document_info: 101,
-    credit_info: 101,
+    document_info: 10002,
+    credit_info: 10002,
     age: 21,
-    sex_info: 7,
-    country_info: 9
+    sex_info: 201,
+    country_info: 301
   }
 )
 
@@ -119,17 +119,17 @@ Cg::User.create!(
   email: 'dame@trident.com',
   password: 'Pass_taro0',
   about: '弟です',
-  share_user_info: 12,
-  share_host_info: 14,
+  share_user_info: 401,
+  share_host_info: 501,
   detail_attributes: {
     last_name: 'トライデント',
     first_name: 'ダメ太郎',
     address: '愛知県△△区△△町123-1',
-    document_info: 100,
-    credit_info: 100,
+    document_info: 10001,
+    credit_info: 10001,
     age: 15,
-    sex_info: 7,
-    country_info: 9
+    sex_info: 201,
+    country_info: 301
   }
 )
 
@@ -139,10 +139,10 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_1.jpg"),
   name: '桃 いぬ',
   petname: 'momoinu',
-  pets_sex_info: 26,
+  pets_sex_info: 1101,
   type_id: 1,
   about: '桃1号',
-  share_pet_info: 16,
+  share_pet_info: 601,
   detail_attributes: {
     fixed_cost: 1000,
     variable_cost: 500,
@@ -156,10 +156,10 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_2.jpg"),
   name: '桃 猿',
   petname: 'momosaru',
-  pets_sex_info: 26,
+  pets_sex_info: 1101,
   type_id: 5,
   about: '桃2号',
-  share_pet_info: 16,
+  share_pet_info: 601,
   detail_attributes: {}
 )
 
@@ -168,11 +168,11 @@ Cg::Pet.create!(
   user_id: 1,
   icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_3.jpg"),
   name: '桃 キジ',
-  pets_sex_info: 27,
+  pets_sex_info: 1102,
   petname: 'momokiji',
   type_id: 3,
   about: '桃3号',
-  share_pet_info: 16,
+  share_pet_info: 601,
   detail_attributes: {}
 )
 
@@ -182,10 +182,10 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_4.jpg"),
   name: '浦島 かめ',
   petname: 'urashimakame',
-  pets_sex_info: 26,
+  pets_sex_info: 1101,
   type_id: 4,
   about: 'れっつ竜宮城',
-  share_pet_info: 16,
+  share_pet_info: 601,
   detail_attributes: {}
 )
 
@@ -195,12 +195,12 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_5.jpg"),
   name: 'ココ',
   petname: 'coco',
-  pets_sex_info: 26,
+  pets_sex_info: 1101,
   type_id: 1,
   about: 'ここ',
-  share_pet_info: 17,
+  share_pet_info: 602,
   detail_attributes: {
-    medical_info: 101,
+    medical_info: 10002,
     fixed_cost: 1000,
     variable_cost: 1500,
     share_about: '超人気なので少し値段が高いです。'
@@ -213,12 +213,12 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_1.jpg"),
   name: 'モモ',
   petname: 'momo',
-  pets_sex_info: 27,
+  pets_sex_info: 1102,
   type_id: 1,
   about: 'もも',
-  share_pet_info: 17,
+  share_pet_info: 602,
   detail_attributes: {
-    medical_info: 101,
+    medical_info: 10002,
     fixed_cost: 1000,
     variable_cost: 800,
     share_about: 'ベテラン犬。おとなしいです。'
@@ -231,12 +231,12 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_2.jpg"),
   name: 'マロン',
   petname: 'marron',
-  pets_sex_info: 27,
+  pets_sex_info: 1102,
   type_id: 1,
   about: 'まろん',
-  share_pet_info: 17,
+  share_pet_info: 602,
   detail_attributes: {
-    medical_info: 101,
+    medical_info: 10002,
     fixed_cost: 1000,
     variable_cost: 500,
     share_about: '新人。若いのでボール遊びなど可。'
@@ -249,12 +249,12 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_3.jpg"),
   name: 'コタロウ',
   petname: 'kotaro',
-  pets_sex_info: 26,
+  pets_sex_info: 1101,
   type_id: 1,
   about: 'コタロウです',
-  share_pet_info: 17,
+  share_pet_info: 602,
   detail_attributes: {
-    medical_info: 101,
+    medical_info: 10002,
     fixed_cost: 1200,
     variable_cost: 1000,
     share_about: '頭のいい子です。お金持ちと子供にやさしい。'
@@ -267,10 +267,10 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_4.jpg"),
   name: 'タマ',
   petname: 'tama',
-  pets_sex_info: 26,
+  pets_sex_info: 1101,
   type_id: 2,
   about: '真っ白い猫です。お魚はくわえません。',
-  share_pet_info: 16,
+  share_pet_info: 601,
   detail_attributes: {
     variable_cost: 1000,
     share_about: '室内限定貸し出しを予定しています。'
@@ -283,10 +283,10 @@ Cg::Pet.create!(
   icon: open("#{Rails.root}/app/assets/images/sample/animal/cat_5.jpg"),
   name: 'ゴクウ',
   petname: 'goku',
-  pets_sex_info: 26,
+  pets_sex_info: 1101,
   type_id: 5,
   about: 'ごくうだよ',
-  share_pet_info: 16,
+  share_pet_info: 601,
   detail_attributes: {}
 )
 

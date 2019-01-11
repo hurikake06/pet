@@ -30,7 +30,7 @@
             <th>1時間あたりの料金</th>
             <td><%= detail.variable_cost.presence || '未登録' %></td>
           </tr>
-          <tr <%= 'class = empty' if detail.medical_info == 100 %>>
+          <tr <%= 'class = empty' if detail.medical_info == 10001 %>>
             <th>1年以内の健康診断</th>
             <td><%= detail.medical.value %></td>
           </tr>

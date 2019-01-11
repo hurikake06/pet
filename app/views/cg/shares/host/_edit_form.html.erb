@@ -7,13 +7,13 @@
 
 <div class="update_share_info">
   <% case share.share_info %>
-  <% when 1 then %>
-    <%= button_to '許可', cg_shares_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 2 } %>
-    <%= button_to '拒否', cg_shares_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 3 } %>
-  <% when 2 then %>
-    <%= button_to 'キャンセル', cg_shares_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 4 } %>
-  <% when 3 then %>
-    <%= button_to '許可', cg_shares_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 2 } %>
+  <% when 101 then %>
+    <%= button_to '許可', cg_shares_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
+    <%= button_to '拒否', cg_shares_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 103 } %>
+  <% when 102 then %>
+    <%= button_to 'キャンセル', cg_shares_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 104 } %>
+  <% when 103 then %>
+    <%= button_to '許可', cg_shares_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
   <% end %>
 </div>
 

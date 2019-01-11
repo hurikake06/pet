@@ -108,7 +108,7 @@ class Cg::SharesController < Cg::LayoutsController
     ).merge(
       user_id: session[:user_id],
       pet_id: pets_id,
-      share_info: 1
+      share_info: 101
     )
   end
 
@@ -159,12 +159,12 @@ class Cg::SharesController < Cg::LayoutsController
     flag = false
 
     case @share.share_info
-    when 1 then
-      flag = [2, 3].include? params[:share_info]
-    when 2 then
-      flag = [4].include? params[:share_info]
-    when 3 then
-      flag = [2].include? params[:share_info]
+    when 101 then
+      flag = [102, 103].include? params[:share_info]
+    when 102 then
+      flag = [104].include? params[:share_info]
+    when 103 then
+      flag = [102].include? params[:share_info]
     end
 
     if flag
@@ -177,12 +177,12 @@ class Cg::SharesController < Cg::LayoutsController
     flag = false
 
     case @share.share_info
-    when 1 then
-      flag = [4].include? params[:share_info]
-    when 2 then
-      flag = [4].include? params[:share_info]
-    when 3 then
-      flag = [1].include? params[:share_info]
+    when 101 then
+      flag = [104].include? params[:share_info]
+    when 102 then
+      flag = [101, 104].include? params[:share_info]
+    when 103 then
+      flag = [101, 104].include? params[:share_info]
     end
 
     if flag
