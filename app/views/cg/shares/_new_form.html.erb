@@ -10,11 +10,26 @@
         </div>
         <div class = "form-group">
           <%= ff.label :start %>
-          <%= ff.datetime_select :start, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+          <%= ff.datetime_select :start, {use_month_numbers: true}, {class: "flatpickr"} %>
         </div>
         <div class = "form-group">
           <%= ff.label :end %>
-          <%= ff.datetime_select :end, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+          <%= ff.datetime_select :end, {use_month_numbers: true}, {class: "flatpickr"} %>
+        </div>
+        <div class="row">
+          <div class = "form-group col-sm-4 col-sm-offset-1">
+            <div class="share-date-time">
+              <input id="share_start" class="flatpickr" name="aaa" type="text" placeholder="シェア開始日時" readonly="readonly">
+            </div>
+          </div>
+          <div class="col-sm-1">
+            <h3>～</h3>
+          </div>
+          <div class = "form-group col-sm-4">
+            <div class="share-date-time">
+              <input id="share_end" class="flatpickr" type="text" placeholder="シェア終了日時" readonly="readonly">
+            </div>
+          </div>
         </div>
         <div class = "form-group">
           <%= ff.label :fixed_cost %>
@@ -30,4 +45,15 @@
       </div>
     <% end %>
   <% end %>
+  <script type="text/javascript">
+    const config = {
+      enableTime: true,
+      dateFormat: "Y-m-d H:i",
+    }
+    flatpickr('.flatpickr', config);
+
+    function parseForm(date){
+      console.log(date);
+    }
+  </script>
 </div>
