@@ -95,6 +95,32 @@
         margin-bottom: 30px;
       }
     }
+
+    .apply-item{
+      text-align: center;
+      margin: 2em 0;
+      margin-top: 60px;
+      background: #f1f1f1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+
+      h3{
+        font-size: 1.2em;
+        background: #5fc2f5;
+        padding: 4px;
+        text-align: center;
+        color: #FFF;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+      }
+
+      h2{
+        text-align: center;
+      }
+
+      input{
+        margin-top: 20px;
+      }
+    }
   }
 
   .move-to-share-list{

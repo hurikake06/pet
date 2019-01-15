@@ -3,33 +3,41 @@
     <%= form_for share, url: { action: 'create'} do |f| %>
       <%= f.fields_for share.detail do |ff| %>
         <div class = "form-group">
-          <%= ff.label :facility_id %>
-          <% pet&.facilities.each do |facility| %>
-            <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
-          <% end %>
+          <div class="apply-item">
+            <h3>シェア場所</h3>
+            <% pet&.facilities.each do |facility| %>
+              <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
+            <% end %>
+          </div>
         </div>
-        <div class="row">
-          <div class = "form-group col-sm-4 col-sm-offset-1">
-            <div class="share-date-time">
-              <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始日時" readonly="readonly">
+        <div class="apply-item">
+          <h3>シェア日時</h3>
+          <div class="row">
+            <div class = "form-group col-sm-5">
+              <div class="share-date-time">
+                <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始日時" readonly="readonly">
+              </div>
+            </div>
+            <div class="col-sm-1">
+              <h2>～</h2>
+            </div>
+            <div class = "form-group col-sm-5">
+              <div class="share-date-time">
+                <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了日時" readonly="readonly">
+              </div>
             </div>
           </div>
-          <div class="col-sm-1">
-            <h3>～</h3>
-          </div>
-          <div class = "form-group col-sm-4">
-            <div class="share-date-time">
-              <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了日時" readonly="readonly">
-            </div>
-          </div>
         </div>
-        <div class = "form-group">
-          <%= ff.label :fixed_cost %>
-          <%= ff.number_field :fixed_cost, class: 'form-control' %>
-        </div>
-        <div class = "form-group">
-          <%= ff.label :variable_cost %>
-          <%= ff.number_field :variable_cost, class: 'form-control' %>
+        <div class="apply-item">
+          <h3>シェア料金</h3>
+          <div class = "form-group">
+            <%= ff.label "頭金" %>
+            <%= ff.number_field :fixed_cost, class: 'form-control' %>
+          </div>
+          <div class = "form-group">
+            <%= ff.label "1時間ごとの料金" %>
+            <%= ff.number_field :variable_cost, class: 'form-control' %>
+          </div>
         </div>
       <% end %>
       <div class="submit-area">
