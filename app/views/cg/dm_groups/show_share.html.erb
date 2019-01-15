@@ -1,3 +1,6 @@
+<div class="share_state_space">
+  <%= render partial: '/cg/shares/show_info', locals: { share: @dm_group.share } %>
+</div>
 <div class="dm-room-box">
   <div class="dm-space">
     <%= link_to_next_page(@dms, 'もっと見る', remote: true, id: 'next', class: 'next', params: {log_disp_id: @log_disp_id }) if @dms.present? %>
@@ -8,6 +11,11 @@
     </div>
     <div class="send-form">
       <%= render partial: '/cg/dms/new_form', locals: { dm_group: @dm_group } %>
+    </div>
+  </div>
+  <div class="share-detail-box" id="share_detail_box">
+    <div class="share-detail" id="share_detail">
+      <%= render partial: '/cg/shares/user/edit_form', locals: { share: @dm_group.share } %>
     </div>
   </div>
 </div>
