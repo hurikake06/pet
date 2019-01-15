@@ -17,15 +17,15 @@
     </tr>
     <tr>
       <th>日付</th>
-      <td><%= share.detail.start.strftime('%Y年%m月%d日') %></td>
+      <td><%= share.detail.start&.strftime('%Y年%m月%d日') %></td>
     </tr>
     <tr>
       <th>開始予定時間</th>
-      <td><%= share.detail.start.strftime('%H時　%M分　%S秒') %></td>
+      <td><%= share.detail.start&.strftime('%H時　%M分　%S秒') %></td>
     </tr>
     <tr>
       <th>終了予定時間</th>
-      <td><%= share.detail.end.strftime('%H時　%M分　%S秒') %></td>
+      <td><%= share.detail.end&.strftime('%H時　%M分　%S秒') %></td>
     </tr>
     <tr>
       <th>料金（頭金）</th>
