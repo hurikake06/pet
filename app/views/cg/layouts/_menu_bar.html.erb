@@ -1,4 +1,9 @@
 <% user = session_user %>
+<ul class="nav navbar-nav search_area">
+  <li>
+    <%= link_to image_tag("icon/etc/b_36.png",size: '25x25'), controller: 'cg_app', action: 'index'%>
+  </li>
+</ul>
 <ul class="nav navbar-nav">
   <% if login_flag %>
     <li><a href="<%= cg_users_path user.username %>">マイページ</a></li>
