@@ -34,7 +34,7 @@
     },
     received: function (data) {
       message = $(data.html)
-      message[0].setAttribute('class',data.user_id == user_id ? 'dm-my' : 'dm-other');
+      //message[0].setAttribute('class',data.user_id == user_id ? 'dm-my' : 'dm-other');
       message.appendTo('#dm_list').hide().fadeIn('slow');
       $("#dm_scroll_field").animate({scrollTop:$("#dm_scroll_field").scrollTop()+message.height()*2});
     }

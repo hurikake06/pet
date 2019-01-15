@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_052627) do
     t.bigint "dm_group_id"
     t.bigint "user_id"
     t.text "content"
+    t.bigint "command", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

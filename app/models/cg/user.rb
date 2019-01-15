@@ -58,4 +58,9 @@ class Cg::User < ApplicationRecord
   def accesable?(group)
     group.host.id == id || group.user.id == id
   end
+
+  def privilege(group)
+    return 'host' if id == group.host.id
+    return 'user' if id == group.user.id
+  end
 end
