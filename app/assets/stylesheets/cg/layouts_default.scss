@@ -18,6 +18,7 @@ body {
     li {
       a {
         font-size: 1.75rem;
+        text-align: center;
         -webkit-transition: 0.8s;
       	-moz-transition: 0.8s;
       	-o-transition: 0.8s;
@@ -107,6 +108,7 @@ body {
 
     #sidebar_wrapper {
       width: 250px;
+      overflow-x: hidden;
     }
 
     #page_content_wrapper {
@@ -226,7 +228,6 @@ body {
 
     #sidebar_wrapper {
       width: 250px;
-      overflow-x: hidden;
     }
 
     #page_content_wrapper {
@@ -276,7 +277,7 @@ body {
 }
 
 .sidebar-toggle-button{
-  top: 64px;
+  top: 15px;
   right: 50px;
 }
 
@@ -288,23 +289,4 @@ body {
 /* navbarの縦幅が変わる変更があった際、heightを変更してください。 */
 .navbar-space {
   height: 210px;
-}
-
-/* footer layout */
-footer {
-  clear: both;
-  bottom: 0px;
-  padding: 3rem 3rem;
-  color: gray;
-  font-size: 12px;
-  background-color: #f4f4f4;
-
-  .app-title {
-    max-width: 350px;
-    max-height: 350px;
-
-    &-font {
-      font-size: 16px;
-    }
-  }
 }
