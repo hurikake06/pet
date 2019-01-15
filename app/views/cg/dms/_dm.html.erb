@@ -1,9 +1,11 @@
 <% mine = user.id == dm.user.id %>
-<div class="dm-<%= mine ? 'my' : 'other' %>">
-  <figure class="icon">
-    <img src="<%=dm.user.icon %>" alt="<%=dm.user %>のアイコン">
-  </figure>
-  <div class="text">
-    <%= dm.content %>
+<% if dm.command == 0 %>
+  <div class="dm-<%= mine ? 'my' : 'other' %>">
+    <figure class="icon">
+      <img src="<%=dm.user.icon %>" alt="<%=dm.user %>のアイコン">
+    </figure>
+    <div class="text">
+      <%= text_url_to_link(h(dm.content)).html_safe %>
+    </div>
   </div>
-</div>
+<% end %>
