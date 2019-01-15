@@ -53,14 +53,6 @@ body {
   }
 }
 
-footer {
-  clear: both;
-  bottom: 0px;
-  padding: 15px 5px 0 5px;
-  color: gray;
-  font-size: 12px;
-}
-
 .container-fluid {
   background-color: transparent;
   color: gray;
@@ -116,6 +108,7 @@ footer {
 
     #sidebar_wrapper {
       width: 250px;
+      overflow-x: hidden;
     }
 
     #page_content_wrapper {
