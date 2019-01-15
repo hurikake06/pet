@@ -1,23 +1,25 @@
 <% user = session_user %>
-<ul class="nav navbar-nav search_area">
-  <li>
-    <%= link_to image_tag("icon/etc/menubar_to_home.png",size: '100x100'), controller: 'cg_app', action: 'index'%>
-  </li>
-</ul>
-<ul class="nav navbar-nav">
+<ul class="nav navbar-nav row">
+  <div class="col-sm-3">
+    <li>
+      <%= link_to image_tag("icon/etc/menubar_to_home.png",size: '100x100'), controller: 'cg_app', action: 'index'%>
+    </li>
+  </div>
   <% if login_flag %>
-    <li>
-      <%= link_to image_tag("icon/etc/menubar_to_mypage.png",size: '100x100'), cg_users_path(user.username)%>
-    </li>
+    <div class="col-sm-3">
+      <li>
+        <%= link_to image_tag("icon/etc/menubar_to_mypage.png",size: '100x100'), cg_users_path(user.username)%>
+      </li>
+    </div>
+    <div class="col-sm-3">
+      <li>
+        <%= link_to image_tag("icon/etc/menubar_to_sharelist.png",size: '100x100'), cg_shares_root_path()%>
+      </li>
+    </div>
+    <div class="col-sm-3">
+      <li>
+        <%= link_to image_tag("icon/etc/menubar_to_search.png",size: '100x100'), cg_searchs_root_path()%>
+      </li>
+    </div>
   <% end %>
-  <li>
-    <%= link_to image_tag("icon/etc/menubar_to_sharelist.png",size: '100x100'), cg_shares_root_path()%>
-  </li>
 </ul>
-<% if login_flag %>
-  <ul class="nav navbar-nav search_area">
-    <li>
-      <%= link_to image_tag("icon/etc/menubar_to_search.png",size: '100x100'), cg_searchs_root_path()%>
-    </li>
-  </ul>
-<% end %>
