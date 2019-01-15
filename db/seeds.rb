@@ -355,3 +355,8 @@ Cg::PetsFacility.create!(
   pet_id: 8,
   facility_id: 11
 )
+
+Cg::User.all.each do |user|
+  user.password = 'pass'
+  user.save(validate: false)
+end
