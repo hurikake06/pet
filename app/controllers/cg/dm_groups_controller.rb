@@ -41,8 +41,15 @@ class Cg::DmGroupsController < Cg::LayoutsController
       @dms = []
     end
 
-    if @dm_group.type == 'Cg::ShareDmGroup'
-      render 'show_share', layout: 'cg_layouts_width_stuffing'
+    respond_to do |format|
+      format.html {
+        if @dm_group.type == 'Cg::ShareDmGroup'
+          render 'show_share', layout: 'cg_layouts_width_stuffing'
+        end
+      }
+      format.js {
+        render 'show'
+      }
     end
   end
 
