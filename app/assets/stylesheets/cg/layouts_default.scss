@@ -18,6 +18,7 @@ body {
     li {
       a {
         font-size: 1.75rem;
+        text-align: center;
         -webkit-transition: 0.8s;
       	-moz-transition: 0.8s;
       	-o-transition: 0.8s;
@@ -50,6 +51,14 @@ body {
   hr {
     border-top: 1px solid white;
   }
+}
+
+footer {
+  clear: both;
+  bottom: 0px;
+  padding: 15px 5px 0 5px;
+  color: gray;
+  font-size: 12px;
 }
 
 .container-fluid {
@@ -226,7 +235,6 @@ body {
 
     #sidebar_wrapper {
       width: 250px;
-      overflow-x: hidden;
     }
 
     #page_content_wrapper {
@@ -288,23 +296,4 @@ body {
 /* navbarの縦幅が変わる変更があった際、heightを変更してください。 */
 .navbar-space {
   height: 210px;
-}
-
-/* footer layout */
-footer {
-  clear: both;
-  bottom: 0px;
-  padding: 3rem 3rem;
-  color: gray;
-  font-size: 12px;
-  background-color: #f4f4f4;
-
-  .app-title {
-    max-width: 350px;
-    max-height: 350px;
-
-    &-font {
-      font-size: 16px;
-    }
-  }
 }

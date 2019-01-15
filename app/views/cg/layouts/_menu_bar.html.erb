@@ -1,19 +1,23 @@
 <% user = session_user %>
 <ul class="nav navbar-nav search_area">
   <li>
-    <%= link_to image_tag("icon/etc/b_36.png",size: '25x25'), controller: 'cg_app', action: 'index'%>
+    <%= link_to image_tag("icon/etc/menubar_to_home.png",size: '100x100'), controller: 'cg_app', action: 'index'%>
   </li>
 </ul>
 <ul class="nav navbar-nav">
   <% if login_flag %>
-    <li><a href="<%= cg_users_path user.username %>">マイページ</a></li>
+    <li>
+      <%= link_to image_tag("icon/etc/menubar_to_mypage.png",size: '100x100'), cg_users_path(user.username)%>
+    </li>
   <% end %>
-  <li><a href="<%= cg_shares_root_path %>">シェアリスト</a></li>
+  <li>
+    <%= link_to image_tag("icon/etc/menubar_to_sharelist.png",size: '100x100'), cg_shares_root_path()%>
+  </li>
 </ul>
 <% if login_flag %>
   <ul class="nav navbar-nav search_area">
     <li>
-      <%= link_to image_tag("icon/etc/b_42.png",size: '25x25'), cg_searchs_root_path()%>
+      <%= link_to image_tag("icon/etc/menubar_to_search.png",size: '100x100'), cg_searchs_root_path()%>
     </li>
   </ul>
 <% end %>
