@@ -4,7 +4,7 @@
       <%= f.fields_for share.detail do |ff| %>
         <div class = "form-group">
           <div class="apply-item">
-            <h3>シェア場所</h3>
+            <h3>シェア場所 ※必須</h3>
             <% pet&.facilities.each do |facility| %>
               <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
             <% end %>
