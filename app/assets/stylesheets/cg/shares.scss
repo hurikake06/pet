@@ -80,6 +80,87 @@
 .shares-new{
   @include page-common;
   @include share-common;
+
+  .shares-new-form{
+    @include form-common;
+
+    .bootstrap-date{
+      width: auto;
+      display: inline-block;
+    }
+
+    .container-form{
+      .row{
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .apply-item{
+      text-align: center;
+      margin: 2em 0;
+      margin-top: 60px;
+      background: #f1f1f1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+
+      h3{
+        font-size: 1.2em;
+        background: $color-main-thema;
+        padding: 4px;
+        text-align: center;
+        color: #FFF;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+      }
+
+      h2{
+        text-align: center;
+      }
+
+      input{
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .move-to-share-list{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #ff7d6e;
+    border-top: solid 3px lightgray;
+  }
+
+  .apply-to{
+    position: relative;
+    padding:0.25em 1em;
+
+    &:before, &:after {
+      content:'';
+      width: 20px;
+      height: 30px;
+      position: absolute;
+      display: inline-block;
+    }
+
+    &:before{
+      border-left: solid 1px #5767bf;
+      border-top: solid 1px #5767bf;
+      top:0;
+      left: 0;
+    }
+
+    &:after{
+      border-right: solid 1px #5767bf;
+      border-bottom: solid 1px #5767bf;
+      bottom:0;
+      right: 0;
+    }
+
+    p{
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
 .shares-list{

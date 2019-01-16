@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <div class="shares-new">
   <div class="box-wrapper">
     <h1>シェア申請</h1>
@@ -35,27 +37,35 @@
       </div>
       <% unless @saved.present? %>
         <hr>
-        <h2>申請情報を記入してください</h2>
-        <div class = "container">
-          <p><h3>申請者:<%= session_user.name %></h3></p>
-          <p>
-            <h3>申請相手</h3>
-            飼い主：<strong><%= @pet.user.name %></strong><br>
-            ペット：<strong><%= @pet.name %></strong>
-          </p>
-          <%= render partial: 'new_form', locals: {
-            share: @share ||= Cg::Share.new(
-                          user_id: session[:user_id],
-                          pet_id: @pet.id,
-                          detail: Cg::ShareDetail.new ),
-            pet: @pet
-          } %>
+        <div class="shares-new-form">
+          <div class = "container-form">
+            <h3>申請情報を記入してください</h3>
+            <div class="row">
+              <div class="apply-to col-sm-4 col-sm-offset-1">
+                <h3>申請者</h3>
+                <p><%= session_user.name %></p>
+              </div>
+              <div class="apply-to col-sm-5 col-sm-offset-1">
+                <h3>申請相手</h3>
+                <p><%= @pet.user.name %></p>
+                <p><%= @pet.name %></p>
+              </div>
+            </div>
+            <%= render partial: 'new_form', locals: {
+              share: @share ||= Cg::Share.new(
+                            user_id: session[:user_id],
+                            pet_id: @pet.id,
+                            detail: Cg::ShareDetail.new ),
+              pet: @pet
+            } %>
+          </div>
         </div>
       <% end %>
     <% else %>
       <p>pet not found</p>
     <% end %>
-
-    <a href="<%= cg_shares_root_path %>">シェア一覧へ</a>
+    <div class="move-to-share-list">
+      <h3><a href="<%= cg_shares_root_path %>">自分のシェア状況を見る</a></h3>
+    </div>
   </div>
 </div>

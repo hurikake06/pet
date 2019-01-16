@@ -40,7 +40,7 @@
                 <th>料金（1時間あたり）</th>
               </tr>
               <tr>
-                <td><%= share.detail.start.strftime('%Y年%m月%d日') %></td>
+                <td><%= share.detail.start&.strftime('%Y年%m月%d日') %></td>
                 <td><%= share.detail.fixed_cost %></td>
                 <td><%= share.detail.variable_cost %></td>
               </tr>
