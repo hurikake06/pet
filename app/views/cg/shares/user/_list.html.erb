@@ -19,32 +19,42 @@
 <hr>
 <% if user.share_user_flag %>
   <% unless user.user_shares.empty? %>
-    <% unless user.user_shares.where(share_info: 101).empty? %>
-      <h2>~~申請中~~</h2>
-      <% user.user_shares.where(share_info: 101).each do |share| %>
-        <a href="<%= cg_shares_path share.id %>">
-          <div class='share'>
-            <h3>
-              <%= image_tag(share.pet.icon_url, class: 'icon') %>
-              <%= share.pet.name %>　へ会いに行く
-            </h3>
-            <hr>
-            <table class='table'>
-              <tr>
-                <th>日時</th>
-                <th>料金（頭金）</th>
-                <th>料金（1時間あたり）</th>
-              </tr>
-              <tr>
-                <td><%= share.detail.start&.strftime('%Y年%m月%d日') %></td>
-                <td><%= share.detail.fixed_cost %></td>
-                <td><%= share.detail.variable_cost %></td>
-              </tr>
-            </table>
-          </div>
-        </a>
+    <div class="active">
+      <h2>～～進行中～～</h2>
+      <% shares_array(user.user_shares)[:active].each do |shares| %>
+        <% shares.each do |share| %>
+          <a href="<%= cg_shares_path share.id %>">
+            <div class='share'>
+              <h3>
+                <%= image_tag(share.pet.icon_url, class: 'icon') %>
+                <%= share.pet.name %>
+              </h3>
+              <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+              <p><%= share.info.value %></p>
+              <hr>
+            </div>
+          </a>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="finished">
+      <h2>終了したシェア</h2>
+      <% shares_array(user.user_shares)[:finished].each do |shares| %>
+        <% shares.each do |share| %>
+          <a href="<%= cg_shares_path share.id %>">
+            <div class='share'>
+              <h3>
+                <%= image_tag(share.pet.icon_url, class: 'icon') %>
+                <%= share.pet.name %>
+              </h3>
+              <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+              <p><%= share.info.value %></p>
+              <hr>
+            </div>
+          </a>
+        <% end %>
+      <% end %>
+    </div>
   <% else %>
     <h2>~shared nothing~</h2>
   <% end %>
