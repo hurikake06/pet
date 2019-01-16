@@ -2,22 +2,12 @@
 <hr>
 <% if user.share_user_flag %>
   <% unless user.user_shares.empty? %>
-    <% unless user.user_shares.where(share_info: 101).empty? %>
-      <h2>~~申請中~~</h2>
-      <% user.user_shares.where(share_info: 101).each do |share| %>
-        <div class='share-card'>
-          <a href="<%= cg_shares_path share.id %>">
-            <%= image_tag(share.pet.icon_url, class: 'icon') %>
-            <%= share.pet.name %>　へ会いに行く
-            <%= share.detail.start&.strftime('%Y年%m月%d日') %>
-          </a>
-        </div>
     <div class="active">
       <h2>～～進行中～～</h2>
       <% shares_array(user.user_shares)[:active].each do |shares| %>
         <% shares.each do |share| %>
           <a href="<%= cg_shares_path share.id %>">
-            <div class='share'>
+            <div class='share-card'>
               <h3>
                 <%= image_tag(share.pet.icon_url, class: 'icon') %>
                 <%= share.pet.name %>
@@ -35,7 +25,7 @@
       <% shares_array(user.user_shares)[:finished].each do |shares| %>
         <% shares.each do |share| %>
           <a href="<%= cg_shares_path share.id %>">
-            <div class='share'>
+            <div class='share-card'>
               <h3>
                 <%= image_tag(share.pet.icon_url, class: 'icon') %>
                 <%= share.pet.name %>
