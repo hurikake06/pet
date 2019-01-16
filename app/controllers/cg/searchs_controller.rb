@@ -37,4 +37,8 @@ class Cg::SearchsController < Cg::LayoutsController
                        .page(params[:page]).per(5)
     end
   end
+
+  def category
+    @types = Cg::Type.all
+  end
 end

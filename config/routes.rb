@@ -48,6 +48,8 @@ Rails.application.routes.draw do
         root action: :index
         get 'user', action: :user_index
         get 'pet', action: :pet_index
+
+        get 'category', action: :category
       end
 
       namespace :evs do

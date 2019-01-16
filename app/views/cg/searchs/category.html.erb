@@ -1,0 +1,15 @@
+<div class="search-results">
+  <div class="box-wrapper">
+    <h1>ペットの種類で探す</h1>
+    <% @types.each do |type| %>
+      <h2><%= type.name %></h2>
+      <ul>
+        <% type.pets.each do |pet| %>
+          <%= link_to cg_pets_path(pet.petname) do %>
+            <li><%= pet.name %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
