@@ -3,7 +3,6 @@
     background: #e5f3fc;
     color: black;
     border-radius: 20px;
-    height: 300px;
     width: 80%;
     margin: 20px 40px;
     padding: 10px;
@@ -25,14 +24,14 @@
   </h2>
     <% unless pet.shares.empty? %>
       <% pet.shares.each do |share| %>
-        <a href="<%= cg_shares_path share.id %>">
-          <div class='share'>
-            <h3>
-              <%= image_tag(share.user.icon_url, class: 'icon') %>
-              <%= share.user.name %>　からの申請
-            </h3>
-            <h4>状態：<%= share.info.value %></h4>
-            <hr>
+        <div class='share'>
+          <h3>
+            <%= image_tag(share.user.icon_url, class: 'icon') %>
+            <%= share.user.name %>　からの申請
+          </h3>
+          <h4>状態：<%= share.info.value %></h4>
+          <hr>
+          <a href="<%= cg_shares_path share.id %>">
             <table class='table'>
               <tr>
                 <th>日時</th>
@@ -45,8 +44,12 @@
                 <td><%= share.detail.variable_cost %></td>
               </tr>
             </table>
-          </div>
-        </a>
+          </a>
+          <% if share.share_info == 101 %>
+            <%= button_to '許可', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
+            <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 152 } %>
+          <% end %>
+        </div>
       <% end %>
     <% else %>
     <p>~shared nothing~</p>

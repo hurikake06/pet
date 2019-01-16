@@ -84,7 +84,6 @@ class Cg::SharesController < Cg::LayoutsController
     end
 
     @to_page = "cg/shares/#{@user_mode}/show"
-    render :show
   end
 
   def destroy; end
@@ -196,6 +195,12 @@ class Cg::SharesController < Cg::LayoutsController
     if flag
       @share.share_info = params[:share_info].to_i
       @saved = @share.save
+      if @saved
+        case @share.share_info
+        when 102 then
+          redirect_to cg_dm_groups_show_share_path share_id: @share.id
+        end
+      end
     end
   end
 

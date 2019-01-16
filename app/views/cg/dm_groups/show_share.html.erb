@@ -14,6 +14,9 @@
     </div>
   </div>
   <div class="share-detail-box" id="share_detail_box">
+    <div class="share-desk" id="share_desk_form">
+      
+    </div>
     <div class="share-detail" id="share_detail">
       <%= render partial: '/cg/shares/user/edit_form', locals: { share: @dm_group.share } %>
     </div>
@@ -23,6 +26,7 @@
   var channel = 'DmChannel';
   var dm_group = <%= @dm_group.id %>;
   var user_id = <%= @user.id %>;
+  var current_state_share = <%= @dm_group.share.share_info %>;
   App.cable.subscriptions.create({channel: channel, dm_group: dm_group}, {
     connected: function () {
       console.log('connected')
