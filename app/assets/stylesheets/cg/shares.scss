@@ -59,17 +59,6 @@
     color: black;
     font-size: 1.2em;
   }
-
-  /* from list.html.erb */
-  .share-list {
-    .share-user-list {
-      border: solid 2px white;
-    }
-
-    .share-host-list {
-      border: solid 2px black;
-    }
-  }
 }
 
 .shares-show{
@@ -166,4 +155,35 @@
 .shares-list{
   @include page-common;
   @include share-common;
+  @mixin share-list-common{
+    .share-card{
+      background: #e5f3fc;
+      color: black;
+      border-radius: 20px;
+      width: 80%;
+      margin: 20px 40px;
+      padding: 10px;
+    }
+
+    .icon{
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .box-wrapper{
+    width: 100%;
+  }
+
+  .share-user-list{
+    @include share-list-common;
+
+    border-right: solid 3px lightgray;
+  }
+
+  .share-host-list{
+    @include share-list-common;
+
+    border-left: solid 3px lightgray;
+  }
 }
