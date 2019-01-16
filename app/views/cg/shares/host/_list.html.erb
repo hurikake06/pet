@@ -9,25 +9,11 @@
     <% unless pet.shares.empty? %>
       <% pet.shares.each do |share| %>
         <div class='share-card'>
-          <h3>
+          <a href="<%= cg_shares_path share.id %>">
             <%= image_tag(share.user.icon_url, class: 'icon') %>
             <%= share.user.name %>　からの申請
-          </h3>
-          <h4>状態：<%= share.info.value %></h4>
-          <hr>
-          <a href="<%= cg_shares_path share.id %>">
-            <table class='table'>
-              <tr>
-                <th>日時</th>
-                <th>料金（頭金）</th>
-                <th>料金（1時間あたり）</th>
-              </tr>
-              <tr>
-                <td><%= share.detail.start&.strftime('%Y年%m月%d日') %></td>
-                <td><%= share.detail.fixed_cost %></td>
-                <td><%= share.detail.variable_cost %></td>
-              </tr>
-            </table>
+            <h4>状態：<%= share.info.value %></h4>
+            <%= share.detail.start&.strftime('%Y年%m月%d日') %>
           </a>
           <% if share.share_info == 101 %>
             <%= button_to '許可', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>

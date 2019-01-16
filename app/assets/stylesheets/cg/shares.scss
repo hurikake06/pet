@@ -157,12 +157,11 @@
   @include share-common;
   @mixin share-list-common{
     .share-card{
-      background: #e5f3fc;
-      color: black;
-      border-radius: 20px;
-      width: 80%;
-      margin: 20px 40px;
-      padding: 10px;
+      padding: 0.5em 1em;
+      margin: 2em 0;
+      color: #232323;
+      background: #fff8e8;
+      border-left: solid 10px #ffc06e;
     }
 
     .icon{
