@@ -12,8 +12,42 @@
             <%= share.detail.start&.strftime('%Y年%m月%d日') %>
           </a>
         </div>
+    <div class="active">
+      <h2>～～進行中～～</h2>
+      <% shares_array(user.user_shares)[:active].each do |shares| %>
+        <% shares.each do |share| %>
+          <a href="<%= cg_shares_path share.id %>">
+            <div class='share'>
+              <h3>
+                <%= image_tag(share.pet.icon_url, class: 'icon') %>
+                <%= share.pet.name %>
+              </h3>
+              <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+              <p><%= share.info.value %></p>
+              <hr>
+            </div>
+          </a>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="finished">
+      <h2>終了したシェア</h2>
+      <% shares_array(user.user_shares)[:finished].each do |shares| %>
+        <% shares.each do |share| %>
+          <a href="<%= cg_shares_path share.id %>">
+            <div class='share'>
+              <h3>
+                <%= image_tag(share.pet.icon_url, class: 'icon') %>
+                <%= share.pet.name %>
+              </h3>
+              <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+              <p><%= share.info.value %></p>
+              <hr>
+            </div>
+          </a>
+        <% end %>
+      <% end %>
+    </div>
   <% else %>
     <h2>~shared nothing~</h2>
   <% end %>
