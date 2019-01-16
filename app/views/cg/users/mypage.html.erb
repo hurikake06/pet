@@ -32,29 +32,30 @@
         <br>
       </div>
       <div class="pet-list">
-      <h3>ペットリスト</h3>
+        <h3>ペットリスト</h3>
         <% if @user.pets.present? %>
-          <% @user.pets.each do |pet| %>
-            <div class="pet">
-              <div class="pet-share-info">
-                <% if pet.share_flag %>
-                  <%= image_tag('icon/etc/share_info_pet_true.png',class: 'center-block') %>
-                <% else %>
-                  <%= image_tag('icon/etc/share_info_pet_false.png',class: 'center-block') %>
-                <% end %>
+          <ul class="works-grid works-grid-masonry works-grid-3 works-hover-w" id="works-grid">
+            <% @user.pets.each do |pet| %>
+              <div class="pet">
+                <li class="work-item marketing webdesign">
+                  <a href="<%= cg_pets_path petname: pet.petname %>">
+                    <div class="work-image"><%= image_tag(pet.icon_url) %></div>
+                    <div class="work-caption font-alt">
+                      <% if pet.share_flag %>
+                        <%= image_tag('icon/etc/share_info_pet_true.png',class: 'share-info-icon center-block') %>
+                        <div class="work-descr">シェア可能</div>
+                      <% else %>
+                        <%= image_tag('icon/etc/share_info_pet_false.png',class: 'share-info-icon center-block') %>
+                        <div class="work-descr">シェア不可</div>
+                      <% end %>
+                      <h3 class="work-title"><%= pet.name %></h3>
+                      <div class="work-descr"><%= pet.about %></div>
+                    </div>
+                  </a>
+                </li>
               </div>
-              <a href="<%= cg_pets_path petname: pet.petname %>">
-                <table>
-                  <tr>
-                    <td><%= image_tag(pet.icon_url, class:'icon') %></td>
-                  </tr>
-                  <tr>
-                    <td><p><%= pet.name %></p></td>
-                  </tr>
-                </table>
-              </a>
-            </div>
-          <% end %>
+            <% end %>
+          </ul>
         <% else %>
           <p>ペットは登録されていません</p>
         <% end %>
