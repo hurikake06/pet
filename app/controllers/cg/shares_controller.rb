@@ -60,6 +60,7 @@ class Cg::SharesController < Cg::LayoutsController
     set_share
     @saved = nil
     set_share
+    @dm_group = Cg::DmGroup.where(share_id: @share).first
     case params[:method].presence
     when 'update_info_host' then
       @user_mode = :host
@@ -94,26 +95,7 @@ class Cg::SharesController < Cg::LayoutsController
     @share = Cg::Share.find(params[:share_id])
   end
 
-  def share_date_params
-    start_val = DateTime.parse(params[:cg_share][:cg_share_detail][:start_val])
-    params[:cg_share][:cg_share_detail]['start(1i)'] = start_val.year.to_s
-    params[:cg_share][:cg_share_detail]['start(2i)'] = start_val.mon.to_s
-    params[:cg_share][:cg_share_detail]['start(3i)'] = start_val.mday.to_s
-    params[:cg_share][:cg_share_detail]['start(4i)'] = start_val.hour.to_s
-    params[:cg_share][:cg_share_detail]['start(5i)'] = start_val.min.to_s
-
-    end_val = DateTime.parse(params[:cg_share][:cg_share_detail][:end_val])
-    params[:cg_share][:cg_share_detail]['end(1i)'] = end_val.year.to_s
-    params[:cg_share][:cg_share_detail]['end(2i)'] = end_val.mon.to_s
-    params[:cg_share][:cg_share_detail]['end(3i)'] = end_val.mday.to_s
-    params[:cg_share][:cg_share_detail]['end(4i)'] = end_val.hour.to_s
-    params[:cg_share][:cg_share_detail]['end(5i)'] = end_val.min.to_s
-  end
-
   def share_params(pets_id)
-    unless params[:cg_share][:cg_share_detail][:start_val].empty? && params[:cg_share][:cg_share_detail][:end_val].empty?
-      share_date_params
-    end
     params[:cg_share][:detail_attributes] = params[:cg_share][:cg_share_detail]
     params.require(:cg_share).permit(
       detail_attributes: %i[
@@ -178,6 +160,7 @@ class Cg::SharesController < Cg::LayoutsController
     p @share.share_info
     p params[:share_info]
     flag = false
+    before = @share.share_info
 
     case @share.share_info
     when 101 then
@@ -199,6 +182,12 @@ class Cg::SharesController < Cg::LayoutsController
         case @share.share_info
         when 102 then
           redirect_to cg_dm_groups_show_share_path share_id: @share.id
+          if before == 101
+            Cg::Dm.create!(dm_group_id: @dm_group.id, user_id: 0,
+                           content: 'CuteGiftシェアサービスをご利用頂きありがとうございます',
+                           command: 1
+                          )
+          end
         end
       end
     end
@@ -206,6 +195,7 @@ class Cg::SharesController < Cg::LayoutsController
 
   def update_info_user
     flag = false
+    before = @share.share_info
 
     case @share.share_info
     when 101 then
@@ -224,7 +214,27 @@ class Cg::SharesController < Cg::LayoutsController
 
     if flag
       @share.share_info = params[:share_info].to_i
-      @saved = @share.save
+      if @share.save
+        case @share.share_info
+        when 103 then
+          dm = Cg::Dm.new(dm_group_id: @dm_group.id, user_id: 0,
+                         content: "#{@share.user.name}さんが再申請しました",
+                         command: 1
+                        )
+          broadcast_dm dm, @dm_group
+        end
+      end
     end
   end
+
+  def broadcast_dm( dm, dm_group)
+    if dm_group.type == 'Cg::ShareDmGroup'
+      ActionCable.server.broadcast "dm_#{dm_group.id}_host_channel",
+                                   html: render_to_string(partial: '/cg/dms/dm', locals: { dm: dm, user: dm_group.host })
+
+      ActionCable.server.broadcast "dm_#{dm_group.id}_user_channel",
+                                  html: render_to_string(partial: '/cg/dms/dm', locals: { dm: dm, user: dm_group.user })
+    end
+  end
+
 end

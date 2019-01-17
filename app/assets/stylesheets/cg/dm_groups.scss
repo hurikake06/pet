@@ -159,6 +159,23 @@
   }
 }
 
+.dm-share-alert {
+
+  .text {
+    margin: 0 auto;
+    max-width: 90%;
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .next {
   display: block;
   width: 100%;

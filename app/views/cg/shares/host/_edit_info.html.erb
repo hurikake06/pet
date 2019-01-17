@@ -1,14 +1,14 @@
 <% case share.share_info %>
 <% when 101 then %>
 <% when 102 then %>
-  <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 152 } %>
+  <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 152 } %>
 <% when 103 then %>
-  <%= button_to '条件変更要求', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
-  <%= button_to 'シェア条件確定', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 104 } %>
-  <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 152 } %>
+  <%= button_to '条件変更要求', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 102 } %>
+  <%= button_to 'シェア条件確定', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 104 } %>
+  <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 152 } %>
 <% when 104 then %>
-  <%= button_to 'シェア開始', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 105 } %>
-  <%= button_to 'シェアのキャンセル', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 155 } %>
+  <%= button_to 'シェア開始', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 105 } %>
+  <%= button_to 'シェアのキャンセル', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 155 } %>
 <% when 105 then %>
-  <%= button_to 'シェア終了', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 106 } %>
+  <%= button_to 'シェア終了', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 106 } %>
 <% end %>
