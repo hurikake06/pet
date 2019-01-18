@@ -10,11 +10,16 @@
         <% shares.each do |share| %>
           <div class='share-card'>
             <h3>
-              <%= image_tag(share.pet.icon_url, class: 'icon') %>
-              <%= share.pet.name %>
+              <%= link_to cg_dm_groups_show_share_path(share.id), class: share.share_info == 101 ? 'disabled' : '' do %>
+                <%= image_tag(share.pet.icon_url, class: 'icon') %>
+                <%= share.pet.name %>
+              <% end %>
             </h3>
             <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
             <p>状態：<%= share.info.value %></p>
+            <% if share.share_info == 101 %>
+              申請が許可されていません。
+            <% end %>
             <hr>
             <div class="detail-button-area">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail<%= share.id %>">

@@ -290,3 +290,8 @@ body {
 .navbar-space {
   height: 210px;
 }
+
+// リンク無効（クリックイベント全体無効）
+a.disabled{
+    pointer-events: none;
+}
