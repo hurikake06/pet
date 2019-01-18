@@ -20,10 +20,11 @@
               <%= button_to '許可', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
               <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 152 } %>
             <% end %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail<%= share.id %>">
               詳細確認
             </button>
           </div>
+          <%= render partial: 'module/modal', locals: { id: "shareDetail#{share.id}", value: render(partial: 'cg/shares/host/show', locals: { share: share }) } %>
         <% end %>
       <% end %>
     </div>
@@ -39,10 +40,11 @@
             <hr>
             <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
             <p>状態：<%= share.info.value %></p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail<%= share.id %>">
               詳細確認
             </button>
           </div>
+          <%= render partial: 'module/modal', locals: { id: "shareDetail#{share.id}", value: render(partial: 'cg/shares/host/show', locals: { share: share }) } %>
         <% end %>
       <% end %>
     </div>
