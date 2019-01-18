@@ -3,7 +3,9 @@
 <% if user.share_user_flag %>
   <% unless user.user_shares.empty? %>
     <div class="active">
-      <h2>～～進行中～～</h2>
+      <div class="status-ribbon">
+        <h2>進行中</h2>
+      </div>
       <% shares_array(user.user_shares)[:active].each do |shares| %>
         <% shares.each do |share| %>
           <div class='share-card'>
@@ -12,7 +14,7 @@
               <%= share.pet.name %>
             </h3>
             <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
-            <p><%= share.info.value %></p>
+            <p>状態：<%= share.info.value %></p>
             <hr>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
               詳細確認
@@ -22,7 +24,9 @@
       <% end %>
     </div>
     <div class="finished">
-      <h2>終了したシェア</h2>
+      <div class="status-ribbon">
+        <h2>終了したシェア</h2>
+      </div>
       <% shares_array(user.user_shares)[:finished].each do |shares| %>
         <% shares.each do |share| %>
           <div class='share-card'>
@@ -41,7 +45,7 @@
       <% end %>
     </div>
   <% else %>
-    <h2>~shared nothing~</h2>
+    <p>シェアはありません</p>
   <% end %>
 <% else %>
   <p>シェア条件を満たしていません</p>

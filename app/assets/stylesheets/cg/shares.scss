@@ -168,6 +168,38 @@
       width: 60px;
       height: 60px;
     }
+
+    .status-ribbon{
+      position: relative;
+      padding: 0.25em 1em;
+      margin: 2em 0;
+      top: 0;
+      text-align: center;
+
+      &:before,&:after{
+        position: absolute;
+        top: 0;
+        content:'';
+        width: 10px;
+        height: 100%;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      &:before{
+        border-left: dotted 2px #15adc1;
+        border-top: dotted 2px #15adc1;
+        border-bottom: dotted 2px #15adc1;
+        left: 0;
+      }
+
+      &:after{
+        border-top: dotted 2px #15adc1;
+        border-right: dotted 2px #15adc1;
+        border-bottom: dotted 2px #15adc1;
+        right: 0;
+      }
+    }
   }
 
   .box-wrapper{

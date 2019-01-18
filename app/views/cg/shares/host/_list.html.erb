@@ -5,7 +5,9 @@
     <% if pet.shares.present? %>
     <h1><%= pet.name %></h1>
     <div class="active">
-      <h2>～～進行中～～</h2>
+      <div class="status-ribbon">
+        <h2>進行中</h2>
+      </div>
       <% shares_array(pet.shares)[:active].each do |shares| %>
         <% shares.each do |share| %>
           <div class='share-card'>
@@ -28,7 +30,9 @@
       <% end %>
     </div>
     <div class="finished">
-      <h2>終了したシェア</h2>
+      <div class="status-ribbon">
+        <h2>終了したシェア</h2>
+      </div>
       <% shares_array(pet.shares)[:finished].each do |shares| %>
         <% shares.each do |share| %>
           <div class='share-card'>
@@ -47,7 +51,7 @@
       <% end %>
     </div>
     <% else %>
-      <p>~shared nothing~</p>
+      <p>シェアはありません</p>
     <% end %>
   <% end %>
 <% else %>
