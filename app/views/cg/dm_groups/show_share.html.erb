@@ -24,12 +24,13 @@
   </div>
 </div>
 <script>
-  var channel = 'DmChannel';
   var dm_group = <%= @dm_group.id %>;
+  var share_id = <%= @dm_group.share_id %>;
   var user_id = <%= @user.id %>;
   var current_state_share = <%= @dm_group.share.share_info %>;
+  var role = '<%= @role %>';
 
-  App.cable.subscriptions.create({channel: channel, dm_group: dm_group}, {
+  App.cable.subscriptions.create({channel: 'DmChannel', dm_group: dm_group}, {
     connected: function () {
       console.log('connected')
     },
@@ -41,10 +42,28 @@
     },
     received: function (data) {
       message = $(data.html)
-      //message[0].setAttribute('class',data.user_id == user_id ? 'dm-my' : 'dm-other');
       message.appendTo('#dm_list').hide().fadeIn('slow');
       $("#dm_scroll_field").animate({scrollTop:$("#dm_scroll_field").scrollTop()+message.height()*2});
     }
   });
   $("#dm_scroll_field").animate({scrollTop:$("#dm_scroll_field").height()});
+
+  App.cable.subscriptions.create({channel: 'ShareAlertChannel', share_id: share_id}, {
+    connected: function () {
+      console.log('connected')
+    },
+    disconnected: function () {
+
+    },
+    rejected: function () {
+
+    },
+    received: function (data) {
+      // message = $(data.html)
+      console.log(data)
+      if(data.command == 1){
+        $("#share_detail").html(data.html)
+      }
+    }
+  });
 </script>

@@ -59,8 +59,8 @@ class Cg::User < ApplicationRecord
     group.host.id == id || group.user.id == id
   end
 
-  def privilege(group)
-    return 'host' if id == group.host.id
-    return 'user' if id == group.user.id
+  def privilege(share)
+    return 'host' if id == share.pet.user_id
+    return 'user' if id == share.user_id
   end
 end

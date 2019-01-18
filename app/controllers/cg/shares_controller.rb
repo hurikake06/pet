@@ -149,6 +149,10 @@ class Cg::SharesController < Cg::LayoutsController
       share_alert "相談が終わり次第再申請をお願いします。" if @share.complete?
       @share.share_info = 102
       @share.save
+
+      ActionCable.server.broadcast "share_alert_#{@share.id}_host_channel",
+                                   html: render_to_string(partial: '/cg/shares/host/show', locals: { share: @share, user: @dm_group.host }),
+                                   command: 1
     end
 
   end
