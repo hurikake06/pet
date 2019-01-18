@@ -8,21 +8,22 @@
       <h2>～～進行中～～</h2>
       <% shares_array(pet.shares)[:active].each do |shares| %>
         <% shares.each do |share| %>
-          <a href="<%= cg_shares_path share.id %>">
-            <div class='share-card'>
-              <h3>
-                <%= image_tag(share.user.icon_url, class: 'icon') %>
-                <%= share.user.name %>　からの申請
-              </h3>
-              <hr>
-              <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
-              <p>状態：<%= share.info.value %></p>
-              <% if share.share_info == 101 %>
-                <%= button_to '許可', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
-                <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 152 } %>
-              <% end %>
-            </div>
-          </a>
+          <div class='share-card'>
+            <h3>
+              <%= image_tag(share.user.icon_url, class: 'icon') %>
+              <%= share.user.name %>　からの申請
+            </h3>
+            <hr>
+            <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+            <p>状態：<%= share.info.value %></p>
+            <% if share.share_info == 101 %>
+              <%= button_to '許可', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
+              <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 152 } %>
+            <% end %>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+              詳細確認
+            </button>
+          </div>
         <% end %>
       <% end %>
     </div>
@@ -30,17 +31,18 @@
       <h2>終了したシェア</h2>
       <% shares_array(pet.shares)[:finished].each do |shares| %>
         <% shares.each do |share| %>
-          <a href="<%= cg_shares_path share.id %>">
-            <div class='share-card'>
-              <h3>
-                <%= image_tag(share.user.icon_url, class: 'icon') %>
-                <%= share.user.name %>　からの申請
-              </h3>
-              <hr>
-              <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
-              <p>状態：<%= share.info.value %></p>
-            </div>
-          </a>
+          <div class='share-card'>
+            <h3>
+              <%= image_tag(share.user.icon_url, class: 'icon') %>
+              <%= share.user.name %>　からの申請
+            </h3>
+            <hr>
+            <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+            <p>状態：<%= share.info.value %></p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+              詳細確認
+            </button>
+          </div>
         <% end %>
       <% end %>
     </div>

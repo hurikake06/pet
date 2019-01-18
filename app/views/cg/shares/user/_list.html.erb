@@ -6,17 +6,18 @@
       <h2>～～進行中～～</h2>
       <% shares_array(user.user_shares)[:active].each do |shares| %>
         <% shares.each do |share| %>
-          <a href="<%= cg_shares_path share.id %>">
-            <div class='share-card'>
-              <h3>
-                <%= image_tag(share.pet.icon_url, class: 'icon') %>
-                <%= share.pet.name %>
-              </h3>
-              <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
-              <p><%= share.info.value %></p>
-              <hr>
-            </div>
-          </a>
+          <div class='share-card'>
+            <h3>
+              <%= image_tag(share.pet.icon_url, class: 'icon') %>
+              <%= share.pet.name %>
+            </h3>
+            <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+            <p><%= share.info.value %></p>
+            <hr>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+              詳細確認
+            </button>
+          </div>
         <% end %>
       <% end %>
     </div>
@@ -24,17 +25,18 @@
       <h2>終了したシェア</h2>
       <% shares_array(user.user_shares)[:finished].each do |shares| %>
         <% shares.each do |share| %>
-          <a href="<%= cg_shares_path share.id %>">
-            <div class='share-card'>
-              <h3>
-                <%= image_tag(share.pet.icon_url, class: 'icon') %>
-                <%= share.pet.name %>
-              </h3>
-              <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
-              <p><%= share.info.value %></p>
-              <hr>
-            </div>
-          </a>
+          <div class='share-card'>
+            <h3>
+              <%= image_tag(share.pet.icon_url, class: 'icon') %>
+              <%= share.pet.name %>
+            </h3>
+            <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+            <p><%= share.info.value %></p>
+            <hr>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+              詳細確認
+            </button>
+          </div>
         <% end %>
       <% end %>
     </div>
