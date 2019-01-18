@@ -15,16 +15,24 @@
               <%= image_tag(share.user.icon_url, class: 'icon') %>
               <%= share.user.name %>　からの申請
             </h3>
-            <hr>
             <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
             <p>状態：<%= share.info.value %></p>
             <% if share.share_info == 101 %>
-              <%= button_to '許可', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
-              <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 152 } %>
+              <div class="row">
+                <div class="response-button col-sm-6">
+                  <%= button_to '許可', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 102 } %>
+                </div>
+                <div class="response-button col-sm-6">
+                  <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, params: { method: :update_info_host, share_info: 152 } %>
+                </div>
+              </div>
+              <hr>
             <% end %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
-              詳細確認
-            </button>
+            <div class="detail-button-area">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+                詳細確認
+              </button>
+            </div>
           </div>
         <% end %>
       <% end %>
@@ -43,9 +51,11 @@
             <hr>
             <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
             <p>状態：<%= share.info.value %></p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
-              詳細確認
-            </button>
+            <div class="detail-button-area">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+                詳細確認
+              </button>
+            </div>
           </div>
         <% end %>
       <% end %>

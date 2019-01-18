@@ -16,9 +16,11 @@
             <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
             <p>状態：<%= share.info.value %></p>
             <hr>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
-              詳細確認
-            </button>
+            <div class="detail-button-area">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+                詳細確認
+              </button>
+            </div>
           </div>
         <% end %>
       <% end %>
@@ -37,9 +39,11 @@
             <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
             <p><%= share.info.value %></p>
             <hr>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
-              詳細確認
-            </button>
+            <div class="detail-button-area">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail">
+                詳細確認
+              </button>
+            </div>
           </div>
         <% end %>
       <% end %>
