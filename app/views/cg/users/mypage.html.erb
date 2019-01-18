@@ -1,6 +1,11 @@
 <div class="users-mypage">
   <% if @user.present? %>
     <div class="box-wrapper">
+      <div class="row">
+        <div class="page-info">
+          <h4>マイページ</h4>
+        </div>
+      </div>
       <h1><%= @user.name %></h1>
       <div class="profile-icon">
         <%= image_tag(@user.icon_url) %>
