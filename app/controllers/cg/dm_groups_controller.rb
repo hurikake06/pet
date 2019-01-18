@@ -34,8 +34,8 @@ class Cg::DmGroupsController < Cg::LayoutsController
     if @log_disp_id != -1
       last = Cg::Dm.find(@log_disp_id)
       @dms = Cg::Dm.where(dm_group_id: @dm_group.id)
-                   .or(Cg::Dm.where('created_at >= ?', last.created_at))
-                   .order('created_at DESC')
+                   .or(Cg::Dm.where('id >= ?', last.id))
+                   .order('id DESC')
                    .page(@page).per(8)
     else
       @dms = []

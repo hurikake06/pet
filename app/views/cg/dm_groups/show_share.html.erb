@@ -18,7 +18,8 @@
       <%= render partial: "/cg/shares/#{@role}/edit_info", locals: { share: @dm_group.share, user: @user } %>
     </div>
     <div class="share-detail" id="share_detail">
-      <%= render partial: '/cg/shares/user/edit_form', locals: { share: @dm_group.share } %>
+      <%= render partial: '/cg/shares/user/edit_form', locals: { share: @dm_group.share } if @role == :user %>
+      <%= render partial: '/cg/shares/host/show', locals: { share: @dm_group.share } if @role == :host %>
     </div>
   </div>
 </div>

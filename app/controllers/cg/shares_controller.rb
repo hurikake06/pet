@@ -144,6 +144,13 @@ class Cg::SharesController < Cg::LayoutsController
     return unless params[:cg_share].present?
 
     @share = @share_edit if @share_edit.update(share_edit_params(@share))
+    unless @share.share_info == 101
+      share_alert "条件を変更しました。"
+      share_alert "相談が終わり次第再申請をお願いします。" if @share.complete?
+      @share.share_info = 102
+      @share.save
+    end
+
   end
 
   def update_host
@@ -183,11 +190,11 @@ class Cg::SharesController < Cg::LayoutsController
         when 102 then
           redirect_to cg_dm_groups_show_share_path share_id: @share.id
           if before == 101
-            Cg::Dm.create!(dm_group_id: @dm_group.id, user_id: 0,
-                           content: 'CuteGiftシェアサービスをご利用頂きありがとうございます',
-                           command: 1
-                          )
+            share_alert "CuteGiftシェアサービスをご利用頂きありがとうございます"
           end
+        when 104 then
+          share_alert "シェア条件が確定されました。予定日程は#{@share.detail.start}です。"
+          share_alert "#{@share.user.name}様が変更した際は再申請からやり直します。"
         end
       end
     end
@@ -217,14 +224,18 @@ class Cg::SharesController < Cg::LayoutsController
       if @share.save
         case @share.share_info
         when 103 then
-          dm = Cg::Dm.new(dm_group_id: @dm_group.id, user_id: 0,
-                         content: "#{@share.user.name}さんが再申請しました",
-                         command: 1
-                        )
-          broadcast_dm dm, @dm_group
+          share_alert "#{@share.user.name}さんが再申請しました"
         end
       end
     end
+  end
+
+  def share_alert(message ,command = 1)
+    dm = Cg::Dm.create!(dm_group_id: @dm_group.id, user_id: 0,
+                   content: message,
+                   command: command
+                  )
+    broadcast_dm dm, @dm_group
   end
 
   def broadcast_dm( dm, dm_group)
