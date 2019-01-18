@@ -7,4 +7,11 @@ class Cg::Share < ApplicationRecord
   has_one :detail, class_name: 'Cg::ShareDetail', inverse_of: :share
   has_many :evs, class_name: 'Cg::Ev'
   accepts_nested_attributes_for :detail
+
+  def complete?
+    return false unless detail.fixed_cost.present?
+    return false unless detail.variable_cost.present?
+
+    true
+  end
 end

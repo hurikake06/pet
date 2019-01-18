@@ -1,13 +1,20 @@
-<h1>Cg::DmGroups#show</h1>
-<p>Find me in app/views/cg/dm_groups/list.html.erb</p>
-<%= link_to_next_page(@dms, 'もっと見る', remote: true, id: 'next', params: {log_disp_id: @log_disp_id }) if @dms.present? %>
-<div id="dm_list">
-  <%= render partial: '/cg/dms/dm', collection: @dms.reverse, locals: { user: @user } %>
+<div class="dm-room-box">
+  <div class="dm-space">
+    <%= link_to_next_page(@dms, 'もっと見る', remote: true, id: 'next', class: 'next', params: {log_disp_id: @log_disp_id }) if @dms.present? %>
+    <div class="dm-scroll-field" id="dm_scroll_field">
+      <div id="dm_list" class="dm-list">
+        <%= render partial: '/cg/dms/dm', collection: @dms.reverse, locals: { user: @user } %>
+      </div>
+    </div>
+    <div class="send-form">
+      <%= render partial: '/cg/dms/new_form', locals: { dm_group: @dm_group } %>
+    </div>
+  </div>
 </div>
-<%= render partial: '/cg/dms/new_form', locals: { dm_group: @dm_group } %>
 <script>
   var channel = 'DmChannel';
   var dm_group = <%= @dm_group.id %>;
+  var user_id = <%= @user.id %>;
   App.cable.subscriptions.create({channel: channel, dm_group: dm_group}, {
     connected: function () {
       console.log('connected')
@@ -19,8 +26,11 @@
 
     },
     received: function (data) {
-      console.log(data.html)
-      return $(data.html).appendTo('#dm_list').hide().fadeIn('slow');
+      message = $(data.html)
+      //message[0].setAttribute('class',data.user_id == user_id ? 'dm-my' : 'dm-other');
+      message.appendTo('#dm_list').hide().fadeIn('slow');
+      $("#dm_scroll_field").animate({scrollTop:$("#dm_scroll_field").scrollTop()+message.height()*2});
     }
   });
+  $("#dm_scroll_field").animate({scrollTop:$("#dm_scroll_field").height()});
 </script>

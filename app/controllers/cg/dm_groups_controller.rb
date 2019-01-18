@@ -34,11 +34,23 @@ class Cg::DmGroupsController < Cg::LayoutsController
     if @log_disp_id != -1
       last = Cg::Dm.find(@log_disp_id)
       @dms = Cg::Dm.where(dm_group_id: @dm_group.id)
-                   .or(Cg::Dm.where('created_at >= ?', last.created_at))
-                   .order('created_at DESC')
-                   .page(@page).per(5)
+                   .or(Cg::Dm.where('id >= ?', last.id))
+                   .order('id DESC')
+                   .page(@page).per(8)
     else
       @dms = []
+    end
+
+    respond_to do |format|
+      format.html do
+        if @dm_group.type == 'Cg::ShareDmGroup'
+          @role = @dm_group.share.user == @user ? :user : :host
+          render 'show_share', layout: 'cg_layouts_width_stuffing'
+        end
+      end
+      format.js do
+        render 'show'
+      end
     end
   end
 

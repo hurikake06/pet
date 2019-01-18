@@ -62,7 +62,7 @@ Rails.application.routes.draw do
       namespace :dm_groups do
         root action: :list
         get ':dm_group_id', action: :show
-        get 'share/:share_id', action: :show_share
+        get 'share/:share_id', action: :show_share, as: :show_share
         get 'user/:pet_id', action: :show_user
       end
 
