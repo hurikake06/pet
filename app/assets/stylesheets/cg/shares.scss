@@ -156,6 +156,8 @@
   @include page-common;
   @include share-common;
   @mixin share-list-common{
+    height: 100%;
+
     .share-card{
       padding: 0.5em 1em;
       margin: 2em 0;
@@ -235,6 +237,20 @@
     @include share-list-common;
 
     border-left: solid 3px lightgray;
+
+    .share-card{
+      background: #e8f0ff;
+      border-left: solid 10px #5b9aff;
+
+      button{
+        color: #5b9aff;
+        border: solid 2px #5b9aff;
+
+        &:hover{
+          background: #e8f0ff;
+        }
+      }
+    }
 
     .response-button{
       margin-bottom: 10px;

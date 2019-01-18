@@ -3,7 +3,8 @@
 <% if user.share_host_flag %>
   <% user.pets.each do |pet| %>
     <% if pet.shares.present? %>
-    <h1><%= pet.name %></h1>
+    <%= image_tag(pet.icon_url, class: 'icon center-block') %>
+    <h1><%= pet.name %>への申請</h1>
     <div class="active">
       <div class="status-ribbon">
         <h2>進行中</h2>
@@ -63,7 +64,6 @@
       <% end %>
     </div>
     <% else %>
-      <p>シェアはありません</p>
     <% end %>
   <% end %>
 <% else %>
