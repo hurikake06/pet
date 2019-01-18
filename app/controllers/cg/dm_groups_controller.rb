@@ -42,15 +42,15 @@ class Cg::DmGroupsController < Cg::LayoutsController
     end
 
     respond_to do |format|
-      format.html {
+      format.html do
         if @dm_group.type == 'Cg::ShareDmGroup'
-        @role = @dm_group.share.user == @user ? :user : :host
+          @role = @dm_group.share.user == @user ? :user : :host
           render 'show_share', layout: 'cg_layouts_width_stuffing'
         end
-      }
-      format.js {
+      end
+      format.js do
         render 'show'
-      }
+      end
     end
   end
 

@@ -10,18 +10,16 @@ class Cg::DmsController < Cg::LayoutsController
     return unless @user.accesable? @dm_group
 
     dm = Cg::Dm.new dm_new_params
-    if dm.save
-      broadcast_dm( dm, @dm_group)
-    end
+    broadcast_dm(dm, @dm_group) if dm.save
   end
 
-  def broadcast_dm( dm, dm_group)
+  def broadcast_dm(dm, dm_group)
     if dm_group.type == 'Cg::ShareDmGroup'
       ActionCable.server.broadcast "dm_#{dm_group.id}_host_channel",
                                    html: render_to_string(partial: '/cg/dms/dm', locals: { dm: dm, user: dm_group.host })
 
       ActionCable.server.broadcast "dm_#{dm_group.id}_user_channel",
-                                  html: render_to_string(partial: '/cg/dms/dm', locals: { dm: dm, user: dm_group.user })
+                                   html: render_to_string(partial: '/cg/dms/dm', locals: { dm: dm, user: dm_group.user })
     end
   end
 
