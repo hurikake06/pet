@@ -12,6 +12,9 @@
         </div>
         <div class="apply-item">
           <h3>シェア日時</h3>
+          <div class="host-demand">
+            <p>ホスト要望：</p>
+          </div>
           <div class="row">
             <div class = "form-group col-sm-5">
               <div class="share-date-time">
@@ -31,10 +34,16 @@
         <div class="apply-item">
           <h3>シェア料金</h3>
           <div class = "form-group">
+            <div class="host-demand">
+              <p>ホスト要望：<%= @pet.detail.fixed_cost %></p>
+            </div>
             <%= ff.label "頭金" %>
             <%= ff.number_field :fixed_cost, class: 'form-control' %>
           </div>
           <div class = "form-group">
+            <div class="host-demand">
+              <p>ホスト要望：<%= @pet.detail.variable_cost %></p>
+            </div>
             <%= ff.label "1時間ごとの料金" %>
             <%= ff.number_field :variable_cost, class: 'form-control' %>
           </div>
