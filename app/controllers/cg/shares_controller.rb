@@ -95,7 +95,26 @@ class Cg::SharesController < Cg::LayoutsController
     @share = Cg::Share.find(params[:share_id])
   end
 
+  def share_date_params
+    start_val = DateTime.parse(params[:cg_share][:cg_share_detail][:start_val])
+    params[:cg_share][:cg_share_detail]['start(1i)'] = start_val.year.to_s
+    params[:cg_share][:cg_share_detail]['start(2i)'] = start_val.mon.to_s
+    params[:cg_share][:cg_share_detail]['start(3i)'] = start_val.mday.to_s
+    params[:cg_share][:cg_share_detail]['start(4i)'] = start_val.hour.to_s
+    params[:cg_share][:cg_share_detail]['start(5i)'] = start_val.min.to_s
+
+    end_val = DateTime.parse(params[:cg_share][:cg_share_detail][:end_val])
+    params[:cg_share][:cg_share_detail]['end(1i)'] = end_val.year.to_s
+    params[:cg_share][:cg_share_detail]['end(2i)'] = end_val.mon.to_s
+    params[:cg_share][:cg_share_detail]['end(3i)'] = end_val.mday.to_s
+    params[:cg_share][:cg_share_detail]['end(4i)'] = end_val.hour.to_s
+    params[:cg_share][:cg_share_detail]['end(5i)'] = end_val.min.to_s
+  end
+
   def share_params(pets_id)
+    unless params[:cg_share][:cg_share_detail][:start_val].empty? && params[:cg_share][:cg_share_detail][:end_val].empty?
+      share_date_params
+    end
     params[:cg_share][:detail_attributes] = params[:cg_share][:cg_share_detail]
     params.require(:cg_share).permit(
       detail_attributes: %i[
@@ -192,6 +211,10 @@ class Cg::SharesController < Cg::LayoutsController
         case @share.share_info
         when 102 then
           redirect_to cg_dm_groups_show_share_path share_id: @share.id
+          @dm_group = Cg::ShareDmGroup.find_by(share_id: @share.id)
+          if @dm_group.nil?
+            @dm_group = Cg::ShareDmGroup.create!(share_id: @share.id)
+          end
           share_alert 'CuteGiftシェアサービスをご利用頂きありがとうございます' if before == 101
         when 104 then
           share_alert "シェア条件が確定されました。予定日程は#{@share.detail.start}です。"
