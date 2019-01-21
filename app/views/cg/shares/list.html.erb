@@ -1,11 +1,13 @@
 <div class="shares-list">
   <div class="box-wrapper">
     <div class="share-list">
-      <div class="share-user-list">
-        <%= render partial: 'cg/shares/user/list', locals: { user: @user } %>
-      </div>
-      <div class="share-host-list">
-        <%= render partial: 'cg/shares/host/list', locals: { user: @user } %>
+      <div class="row">
+        <div class="share-user-list col-sm-6">
+          <%= render partial: 'cg/shares/user/list', locals: { user: @user } %>
+        </div>
+        <div class="share-host-list col-sm-6">
+          <%= render partial: 'cg/shares/host/list', locals: { user: @user } %>
+        </div>
       </div>
     </div>
   </div>

@@ -15,6 +15,28 @@ require './db/seeds/facility.rb'
 require './db/seeds/type.rb'
 
 Cg::User.create!(
+  id: 0,
+  name: '運営アカウント',
+  username: 'CuteGift',
+  icon: open("#{Rails.root}/app/assets/images/icon/logo/index_top.png"),
+  email: 'support_cutegift@smartapp.com',
+  password: 'Pa$$w0rd',
+  about: 'CuteGiftの公式アカウントです',
+  share_user_info: 402,
+  share_host_info: 501,
+  detail_attributes: {
+    first_name: '',
+    last_name: '',
+    address: '',
+    document_info: 10002,
+    credit_info: 10002,
+    age: 25,
+    sex_info: 201,
+    country_info: 301
+  }
+)
+
+Cg::User.create!(
   id: 1,
   name: '桃 太郎',
   username: 'momo',
@@ -23,7 +45,7 @@ Cg::User.create!(
   password: 'Pass_momo0',
   about: 'どんぶらこどんぶらこってすごい擬音語',
   share_user_info: 402,
-  share_host_info: 501,
+  share_host_info: 502,
   detail_attributes: {
     first_name: '',
     last_name: '',

@@ -59,17 +59,6 @@
     color: black;
     font-size: 1.2em;
   }
-
-  /* from list.html.erb */
-  .share-list {
-    .share-user-list {
-      border: solid 2px white;
-    }
-
-    .share-host-list {
-      border: solid 2px black;
-    }
-  }
 }
 
 .shares-show{
@@ -166,4 +155,122 @@
 .shares-list{
   @include page-common;
   @include share-common;
+  @mixin share-list-common{
+    height: 100%;
+
+    .share-card{
+      padding: 0.5em 1em;
+      margin: 2em 0;
+      color: #232323;
+      background: #fff8e8;
+      border-left: solid 10px #ffc06e;
+
+      .detail-button-area{
+        text-align: center;
+      }
+
+      button{
+        background: white;
+        display: inline-block;
+        padding: 0.3em 1em;
+        text-decoration: none;
+        color: $color-main-thema;
+        border: solid 2px $color-main-thema;
+        border-radius: 3px;
+        transition: .4s;
+
+        &:hover{
+          background: #fff8e8;
+        }
+      }
+    }
+
+    .icon{
+      width: 60px;
+      height: 60px;
+    }
+
+    .status-ribbon{
+      position: relative;
+      padding: 0.25em 1em;
+      margin: 2em 0;
+      top: 0;
+      text-align: center;
+
+      &:before,&:after{
+        position: absolute;
+        top: 0;
+        content:'';
+        width: 10px;
+        height: 100%;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      &:before{
+        border-left: dotted 2px #15adc1;
+        border-top: dotted 2px #15adc1;
+        border-bottom: dotted 2px #15adc1;
+        left: 0;
+      }
+
+      &:after{
+        border-top: dotted 2px #15adc1;
+        border-right: dotted 2px #15adc1;
+        border-bottom: dotted 2px #15adc1;
+        right: 0;
+      }
+    }
+  }
+
+  .box-wrapper{
+    width: 100%;
+  }
+
+  .share-user-list{
+    @include share-list-common;
+
+    border-right: solid 3px lightgray;
+  }
+
+  .share-host-list{
+    @include share-list-common;
+
+    border-left: solid 3px lightgray;
+
+    .share-card{
+      background: #e8f0ff;
+      border-left: solid 10px #5b9aff;
+
+      button{
+        color: #5b9aff;
+        border: solid 2px #5b9aff;
+
+        &:hover{
+          background: #e8f0ff;
+        }
+      }
+    }
+
+    .response-button{
+      margin-bottom: 10px;
+
+      input{
+        width: 100%;
+        background: #fff8e8;
+        display: inline-block;
+        padding: 0.3em 1em;
+        text-decoration: none;
+        color: gray;
+        border: none;
+        border-bottom: solid 2px $color-main-thema;
+        border-radius: 3px;
+        transition: .4s;
+
+        &:hover{
+          background: white;
+        }
+      }
+    }
+  }
 }
