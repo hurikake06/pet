@@ -43,10 +43,12 @@
             <div class="row">
               <div class="apply-to col-sm-4 col-sm-offset-1">
                 <h3>申請者</h3>
+                <%= image_tag(session_user.icon_url, class: 'icon center-block') %>
                 <p><%= session_user.name %></p>
               </div>
               <div class="apply-to col-sm-5 col-sm-offset-1">
                 <h3>申請相手</h3>
+                <%= image_tag(@pet.user.icon_url, class: 'icon center-block') %>
                 <p><%= @pet.user.name %></p>
                 <p><%= @pet.name %></p>
               </div>
