@@ -50,13 +50,14 @@
         </div>
       <% end %>
       <div class="share-pet-info">
+        <hr>
         <%= image_tag(@pet.icon_url, class: 'icon center-block') %>
         <h3><%= @pet.name %>のシェア情報</h3>
-        <hr>
         <div class="attention">
           <span class="attention-title">留意事項</span>
           <p><%= @pet.detail.share_about %></p>
         </div>
+        <hr>
       </div>
       <div class="submit-area">
         <%= f.button type:'submit', class: 'submit-btn' do %>送信<% end %>
