@@ -1,24 +1,38 @@
 <% user = session_user %>
+<% active_path = request.path %>
+<% link_class = [] %>
+<% link_class[0] = active_path == '/CuteGift' || active_path == '/CuteGift/cg' ? 'active' : '' %>
+<% link_class[1] = login_flag && active_path == cg_users_path(user.username) ? 'active' : '' %>
+<% link_class[2] = login_flag && active_path == cg_shares_root_path() ? 'active' : '' %>
+<% link_class[3] = login_flag && active_path == cg_searchs_root_path() ? 'active' : '' %>
 <ul class="nav navbar-nav row">
   <div class="col-sm-3">
     <li>
-      <%= link_to image_tag("icon/etc/menubar_to_home.png",size: '100x100'), controller: 'cg_app', action: 'index'%>
+      <%= link_to image_tag("icon/etc/menubar_to_home.png",size: '100x100'),
+      {controller: 'cg_app', action: 'index'},
+      { class: link_class[0] } %>
     </li>
   </div>
   <% if login_flag %>
     <div class="col-sm-3">
       <li>
-        <%= link_to image_tag("icon/etc/menubar_to_mypage.png",size: '100x100'), cg_users_path(user.username)%>
+        <%= link_to image_tag("icon/etc/menubar_to_mypage.png",size: '100x100'),
+        cg_users_path(user.username),
+        { class: link_class[1] } %>
       </li>
     </div>
     <div class="col-sm-3">
       <li>
-        <%= link_to image_tag("icon/etc/menubar_to_sharelist.png",size: '100x100'), cg_shares_root_path()%>
+        <%= link_to image_tag("icon/etc/menubar_to_sharelist.png",size: '100x100'),
+        cg_shares_root_path(),
+        { class: link_class[2] } %>
       </li>
     </div>
     <div class="col-sm-3">
       <li>
-        <%= link_to image_tag("icon/etc/menubar_to_search.png",size: '100x100'), cg_searchs_root_path()%>
+        <%= link_to image_tag("icon/etc/menubar_to_search.png",size: '100x100'),
+        cg_searchs_root_path(),
+        { class: link_class[3] } %>
       </li>
     </div>
   <% end %>
