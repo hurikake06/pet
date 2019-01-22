@@ -15,18 +15,26 @@
           <div class="host-demand">
             <p>規定シェア可能時間：12:00～19:00</p>
           </div>
+          <div class="row share-date">
+            <input id="share_date" class="flatpickr" name="cg_share[cg_share_detail][date_val]" type="text" placeholder="シェア日付" readonly="readonly">
+          </div>
           <div class="row">
+            <div class="col-sm-2">
+              開始時間
+            </div>
             <div class = "form-group col-sm-5">
               <div class="share-date-time">
-                <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始日時" readonly="readonly">
+                <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始時刻" readonly="readonly">
               </div>
             </div>
-            <div class="col-sm-1">
-              <h2>～</h2>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              終了時間
             </div>
             <div class = "form-group col-sm-5">
               <div class="share-date-time">
-                <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了日時" readonly="readonly">
+                <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了時刻" readonly="readonly">
               </div>
             </div>
           </div>
@@ -70,14 +78,60 @@
     <% end %>
   <% end %>
   <script type="text/javascript">
-    const config = {
+    flatpickr('#share_date',{
+      dateFormat: "Y-m-d 0:0",
+      inline: true,
+      defaultDate: "<%= share.detail.start %>"
+    });
+
+    flatpickr('#share_start',{
+      noCalendar: true,
       enableTime: true,
-      dateFormat: "Y-m-d H:i",
-    }
-    flatpickr('.flatpickr', config);
+      dateFormat: "H:i",
+      defaultDate: "<%= share.detail.start %>"
+    });
+
+    flatpickr('#share_end',{
+      noCalendar: true,
+      enableTime: true,
+      dateFormat: "H:i",
+      defaultDate: "<%= share.detail.end %>"
+    });
 
     function parseForm(date){
       console.log(date);
     }
   </script>
+
+  <style>
+    #share_date {
+      display: none;
+    }
+
+    .share-date .flatpickr-calendar.inline {
+        display: block;
+        position: inherit;
+        top: 2px;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    .shares-new-form .apply-item input {
+      margin-top: 0px;
+    }
+
+    .flatpickr-current-month {
+      width: 100%;
+    }
+
+    .shares-new-form .apply-item .flatpickr-prev-month{
+      top: unset;
+      left: unset;
+      right: unset;
+    }
+
+    .shares-new-form .apply-item .flatpickr-next-month {
+      top: unset;
+      position: relative;
+    }
+  </style>
 </div>

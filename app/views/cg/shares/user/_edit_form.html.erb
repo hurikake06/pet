@@ -1,46 +1,112 @@
-<style>
-  .bootstrap-date{
-    width:auto;
-    display:inline-block;
-  }
-</style>
-
-<div class="update_share_info">
-  <% case share.share_info %>
-  <% when 1 then %>
-    <%= button_to 'キャンセル', cg_shares_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 4 } %>
-  <% when 2 then %>
-    <%= button_to 'キャンセル', cg_shares_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 4 } %>
-  <% when 3 then %>
-    <%= button_to '再申請', cg_shares_path(share.id), method: :patch, params: { method: :update_info_user, share_info: 1 } %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<div class = "shares-edit-form">
+  <%= form_for share, url: { action: 'update', controller: 'cg/shares', share_id: share.id } do |f| %>
+    <input name="method" value="update_user" type="hidden" />
+    <%= f.fields_for share.detail do |ff| %>
+    <div class = "form-group">
+      <div class="apply-item">
+        <h3>シェア場所 ※必須</h3>
+        <% share.pet&.facilities.each do |facility| %>
+          <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
+        <% end %>
+      </div>
+    </div>
+    <div class="apply-item">
+      <h3>シェア日時</h3>
+      <div class="row share-date">
+        <input id="share_date" class="flatpickr" name="cg_share[cg_share_detail][date_val]" type="text" placeholder="シェア日付" readonly="readonly">
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          開始時間
+        </div>
+        <div class = "form-group col-sm-5">
+          <div class="share-date-time">
+            <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始時刻" readonly="readonly">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          終了時間
+        </div>
+        <div class = "form-group col-sm-5">
+          <div class="share-date-time">
+            <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了時刻" readonly="readonly">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="apply-item">
+      <h3>シェア料金</h3>
+      <div class = "form-group">
+        <%= ff.label "頭金" %>
+        <%= ff.number_field :fixed_cost, class: 'form-control' %>
+      </div>
+      <div class = "form-group">
+        <%= ff.label "1時間ごとの料金" %>
+        <%= ff.number_field :variable_cost, class: 'form-control' %>
+      </div>
+    </div>
+    <% end %>
+    <%= f.button type:'submit', class: 'btn btn-primary' %>
   <% end %>
+  <script type="text/javascript">
+    flatpickr('#share_date',{
+      dateFormat: "Y-m-d 0:0",
+      inline: true,
+      defaultDate: "<%= share.detail.start %>"
+    });
+
+    flatpickr('#share_start',{
+      noCalendar: true,
+      enableTime: true,
+      dateFormat: "H:i",
+      defaultDate: "<%= share.detail.start %>"
+    });
+
+    flatpickr('#share_end',{
+      noCalendar: true,
+      enableTime: true,
+      dateFormat: "H:i",
+      defaultDate: "<%= share.detail.end %>"
+    });
+
+    function parseForm(date){
+      console.log(date);
+    }
+  </script>
+  <style>
+
+    #share_date {
+      display: none;
+    }
+
+    .share-date .flatpickr-calendar.inline {
+        display: block;
+        position: inherit;
+        top: 2px;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+    .shares-edit-form .apply-item input {
+      margin-top: 0px;
+    }
+
+    .flatpickr-current-month {
+      width: 100%;
+    }
+
+    .shares-edit-form .apply-item .flatpickr-prev-month{
+      top: unset;
+      left: unset;
+      right: unset;
+    }
+
+    .shares-edit-form .apply-item .flatpickr-next-month {
+      top: unset;
+      position: relative;
+    }
+  </style>
 </div>
-
-<%= form_for share, url: { action: 'update', controller: 'cg/shares', share_id: share.id } do |f| %>
-  <input name="method" value="update_user" type="hidden" />
-  <%= f.fields_for share.detail do |ff| %>
-    <div class = "form-group">
-      <%= ff.label :facility_id %>
-      <% share.pet.facilities.each do |facility| %>
-        <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
-      <% end %>
-    </div>
-    <div class = "form-group">
-      <%= ff.label :start %>
-      <%= ff.datetime_select :start, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
-    </div>
-    <div class = "form-group">
-      <%= ff.label :end %>
-      <%= ff.datetime_select :end, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
-    </div>
-    <div class = "form-group">
-      <%= ff.label :fixed_cost %>
-      <%= ff.number_field :fixed_cost, class: 'form-control' %>
-    </div>
-    <div class = "form-group">
-      <%= ff.label :variable_cost %>
-      <%= ff.number_field :variable_cost, class: 'form-control' %>
-    </div>
-  <% end %>
-  <%= f.button type:'submit', class: 'btn btn-primary' %>
-<% end %>
