@@ -12,41 +12,20 @@
           <h3>シェア申請は行えませんでした。</h3>
           <p>(入力項目が間違っているかもしれないや-つ)</p>
         <% end %>
-        <hr>
       <% end %>
-      <div class='share'>
-        <h3>
-          <%= image_tag(@pet.icon_url, class: 'icon') %>
-          <%= @pet.name %>のシェア情報
-        </h3>
-        <hr>
-        <h4>基本料金</h4>
-        <p>(※基本料金は料金を決める際の目安です。)</p>
-        <table class='table'>
-          <tr>
-            <th>（頭金）</th>
-            <td><%= @pet.detail.fixed_cost %></td>
-            <th>（1時間あたり）</th>
-            <td><%= @pet.detail.variable_cost %></td>
-          </tr>
-        </table>
-        <h4>備考</h4>
-        <div class="about">
-          <%= @pet.detail.share_about %>
-        </div>
-      </div>
       <% unless @saved.present? %>
-        <hr>
         <div class="shares-new-form">
           <div class = "container-form">
             <h3>申請情報を記入してください</h3>
             <div class="row">
               <div class="apply-to col-sm-4 col-sm-offset-1">
                 <h3>申請者</h3>
+                <%= image_tag(session_user.icon_url, class: 'icon center-block') %>
                 <p><%= session_user.name %></p>
               </div>
               <div class="apply-to col-sm-5 col-sm-offset-1">
                 <h3>申請相手</h3>
+                <%= image_tag(@pet.user.icon_url, class: 'icon center-block') %>
                 <p><%= @pet.user.name %></p>
                 <p><%= @pet.name %></p>
               </div>

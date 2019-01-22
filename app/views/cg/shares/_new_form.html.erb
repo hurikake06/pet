@@ -12,6 +12,9 @@
         </div>
         <div class="apply-item">
           <h3>シェア日時</h3>
+          <div class="host-demand">
+            <p>規定シェア可能時間：12:00～19:00</p>
+          </div>
           <div class="row">
             <div class = "form-group col-sm-5">
               <div class="share-date-time">
@@ -31,15 +34,36 @@
         <div class="apply-item">
           <h3>シェア料金</h3>
           <div class = "form-group">
+            <div class="host-demand">
+              <p>ホスト要望：<%= @pet.detail.fixed_cost %></p>
+            </div>
             <%= ff.label "頭金" %>
             <%= ff.number_field :fixed_cost, class: 'form-control' %>
           </div>
           <div class = "form-group">
+            <div class="host-demand">
+              <p>ホスト要望：<%= @pet.detail.variable_cost %></p>
+            </div>
             <%= ff.label "1時間ごとの料金" %>
             <%= ff.number_field :variable_cost, class: 'form-control' %>
           </div>
         </div>
       <% end %>
+      <div class="share-pet-info">
+        <hr>
+        <%= image_tag(@pet.icon_url, class: 'icon center-block') %>
+        <h3><%= @pet.name %>のシェア情報</h3>
+        <div class="attention">
+          <span class="attention-title">留意事項</span>
+          <p><%= @pet.detail.share_about %></p>
+        </div>
+        <hr>
+      </div>
+      <div class="consent-area">
+        <div class="checkbox">
+          <label><input type="checkbox"><a href="">利用規約</a>を確認、同意しました。</label>
+        </div>
+      </div>
       <div class="submit-area">
         <%= f.button type:'submit', class: 'submit-btn' do %>送信<% end %>
       </div>
