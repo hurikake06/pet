@@ -3,7 +3,7 @@
 # 103までは契約は交わされていないのでキャンセルではなく拒否・申請取り消しを使用
 Cg::Info.create!(id: 101, info_type_id: 1, value: '申請')
 Cg::Info.create!(id: 102, info_type_id: 1, value: 'シェア条件の相談')
-Cg::Info.create!(id: 103, info_type_id: 1, value: '再申請')
+Cg::Info.create!(id: 103, info_type_id: 1, value: 'シェア条件の確定')
 
 # 104の際にキャンセル機能が使える
 Cg::Info.create!(id: 104, info_type_id: 1, value: 'シェア条件成立')

@@ -4,11 +4,13 @@
   <%= form_for share, url: { action: 'update', controller: 'cg/shares', share_id: share.id } do |f| %>
     <input name="method" value="update_user" type="hidden" />
     <%= f.fields_for share.detail do |ff| %>
-    <div class="apply-item">
-      <h3>シェア場所 ※必須</h3>
-      <% share.pet&.facilities.each do |facility| %>
-        <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
-      <% end %>
+    <div class = "form-group">
+      <div class="apply-item">
+        <h3>シェア場所 ※必須</h3>
+        <% share.pet&.facilities.each do |facility| %>
+          <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
+        <% end %>
+      </div>
     </div>
     <div class="apply-item">
       <h3>シェア日時</h3>
@@ -16,7 +18,7 @@
         <input id="share_date" class="flatpickr" name="cg_share[cg_share_detail][date_val]" type="text" placeholder="シェア日付" readonly="readonly">
       </div>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           開始時間
         </div>
         <div class = "form-group col-sm-5">
@@ -26,7 +28,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-5">
           終了時間
         </div>
         <div class = "form-group col-sm-5">
@@ -48,63 +50,63 @@
       </div>
     </div>
     <% end %>
-    <%= f.button type:'submit', class: 'btn btn-primary' %>
+    <%= f.button 'シェア条件を更新する', type:'submit', class: 'btn btn-primary' %>
   <% end %>
-  <script type="text/javascript">
-    flatpickr('#share_date',{
-      dateFormat: "Y-m-d 0:0",
-      inline: true,
-      defaultDate: "<%= share.detail.start %>"
-    });
-
-    flatpickr('#share_start',{
-      noCalendar: true,
-      enableTime: true,
-      dateFormat: "H:i",
-      defaultDate: "<%= share.detail.start %>"
-    });
-
-    flatpickr('#share_end',{
-      noCalendar: true,
-      enableTime: true,
-      dateFormat: "H:i",
-      defaultDate: "<%= share.detail.end %>"
-    });
-
-    function parseForm(date){
-      console.log(date);
-    }
-  </script>
-  <style>
-
-    #share_date {
-      display: none;
-    }
-
-    .share-date .flatpickr-calendar.inline {
-        display: block;
-        position: inherit;
-        top: 2px;
-        margin: 0 auto;
-        margin-top: 10px;
-    }
-    .shares-edit-form .apply-item input {
-      margin-top: 0px;
-    }
-
-    .flatpickr-current-month {
-      width: 100%;
-    }
-
-    .shares-edit-form .apply-item .flatpickr-prev-month{
-      top: unset;
-      left: unset;
-      right: unset;
-    }
-
-    .shares-edit-form .apply-item .flatpickr-next-month {
-      top: unset;
-      position: relative;
-    }
-  </style>
 </div>
+<script type="text/javascript">
+  flatpickr('#share_date',{
+    dateFormat: "Y-m-d 0:0",
+    inline: true,
+    defaultDate: "<%= share.detail.start %>"
+  });
+
+  flatpickr('#share_start',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    defaultDate: "<%= share.detail.start %>"
+  });
+
+  flatpickr('#share_end',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    defaultDate: "<%= share.detail.end %>"
+  });
+
+  function parseForm(date){
+    console.log(date);
+  }
+</script>
+<style>
+
+  #share_date {
+    display: none;
+  }
+
+  .share-date .flatpickr-calendar.inline {
+      display: block;
+      position: inherit;
+      top: 2px;
+      margin: 0 auto;
+      margin-top: 10px;
+  }
+  .shares-edit-form .apply-item input {
+    margin-top: 0px;
+  }
+
+  .flatpickr-current-month {
+    width: 100%;
+  }
+
+  .shares-edit-form .apply-item .flatpickr-prev-month{
+    top: unset;
+    left: unset;
+    right: unset;
+  }
+
+  .shares-edit-form .apply-item .flatpickr-next-month {
+    top: unset;
+    position: relative;
+  }
+</style>
