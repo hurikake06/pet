@@ -4,6 +4,56 @@
 
 }
 
+.share_prof_space {
+  margin-bottom: 5px;
+
+  .pet {
+    display:inline-block;
+    padding: 5.5px;
+    padding-right: 20px;
+    border: 5px orange solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 0 black;
+    margin-bottom: 10px;
+
+    .icon {
+      border: 5px white solid;
+      box-shadow: 2px 2px 0 black;
+
+      &.host{
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        margin-left: -20px;
+        margin-top: -20px;
+        border-width: 3px;
+      }
+    }
+
+    .name {
+      font-size: 40px;
+    }
+  }
+
+  .share {
+    display:inline-block;
+    padding: 5.5px;
+    padding-right: 20px;
+    border: 5px orange solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px 0 black;
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+  }
+
+  span {
+    font-size: 25px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}
+
 .dm-room-box {
   display: flex;
 
@@ -256,6 +306,51 @@
         background-color: #f8cfb2;
         //background-color: #ebbc9b;
       }
+    }
+  }
+}
+
+.shares-edit-form {
+  .bootstrap-date {
+    width: auto;
+    display: inline-block;
+  }
+
+  .container-form{
+    .row{
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .apply-item{
+    text-align: center;
+    margin: 0;
+    margin-bottom: 0.5em;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+
+    &:first {
+      margin-top: 0;
+    }
+
+    h3{
+      font-size: 1.2em;
+      background: $color-main-thema;
+      padding: 4px;
+      text-align: center;
+      color: #FFF;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      margin: unset;
+    }
+
+    h2{
+      text-align: center;
+    }
+
+    input{
+      margin-top: 20px;
     }
   }
 }
