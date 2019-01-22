@@ -29,6 +29,9 @@ body {
           font-size: 2rem;
           background: linear-gradient(transparent 70%,$color-main-thema 70%);
         }
+        &.active{
+          background-color: #ffb95285;
+        }
       }
     }
   }
