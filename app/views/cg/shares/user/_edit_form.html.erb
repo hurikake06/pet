@@ -50,63 +50,63 @@
       </div>
     </div>
     <% end %>
-    <%= f.button type:'submit', class: 'btn btn-primary' %>
+    <%= f.button 'シェア条件を更新する', type:'submit', class: 'btn btn-primary' %>
   <% end %>
-  <script type="text/javascript">
-    flatpickr('#share_date',{
-      dateFormat: "Y-m-d 0:0",
-      inline: true,
-      defaultDate: "<%= share.detail.start %>"
-    });
-
-    flatpickr('#share_start',{
-      noCalendar: true,
-      enableTime: true,
-      dateFormat: "H:i",
-      defaultDate: "<%= share.detail.start %>"
-    });
-
-    flatpickr('#share_end',{
-      noCalendar: true,
-      enableTime: true,
-      dateFormat: "H:i",
-      defaultDate: "<%= share.detail.end %>"
-    });
-
-    function parseForm(date){
-      console.log(date);
-    }
-  </script>
-  <style>
-
-    #share_date {
-      display: none;
-    }
-
-    .share-date .flatpickr-calendar.inline {
-        display: block;
-        position: inherit;
-        top: 2px;
-        margin: 0 auto;
-        margin-top: 10px;
-    }
-    .shares-edit-form .apply-item input {
-      margin-top: 0px;
-    }
-
-    .flatpickr-current-month {
-      width: 100%;
-    }
-
-    .shares-edit-form .apply-item .flatpickr-prev-month{
-      top: unset;
-      left: unset;
-      right: unset;
-    }
-
-    .shares-edit-form .apply-item .flatpickr-next-month {
-      top: unset;
-      position: relative;
-    }
-  </style>
 </div>
+<script type="text/javascript">
+  flatpickr('#share_date',{
+    dateFormat: "Y-m-d 0:0",
+    inline: true,
+    defaultDate: "<%= share.detail.start %>"
+  });
+
+  flatpickr('#share_start',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    defaultDate: "<%= share.detail.start %>"
+  });
+
+  flatpickr('#share_end',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    defaultDate: "<%= share.detail.end %>"
+  });
+
+  function parseForm(date){
+    console.log(date);
+  }
+</script>
+<style>
+
+  #share_date {
+    display: none;
+  }
+
+  .share-date .flatpickr-calendar.inline {
+      display: block;
+      position: inherit;
+      top: 2px;
+      margin: 0 auto;
+      margin-top: 10px;
+  }
+  .shares-edit-form .apply-item input {
+    margin-top: 0px;
+  }
+
+  .flatpickr-current-month {
+    width: 100%;
+  }
+
+  .shares-edit-form .apply-item .flatpickr-prev-month{
+    top: unset;
+    left: unset;
+    right: unset;
+  }
+
+  .shares-edit-form .apply-item .flatpickr-next-month {
+    top: unset;
+    position: relative;
+  }
+</style>
