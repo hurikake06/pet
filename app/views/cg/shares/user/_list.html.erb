@@ -19,6 +19,8 @@
             <p>状態：<%= share.info.value %></p>
             <% if share.share_info == 101 %>
               申請が許可されていません。
+            <% elsif share.share_info == 102 %>
+              申請が許可されました。
             <% end %>
             <hr>
             <div class="detail-button-area">
