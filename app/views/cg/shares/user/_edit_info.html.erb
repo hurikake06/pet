@@ -1,12 +1,29 @@
-<% case share.share_info %>
-<% when 101 then %>
-<% when 102 then %>
-<% if share.complete? %>
-  <%= button_to '再申請', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_user, share_info: 103 } %>
-<% else %>
-  全項目を決定してください。
-<% end %>
-<% when 103 then %>
-<% when 104 then %>
-<% when 105 then %>
-<% end %>
+<div class="consent-status">
+  <% case share.share_info %>
+  <% when 101 then %>
+  <div class="consent-caption">
+    <h4>返答待ちです。</h4>
+  </div>
+  <% when 102 then %>
+  <% if share.complete? %>
+    <div class="consent-caption">
+      <h4>以下の条件を確認して再申請する。</h4>
+    </div>
+    <%= button_to '再申請', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_user, share_info: 103 } %>
+  <% else %>
+    全項目を決定してください。
+  <% end %>
+  <% when 103 then %>
+    <div class="consent-caption">
+      <h4>返答待ちです。</h4>
+    </div>
+  <% when 104 then %>
+    <div class="consent-caption">
+      <h4>返答待ちです。</h4>
+    </div>
+  <% when 105 then %>
+    <div class="consent-caption">
+      <h4>返答待ちです。</h4>
+    </div>
+  <% end %>
+</div>
