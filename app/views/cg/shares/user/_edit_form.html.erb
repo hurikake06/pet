@@ -6,7 +6,7 @@
     <%= f.fields_for share.detail do |ff| %>
     <div class = "form-group">
       <div class="apply-item">
-        <h3>シェア場所 ※必須</h3>
+        <h3>シェア場所 <span class="required">※必須</span></h3>
         <% share.pet&.facilities.each do |facility| %>
           <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
         <% end %>
@@ -57,23 +57,31 @@
   <% end %>
 </div>
 <script type="text/javascript">
-  flatpickr('#share_date',{
+  var datepick = flatpickr('#share_date',{
     dateFormat: "Y-m-d 0:0",
     inline: true,
     defaultDate: "<%= share.detail.start %>"
   });
 
-  flatpickr('#share_start',{
+  var beginpick = flatpickr('#share_start',{
     noCalendar: true,
     enableTime: true,
     dateFormat: "H:i",
+    minDate: "12:00",
+    maxDate: "19:00",
+    onChange: function(selectedDates, dateStr, instance) {
+      endpick.setDate(dateStr,null,"H:i");
+      endpick.set("minDate",dateStr);
+    },
     defaultDate: "<%= share.detail.start %>"
   });
 
-  flatpickr('#share_end',{
+  var endpick = flatpickr('#share_end',{
     noCalendar: true,
     enableTime: true,
     dateFormat: "H:i",
+    minDate: "12:00",
+    maxDate: "19:00",
     defaultDate: "<%= share.detail.end %>"
   });
 
@@ -101,6 +109,10 @@
 
   .flatpickr-current-month {
     width: 100%;
+  }
+
+  .share-date {
+    padding-bottom: 10px;
   }
 
   .shares-edit-form .apply-item .flatpickr-prev-month {
