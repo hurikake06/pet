@@ -7,9 +7,9 @@
   <% when 102 then %>
   <% if share.complete? %>
     <div class="consent-caption">
-      <h4>以下の条件を確認して再申請する。</h4>
+      <h4>以上の条件を確認して提案する。</h4>
     </div>
-    <%= button_to '再申請', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_user, share_info: 103 } %>
+    <%= button_to '提案', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_user, share_info: 103 } %>
   <% else %>
     全項目を決定してください。
   <% end %>

@@ -6,19 +6,19 @@
 
 .share_prof_space {
   margin-bottom: 5px;
+  text-align: center;
+  width:70%;
 
   .pet {
-    display:inline-block;
-    padding: 5.5px;
-    padding-right: 20px;
-    border: 5px orange solid;
-    border-radius: 20px;
-    box-shadow: 2px 2px 0 black;
-    margin-bottom: 10px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 
     .icon {
       border: 5px white solid;
-      box-shadow: 2px 2px 0 black;
 
       &.host{
         position: absolute;
@@ -30,8 +30,16 @@
       }
     }
 
+    .date{
+      text-align: left;
+    }
+
     .name {
-      font-size: 40px;
+      font-size: 25px;
+    }
+
+    span{
+      font-size: 17px;
     }
   }
 
@@ -46,32 +54,26 @@
     margin-left: 10px;
 
   }
-
-  span {
-    font-size: 25px;
-    margin-left: 10px;
-    vertical-align: middle;
-  }
 }
 
 .dm-room-box {
   display: flex;
 
   .dm-space {
+    width: 60%;
     border: 1px solid black;
     border-radius: 10px;
     padding: 5px;
     background: white;
-    width: 100%;
   }
 
   .share-detail-box {
     width: 600px;
+    background-color: whitesmoke;
 
     .share-detail{
       min-height: 80px;
       width: 100%;
-      border: 1px solid black;
     }
 
     .btn-primary{
@@ -84,6 +86,10 @@
       border-radius: 4px;
       box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
       font-weight: bold;
+    }
+
+    h3{
+      text-align: center;
     }
   }
 }
@@ -250,7 +256,7 @@
 
 .dm-scroll-field {
     overflow-y: auto;
-    height: 500px;
+    height: 400px;
     padding-right: 10px;
     margin-bottom: 5px;
 
@@ -279,6 +285,10 @@
   border-radius: 7px;
   border: white 5px ridge;
   box-shadow: 0 0 1px black;
+
+  .detail-confirm{
+    float:left;
+  }
 
   form {
     display: flex;
