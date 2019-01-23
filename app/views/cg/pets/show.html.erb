@@ -5,6 +5,15 @@
       <div class="profile-icon">
         <%= image_tag(@pet.icon_url) %>
       </div>
+      <div class="pet-share-info">
+        <% if @pet.share_flag %>
+          <%= image_tag('icon/etc/share_info_pet_true.png', class: 'center-block') %>
+          <p>シェア可能</p>
+        <% else %>
+          <%= image_tag('icon/etc/share_info_pet_false.png', class: 'center-block') %>
+          <p>シェア不可</p>
+        <% end %>
+      </div>
       <p><%= @pet.petname %></p>
       <p>sex : <%= @pet.sex.value %></p>
       <p>type   : <%= @pet.type.name %></p>

@@ -41,6 +41,13 @@
 .pets-show {
   @include page-common;
 
+  .pet-share-info{
+    img{
+      width: 40px;
+      height: 30px;
+    }
+  }
+
   .submit-btn {
     height: 30px;
     padding: 0.25rem 0.5rem;
