@@ -5,6 +5,9 @@
     <div class="consent-caption">
       <h4>以下の条件でのシェアを拒否する。</h4>
     </div>
+    <% if share.complete? %>
+      <%= button_to 'シェア条件確定', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 104 } %><br>
+    <% end %>
     <%= button_to '拒否', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_host, share_info: 152 } %>
   <% when 103 then %>
     <div class="consent-caption">

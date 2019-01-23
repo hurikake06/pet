@@ -62,10 +62,13 @@
 
     },
     received: function (data) {
-      // message = $(data.html)
-      console.log(data)
-      if(data.command == 1){
-        $("#share_detail").html(data.html)
+      switch(data.command){
+        case 1:
+          $("#share_detail").html(data.html);
+          break;
+        case 2:
+          $("#share_desk_form").html(data.html);
+          break;
       }
     }
   });
