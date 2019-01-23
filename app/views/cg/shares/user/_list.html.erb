@@ -27,6 +27,9 @@
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail<%= share.id %>">
                 詳細確認
               </button>
+              <% if share.share_info >= 101 && share.share_info <= 103 %>
+                <%= button_to '申請取り消し', cg_shares_edit_path(share.id), class: 'btn', method: :patch, remote: true, params: { method: :update_info_user, share_info: 153 } %>
+              <% end %>
             </div>
           </div>
           <%= render partial: 'module/modal', locals: { id: "shareDetail#{share.id}", value: render(partial: 'cg/shares/user/show', locals: { share: share }) } %>
