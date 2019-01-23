@@ -38,12 +38,12 @@ Cg::User.create!(
 
 Cg::User.create!(
   id: 1,
-  name: '桃 太郎',
+  name: 'ペットショップ桃太郎',
   username: 'momo',
   icon: open("#{Rails.root}/app/assets/images/sample/person/man_1.jpg"),
   email: 'momo@trident.com',
   password: 'Pass_momo0',
-  about: 'どんぶらこどんぶらこってすごい擬音語',
+  about: '名古屋市内でのシェアができます。',
   share_user_info: 402,
   share_host_info: 502,
   detail_attributes: {
@@ -60,12 +60,12 @@ Cg::User.create!(
 
 Cg::User.create!(
   id: 2,
-  name: '浦島 太郎',
+  name: 'ワンらぷ',
   username: 'urashima',
   icon: open("#{Rails.root}/app/assets/images/sample/person/man_2.jpg"),
   email: 'urashima@trident.com',
   password: 'Pass_urashima0',
-  about: '私が亀を助けました。',
+  about: '小型犬を多く取り揃えています。',
   share_user_info: 401,
   share_host_info: 501,
   detail_attributes: {
@@ -79,12 +79,12 @@ Cg::User.create!(
 
 Cg::User.create!(
   id: 3,
-  name: 'てすと',
+  name: '動物愛護センター（名古屋）',
   username: 'test_username',
   icon: open("#{Rails.root}/app/assets/images/sample/person/man_3.jpg"),
   email: 'test@trident.com',
   password: 'Test_0',
-  about: 'テストユーザです',
+  about: '保護されたワンちゃんとの出会いをしませんか？',
   share_user_info: 401,
   share_host_info: 501,
   detail_attributes: {
@@ -163,7 +163,7 @@ Cg::Pet.create!(
   petname: 'momoinu',
   pets_sex_info: 1101,
   type_id: 1,
-  about: '桃1号',
+  about: '大型・秋田犬です。',
   share_pet_info: 601,
   detail_attributes: {
     fixed_cost: 1000,
@@ -176,11 +176,11 @@ Cg::Pet.create!(
   id: 2,
   user_id: 1,
   icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_2.jpg"),
-  name: '桃 猿',
+  name: 'チョコ',
   petname: 'momosaru',
   pets_sex_info: 1101,
   type_id: 5,
-  about: '桃2号',
+  about: '人懐っこく、頭のいい子です。',
   share_pet_info: 601,
   detail_attributes: {}
 )
@@ -189,11 +189,11 @@ Cg::Pet.create!(
   id: 3,
   user_id: 1,
   icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_3.jpg"),
-  name: '桃 キジ',
+  name: 'クッキー',
   pets_sex_info: 1102,
   petname: 'momokiji',
   type_id: 3,
-  about: '桃3号',
+  about: 'きれい好きな女の子です。※女性のシェア限定',
   share_pet_info: 601,
   detail_attributes: {}
 )
@@ -202,11 +202,11 @@ Cg::Pet.create!(
   id: 4,
   user_id: 2,
   icon: open("#{Rails.root}/app/assets/images/sample/animal/dog_4.jpg"),
-  name: '浦島 かめ',
+  name: 'あんこ',
   petname: 'urashimakame',
-  pets_sex_info: 1101,
+  pets_sex_info: 1102,
   type_id: 4,
-  about: 'れっつ竜宮城',
+  about: 'おしゃれ大好き、ファッションリーダー！',
   share_pet_info: 601,
   detail_attributes: {}
 )
