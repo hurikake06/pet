@@ -11,12 +11,18 @@
           </div>
         </div>
         <div class="apply-item">
-          <h3>シェア日時</h3>
+          <h3>シェア日付</h3>
           <div class="host-demand">
-            <p>規定シェア可能時間：12:00～19:00</p>
+            <p>日付を選んでください</p>
           </div>
           <div class="row share-date">
             <input id="share_date" class="flatpickr" name="cg_share[cg_share_detail][date_val]" type="text" placeholder="シェア日付" readonly="readonly">
+          </div>
+        </div>
+        <div class="apply-item">
+          <h3>シェア時間</h3>
+          <div class="host-demand">
+            <p>規定シェア可能時間：12:00～19:00</p>
           </div>
           <div class="row">
             <div class="col-sm-2">
@@ -108,6 +114,10 @@
       display: none;
     }
 
+    .share-date {
+      padding-bottom: 10px;
+    }
+
     .share-date .flatpickr-calendar.inline {
       display: block;
       position: inherit;
@@ -115,7 +125,7 @@
       margin: 0 auto;
       margin-top: 10px;
     }
-    
+
     .flatpickr-current-month input.numInput.cur-year {
         margin-top: 0px;
     }
