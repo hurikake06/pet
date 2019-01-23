@@ -1,10 +1,10 @@
 <% if share.present? %>
   <div class="pet">
-    <%= image_tag(share.pet.user.icon_url, class: 'icon') %>
     <span class="name"><%= share.pet.user.name %></span>
     <span>さんとの</span>
-    <%= image_tag(share.pet.icon_url, class: 'icon') %>
     <span class="name"><%= share.pet.name %></span>
-    <span>のシェア</span>
+    <span>のシェア</span><br>
+    <%= image_tag(share.pet.user.icon_url, class: 'icon') %>
+    <%= image_tag(share.pet.icon_url, class: 'icon') %>
   </div>
 <% end %>
