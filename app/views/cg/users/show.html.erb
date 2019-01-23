@@ -5,6 +5,30 @@
       <div class="profile-icon">
         <%= image_tag(@user.icon_url) %>
       </div>
+      <div class="row">
+        <% if @user.share_host_info == 502 %>
+          <div class="col-sm-2 col-sm-offset-4">
+            <%= image_tag('icon/etc/share_info_host_true.png', class: 'center-block') %>
+            <p>ホストとしてシェア可能</p>
+          </div>
+        <% else %>
+          <div class="col-sm-2 col-sm-offset-4">
+            <%= image_tag('icon/etc/share_info_host_false.png',class: 'center-block') %>
+            <p>ホストとしてシェア不可</p>
+          </div>
+        <% end %>
+        <% if @user.share_user_info == 402 %>
+          <div class="col-sm-2">
+            <%= image_tag('icon/etc/share_info_user_true.png',class: 'center-block') %>
+            <p>ユーザとしてシェア可能</p>
+          </div>
+        <% else %>
+          <div class="col-sm-2">
+            <%= image_tag('icon/etc/share_info_user_false.png',class: 'center-block') %>
+            <p>ユーザとしてシェア不可</p>
+          </div>
+        <% end %>
+      </div>
       <p><%= @user.username %></p>
       <p>E-mail : <%= @user.email %></p>
       <p>About   : <%= @user.about %></p>
