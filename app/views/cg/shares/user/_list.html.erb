@@ -9,6 +9,7 @@
       <% shares_array(user.user_shares)[:active].each do |shares| %>
         <% shares.each do |share| %>
           <div class='share-card'>
+            <h5>id:<%= share.id %></h5>
             <h3>
               <%= link_to cg_dm_groups_show_share_path(share.id), class: share.share_info == 101 ? 'disabled' : '' do %>
                 <%= image_tag(share.pet.icon_url, class: 'icon') %>
@@ -40,6 +41,7 @@
       <% shares_array(user.user_shares)[:finished].each do |shares| %>
         <% shares.each do |share| %>
           <div class='share-card'>
+            <h5>id:<%= share.id %></h5>
             <h3>
               <%= image_tag(share.pet.icon_url, class: 'icon') %>
               <%= share.pet.name %>
