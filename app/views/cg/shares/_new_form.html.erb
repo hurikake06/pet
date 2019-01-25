@@ -4,19 +4,25 @@
       <%= f.fields_for share.detail do |ff| %>
         <div class = "form-group">
           <div class="apply-item">
-            <h3>シェア場所 ※必須</h3>
+            <h3>シェア場所 <span class="required">※必須</span></h3>
             <% pet&.facilities.each do |facility| %>
               <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
             <% end %>
           </div>
         </div>
         <div class="apply-item">
-          <h3>シェア日時</h3>
+          <h3>シェア日付</h3>
           <div class="host-demand">
-            <p>規定シェア可能時間：12:00～19:00</p>
+            <p>日付を選んでください</p>
           </div>
           <div class="row share-date">
             <input id="share_date" class="flatpickr" name="cg_share[cg_share_detail][date_val]" type="text" placeholder="シェア日付" readonly="readonly">
+          </div>
+        </div>
+        <div class="apply-item">
+          <h3>シェア時間</h3>
+          <div class="host-demand">
+            <p>規定シェア可能時間：12:00～19:00</p>
           </div>
           <div class="row">
             <div class="col-sm-2">
@@ -45,15 +51,25 @@
             <div class="host-demand">
               <p>ホスト要望：<%= @pet.detail.fixed_cost %></p>
             </div>
-            <%= ff.label "頭金" %>
-            <%= ff.number_field :fixed_cost, class: 'form-control' %>
+            <div class="row">
+              <%= ff.label "頭金", class: 'col-sm-3' %>
+              <%= ff.number_field :fixed_cost, class: 'col-sm-7' %>
+              <div class="col-sm-1">
+                円
+              </div>
+            </div>
           </div>
           <div class = "form-group">
             <div class="host-demand">
               <p>ホスト要望：<%= @pet.detail.variable_cost %></p>
             </div>
-            <%= ff.label "1時間ごとの料金" %>
-            <%= ff.number_field :variable_cost, class: 'form-control' %>
+            <div class="row">
+              <%= ff.label "1時間ごとの料金", class: 'col-sm-3' %>
+              <%= ff.number_field :variable_cost, class: 'col-sm-7' %>
+              <div class="col-sm-1">
+                円
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
@@ -69,69 +85,95 @@
       </div>
       <div class="consent-area">
         <div class="checkbox">
-          <label><input type="checkbox"><a href="">利用規約</a>を確認、同意しました。</label>
+          <label><input type="checkbox" id="check"><a href="">利用規約</a>を確認、同意しました。</label>
         </div>
       </div>
       <div class="submit-area">
-        <%= f.button type:'submit', class: 'submit-btn' do %>送信<% end %>
+        <%= f.button type:'submit', class: 'submit-btn',id: 'submit' do %>送信<% end %>
       </div>
     <% end %>
   <% end %>
-  <script type="text/javascript">
-    flatpickr('#share_date',{
-      dateFormat: "Y-m-d 0:0",
-      inline: true,
-      defaultDate: "<%= share.detail.start %>"
-    });
-
-    flatpickr('#share_start',{
-      noCalendar: true,
-      enableTime: true,
-      dateFormat: "H:i",
-      defaultDate: "<%= share.detail.start %>"
-    });
-
-    flatpickr('#share_end',{
-      noCalendar: true,
-      enableTime: true,
-      dateFormat: "H:i",
-      defaultDate: "<%= share.detail.end %>"
-    });
-
-    function parseForm(date){
-      console.log(date);
-    }
-  </script>
-
-  <style>
-    #share_date {
-      display: none;
-    }
-
-    .share-date .flatpickr-calendar.inline {
-        display: block;
-        position: inherit;
-        top: 2px;
-        margin: 0 auto;
-        margin-top: 10px;
-    }
-    .shares-new-form .apply-item input {
-      margin-top: 0px;
-    }
-
-    .flatpickr-current-month {
-      width: 100%;
-    }
-
-    .shares-new-form .apply-item .flatpickr-prev-month{
-      top: unset;
-      left: unset;
-      right: unset;
-    }
-
-    .shares-new-form .apply-item .flatpickr-next-month {
-      top: unset;
-      position: relative;
-    }
-  </style>
 </div>
+<script type="text/javascript">
+  var datepicK = flatpickr('#share_date',{
+    dateFormat: "Y-m-d 0:0",
+    inline: true,
+    minDate: "today",
+    defaultDate: "today"
+  });
+
+  var beginpick = flatpickr('#share_start',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    minDate: "12:00",
+    maxDate: "19:00",
+    onChange: function(selectedDates, dateStr, instance) {
+      endpick.setDate(dateStr,null,"H:i");
+      endpick.set("minDate",dateStr);
+    },
+    defaultDate: "today"
+  });
+
+  var endpick = flatpickr('#share_end',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    minDate: "12:00",
+    maxDate: "19:00",
+    defaultDate: "today"
+  });
+
+  function parseForm(date){
+    console.log(date);
+  }
+
+  $(function() {
+    $('#submit').prop("disabled", true);
+
+    $('#check').click(function() {
+      if ( $(this).prop('checked') == false ) {
+        $('#submit').prop("disabled", true);
+      } else {
+        $('#submit').prop("disabled", false);
+      }
+    });
+  });
+</script>
+
+<style>
+  #share_date {
+    display: none;
+  }
+
+  .share-date {
+    padding-bottom: 10px;
+  }
+
+  .share-date .flatpickr-calendar.inline {
+    display: block;
+    position: inherit;
+    top: 2px;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  .flatpickr-current-month input.numInput.cur-year {
+      margin-top: 0px;
+  }
+
+  .flatpickr-current-month {
+    width: 100%;
+  }
+
+  .shares-new-form .apply-item .flatpickr-prev-month{
+    top: unset;
+    left: unset;
+    right: unset;
+  }
+
+  .shares-new-form .apply-item .flatpickr-next-month {
+    top: unset;
+    position: relative;
+  }
+</style>

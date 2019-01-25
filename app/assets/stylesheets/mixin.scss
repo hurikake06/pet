@@ -26,6 +26,14 @@
       padding: 0;
       text-align: center;
       margin-bottom: 10px;
+
+      span.required {
+        color: white;
+        background: salmon;
+        display: inline-block;
+        padding: 2px;
+        border-radius: 5px;
+      }
     }
 
     p {
@@ -94,6 +102,11 @@
         font-size: 1.7rem;
         border-bottom: solid 2px #fd9535;
         box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+      }
+
+      &:disabled {
+        background: gainsboro;
+        border-bottom-color: #ad9191;
       }
     }
 

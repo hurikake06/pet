@@ -295,6 +295,10 @@ body {
 }
 
 // リンク無効（クリックイベント全体無効）
-a.disabled{
+a.disabled {
     pointer-events: none;
+}
+
+.flex {
+  display: flex;
 }
