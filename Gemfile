@@ -65,3 +65,5 @@ gem 'bootstrap-sass'
 gem 'kaminari'
 
 gem 'carrierwave'
+
+gem 'dotenv-rails'
