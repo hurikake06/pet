@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CuteGift</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag('icon/etc/favicon.ico') %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    "cg/layouts_default", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    "cg/layouts_nomal", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    "cg/#{controller.controller_name}", media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body id="wrapper">
+    <div id="sidebar_wrapper">
+      <%= render 'cg/layouts/sidemenu' %>
+    </div>
+
+    <div id="page_content_wrapper">
+      <%= render 'cg/layouts/header' %>
+      <!-- <div class="col-sm-9"> -->
+        <div id = "page_content">
+          <%= yield %>
+        </div>
+      <!-- </div> -->
+      <%= render 'cg/layouts/footer' %>
+    </div>
+
+  </body>
+</html>

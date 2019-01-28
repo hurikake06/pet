@@ -3,58 +3,72 @@
 Rails.application.routes.draw do
   scope :CuteGift do
     root to: 'cg/cg_app#index'
-    get 'index' => 'cg/cg_app#index'
-    get 'login' => 'cg/users#login'
-    post 'login/:user_mode' => 'cg/users#pass_check', as: 'login_request'
-    get 'logout' => 'sessions#destroy'
-    get 'ChangeMode/:user_mode' => 'sessions#change_user_mode', as: 'change_user_mode'
+    namespace :cg do
+      root to: 'cg_app#index'
 
-    namespace :user do
-      get 'new' => '/cg/users#new'
-      post 'new' => '/cg/users#new'
-    end
+      get 'index', to: 'cg_app#index'
+      get 'login', to: 'users#login'
+      post 'login', to: 'users#pass_check'
+      get 'logout', to: '/sessions#destroy'
 
-    namespace :setting do
-      root to: '/cg/users#edit'
-      post '/' => '/cg/users#edit'
-      namespace :pet do
-        get ':petname' => '/cg/pets#edit'
-        post ':petname' => '/cg/pets#edit'
+      namespace :users do
+        get 'new'
+        post 'new', action: :create
+        get ':username', action: :show
       end
-    end
 
-    namespace :mypage do
-      root to: '/cg/users#mypage'
-
-      namespace :pet do
-        get 'new' => '/cg/pets#new'
-        post 'new' => '/cg/pets#new'
-        get ':petname' => '/cg/pets#mypage'
+      namespace :pets do
+        get 'new'
+        post 'new', action: :create
+        get ':petname', action: :show
       end
-    end
 
-    namespace :show do
-      get ':username', to: '/cg/users#show'
-      get 'pet/:petname', to: '/cg/pets#show', as: 'pet'
-    end
+      scope :settings, as: 'settings' do
+        namespace :users do
+          root action: :edit
+          patch '/', action: :update
+        end
+        namespace :pets do
+          get ':petname', action: :edit
+          patch ':petname', action: :update
+        end
+      end
 
-    namespace :share do
-      root to: '/cg/shares#list'
-      get 'list', to: '/cg/shares#list'
-      get 'new/:petname', to: '/cg/shares#new', as: 'new'
-      post 'new/:petname', to: '/cg/shares#new'
-      get 'show/:share_id', to: '/cg/shares#show', as: 'show'
+      namespace :shares do
+        root action: :list
 
-      get 'dm/:share_id', to: '/cg/dm_groups#show_share', as: 'dm'
-      post 'dm/:share_id', to: '/cg/dm#new'
-    end
+        get 'new/:petname', action: :new, as: :new
+        post 'new/:petname', action: :create, as: :create
+        get ':share_id', action: :show
+        get ':share_id/edit', action: :edit, as: :edit
+        patch ':share_id/edit', action: :update
+      end
 
-    namespace :dm do
-      root to: '/cg/dm_groups#list'
-      get 'list', to: '/cg/dm_groups#list'
-      get ':petname', to: '/cg/dm_groups#show'
-      post ':petname', to: '/cg/dm#new'
+      namespace :searchs do
+        root action: :index
+        get 'user', action: :user_index
+        get 'pet', action: :pet_index
+
+        get 'category', action: :category
+      end
+
+      namespace :evs do
+        get 'new/:share_id', action: :new, as: :new
+        post 'new/:share_id', action: :create, as: :create
+        get ':ev_id', action: :edit
+        patch ':ev_id', action: :update
+      end
+
+      namespace :dm_groups do
+        root action: :list
+        get ':dm_group_id', action: :show
+        get 'share/:share_id', action: :show_share, as: :show_share
+        get 'user/:pet_id', action: :show_user
+      end
+
+      namespace :dms do
+        post 'new/:dm_group_id', action: :create, as: :create
+      end
     end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

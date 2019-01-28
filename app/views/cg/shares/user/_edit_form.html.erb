@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<div class = "shares-edit-form">
+  <%= form_for share, url: { action: 'update', controller: 'cg/shares', share_id: share.id } do |f| %>
+    <input name="method" value="update_user" type="hidden" />
+    <%= f.fields_for share.detail do |ff| %>
+    <div class = "form-group">
+      <div class="apply-item">
+        <h3>シェア場所 <span class="required">※必須</span></h3>
+        <% share.pet&.facilities.each do |facility| %>
+          <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
+        <% end %>
+      </div>
+    </div>
+    <div class="apply-item">
+      <h3>シェア日付</h3>
+      <div class="row share-date">
+        <input id="share_date" class="flatpickr" name="cg_share[cg_share_detail][date_val]" type="text" placeholder="シェア日付" readonly="readonly">
+      </div>
+    </div>
+    <div class="apply-item">
+      <h3>シェア時間</h3>
+      <div class="row">
+        <div class="col-sm-2">
+          開始時間
+        </div>
+        <div class = "form-group col-sm-5">
+          <div class="share-date-time">
+            <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始時刻">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          終了時間
+        </div>
+        <div class = "form-group col-sm-5">
+          <div class="share-date-time">
+            <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了時刻">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="apply-item">
+      <h3>シェア料金</h3>
+      <div class = "form-group">
+        <%= ff.label "頭金" %>
+        <%= ff.number_field :fixed_cost, class: 'form-control' %>
+      </div>
+      <div class = "form-group">
+        <%= ff.label "1時間ごとの料金" %>
+        <%= ff.number_field :variable_cost, class: 'form-control' %>
+      </div>
+    </div>
+    <% end %>
+    <%= f.button 'シェア条件を更新する', type:'submit', class: 'btn btn-primary center-block' %>
+  <% end %>
+</div>
+<script type="text/javascript">
+
+  var datepick = flatpickr('#share_date',{
+    dateFormat: "Y-m-d 0:0",
+    inline: true,
+    defaultDate: "<%= share.detail.start %>"
+  });
+
+  var beginpick = flatpickr('#share_start',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
+    inline: true,
+    onChange: function(selectedDates, dateStr, instance) {
+      endpick.setDate(dateStr,null,"H:i");
+      endpick.set("minDate",dateStr);
+    },
+    <% if share.detail.start.present? %>
+      defaultDate: "<%= share.detail.start.strftime('%H:%M') %>"
+    <% end %>
+  });
+
+  var endpick = flatpickr('#share_end',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
+    inline: true,
+    <% if share.detail.end.present? %>
+      defaultDate: "<%= share.detail.end.strftime('%H:%M') %>"
+    <% end %>
+  });
+
+  function parseForm(date){
+    console.log(date);
+  }
+
+</script>
+<style>
+
+  #share_date {
+    display: none;
+  }
+
+  .share-date .flatpickr-calendar.inline {
+      display: block;
+      position: inherit;
+      top: 2px;
+      margin: 0 auto;
+      margin-top: 10px;
+  }
+
+  .flatpickr-current-month input.numInput.cur-year {
+      margin-top: 0px;
+  }
+
+  .flatpickr-current-month {
+    width: 100%;
+  }
+
+  .share-date {
+    padding-bottom: 10px;
+  }
+
+  .shares-edit-form .apply-item .flatpickr-prev-month {
+    top: unset;
+    left: unset;
+    right: unset;
+  }
+
+  .shares-edit-form .apply-item .flatpickr-next-month {
+    top: unset;
+    position: relative;
+  }
+
+  .flatpickr-input[readonly] {
+    display: none;
+  }
+</style>

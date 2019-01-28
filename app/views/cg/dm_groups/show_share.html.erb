@@ -1,2 +1,80 @@
-<h1>Cg::DmGroups#show_share</h1>
-<p>Find me in app/views/cg/dm_groups/list.html.erb</p>
+<div class="share_prof_space center-block">
+  <%= render partial: '/cg/shares/show_prof', locals: { share: @dm_group.share } %>
+</div>
+<div class="share_state_space">
+  <%= render partial: '/cg/shares/show_info', locals: { share: @dm_group.share } %>
+</div>
+<div class="dm-room-box">
+  <div class="dm-space center-block">
+    <%= link_to_next_page(@dms, 'もっと見る', remote: true, id: 'next', class: 'next', params: {log_disp_id: @log_disp_id }) if @dms.present? %>
+    <div class="dm-scroll-field" id="dm_scroll_field">
+      <div id="dm_list" class="dm-list">
+        <%= render partial: '/cg/dms/dm', collection: @dms.reverse, locals: { user: @user } %>
+      </div>
+    </div>
+    <div class="send-form">
+      <button type="button" class="btn btn-primary detail-confirm" data-toggle="modal" data-target="#shareForm">
+        詳細確認
+      </button>
+      <%= render partial: '/cg/dms/new_form', locals: { dm_group: @dm_group } %>
+    </div>
+  </div>
+</div>
+
+<% value ='<div class="share-detail-box" id="share_detail_box">' %>
+<% value << '<div class="share-detail" id="share_detail">' %>
+<% value << '<h3>現在のシェア条件</h3>' %>
+<% value << render(partial: '/cg/shares/user/edit_form', locals: { share: @dm_group.share }) if @role == :user %>
+<% value << render(partial: '/cg/shares/host/show', locals: { share: @dm_group.share }) if @role == :host %>
+<% value << '</div><hr><div class="share-desk" id="share_desk_form">' %>
+<% value << render(partial: "/cg/shares/#{@role}/edit_info", locals: { share: @dm_group.share, user: @user }) %>
+<% value << '</div></div>' %>
+<%= render partial: 'module/modal', locals: { id: "shareForm", value: value.html_safe } %>
+
+<script>
+  var dm_group = <%= @dm_group.id %>;
+  var share_id = <%= @dm_group.share_id %>;
+  var user_id = <%= @user.id %>;
+  var current_state_share = <%= @dm_group.share.share_info %>;
+  var role = '<%= @role %>';
+
+  App.cable.subscriptions.create({channel: 'DmChannel', dm_group: dm_group}, {
+    connected: function () {
+      console.log('connected')
+    },
+    disconnected: function () {
+
+    },
+    rejected: function () {
+
+    },
+    received: function (data) {
+      message = $(data.html)
+      message.appendTo('#dm_list').hide().fadeIn('slow');
+      $("#dm_scroll_field").animate({scrollTop:$("#dm_scroll_field").scrollTop()+message.height()*2});
+    }
+  });
+  $("#dm_scroll_field").animate({scrollTop:$("#dm_scroll_field").height()});
+
+  App.cable.subscriptions.create({channel: 'ShareAlertChannel', share_id: share_id}, {
+    connected: function () {
+      console.log('connected')
+    },
+    disconnected: function () {
+
+    },
+    rejected: function () {
+
+    },
+    received: function (data) {
+      switch(data.command){
+        case 1:
+          $("#share_detail").html(data.html);
+          break;
+        case 2:
+          $("#share_desk_form").html(data.html);
+          break;
+      }
+    }
+  });
+</script>

@@ -1,0 +1,30 @@
+<div class="search-results">
+  <div class="box-wrapper">
+    <form class="form form-inline">
+      <input class="sbox"  type="text" placeholder="キーワードを入力" name="keyword" value="<%= @keyword.present? ? @keyword : '' %>">
+      <button type="submit" class="sbtn">検索</button>
+    </form>
+    <div class="col-sm-6 search-category">
+      <%= link_to 'ペットの種類から探す', cg_searchs_category_path %>
+    </div>
+    <div class="col-sm-6 search-category">
+      <%= link_to '場所から探す' %>
+    </div>
+    <% if @searched %>
+      <div class="row">
+        <h3 class="ribbon">ペットの検索結果</h3>
+      </div>
+      <div class="row" id="pet_contents">
+        <%= render partial: 'pet', collection: @pets %>
+      </div>
+      <%= link_to '全て見る', cg_searchs_pet_path(keyword: params[:keyword]) %>
+      <div class="row">
+        <h3 class="ribbon">ユーザの検索結果</h3>
+      </div>
+      <div class="row" id="user_contents">
+        <%= render partial: 'user', collection: @users %>
+      </div>
+      <%= link_to '全て見る', cg_searchs_user_path(keyword: params[:keyword]) %>
+    <% end %>
+  </div>
+</div>

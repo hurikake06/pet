@@ -61,3 +61,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 
 gem 'bootstrap-sass'
+
+gem 'kaminari'
+
+gem 'carrierwave'
+
+gem 'dotenv-rails'

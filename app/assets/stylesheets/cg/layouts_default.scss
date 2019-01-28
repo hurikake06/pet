@@ -1,0 +1,314 @@
+@import "../mixin";
+
+body {
+  overflow-x: hidden;
+  color: #576a8c;
+  background-image: image-url('background/background_1.png');
+
+  hr {
+    border-top: 1px solid #576a8c;
+  }
+}
+
+.navbar-default {
+  background: linear-gradient(to bottom,#fff0 0,#ffffffd1 100%);
+  border-bottom: solid 4px lightgray;
+
+  .navbar-nav {
+    li {
+      a {
+        font-size: 1.75rem;
+        text-align: center;
+        -webkit-transition: 0.8s;
+      	-moz-transition: 0.8s;
+      	-o-transition: 0.8s;
+      	-ms-transition: 0.8s;
+      	transition: 0.8s;
+
+        &:hover {
+          font-size: 2rem;
+          background: linear-gradient(transparent 70%,$color-main-thema 70%);
+        }
+        &.active{
+          background-color: #ffb95285;
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  background: white;
+  border: solid 1px gray;
+}
+
+.container {
+  background-color: #576a8c;
+  color: white;
+  padding: 20px;
+  width: auto;
+
+  hr {
+    border-top: 1px solid white;
+  }
+}
+
+.container-fluid {
+  background-color: transparent;
+  color: gray;
+}
+
+.copyright {
+  text-align: left;
+  font-size: 90%;
+}
+
+.error-message {
+  background-color: #ffc7c7;
+  color: black;
+  width: 80%;
+  margin: 20px;
+  padding: 20px;
+  font-size: 16px;
+}
+
+#page_content {
+  margin: 50px auto;
+  min-height: 550px;
+  height: 100%;
+  padding: 10px;
+}
+
+.title-logo {
+  width: 350px;
+  height: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+.side-right-color {
+  @include side-color;
+}
+
+.side-left-color {
+  @include side-color;
+}
+
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  &.toggled {
+    padding-left: 250px;
+
+    #sidebar_wrapper {
+      width: 250px;
+      overflow-x: hidden;
+    }
+
+    #page_content_wrapper {
+      position: absolute;
+      margin-right: -250px;
+    }
+  }
+}
+
+#sidebar_wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  border-right: solid 8px lightgray;
+  margin-left: -250px;
+  overflow-y: auto;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#page_content_wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+/* Sidebar Styles */
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    text-indent: 20px;
+    line-height: 40px;
+    font-size: 2rem;
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: #999999;
+      -webkit-transition: 0.8s;
+      -moz-transition: 0.8s;
+      -o-transition: 0.8s;
+      -ms-transition: 0.8s;
+      transition: 0.8s;
+
+      &:hover {
+        font-size: 2.3rem;
+        background: linear-gradient(transparent 70%,$color-main-thema 70%);
+      }
+
+      &:active, &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .profile-icon-sidebar {
+      width: 70px;
+      height: 70px;
+      border-radius: 100px;
+      background: white;
+      border: solid 1px gray;
+    }
+
+    .logo-sidebar {
+      margin-bottom: 30px;
+    }
+  }
+
+  p {
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .sidebar-brand {
+    text-align: center;
+  }
+
+  &>.sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+
+    a {
+      color: #999999;
+
+      &:hover {
+        color: lightgray;
+        background: none;
+      }
+    }
+  }
+}
+
+.btn-secondary {
+  position: fixed;            /* ヘッダーの固定 */
+  top: 30px;                   /* 位置(上0px) */
+  right: 30px;                 /* 位置(右0px) */
+  background-color: $color-main-thema;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+    padding-left: 0;
+  }
+
+  #wrapper.toggled {
+    padding-left: 250px;
+
+    #sidebar_wrapper {
+      width: 250px;
+    }
+
+    #page_content_wrapper {
+      position: relative;
+      margin-right: 0;
+    }
+  }
+
+  #page_content_wrapper {
+    padding: 20px;
+    position: relative;
+  }
+}
+/* from _header.html.erb */
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.fixed {
+  .navbar{
+    border: double 5px #FFFFFF;
+    border-top: 0px;
+    background: linear-gradient(to bottom, #ffffffbd 0, #ffffff6e 100%);
+    position: fixed;
+    top: 0;
+    margin-left: 0px;
+    transition: all 0.5s ease;
+
+    &.none-anim {
+      transition: none;
+    }
+
+    &>:not(.container-fluid) {
+      display: none;
+    }
+  }
+
+  &.toggled {
+    .navbar {
+      margin-left: 250px;
+    }
+  }
+}
+
+.sidebar-toggle-button{
+  top: 15px;
+  right: 50px;
+}
+
+.navbar-toggle-button{
+  background: none;
+  border: none;
+}
+
+/* navbarの縦幅が変わる変更があった際、heightを変更してください。 */
+.navbar-space {
+  height: 210px;
+}
+
+// リンク無効（クリックイベント全体無効）
+a.disabled {
+    pointer-events: none;
+}
+
+.flex {
+  display: flex;
+}
+
+h3 {
+  span.required {
+    color: white;
+    background: salmon;
+    display: inline-block;
+    padding: 2px;
+    border-radius: 5px;
+  }
+}

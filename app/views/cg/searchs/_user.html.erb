@@ -1,0 +1,6 @@
+<div class="col-sm-4">
+  <%= link_to cg_users_path user.username do %>
+    <%= image_tag(user.icon_url, class:'icon') %>
+    <p><%= user.name %></p>
+  <% end %>
+</div>

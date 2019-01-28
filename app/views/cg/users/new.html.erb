@@ -1,10 +1,17 @@
-<h1>新規ユーザ登録</h1>
-<p>ユーザ情報を入力してください</p>
-<div class="container">
-  <% if @saved.present? %>
-    <h3>登録が完了しました。</h3>
-    <p><%= @user&.to_json %></p>
-  <% else %>
-    <%= render partial: 'new_form', locals: { user: @user } %>
-  <% end %>
+<div class="users-new">
+  <div class="box-wrapper">
+    <h1>新規ユーザ登録</h1>
+    <%= image_tag('icon/person/b_1.png',class: 'center-block') %>
+    <h3>ユーザ情報を入力してください</h3>
+    <div class="container">
+      <% if @saved.present? %>
+        <h3>登録が完了しました。</h3>
+        <p><%= @user&.to_json %></p>
+      <% else %>
+        <%= render partial: 'new_form', locals: { user: @user } %>
+      <% end %>
+    </div>
+    <hr>
+    <h3><%= link_to 'アカウントをお持ちの方はこちら', cg_login_path %></h3>
+  </div>
 </div>

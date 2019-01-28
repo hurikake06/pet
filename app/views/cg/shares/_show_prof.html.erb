@@ -1,0 +1,13 @@
+<% if share.present? %>
+  <div class="pet">
+    <span class="date"><%= share.detail.start&.strftime('%Y年%m月%d日') %></span><br>
+    <span class="name"><%= share.user.name %></span>
+    <span>さんと</span>
+    <span class="name"><%= share.pet.name %></span>
+    <span>のシェア</span><br>
+    <%= image_tag(share.user.icon_url, class: 'icon') %>
+    <%= image_tag('icon/etc/b_74.png',size:'50x50') %>
+    <%= image_tag(share.pet.user.icon_url, class: 'icon') %>
+    <%= image_tag(share.pet.icon_url, class: 'icon') %>
+  </div>
+<% end %>

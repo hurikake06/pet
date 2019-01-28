@@ -1,0 +1,74 @@
+<%= form_for pet, url: { action: 'edit' } do |f| %>
+  <div class="pet-info-edit">
+    <div class="form-group">
+      <%= f.label '名前' %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= print_form_error pet_edit&.errors, :name %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'アイコン' %><br />
+      <%= image_tag pet.icon_url, size: '20x20', id: :img_prev %>
+      <%= f.file_field :icon, id: :icon_img %>
+      <%= f.hidden_field :icon_cache %>
+      <%= print_form_error pet_edit&.errors, :icon %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'ペット名' %>
+      <%= f.text_field :petname, class: 'form-control', disabled: true %>
+      <%= print_form_error pet_edit&.errors, :petname %>
+    </div>
+    <div class="form-group category-select">
+      <% types = Cg::Type.all %>
+      <% types.each do |type| %>
+        <%= f.label type.name, for: "type_radio_#{type.id}", class: 'radio' do %>
+          <%= f.radio_button :type_id, type.id, id: "type_radio_#{type.id}" %>
+          <%= type.name %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="form-group">
+      <%= f.label '自己紹介' %>
+      <%= f.text_area :about, class:'form-control' %>
+      <%= print_form_error pet_edit&.errors, :about %>
+    </div>
+  </div>
+  <div class="share-info-edit">
+    <%= f.fields_for pet.detail do |ff| %>
+      <div class="form-group">
+        <%= ff.label 'シェア時の頭金' %>
+        <%= ff.number_field :variable_cost, class:'form-control' %>
+        <%= print_form_error pet_edit&.errors, :"detail.variable_cost" %>
+      </div>
+      <div class="form-group">
+        <%= ff.label 'シェア時の1時間ごとの金額' %>
+        <%= ff.number_field :fixed_cost, class:'form-control' %>
+        <%= print_form_error pet_edit&.errors, :"detail.fixed_cost" %>
+      </div>
+      <div class="form-group">
+        <%= ff.label 'シェア時の注意事項' %>
+        <%= ff.text_area :share_about, class:'form-control' %>
+        <%= print_form_error pet_edit&.errors, :"detail.share_about" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="submit-area">
+    <%= f.button '更新する', type:'submit', class: 'btn btn-primary submit-btn' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+$(function() {
+ function readURL(input) {
+   if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function (e) {
+       $('#img_prev').attr('src', e.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+   }
+ }
+ $("#icon_img").change(function(){
+   readURL(this);
+ });
+});
+</script>

@@ -1,4 +1,9 @@
-<% if @pet.present? %>
-  <h1><%= @pet.name %>の設定</h1>
-  <p>Find me in app/views/cg/pets/edit.html.erb</p>
-<% end %>
+<div class="pets-edit">
+  <div class="box-wrapper">
+    <% if @pet.present? %>
+      <h1><%= @pet.name %>のプロフィール</h1>
+      <%= image_tag('icon/etc/b_35.png', class: 'center-block') %>
+      <%= render partial: 'edit_form', locals: { pet: @pet, pet_edit: @pet_edit } %>
+    <% end %>
+  </div>
+</div>

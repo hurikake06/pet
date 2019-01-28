@@ -1,0 +1,18 @@
+<% mine = user.id == dm.user.id %>
+<% case dm.command %>
+<% when 0 then %>
+  <div class="dm-<%= mine ? 'my' : 'other' %>">
+    <figure class="icon">
+      <img src="<%=dm.user.icon %>" alt="<%=dm.user %>のアイコン">
+    </figure>
+    <div class="text">
+      <%= text_url_to_link(h(dm.content)).html_safe %>
+    </div>
+  </div>
+<% when 1 then %>
+  <div class="dm-share-alert">
+    <div class="text">
+      <%= dm.content %>
+    </div>
+  </div>
+<% end %>

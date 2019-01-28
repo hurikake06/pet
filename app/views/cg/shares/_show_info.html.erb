@@ -1,0 +1,97 @@
+<% if share.present? %>
+  <% infos = Cg::Info.where(info_type_id: 1).where('id < 152').order(:id) %>
+  <% width = (100.0 - 5.0*(infos.length - 1.0)) / (infos.length) %>
+  <style>
+    .msr_flow03 {
+      width: 100%;
+      margin-left: 80px;
+      margin-bottom: 30px;
+      color: #000000;
+      list-style: none;
+      overflow: hidden;
+    }
+
+    .msr_flow03 li {
+      background-color: #F8F8F8;
+      color: #1B73BA;
+      float: left;
+      font-size: 13px;
+      display: block;
+      line-height: 60px;
+      text-align: center;
+      text-decoration: none;
+      min-width: 100px;
+      padding: 0 10px 0 40px;
+    }
+
+    .msr_flow03 li:first-child {
+      padding-left: 10px;
+    }
+
+    /* 三角形下部 */
+    .msr_flow03 li::after {
+      background-color: #F8F8F8;
+      box-shadow: 2px 0 0px rgba(0,0,0,0.2);
+      -moz-box-shadow: 2px 0 0px rgba(0,0,0,0.2);
+      -webkit-box-shadow: 2px 0 0px rgba(0,0,0,0.2);
+      content: " ";
+      display: block;
+      height: 30px;
+      margin-left: auto;
+      margin-right: -30px;
+      margin-top: -30px;
+      position: relative;
+      transform: skew(-30deg);
+      -o-transform: skew(-30deg);
+      -ms-transform: skew(-30deg);
+      -moz-transform: skew(-30deg);
+      -webkit-transform: skew(-30deg);
+      width: 30px;
+    }
+
+    /* 三角形上部 */
+    .msr_flow03 li::before {
+      background-color: #F8F8F8;
+      box-shadow: 2px 0 2px rgba(0,0,0,0.2);
+      -moz-box-shadow: 2px 0 2px rgba(0,0,0,0.2);
+      -webkit-box-shadow: 2px 0 2px rgba(0,0,0,0.2);
+      content: " ";
+      display: block;
+      float: right;
+      height: 30px;
+      margin-bottom: -30px;
+      margin-left: auto;
+      margin-right: -30px;
+      transform: skew(30deg);
+      -o-transform: skew(30deg);
+      -ms-transform: skew(30deg);
+      -moz-transform: skew(30deg);
+      -webkit-transform: skew(30deg);
+      width: 30px;
+    }
+
+    /* 右端の設定 */
+    .msr_flow03 .active {
+      background-color: #FFB952;
+      color: #FFFFFF;
+    }
+
+    .msr_flow03 .active::before, .msr_flow03 .active::after {
+      background-color: #FFB952;
+    }
+
+    row{
+      text-align: center;
+    }
+  </style>
+  <div class="row">
+    <ul class="msr_flow03">
+      <% infos.each do |info| %>
+        <% step_class = info.id == share.share_info ? 'step active' : 'step' %>
+        <li id="step<%= info.id %>" class="<%= step_class %>">
+          <%= info.value %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

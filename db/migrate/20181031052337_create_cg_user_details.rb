@@ -7,11 +7,11 @@ class CreateCgUserDetails < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name
       t.string :address
-      t.bigint :document_info, default: 100
-      t.bigint :credit_info, default: 100
+      t.bigint :document_info, default: 10001
+      t.bigint :credit_info, default: 10001
       t.integer :age
-      t.bigint :sex_info, default: 100
-      t.bigint :country_info, default: 100
+      t.bigint :sex_info, default: 10001
+      t.bigint :country_info, default: 10001
 
       t.timestamps
     end

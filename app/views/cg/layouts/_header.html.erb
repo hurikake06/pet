@@ -1,32 +1,56 @@
 <header>
-  <nav class="navbar navbar-default">
+  <div id="navbar_space" class="navbar-space"></div>
+
+  <!-- navbarの縦幅が変わる変更があった際にheightを変更してください。 -->
+  <nav class="navbar navbar-default" id="navbar">
     <div class="col-sm-12">
-      <%= link_to image_tag("icon/logo/title_1.png",:class =>"title_logo"), :controller => "cg_app", :action => "index" %>
+      <%= link_to image_tag('icon/logo/title_5.png', class: 'title-logo'), controller: 'cg_app', action: 'index' %>
     </div>
     <div class="container-fluid">
-      <%= link_to image_tag("icon/etc/b_33.png",:size => "50x50",:class =>"btn btn-secondary",:id =>"menu-toggle"),:href =>"#menu-toggle"%>
+      <%= image_tag('icon/etc/b_33.png', size: '50x50', class: 'btn btn-secondary sidebar-toggle-button', id: 'menu-toggle') %>
 
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+      <div class="navbar-header" id="navbar_header">
+        <button type="button" class="navbar-toggle collapsed navbar-toggle-button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <%= image_tag("icon/etc/b_73.png",size: "20x20") %>
         </button>
-        <!-- <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle Menu</a> -->
-
-        <a class="navbar-brand" href="<%= index_path %>">CuteGift</a>
       </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <% if session[:user_mode] == 'HOST' %>
-          <%= render "cg/layouts/host/menu_bar" %>
-        <% else %>
-          <%= render "cg/layouts/menu_bar" %>
-        <% end %>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+        <%= render 'cg/layouts/menu_bar' %>
+      </div>
+    </div>
 </header>
+</nav>
+
+<script>
+  $(window).on('load', function() {
+    var $header = $("#navbar")[0];
+
+    $("#navbar_space").animate({height: $header.offsetTop + $header.offsetHeight + "px"});
+
+    // ヘッダー箇所の空間のheightの調整
+    var $navbar_header = $("#navbar_header")[0];
+    let scroll = $navbar_header.offsetTop;
+
+    $(window).scroll(function() {
+      var $window = $(window);
+      var $body = $("body");
+      if($window.scrollTop() > scroll){
+        $body.addClass("fixed");
+        if($body.hasClass("toggled")){
+          $("#navbar").addClass("none-anim");
+        }else{
+          $("#navbar").removeClass("none-anim");
+        }
+      }else if($window.scrollTop() < scroll){
+        $body.removeClass("fixed");
+        if($body.hasClass("toggled")){
+          $("#navbar").addClass("none-anim");
+        }else{
+          $("#navbar").removeClass("none-anim");
+        }
+      }
+    });
+  });
+</script>

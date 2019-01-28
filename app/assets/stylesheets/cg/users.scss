@@ -1,3 +1,277 @@
-// Place all the styles related to the cg/users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "../mixin";
+
+.users-new{
+  @include page-common;
+}
+
+.users-login{
+  @include page-common;
+  @include form-common;
+
+  a{
+    text-align: center;
+  }
+}
+
+.users-edit{
+  @include page-common;
+  @include form-common;
+
+  .account-info {
+    padding: 0.5rem 1rem;
+    margin: 2rem 0;
+    color: gray;
+    background: #f4f4f4;
+    border-top: solid 10px #5bb7ae;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+  }
+
+  .personal-info {
+    padding: 0.5rem 1rem;
+    margin: 2rem 0;
+    color: gray;
+    background: #e5f6ff;
+    border-top: solid 10px #00a6ff;
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+  }
+
+  .pet-info{
+    padding: 0.5rem 1rem;
+    margin-top: 10rem;
+    color: gray;
+    background: #e5f6ff;
+    border-top: solid 5px #00a6ff;
+
+    p {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        color: gray;
+    }
+  }
+
+  .submit-btn {
+    height: 30px;
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    color: #FFF;
+    background: $color-main-thema;
+    border-bottom: solid 2px #d27d00;
+    border-radius: 4px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+
+    &:hover {
+      border-bottom: solid 2px #fd9535;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+    }
+  }
+
+  .submit-area{
+    text-align: right;
+  }
+}
+
+/* from mypage.html.erb */
+.users-mypage {
+  @include page-common;
+
+  .box-wrapper{
+    width: 100%;
+
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .work-caption{
+    font-size: 2rem;
+  }
+
+  .pet-list{
+    border: solid white 2px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+
+    h3 {
+      margin: 2rem;
+    }
+
+    .pet {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      border: dotted 5px white;
+      border: 2px;
+      border-radius: 10px 0px 10px 0;
+
+      a {
+        display: block;
+        color: black;
+      }
+
+      .icon {
+        width: 100px;
+        height: 100px;
+        margin-top: 2px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      p {
+        text-align: center;
+        color: black;
+        font-size: 1.5rem;
+      }
+    }
+
+    .share-info-icon{
+      width: 60px;
+      height: 50px;
+    }
+  }
+
+  .prof-info{
+    p{
+      font-size: 2rem;
+    }
+  }
+
+  .edit-prof {
+    text-align: right;
+    margin-top: 2rem;
+
+    a {
+      display: block;
+      font-size: 1.7rem;
+    }
+  }
+
+  .user-detail {
+    margin-top: 50px;
+    font-size: 2rem;
+
+    p {
+      text-align: left;
+    }
+
+    tr.empty {
+      background-color: #fce6e6;
+    }
+  }
+
+  .pet .share-info{
+    font-size: 12px;
+    width: 10rem;
+    margin: 0 auto;
+  }
+
+  .row{
+    margin-bottom: 10px;
+
+    img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .pet-share-info{
+    img{
+      width: 40px;
+      height: 30px;
+    }
+  }
+
+  .profile-icon{
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .page-info{
+    width: 20%;
+    padding: 0.2em 0.5em;
+    margin: 2em 0;
+    background: #ffd7a0;
+    box-shadow: 0px 0px 0px 5px #ffd7a0;
+    border-top: dashed 2px white;
+    border-bottom: dashed 2px white;
+    border-right: dashed 2px white;
+
+    h4{
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+/* form show.html.erb */
+.users-show {
+  @include page-common;
+
+  .pet-list{
+    border: solid white 2px;
+    border-radius: 20px;
+    text-align: center;
+
+    h3 {
+      margin: 2rem;
+    }
+
+    .pet {
+      width: 120px;
+      height: 160px;
+      display: inline-block;
+      border: dotted 5px white;
+      border: 2px;
+      border-radius: 10px 0px 10px 0;
+
+      a {
+        display: block;
+        color: black;
+      }
+
+      .icon {
+        width: 100px;
+        height: 100px;
+        margin-top: 2px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      p {
+        text-align: center;
+        color: black;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .profile-icon{
+    img{
+      width: 500px;
+      height: 300px;
+    }
+  }
+
+  .row{
+    margin-bottom: 10px;
+
+    img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

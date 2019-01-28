@@ -1,0 +1,69 @@
+<h1>申請したシェア</h1>
+<hr>
+<% if user.share_user_flag %>
+  <% unless user.user_shares.empty? %>
+    <div class="active">
+      <div class="status-ribbon">
+        <h2>進行中</h2>
+      </div>
+      <% shares_array(user.user_shares)[:active].each do |shares| %>
+        <% shares.each do |share| %>
+          <div class='share-card'>
+            <h5>id:<%= share.id %></h5>
+            <h3>
+              <%= link_to cg_dm_groups_show_share_path(share.id), class: share.share_info == 101 ? 'disabled' : '' do %>
+                <%= image_tag(share.pet.icon_url, class: 'icon') %>
+                <%= share.pet.name %>
+              <% end %>
+            </h3>
+            <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+            <p>状態：<%= share.info.value %></p>
+            <% if share.share_info == 101 %>
+              申請が許可されていません。
+            <% elsif share.share_info == 102 %>
+              申請が許可されました。
+            <% end %>
+            <hr>
+            <div class="detail-button-area">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail<%= share.id %>">
+                詳細確認
+              </button>
+              <% if share.share_info >= 101 && share.share_info <= 103 %>
+                <%= button_to '申請取り消し', cg_shares_edit_path(share.id), class: 'btn', method: :patch, remote: true, params: { method: :update_info_user, share_info: 153 } %>
+              <% end %>
+            </div>
+          </div>
+          <%= render partial: 'module/modal', locals: { id: "shareDetail#{share.id}", value: render(partial: 'cg/shares/user/show', locals: { share: share }) } %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="finished">
+      <div class="status-ribbon">
+        <h2>終了したシェア</h2>
+      </div>
+      <% shares_array(user.user_shares)[:finished].each do |shares| %>
+        <% shares.each do |share| %>
+          <div class='share-card'>
+            <h5>id:<%= share.id %></h5>
+            <h3>
+              <%= image_tag(share.pet.icon_url, class: 'icon') %>
+              <%= share.pet.name %>
+            </h3>
+            <p><%= share.detail.start&.strftime('%Y年%m月%d日') %></p>
+            <p><%= share.info.value %></p>
+            <hr>
+            <div class="detail-button-area">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shareDetail<%= share.id %>">
+                詳細確認
+              </button>
+            </div>
+          </div>
+          <%= render partial: 'module/modal', locals: { id: "shareDetail#{share.id}", value: render(partial: 'cg/shares/user/show', locals: { share: share }) } %>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+  <% end %>
+<% else %>
+  <p>シェア条件を満たしていません</p>
+<% end %>

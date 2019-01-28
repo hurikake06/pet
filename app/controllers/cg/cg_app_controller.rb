@@ -2,13 +2,18 @@
 
 class Cg::CgAppController < Cg::LayoutsController
   def index
-    return unless session[:login_state] == 'OK'
-
-    @user = Cg::User.find(session[:user_id])
-    if session[:user_mode] == 'HOST'
-      render 'cg/cg_app/host/home'
+    if login_flag
+      home
     else
-      render :home
+      render layout: 'cg_layouts_width_stuffing'
     end
+  end
+
+  def home
+    @user = session_user
+    @pets = Cg::Pet.all
+    @users = Cg::User.all
+
+    render :home, layout: 'cg_layouts_width_stuffing'
   end
 end

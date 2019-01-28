@@ -1,0 +1,2 @@
+$("<%= escape_javascript(render partial: '/cg/dms/dm', collection: @dms.reverse, locals: { user: @user }) %>").prependTo("#dm_list").hide().fadeIn('slow');
+$("#next").replaceWith("<%= escape_javascript(link_to_next_page(@dms, 'もっと見る', remote: true, id: 'next', class: 'next', params: {log_disp_id: @log_disp_id })) %>");

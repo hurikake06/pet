@@ -1,0 +1,25 @@
+<div class="search-results">
+  <div class="box-wrapper">
+    <form class="form form-inline">
+      <input class="sbox"  type="text" placeholder="キーワードを入力" name="keyword" value="<%= @keyword.present? ? @keyword : '' %>">
+      <button type="submit" class="sbtn">検索</button>
+    </form>
+    <div class="col-sm-6 search-category">
+      <%= link_to 'ペットの種類から探す' %>
+    </div>
+    <div class="col-sm-6 search-category">
+      <%= link_to '場所から探す' %>
+    </div>
+    <% if @searched %>
+      <div class="row">
+        <h3 class="ribbon">ユーザの検索結果</h3>
+      </div>
+      <div class="row" id="user_contents">
+        <%= render partial: 'user', collection: @users %>
+      </div>
+      <div id="next">
+        <%= link_to_next_page @users, 'もっと見る', remote: true, id: 'more_link' %>
+      </div>
+    <% end %>
+  </div>
+</div>

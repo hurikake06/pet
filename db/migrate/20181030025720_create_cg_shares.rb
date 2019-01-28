@@ -5,7 +5,7 @@ class CreateCgShares < ActiveRecord::Migration[5.2]
     create_table :cg_shares do |t|
       t.bigint :user_id
       t.bigint :pet_id
-      t.bigint :share_info, default: 1
+      t.bigint :share_info, default: 101
 
       t.timestamps
     end

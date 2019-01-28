@@ -1,36 +1,185 @@
-<% if share.present? %>
-<style>
-  .bootstrap-date{
-    width:auto;
-    display:inline-block;
-  }
-</style>
-  <%= form_for share, url: { action: 'new'} do |f| %>
-    <%= f.fields_for share.detail do |ff| %>
-      <div class = "form-group">
-        <%= ff.label :facility_id %>
-        <% facilities = Cg::Facility.where(id: Cg::PetsFacility.select(:facility_id).where(pet_id: pet&.id)) %>
-        <% facilities.each do |facility| %>
-          <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
-        <% end %>
+<div class = "shares-new-form">
+  <% if share.present? %>
+    <%= form_for share, url: { action: 'create'} do |f| %>
+      <%= f.fields_for share.detail do |ff| %>
+        <div class = "form-group">
+          <div class="apply-item">
+            <h3>シェア場所 <span class="required">※必須</span></h3>
+            <% pet&.facilities.each do |facility| %>
+              <label><%= ff.radio_button :facility_id, facility.id %><%= facility.name %></label>
+            <% end %>
+          </div>
+        </div>
+        <div class="apply-item">
+          <h3>シェア日付</h3>
+          <div class="host-demand">
+            <p>日付を選んでください</p>
+          </div>
+          <div class="row share-date">
+            <input id="share_date" class="flatpickr" name="cg_share[cg_share_detail][date_val]" type="text" placeholder="シェア日付" readonly="readonly">
+          </div>
+        </div>
+        <div class="apply-item">
+          <h3>シェア時間</h3>
+          <div class="host-demand">
+            <p>規定シェア可能時間：12:00～19:00</p>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              開始時間
+            </div>
+            <div class = "form-group col-sm-5">
+              <div class="share-date-time">
+                <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始時刻" readonly="readonly">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2">
+              終了時間
+            </div>
+            <div class = "form-group col-sm-5">
+              <div class="share-date-time">
+                <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了時刻" readonly="readonly">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="apply-item">
+          <h3>シェア料金</h3>
+          <div class = "form-group">
+            <div class="host-demand">
+              <p>ホスト要望：<%= @pet.detail.fixed_cost %></p>
+            </div>
+            <div class="row">
+              <%= ff.label "頭金", class: 'col-sm-3' %>
+              <%= ff.number_field :fixed_cost, class: 'col-sm-7' %>
+              <div class="col-sm-1">
+                円
+              </div>
+            </div>
+          </div>
+          <div class = "form-group">
+            <div class="host-demand">
+              <p>ホスト要望：<%= @pet.detail.variable_cost %></p>
+            </div>
+            <div class="row">
+              <%= ff.label "1時間ごとの料金", class: 'col-sm-3' %>
+              <%= ff.number_field :variable_cost, class: 'col-sm-7' %>
+              <div class="col-sm-1">
+                円
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="share-pet-info">
+        <hr>
+        <%= image_tag(@pet.icon_url, class: 'icon center-block') %>
+        <h3><%= @pet.name %>のシェア情報</h3>
+        <div class="attention">
+          <span class="attention-title">留意事項</span>
+          <p><%= @pet.detail.share_about %></p>
+        </div>
+        <hr>
       </div>
-      <div class = "form-group">
-        <%= ff.label :start %>
-        <%= ff.datetime_select :start, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+      <div class="consent-area">
+        <div class="checkbox">
+          <label><input type="checkbox" id="check"><a href="">利用規約</a>を確認、同意しました。</label>
+        </div>
       </div>
-      <div class = "form-group">
-        <%= ff.label :end %>
-        <%= ff.datetime_select :end, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
-      </div>
-      <div class = "form-group">
-        <%= ff.label :fixed_cost %>
-        <%= ff.number_field :fixed_cost, class: 'form-control' %>
-      </div>
-      <div class = "form-group">
-        <%= ff.label :variable_cost %>
-        <%= ff.number_field :variable_cost, class: 'form-control' %>
+      <div class="submit-area">
+        <%= f.button type:'submit', class: 'submit-btn',id: 'submit' do %>送信<% end %>
       </div>
     <% end %>
-    <%= f.button type:'submit', class: 'btn btn-primary' %>
   <% end %>
-<% end %>
+</div>
+<script type="text/javascript">
+  var datepicK = flatpickr('#share_date',{
+    dateFormat: "Y-m-d 0:0",
+    inline: true,
+    minDate: "today",
+    defaultDate: "today"
+  });
+
+  var beginpick = flatpickr('#share_start',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
+    onChange: function(selectedDates, dateStr, instance) {
+      endpick.setDate(dateStr,null,"H:i");
+      endpick.set("minDate",dateStr);
+    },
+    inline: true,
+    defaultDate: DEFAULT_SHARE_START
+  });
+
+  var endpick = flatpickr('#share_end',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
+    inline: true,
+    defaultDate: DEFAULT_SHARE_END
+  });
+
+  function parseForm(date){
+    console.log(date);
+  }
+
+  $(function() {
+    $('#submit').prop("disabled", true);
+
+    $('#check').click(function() {
+      if ( $(this).prop('checked') == false ) {
+        $('#submit').prop("disabled", true);
+      } else {
+        $('#submit').prop("disabled", false);
+      }
+    });
+  });
+</script>
+
+<style>
+  #share_date {
+    display: none;
+  }
+
+  .share-date {
+    padding-bottom: 10px;
+  }
+
+  .share-date .flatpickr-calendar.inline {
+    display: block;
+    position: inherit;
+    top: 2px;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  .flatpickr-current-month input.numInput.cur-year {
+      margin-top: 0px;
+  }
+
+  .flatpickr-current-month {
+    width: 100%;
+  }
+
+  .shares-new-form .apply-item .flatpickr-prev-month{
+    top: unset;
+    left: unset;
+    right: unset;
+  }
+
+  .shares-new-form .apply-item .flatpickr-next-month {
+    top: unset;
+    position: relative;
+  }
+
+  .flatpickr-input[readonly] {
+    display: none;
+  }
+</style>

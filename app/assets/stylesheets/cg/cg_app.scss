@@ -1,24 +1,99 @@
-// Place all the styles related to the cg/cgApp controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "../mixin";
 
-.space {
-  height: 400px;
-}
-
-#loginLink {
-  text-align: center;
-
-  a {
-    margin: 20px auto;
-    padding: 20px;
+@mixin slider-common{
+  .space {
+    height: 400px;
   }
 
-  .btn {
-    font-size: 36px;
+  .inside{
+    width: 80%;
+    background-color: #f9e9e9;
+  }
+
+  .carousel-control.left{
+    background-image: unset;
+  }
+
+  .carousel-control.right{
+    background-image: unset;
+  }
+
+  .carousel-inner{
+    .item{
+      img{
+        width: 70%;
+        height: 400px;
+      }
+
+      .carousel-caption{
+        right: 30%;
+        left: 30%;
+        padding: 0.5rem 1rem;
+        margin: 2rem 0;
+        color: #5d627b;
+        background: white;
+        border-top: solid 5px #5d627b;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+      }
+    }
   }
 }
 
-#cgTitle {
-  margin: 20px;
+//index.html.erb
+.cg-app-index{
+  @include slider-common;
+
+  .inside{
+    width: 100%;
+    margin: 20px 0px;
+  }
+
+  .carousel-inner{
+    .item{
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+  .login-link {
+    display: block;
+    margin: 0 20px 20px 20px;
+    padding: 5px;
+    font-size: 30px;
+    color: gray;
+    background-color: $color-main-thema;
+
+    &:hover {
+      font-size: 35px;
+      background-color: #ffd496;
+    }
+  }
+}
+
+/* from home.html.erb */
+.cg-app-home{
+  @include slider-common;
+
+  .work-caption{
+    .work-title{
+      font-size:4rem;
+    }
+
+    .work-descr{
+      font-size:3rem;
+    }
+  }
+
+  .title-box{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 600px;
+    color: #5d627b;
+    border-bottom: solid 5px $color-main-thema;
+
+    h1{
+      text-align: center;
+    }
+  }
 }

@@ -1,3 +1,331 @@
-// Place all the styles related to the cg/shares controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "../mixin";
+
+@mixin share-common{
+  .share_detail{
+    .table{
+      text-indent: 1em;
+
+      th{
+        background: #ddf8bf;
+  	    width: 300px;
+      }
+
+      td{
+        background: white;
+      }
+    }
+  }
+
+  .share_host_detail{
+    .table{
+      th{
+        background-color: #cee6f9;
+      }
+    }
+  }
+
+  /* from new.html.erb */
+  .share {
+    color: black;
+    border-radius: 20px;
+    width: 80%;
+    margin: 20px 40px;
+    padding: 10px;
+  }
+
+  th {
+    background: $color-main-thema;
+    width: 150px;
+  }
+
+  td {
+    background: #ffffff75;
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .about {
+    display: inline-block;
+    margin: 5px;
+    padding: 3px;
+    background-color: whitesmoke;
+    border: $color-main-thema 2px solid;
+    border-radius: 5px;
+    width: 100%;
+    min-height: 5em;
+    color: black;
+    font-size: 1.2em;
+  }
+}
+
+.shares-show{
+  @include page-common;
+  @include share-common;
+}
+
+.shares-new{
+  @include page-common;
+  @include share-common;
+
+  .shares-new-form{
+    @include form-common;
+
+    .bootstrap-date{
+      width: auto;
+      display: inline-block;
+    }
+
+    .container-form{
+      .row{
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .apply-item{
+      text-align: center;
+      margin: 2em 0;
+      margin-top: 60px;
+      background: #f1f1f1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+      padding-bottom: 10px;
+
+      h3{
+        font-size: 1.2em;
+        background: $color-main-thema;
+        padding: 4px;
+        text-align: center;
+        color: #FFF;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+      }
+
+      h2{
+        text-align: center;
+      }
+
+      input {
+
+      }
+    }
+
+    .host-demand{
+      width: 30%;
+      padding: 0.5em 1em;
+      margin: 2em 0;
+      color: #232323;
+      background: #d8e7ff;
+      border-left: solid 10px #4286f4;
+
+      p{
+        color: gray;
+        font-size: 1.4rem;
+      }
+    }
+
+    .share-pet-info{
+      .attention{
+        font-size: 2rem;
+        position: relative;
+        margin: 2em 0;
+        padding: 0.5em 1em;
+        border: solid 3px #4286f4;
+        border-radius: 8px;
+
+        .attention-title{
+          position: absolute;
+          display: inline-block;
+          top: -13px;
+          left: 10px;
+          padding: 0 9px;
+          line-height: 1;
+          font-size: 19px;
+          background: #efe7e7;
+          color: #4286f4;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .move-to-share-list{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #ff7d6e;
+    border-top: solid 3px lightgray;
+  }
+
+  .apply-to{
+    position: relative;
+    padding:0.25em 1em;
+
+    &:before, &:after {
+      content:'';
+      width: 20px;
+      height: 30px;
+      position: absolute;
+      display: inline-block;
+    }
+
+    &:before{
+      border-left: solid 1px #5767bf;
+      border-top: solid 1px #5767bf;
+      top:0;
+      left: 0;
+    }
+
+    &:after{
+      border-right: solid 1px #5767bf;
+      border-bottom: solid 1px #5767bf;
+      bottom:0;
+      right: 0;
+    }
+
+    p{
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .submit-btn{
+    width: 100%;
+  }
+
+  .consent-area{
+    margin: 40px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+.shares-list{
+  @include page-common;
+  @include share-common;
+  @mixin share-list-common{
+    height: 100%;
+
+    .share-card{
+      padding: 0.5em 1em;
+      margin: 2em 0;
+      color: #232323;
+      background: #fff8e8;
+      border-left: solid 10px #ffc06e;
+
+      .detail-button-area{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0 20px;
+      }
+
+      button{
+        background: white;
+        display: inline-block;
+        padding: 0.3em 1em;
+        text-decoration: none;
+        color: $color-main-thema;
+        border: solid 2px $color-main-thema;
+        border-radius: 3px;
+        transition: .4s;
+
+        &:hover{
+          background: #fff8e8;
+        }
+      }
+
+      h5{
+        color: gray;
+      }
+    }
+
+    .icon{
+      width: 60px;
+      height: 60px;
+    }
+
+    .status-ribbon{
+      position: relative;
+      padding: 0.25em 1em;
+      margin: 2em 0;
+      top: 0;
+      text-align: center;
+
+      &:before,&:after{
+        position: absolute;
+        top: 0;
+        content:'';
+        width: 10px;
+        height: 100%;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+
+      &:before{
+        border-left: dotted 2px #15adc1;
+        border-top: dotted 2px #15adc1;
+        border-bottom: dotted 2px #15adc1;
+        left: 0;
+      }
+
+      &:after{
+        border-top: dotted 2px #15adc1;
+        border-right: dotted 2px #15adc1;
+        border-bottom: dotted 2px #15adc1;
+        right: 0;
+      }
+    }
+  }
+
+  .box-wrapper{
+    width: 100%;
+  }
+
+  .share-user-list{
+    @include share-list-common;
+
+    border-right: solid 3px lightgray;
+  }
+
+  .share-host-list{
+    @include share-list-common;
+
+    border-left: solid 3px lightgray;
+
+    .share-card{
+      background: #e8f0ff;
+      border-left: solid 10px #5b9aff;
+
+      button{
+        color: #5b9aff;
+        border: solid 2px #5b9aff;
+
+        &:hover{
+          background: #e8f0ff;
+        }
+      }
+    }
+
+    .response-button{
+      margin-bottom: 10px;
+
+      input{
+        width: 100%;
+        background: #fff8e8;
+        display: inline-block;
+        padding: 0.3em 1em;
+        text-decoration: none;
+        color: gray;
+        border: none;
+        border-bottom: solid 2px $color-main-thema;
+        border-radius: 3px;
+        transition: .4s;
+
+        &:hover{
+          background: white;
+        }
+      }
+    }
+  }
+}

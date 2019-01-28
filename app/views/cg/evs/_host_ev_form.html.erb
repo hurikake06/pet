@@ -1,0 +1,8 @@
+<%= form_with model: ev, local: true, url: cg_evs_path do |f| %>
+  <div class="form-group">
+    <%= f.label :val %>
+    <%= f.number_field :val, class: 'form-control' %>
+    <%= print_form_error ev_edit&.errors, :val %>
+  </div>
+  <%= f.button type:'submit', class: 'btn btn-primary' %>
+<% end %>

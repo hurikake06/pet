@@ -1,41 +1,96 @@
-
-
-    <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-            <a href="#">
-                CuteGift
-            </a>
-        </li>
+<ul class="sidebar-nav">
+  <%= link_to cg_root_path do %>
+    <li class="sidebar-brand">
+        <%= image_tag('icon/logo/title_1.png', size: '150x150', class: 'logo-sidebar') %>
+    </li>
+  <% end %>
+  <% if login_flag %>
+    <% user = session_user %>
+    <li>
+      <%= image_tag(user.icon_url, size: '40x40', class: 'center-block profile-icon-sidebar') %>
+      <%= link_to cg_users_path(user.username) do %>
+          <%= user.name %>さん
+      <% end %>
+    </li>
+    <hr>
+    <p>ペットリスト</p>
+    <% unless user.pets.empty? %>
+      <% user.pets.each do |pet| %>
         <li>
-            <%= image_tag("icon/person/b_12.png",:size => "40x40")%>
-
+          <%= link_to cg_pets_path(pet.petname) do %>
+            <%= image_tag(pet.icon_url, size: '40x40') %>
+            <%= pet.name %>
+          <% end %>
         </li>
-        <li>
-            <a href="#">検索</a>
-        </li>
-        <li>
-            <a href="#">ランキング</a>
-        </li>
-        <li>
-            <a href="#">新着</a>
-        </li>
-        <li>
-            <a href="#">イベント</a>
-        </li>
-        <li>
-            <a href="#">設定</a>
-        </li>
-        <li>
-            <a href="#">ヘルプ</a>
-        </li>
-        <li>
-            <a href="#">ご意見、ご要望</a>
-        </li>
-    </ul>
+      <% end %>
+    <% end %>
+    <hr>
+    <li>
+        <%= link_to 'logout', cg_logout_path %>
+    </li>
+    <hr>
+    <li>
+      <a href="#">お知らせ</a>
+    </li>
+    <li>
+      <a href="<%= cg_settings_users_root_path %>">設定</a>
+    </li>
+    <li>
+      <a href="#">CuteGiftについて</a>
+    </li>
+    <li>
+      <a href="#">ヘルプ</a>
+    </li>
+    <hr>
+    <li>
+      <a href="#">利用規約</a>
+    </li>
+    <li>
+      <a href="#">サポート</a>
+    </li>
+    <li>
+      <a href="#">プライバシーポリシー</a>
+    </li>
+    <li>
+      <a href="#">ご意見・ご要望</a>
+    </li>
+  <% else %>
+    <li>
+      <%= image_tag("icon/person/b_12.png",:size => "40x40")%>
+      ゲスト
+    </li>
+    <hr>
+    <li>
+        <%= link_to 'login', cg_login_path %>
+    </li>
+    <hr>
+    <li>
+      <a href="#">CuteGiftについて</a>
+    </li>
+    <li>
+      <a href="#">ヘルプ</a>
+    </li>
+    <hr>
+    <li>
+      <a href="#">利用規約</a>
+    </li>
+    <li>
+      <a href="#">サポート</a>
+    </li>
+    <li>
+      <a href="#">プライバシーポリシー</a>
+    </li>
+    <li>
+      <a href="#">ご意見・ご要望</a>
+    </li>
+  <% end %>
+</ul>
 
 <script>
-$("#menu-toggle").click(function(e) {
+$(function(){
+  $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
+  });
 });
 </script>

@@ -1,5 +1,5 @@
 <% pet ||= Cg::Pet.new() %>
-<%= form_for pet, url: { action: 'new' } do |f| %>
+<%= form_for pet, url: { action: 'create' } do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class:'form-control' %>

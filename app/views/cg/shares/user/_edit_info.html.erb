@@ -1,0 +1,29 @@
+<div class="consent-status">
+  <% case share.share_info %>
+  <% when 101 then %>
+  <div class="consent-caption">
+    <h4>返答待ちです。</h4>
+  </div>
+  <% when 102 then %>
+  <% if share.complete? %>
+    <div class="consent-caption">
+      <h4>以上の条件を確認して提案する。</h4>
+    </div>
+    <%= button_to '提案', cg_shares_edit_path(share.id), method: :patch, remote: true, params: { method: :update_info_user, share_info: 103 } %>
+  <% else %>
+    全項目を決定してください。
+  <% end %>
+  <% when 103 then %>
+    <div class="consent-caption">
+      <h4>返答待ちです。</h4>
+    </div>
+  <% when 104 then %>
+    <div class="consent-caption">
+      <h4>返答待ちです。</h4>
+    </div>
+  <% when 105 then %>
+    <div class="consent-caption">
+      <h4>返答待ちです。</h4>
+    </div>
+  <% end %>
+</div>

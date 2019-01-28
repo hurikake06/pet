@@ -1,87 +1,61 @@
-<style>
-  .profile{
-    padding-left:10px;
-  }
-
-  .profile table{}
-
-  .profile .text_content{
-    margin-left:20px;
-  }
-
-  .profile .name{
-    font-size:1.8em;
-    font-weight: bold;
-    text-shadow: 0px 0px 5px white;
-  }
-
-  .profile .petname{
-    font-size:1.2em;
-    font-weight: bold;
-    text-shadow: 0px 0px 5px white;
-  }
-
-  .square_btn{
-    display: inline-block;
-    padding: 0.5em 1em;
-    text-decoration: none;
-    background: #5e8d29;/*ボタン色*/
-    color: #FFF;
-    border-bottom: solid 4px #8a9d74;
-    border-radius: 3px;
-  }
-
-  .square_btn:active {/*ボタンを押したとき*/
-    -ms-transform: translateY(4px);
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);/*下に動く*/
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
-    border-top: solid 4px transparent;
-    border-bottom: none;
-  }
-
-  .share{
-    margin:5px;
-    margin-top:10px;
-    margin-left:20px;
-  }
-
-  .about {
-    display: inline-block;
-    margin: 5px;
-    padding: 3px;
-    background-color: #f9fff3;
-    border: green 2px solid;
-    border-radius: 5px;
-    width: 50%;
-    min-height: 5em;
-    color: black;
-    font-size: 1.2em;
-  }
-</style>
-
-<!-- h1>~pet_show~</h1-->
-<% if @pet.present? %>
-  <div class="profile">
-    <table>
-      <tr>
-        <td rowspan="2"><%= image_tag(@pet.icon, class:'icon') %></td>
-        <td><h2 class="text_content name"><%= @pet.name %></h2></td>
-      </tr>
-        <tr>
-          <td class="text_content petname"><%= @pet.petname %></td>
-        </tr>
-    </table>
-  </div>
-  <div>
-    <% if share_info_flag && @pet.share_pet_info == 17 %>
-    <div class="share">
-      <a href="<%= share_new_path @pet.petname %>" class ="square_btn">シェア申請</a>
-    </div>
+<div class="pets-show">
+  <div class="box-wrapper">
+    <% if @pet.present? %>
+      <h1><%= @pet.name %></h1>
+      <div class="profile-icon">
+        <%= image_tag(@pet.icon_url) %>
+      </div>
+      <div class="pet-share-info">
+        <% if @pet.share_flag %>
+          <%= image_tag('icon/etc/share_info_pet_true.png', class: 'center-block') %>
+          <p>シェア可能</p>
+        <% else %>
+          <%= image_tag('icon/etc/share_info_pet_false.png', class: 'center-block') %>
+          <p>シェア不可</p>
+        <% end %>
+      </div>
+      <p><%= @pet.petname %></p>
+      <p>sex : <%= @pet.sex.value %></p>
+      <p>type   : <%= @pet.type.name %></p>
+      <p>about   : <%= @pet.about %></p>
+      <div class="pet-user">
+        <h3>飼い主</h3>
+        <%= link_to cg_users_path username: @pet.user.username do %>
+          <%= image_tag(@pet.user.icon_url, class: 'icon') %><br>
+          <%= @pet.user.name %>
+        <% end %>
+      </div>
+      <div class="pet-detail">
+        <h2>詳細情報</h2>
+        <% detail = @pet.detail %>
+        <table class='table'>
+          <tr>
+            <th>シェアする際の頭金</th>
+            <td><%= detail.fixed_cost.presence || '未登録' %></td>
+          </tr>
+          <tr>
+            <th>1時間あたりの料金</th>
+            <td><%= detail.variable_cost.presence || '未登録' %></td>
+          </tr>
+          <tr>
+            <th>1年以内の健康診断</th>
+            <td><%= detail.medical.value %></td>
+          </tr>
+          <tr>
+            <th>その他 注意事項</th>
+            <td><%= detail.share_about.presence || '未登録' %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="submit-area">
+        <% if session_user&.share_user_flag && @pet.share_flag %>
+          <div class="share">
+            <a href="<%= cg_shares_new_path @pet.petname %>" class ="submit-btn">シェア申請</a>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>Pet not found</p>
     <% end %>
-    <h3>自己紹介</h3>
-    <p class="about"><%= @pet.about %></p>
   </div>
-<% else %>
-  <p>Pet not found</p>
-<% end %>
+</div>

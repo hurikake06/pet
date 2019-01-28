@@ -1,11 +1,117 @@
-<h1>~mypage~</h1>
-<%= image_tag(@user.icon, class:'icon') %>
-<h2><% @user.name %></h2>
-<Hr>
-<h1><%= @user.name %></h1>
-<h2><%= @user.id %></h2>
-<p><%= @user.username %></p>
-<ul>
-    <li>E-mail : <%= @user.email %></li>
-    <li>About   : <%= @user.about %></li>
-</ul>
+<div class="users-mypage">
+  <% if @user.present? %>
+    <div class="box-wrapper">
+      <div class="row">
+        <div class="page-info">
+          <h4>マイページ</h4>
+        </div>
+      </div>
+      <h1><%= @user.name %></h1>
+      <div class="profile-icon">
+        <%= image_tag(@user.icon_url) %>
+      </div>
+      <div class="row">
+        <% if @user.share_host_info == 502 %>
+          <div class="col-sm-2 col-sm-offset-4">
+            <%= image_tag('icon/etc/share_info_host_true.png', class: 'center-block') %>
+            <p>ホストとしてシェア可能</p>
+          </div>
+        <% else %>
+          <div class="col-sm-2 col-sm-offset-4">
+            <%= image_tag('icon/etc/share_info_host_false.png',class: 'center-block') %>
+            <p>ホストとしてシェア不可</p>
+          </div>
+        <% end %>
+        <% if @user.share_user_info == 402 %>
+          <div class="col-sm-2">
+            <%= image_tag('icon/etc/share_info_user_true.png',class: 'center-block') %>
+            <p>ユーザとしてシェア可能</p>
+          </div>
+        <% else %>
+          <div class="col-sm-2">
+            <%= image_tag('icon/etc/share_info_user_false.png',class: 'center-block') %>
+            <p>ユーザとしてシェア不可</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="prof-info">
+        <p><%= @user.username %></p>
+        <p>E-mail : <%= @user.email %></p>
+        <p>About   : <%= @user.about %></p>
+        <br>
+      </div>
+      <div class="pet-list">
+        <h3>ペットリスト</h3>
+        <% if @user.pets.present? %>
+          <ul class="works-grid works-grid-masonry works-grid-3 works-hover-w" id="works-grid">
+            <% @user.pets.each do |pet| %>
+              <div class="pet">
+                <li class="work-item marketing webdesign">
+                  <a href="<%= cg_pets_path petname: pet.petname %>">
+                    <div class="work-image"><%= image_tag(pet.icon_url) %></div>
+                    <div class="work-caption font-alt">
+                      <% if pet.share_flag %>
+                        <%= image_tag('icon/etc/share_info_pet_true.png',class: 'share-info-icon center-block') %>
+                        <div class="work-descr">シェア可能</div>
+                      <% else %>
+                        <%= image_tag('icon/etc/share_info_pet_false.png',class: 'share-info-icon center-block') %>
+                        <div class="work-descr">シェア不可</div>
+                      <% end %>
+                      <h3 class="work-title"><%= pet.name %></h3>
+                      <div class="work-descr"><%= pet.about %></div>
+                    </div>
+                  </a>
+                </li>
+              </div>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>ペットは登録されていません</p>
+        <% end %>
+      </div>
+
+      <div class="user-detail">
+        <h2>詳細情報</h2>
+        <p>(※企業の方は「性別」「年齢」の記載は不要です)</p>
+        <% detail = @user.detail %>
+        <table class='table'>
+          <tr <%= 'class = empty' unless detail.last_name.present? %>>
+            <th>姓</th>
+            <td><%= detail.last_name.presence || '未登録' %></td>
+          </tr>
+          <tr <%= 'class = empty' unless detail.first_name.present? %>>
+            <th>名</th>
+            <td><%= detail.first_name.presence || '未登録' %></td>
+          </tr>
+          <tr <%= 'class = empty' unless detail.age.present? %>>
+            <th>年齢</th>
+            <td><%= detail.age.presence || '未登録' %></td>
+          </tr>
+          <tr <%= 'class = empty' if detail.sex_info == 10001 %>>
+            <th>性別</th>
+            <td><%= detail.sex.value %></td>
+          </tr>
+          <tr <%= 'class = empty' if detail.country_info == 10001 %>>
+            <th>国籍</th>
+            <td><%= detail.country.value %></td>
+          </tr>
+          <tr <%= 'class = empty' unless detail.address.present? %>>
+            <th>住所</th>
+            <td><%= detail.address.presence || '未登録' %></td>
+          </tr>
+          <tr <%= 'class = empty' if detail.document_info == 10001 %>>
+            <th>本人確認書類</th>
+            <td><%= detail.document.value %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="edit-prof">
+        <%= link_to '新規ペット追加', cg_pets_new_path, class: 'mb-1' %>
+        <br>
+        <%= link_to 'プロフィールを編集', cg_settings_users_path %>
+      </div>
+    <% else %>
+      <p>urlが間違っています</p>
+    <% end %>
+  </div>
+</div>
