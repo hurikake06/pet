@@ -106,22 +106,24 @@
     noCalendar: true,
     enableTime: true,
     dateFormat: "H:i",
-    minDate: "12:00",
-    maxDate: "19:00",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
     onChange: function(selectedDates, dateStr, instance) {
       endpick.setDate(dateStr,null,"H:i");
       endpick.set("minDate",dateStr);
     },
-    defaultDate: "today"
+    inline: true,
+    defaultDate: DEFAULT_SHARE_START
   });
 
   var endpick = flatpickr('#share_end',{
     noCalendar: true,
     enableTime: true,
     dateFormat: "H:i",
-    minDate: "12:00",
-    maxDate: "19:00",
-    defaultDate: "today"
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
+    inline: true,
+    defaultDate: DEFAULT_SHARE_END
   });
 
   function parseForm(date){
@@ -175,5 +177,9 @@
   .shares-new-form .apply-item .flatpickr-next-month {
     top: unset;
     position: relative;
+  }
+
+  .flatpickr-input[readonly] {
+    display: none;
   }
 </style>

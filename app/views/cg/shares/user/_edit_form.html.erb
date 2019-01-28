@@ -26,7 +26,7 @@
         </div>
         <div class = "form-group col-sm-5">
           <div class="share-date-time">
-            <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始時刻" value="<%= share.detail.start&.strftime("%H:%M") %>">
+            <input id="share_start" class="flatpickr" name="cg_share[cg_share_detail][start_val]" type="text" placeholder="シェア開始時刻">
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
         </div>
         <div class = "form-group col-sm-5">
           <div class="share-date-time">
-            <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了時刻"  value="<%= share.detail.end&.strftime("%H:%M") %>">
+            <input id="share_end" class="flatpickr" name="cg_share[cg_share_detail][end_val]" type="text" placeholder="シェア終了時刻">
           </div>
         </div>
       </div>
@@ -57,15 +57,45 @@
   <% end %>
 </div>
 <script type="text/javascript">
+
   var datepick = flatpickr('#share_date',{
     dateFormat: "Y-m-d 0:0",
     inline: true,
     defaultDate: "<%= share.detail.start %>"
   });
 
+  var beginpick = flatpickr('#share_start',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
+    inline: true,
+    onChange: function(selectedDates, dateStr, instance) {
+      endpick.setDate(dateStr,null,"H:i");
+      endpick.set("minDate",dateStr);
+    },
+    <% if share.detail.start.present? %>
+      defaultDate: "<%= share.detail.start.strftime('%H:%M') %>"
+    <% end %>
+  });
+
+  var endpick = flatpickr('#share_end',{
+    noCalendar: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
+    inline: true,
+    <% if share.detail.end.present? %>
+      defaultDate: "<%= share.detail.end.strftime('%H:%M') %>"
+    <% end %>
+  });
+
   function parseForm(date){
     console.log(date);
   }
+
 </script>
 <style>
 
@@ -102,5 +132,9 @@
   .shares-edit-form .apply-item .flatpickr-next-month {
     top: unset;
     position: relative;
+  }
+
+  .flatpickr-input[readonly] {
+    display: none;
   }
 </style>

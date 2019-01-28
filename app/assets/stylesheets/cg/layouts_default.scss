@@ -302,3 +302,13 @@ a.disabled {
 .flex {
   display: flex;
 }
+
+h3 {
+  span.required {
+    color: white;
+    background: salmon;
+    display: inline-block;
+    padding: 2px;
+    border-radius: 5px;
+  }
+}
