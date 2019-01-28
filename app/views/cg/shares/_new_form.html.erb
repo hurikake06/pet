@@ -106,24 +106,24 @@
     noCalendar: true,
     enableTime: true,
     dateFormat: "H:i",
-    minDate: "12:00",
-    maxDate: "19:00",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
     onChange: function(selectedDates, dateStr, instance) {
       endpick.setDate(dateStr,null,"H:i");
       endpick.set("minDate",dateStr);
     },
     inline: true,
-    defaultDate: "13:00"
+    defaultDate: DEFAULT_SHARE_START
   });
 
   var endpick = flatpickr('#share_end',{
     noCalendar: true,
     enableTime: true,
     dateFormat: "H:i",
-    minDate: "12:00",
-    maxDate: "19:00",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
     inline: true,
-    defaultDate: "16:00"
+    defaultDate: DEFAULT_SHARE_END
   });
 
   function parseForm(date){

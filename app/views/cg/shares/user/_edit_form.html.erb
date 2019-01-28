@@ -68,8 +68,8 @@
     noCalendar: true,
     enableTime: true,
     dateFormat: "H:i",
-    minDate: "12:00",
-    maxDate: "19:00",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
     inline: true,
     onChange: function(selectedDates, dateStr, instance) {
       endpick.setDate(dateStr,null,"H:i");
@@ -84,8 +84,8 @@
     noCalendar: true,
     enableTime: true,
     dateFormat: "H:i",
-    minDate: "12:00",
-    maxDate: "19:00",
+    minDate: SHARE_DATETIME_MIN,
+    maxDate: SHARE_DATETIME_MAX,
     inline: true,
     <% if share.detail.end.present? %>
       defaultDate: "<%= share.detail.end.strftime('%H:%M') %>"

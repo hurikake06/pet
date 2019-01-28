@@ -45,3 +45,8 @@
 //= require wow
 //= require prettify
 //= require smoothscroll
+
+var DEFAULT_SHARE_START = "13:00";
+var DEFAULT_SHARE_END = "16:00";
+var SHARE_DATETIME_MIN = "12:00";
+var SHARE_DATETIME_MAX = "19:00";
