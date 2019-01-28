@@ -112,7 +112,8 @@
       endpick.setDate(dateStr,null,"H:i");
       endpick.set("minDate",dateStr);
     },
-    defaultDate: "today"
+    inline: true,
+    defaultDate: "13:00"
   });
 
   var endpick = flatpickr('#share_end',{
@@ -121,7 +122,8 @@
     dateFormat: "H:i",
     minDate: "12:00",
     maxDate: "19:00",
-    defaultDate: "today"
+    inline: true,
+    defaultDate: "16:00"
   });
 
   function parseForm(date){
@@ -175,5 +177,9 @@
   .shares-new-form .apply-item .flatpickr-next-month {
     top: unset;
     position: relative;
+  }
+
+  .flatpickr-input[readonly] {
+    display: none;
   }
 </style>
