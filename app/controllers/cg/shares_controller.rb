@@ -221,7 +221,7 @@ class Cg::SharesController < Cg::LayoutsController
           end
           share_alert 'CuteGiftシェアサービスをご利用頂きありがとうございます' if before == 101
         when 104 then
-          share_alert "シェア条件が確定されました。予定日程は#{@share.detail.start}です。"
+          share_alert "シェア条件が確定されました。予定日程は#{@share.detail.start&.strftime('%Y年%m月%d日')}です。"
           share_alert "#{@share.user.name}様が変更した際は再申請からやり直します。"
         end
       end
