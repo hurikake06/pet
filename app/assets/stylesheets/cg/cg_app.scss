@@ -101,8 +101,46 @@
   .demo-videos {
     .embed-responsive {
       display: inline-flex;
+
+      h3 {
+        z-index: 100;
+        background-color: orange;
+        display: block;
+        height: fit-content;
+        padding: 3px;
+        margin-top: 10px;
+        border: white 2px solid;
+        border-left: none;
+      }
+    }
+  }
+
+  .demo-main-videos {
+    @extend .demo-videos;
+    .embed-responsive {
+      width: 800px;
+      height: 600px;
+    }
+  }
+
+  .demo-flow-videos {
+    @extend .demo-videos;
+    .embed-responsive {
       width: 400px;
       height: 300px;
+    }
+  }
+
+  .demo-other-videos {
+    @extend .demo-videos;
+    .embed-responsive {
+      width: 400px;
+      height: 300px;
+      
+      h3 {
+        background-color: salmon;
+        color: white;
+      }
     }
   }
 }
