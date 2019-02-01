@@ -10,6 +10,15 @@ body {
   }
 }
 
+footer {
+  .title {
+    .img-responsive {
+      max-width: 50%;
+      margin: 0 auto;
+    }
+  }
+}
+
 .navbar-default {
   background: linear-gradient(to bottom,#fff0 0,#ffffffd1 100%);
   border-bottom: solid 4px lightgray;
