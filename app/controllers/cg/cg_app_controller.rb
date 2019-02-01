@@ -16,4 +16,8 @@ class Cg::CgAppController < Cg::LayoutsController
 
     render :home, layout: 'cg_layouts_width_stuffing'
   end
+
+  def demo
+    render layout: 'cg_layouts_width_stuffing'
+  end
 end

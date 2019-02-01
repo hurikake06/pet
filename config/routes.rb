@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       root to: 'cg_app#index'
 
       get 'index', to: 'cg_app#index'
+      get 'demo', to: 'cg_app#demo'
       get 'login', to: 'users#login'
       post 'login', to: 'users#pass_check'
       get 'logout', to: '/sessions#destroy'
