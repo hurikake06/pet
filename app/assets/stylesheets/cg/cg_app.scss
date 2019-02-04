@@ -100,6 +100,35 @@
 .cg-app-demo {
   background-color: white;
 
+  .slide-group{
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px $color-main-thema;
+    text-align: center;
+
+    iframe{
+      width: 640px;
+      height: 400px;
+    }
+
+    .box-title{
+      position: absolute;
+      display: inline-block;
+      top: -27px;
+      left: -3px;
+      padding: 0 9px;
+      height: 25px;
+      line-height: 25px;
+      vertical-align: middle;
+      font-size: 2rem;
+      background: $color-main-thema;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 5px 5px 0 0;
+    }
+  }
+
   .video-group{
     margin: 2em 0;
     background: whitesmoke;
