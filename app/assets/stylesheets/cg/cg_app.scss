@@ -134,6 +134,7 @@
     background: whitesmoke;
     margin-top: 50px;
     margin-bottom: 50px;
+    padding-bottom: 5px;
 
     .box-title{
       font-size: 4rem;
@@ -147,6 +148,8 @@
   }
 
   .demo-videos {
+    padding: 0 5px;
+
     .embed-responsive {
       display: inline-flex;
 
@@ -166,17 +169,18 @@
 
   .demo-main-videos {
     @extend .demo-videos;
-    margin-left: 180px;
+    margin-left: 0px;
 
     .embed-responsive {
-      width: 800px;
+      width: -webkit-fill-available;
       height: 600px;
     }
   }
 
   .demo-flow-videos {
     @extend .demo-videos;
-    margin-left: 40px;
+    display: flex;
+    justify-content: space-around;
 
     .embed-responsive {
       width: 350px;
