@@ -99,7 +99,7 @@
 }
 .cg-app-demo {
   background-color: white;
-  
+
   .video-group{
     margin: 2em 0;
     background: whitesmoke;
@@ -137,6 +137,8 @@
 
   .demo-main-videos {
     @extend .demo-videos;
+    margin-left: 180px;
+
     .embed-responsive {
       width: 800px;
       height: 600px;
