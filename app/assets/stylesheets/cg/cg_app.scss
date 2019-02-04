@@ -98,19 +98,39 @@
   }
 }
 .cg-app-demo {
+  background-color: white;
+  
+  .video-group{
+    margin: 2em 0;
+    background: whitesmoke;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    .box-title{
+      font-size: 4rem;
+      background: $color-main-thema;
+      padding: 4px;
+      text-align: center;
+      color: #FFF;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+  }
+
   .demo-videos {
     .embed-responsive {
       display: inline-flex;
 
       h3 {
+        text-align: center;
         z-index: 100;
-        background-color: orange;
+        background-color: whitesmoke;
+        color: $color-main-thema;
         display: block;
         height: fit-content;
         padding: 3px;
         margin-top: 10px;
-        border: white 2px solid;
-        border-left: none;
+        border-left: 5px solid $color-main-thema;
       }
     }
   }
@@ -125,22 +145,21 @@
 
   .demo-flow-videos {
     @extend .demo-videos;
+    margin-left: 40px;
+
     .embed-responsive {
-      width: 400px;
+      width: 350px;
       height: 300px;
     }
   }
 
   .demo-other-videos {
     @extend .demo-videos;
+    margin-left: 40px;
+
     .embed-responsive {
-      width: 400px;
+      width: 350px;
       height: 300px;
-      
-      h3 {
-        background-color: salmon;
-        color: white;
-      }
     }
   }
 }
